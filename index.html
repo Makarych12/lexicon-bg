@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТЭ109 «Людмила» — Тренажор по схемите на тепловоз Серия 07 БДЖ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="badge">07</span>
+      <div>
+        Серия 07 БДЖ · ТЭ109 «Людмила»
+        <small>Интерактивен тренажор на схемата за пускане на дизела</small>
+      </div>
+    </div>
+
+    <nav class="modes" id="modeNav">
+      <button data-mode="start" class="active">Пускане на дизела</button>
+      <button data-mode="excite">Възбуждане на ТГ</button>
+      <button data-mode="weaken">Отслабване на полето</button>
+      <button data-mode="protect">Защити и сигнализации</button>
+      <button data-mode="emergency">Аварийни премички</button>
+    </nav>
+
+    <button class="lang-switch" id="langSwitch">BG</button>
+  </header>
+
+  <main>
+    <div class="stage" id="schemaCard">
+      <div class="svg-panel" id="svgPanel">
+        <div id="svgHost"></div>
+
+        <div class="legend" id="legend">
+          <h4 id="legendTitle">Условни означения</h4>
+        </div>
+
+        <aside class="drawer" id="drawer">
+          <h3 id="drawerTitle">Стъпка 0 — Изходно състояние</h3>
+          <p id="drawerText"></p>
+        </aside>
+
+        <div class="hint">Колелце — мащаб · влачене — панорамиране · клик върху апарат — карта</div>
+
+        <div class="zoom-controls">
+          <button id="btnZoomIn" title="Увеличи">+</button>
+          <button id="btnZoomOut" title="Намали">−</button>
+          <button class="btn-reset" id="btnResetView" title="Сброс на вида">Reset View</button>
+        </div>
+
+        <div class="stepbar">
+          <div class="step-info">
+            <div class="step-label" id="stepLabel"></div>
+            <div class="step-track"><div class="step-fill" id="stepProgress"></div></div>
+          </div>
+          <div class="controls">
+            <button id="btnPrev" disabled>‹ Предишна стъпка</button>
+            <button id="btnPlay" class="primary">Автовъзпроизвеждане</button>
+            <button id="btnNext">Следваща стъпка ›</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="info-panel" id="infoPanel"></aside>
+    </div>
+
+    <div class="emergency" id="emergencyPanel">
+      <h3>⚠ Аварийни премички и неизправности</h3>
+      <select id="emergencySelect"></select>
+      <div id="emergencyBody"></div>
+    </div>
+  </main>
+
+  <div id="tooltip"></div>
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
