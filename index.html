@@ -82,8 +82,15 @@
       <line class="blade" x1="80" y1="440" x2="80" y2="424" style="--hinge:80px 440px"/>
       <text class="ctlabel" x="96" y="436" font-size="10">ВБ</text>
     </g>
-    <path id="w137" class="wire" d="M80,424 V80" data-wire="137" data-tip="Пр. 137"/>
-    <text class="wirenum" x="86" y="300" transform="rotate(-90 86 300)" data-wire="137">137</text>
+    <path id="w137" class="wire" d="M80,424 V390" data-wire="137" data-tip="Пр. 137"/>
+    <text class="wirenum" x="86" y="412" transform="rotate(-90 86 412)" data-wire="137">137</text>
+
+    <g class="device" id="dev-СЗБ" data-dev="СЗБ" data-tip="СЗБ — съединител на веригата на батерията">
+      <rect x="60" y="360" width="40" height="30" rx="3" fill="#131a24" stroke="#3a4a5c" stroke-width="2"/>
+      <text class="devlabel" x="80" y="380" text-anchor="middle" font-size="10">СЗБ</text>
+    </g>
+    <path id="w191" class="wire" d="M80,360 V80" data-wire="191" data-tip="Пр. 191 — СЗБ → ШЗБ"/>
+    <text class="wirenum" x="86" y="240" transform="rotate(-90 86 240)" data-wire="191">191</text>
 
     <!-- ============ КЛОН 1: КТН — Горивна помпа ============ -->
     <path id="w211" class="wire" d="M200,80 V200" data-wire="211" data-tip="Пр. 211"/>
@@ -417,7 +424,7 @@
 
         <aside class="drawer" id="drawer">
           <h3 id="drawerTitle">Стъпка 0 — Изходно състояние</h3>
-          <p id="drawerText"></p>
+          <div id="drawerText"></div>
         </aside>
 
         <div class="hint">Колелце — мащаб · влачене — панорамиране · клик върху апарат — карта</div>
