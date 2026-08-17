@@ -265,7 +265,6 @@
     'РУ10':  [['н.о. (КРН)', 'ct-ru10-no'], ['катушка', 'coil-РУ10']],
     'КРН':   [['силовой', 'ct-krn-main'], ['катушка', 'coil-КРН']],
     'ВБ':    [['главный контакт', 'ct-wb']],
-    'СЗБ':   [['контакт', 'ct-szb']],
     'РУ7':   [['н.з. контакт', 'ct-ru7-nc']]
   };
 
@@ -325,12 +324,12 @@
   };
 
   /* ---------- Стъпки на пуска ---------- */
-  var BASE_CLOSED = ['ct-wb', 'ct-szb', 'ct-ru7-nc', 'ct-ru9-nc'];
+  var BASE_CLOSED = ['ct-wb', 'ct-ru7-nc', 'ct-ru9-nc'];
 
   var STEPS = [
     {
       title: { ru: 'Шаг 0 — Исходное состояние (подготовка)', bg: 'Стъпка 0 — Изходно състояние (подготовка)' },
-      wires: ['w138', 'w137', 'w191', 'wbus-plus', 'wbus-minus'],
+      wires: ['w138', 'w137', 'wbus-plus', 'wbus-minus'],
       coils: [], devices: [], closed: BASE_CLOSED, motors: [],
       text: {
         ru: 'Включены шалтер ВБ, автоматы А1 (горивна помпа), А2 (дизел), А5 и АУ. Реверсор — в нейтраль, контроллер КМ — на 0 позиции. Цепи находятся под напряжением, ток не протекает. Минусовые контакты РУ7 (н.з.) и РУ9 (н.з.) замкнуты — цепь готова к пуску. Нажмите «Следующий шаг».',
@@ -339,7 +338,7 @@
     },
     {
       title: { ru: 'Шаг 1 — Включение КТН и топливного насоса', bg: 'Стъпка 1 — Включване на КТН и горивната помпа' },
-      wires: ['w138', 'w137', 'w191', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'w1m14', 'w1tn1', 'wrev', 'wru7', 'wbus-minus',
+      wires: ['w138', 'w137', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'wru7', 'wbus-minus',
               'w2a', 'w212', 'w213', 'w214'],
       coils: ['coil-КТН'], devices: ['КТН'], closed: BASE_CLOSED.concat(['ct-ktn-main', 'ct-ktn-aux']), motors: ['МТ'],
       text: {
@@ -349,10 +348,10 @@
     },
     {
       title: { ru: 'Шаг 2 — Предварительная маслопрокачка (60 с)', bg: 'Стъпка 2 — Предварително смазване (60 s)' },
-      wires: ['w138', 'w137', 'w191', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'w1m14', 'w1tn1', 'wrev', 'wru7', 'wbus-minus',
+      wires: ['w138', 'w137', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'wru7', 'wbus-minus',
               'w2a', 'w212', 'w213', 'w214',
               'w3a', 'w3pd', 'w3rdm3', 'w3bpd', 'w3kmn', 'w3o',
-              'w4a', 'w4mn1', 'w4mn2',
+              'w4a', 'w4mn1', 'w4mn2', 'w341',
               'w4ba', 'w4mr6', 'w4trv', 'w4bo'],
       coils: ['coil-КТН', 'coil-КМН'], devices: ['КТН', 'КМН', 'БПД', 'МР6', 'ТРВ'], motors: ['МТ', 'МН'],
       closed: BASE_CLOSED.concat(['ct-ktn-main', 'ct-ktn-aux', 'ct-rdm3', 'ct-kmn-main', 'ct-kmn-aux', 'ct-kmn-aux2']),
@@ -363,10 +362,10 @@
     },
     {
       title: { ru: 'Шаг 3 — Пуск и прокрутка стартер-генератором', bg: 'Стъпка 3 — Пуск и прокрутка със стартер-генератор' },
-      wires: ['w138', 'w137', 'w191', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'w1m14', 'w1tn1', 'wrev', 'wru7', 'wbus-minus',
+      wires: ['w138', 'w137', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'wru7', 'wbus-minus',
               'w2a', 'w212', 'w213', 'w214',
               'w3a', 'w3pd', 'w3rdm3', 'w3bpd', 'w3kmn', 'w3o',
-              'w4a', 'w4mn1', 'w4mn2',
+              'w4a', 'w4mn1', 'w4mn2', 'w341',
               'w4ba', 'w4mr6', 'w4trv', 'w4bo',
               'w5a', 'w5bpd', 'w5ktn', 'w5kmn', 'w5ru9', 'w5fuse', 'w5d', 'w5o', 'w5vp7a', 'w5vp7b',
               'w6a', 'w6s1', 'w6s2',
@@ -381,14 +380,14 @@
     },
     {
       title: { ru: 'Шаг 4 — Подхват дизеля и завершение пуска', bg: 'Стъпка 4 — Подхващане на дизела и завършване' },
-      wires: ['w138', 'w137', 'w191', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'w1m14', 'w1tn1', 'wrev', 'wru7', 'wbus-minus',
+      wires: ['w138', 'w137', 'wbus-plus', 'w211', 'w224', 'w225', 'wktnout', 'wru7', 'wbus-minus',
               'w2a', 'w212', 'w213', 'w214',
               'w3a', 'w3pd', 'w3rdm3', 'w3bpd', 'w3kmn', 'w3o',
-              'w4a', 'w4mn1', 'w4mn2',
+              'w4a', 'w4mn1', 'w4mn2', 'w341',
               'w4ba', 'w4mr6', 'w4trv', 'w4bo',
               'w8a', 'w8b', 'w8c', 'w8ru9', 'w8ru10',
               'w9a', 'w9b', 'w9c', 'w9o',
-              'wch1', 'wch2a', 'wch2b'],
+              'wch1', 'wch2a', 'wch2b', 'wkrnmin'],
       coils: ['coil-КТН', 'coil-КМН', 'coil-РУ9', 'coil-РУ10', 'coil-КРН'],
       devices: ['КТН', 'КМН', 'БПД', 'МР6', 'ТРВ', 'РУ9', 'РУ10', 'КРН'], motors: ['МТ', 'МН', 'СтГ'],
       closed: BASE_CLOSED.concat(['ct-ktn-main', 'ct-ktn-aux', 'ct-rdm3', 'ct-kmn-main', 'ct-kmn-aux', 'ct-kmn-aux2',
@@ -458,15 +457,14 @@
   var SEQUENCES = {
 
     0: [].concat(
-      /* подготовка: включват се ВБ, СЗБ, автоматите; шините се захранват */
+      /* подготовка: включват се ВБ, автоматите; шините се захранват */
       pC('ct-wb', 0), pW('w138', 100),
-      pC('ct-szb', 220), pW('w137', 320),
-      pW('w191', 440),
-      pC('sw-А1', 560), pD('dev-А1', 560),
-      pC('sw-А2', 660), pD('dev-А2', 660),
-      pC('sw-А5', 760), pD('dev-А5', 760),
-      pC('sw-АУ', 860), pD('dev-АУ', 860),
-      pW('wbus-plus', 980), pW('wbus-minus', 1080)
+      pW('w137', 220),
+      pC('sw-А1', 340), pD('dev-А1', 340),
+      pC('sw-А2', 440), pD('dev-А2', 440),
+      pC('sw-А5', 540), pD('dev-А5', 540),
+      pC('sw-АУ', 640), pD('dev-АУ', 640),
+      pW('wbus-plus', 760), pW('wbus-minus', 860)
     ),
 
     1: [].concat(
@@ -828,50 +826,50 @@
     return { wires: w, contacts: c, coils: l, devices: d, motors: m };
   }
   var STEP_STATE = [
-    st(['w138','w137','w191','wbus-plus','wbus-minus'],
-       ['ct-wb','ct-szb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ'],
+    st(['w138','w137','wbus-plus','wbus-minus'],
+       ['ct-wb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ'],
        [],
        ['dev-А1','dev-А2','dev-А5','dev-АУ'],
        []),
-    st(['w138','w137','w191','wbus-plus','wbus-minus',
-        'w211','w224','w225','wktnout','w1m14','w1tn1','wrev','wru7',
+    st(['w138','w137','wbus-plus','wbus-minus',
+        'w211','w224','w225','wktnout','wru7',
         'w2a','w212','w213','w214'],
-       ['ct-wb','ct-szb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
+       ['ct-wb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
         'ct-ktn-main','ct-ktn-aux'],
        ['coil-КТН'],
        ['dev-А1','dev-А2','dev-А5','dev-АУ','dev-КТН'],
        ['dev-МТ']),
-    st(['w138','w137','w191','wbus-plus','wbus-minus',
-        'w211','w224','w225','wktnout','w1m14','w1tn1','wrev','wru7',
+    st(['w138','w137','wbus-plus','wbus-minus',
+        'w211','w224','w225','wktnout','wru7',
         'w2a','w212','w213','w214',
         'w3a','w3pd','w3rdm3','w3bpd','w3kmn','w3o',
-        'w4a','w4mn1','w4mn2','w4ba','w4mr6','w4trv','w4bo'],
-       ['ct-wb','ct-szb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
+        'w4a','w4mn1','w4mn2','w341','w4ba','w4mr6','w4trv','w4bo'],
+       ['ct-wb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
         'ct-ktn-main','ct-ktn-aux','ct-rdm3','ct-kmn-main','ct-kmn-aux','ct-kmn-aux2'],
        ['coil-КТН','coil-КМН'],
        ['dev-А1','dev-А2','dev-А5','dev-АУ','dev-КТН','dev-КМН','dev-БПД','dev-ПД','dev-МР6','dev-ТРВ'],
        ['dev-МТ','dev-МН']),
-    st(['w138','w137','w191','wbus-plus','wbus-minus',
-        'w211','w224','w225','wktnout','w1m14','w1tn1','wrev','wru7',
+    st(['w138','w137','wbus-plus','wbus-minus',
+        'w211','w224','w225','wktnout','wru7',
         'w2a','w212','w213','w214',
         'w3a','w3pd','w3rdm3','w3bpd','w3kmn','w3o',
-        'w4a','w4mn1','w4mn2','w4ba','w4mr6','w4trv','w4bo',
+        'w4a','w4mn1','w4mn2','w341','w4ba','w4mr6','w4trv','w4bo',
         'w5a','w5bpd','w5ktn','w5kmn','w5ru9','w5fuse','w5d','w5o',
         'w5vp7a','w5vp7b','w6a','w6s1','w6s2','w7a','w7b','w7c'],
-       ['ct-wb','ct-szb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
+       ['ct-wb','ct-ru7-nc','ct-ru9-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
         'ct-ktn-main','ct-ktn-aux','ct-rdm3','ct-kmn-main','ct-kmn-aux','ct-kmn-aux2',
         'ct-bpd-timer','ct-d-main'],
        ['coil-КТН','coil-КМН','coil-Д'],
        ['dev-А1','dev-А2','dev-А5','dev-АУ','dev-КТН','dev-КМН','dev-БПД','dev-ПД','dev-МР6','dev-ТРВ',
         'dev-Д','dev-ВП7','dev-105','dev-СВ'],
        ['dev-МТ','dev-МН','dev-СтГ']),
-    st(['w138','w137','w191','wbus-plus','wbus-minus',
-        'w211','w224','w225','wktnout','w1m14','w1tn1','wrev','wru7',
+    st(['w138','w137','wbus-plus','wbus-minus',
+        'w211','w224','w225','wktnout','wru7',
         'w2a','w212','w213','w214',
         'w3a','w3pd','w3rdm3','w3bpd','w3kmn','w3o',
-        'w4a','w4mn1','w4mn2','w4ba','w4mr6','w4trv','w4bo',
-        'w8a','w8b','w8c','w8ru9','w8ru10','w9a','w9b','w9c','w9o','wch1','wch2a','wch2b'],
-       ['ct-wb','ct-szb','ct-ru7-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
+        'w4a','w4mn1','w4mn2','w341','w4ba','w4mr6','w4trv','w4bo',
+        'w8a','w8b','w8c','w8ru9','w8ru10','w9a','w9b','w9c','w9o','wch1','wch2a','wch2b','wkrnmin'],
+       ['ct-wb','ct-ru7-nc','sw-А1','sw-А2','sw-А5','sw-АУ',
         'ct-ktn-main','ct-ktn-aux','ct-rdm3','ct-kmn-main','ct-kmn-aux','ct-kmn-aux2',
         'ct-rdm4','ct-ru9-no','ct-ru10-no','ct-krn-main'],
        ['coil-КТН','coil-КМН','coil-РУ9','coil-РУ10','coil-КРН'],

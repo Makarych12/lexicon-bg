@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1330" id="schemaRoot">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 920" id="schemaRoot">
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0H0V40" fill="none" stroke="#111a24" stroke-width="0.5"/>
@@ -17,396 +17,364 @@
     </linearGradient>
   </defs>
 
-  <rect width="1500" height="1330" fill="url(#bgGrad)"/>
-  <rect width="1500" height="1330" fill="url(#grid)"/>
-  <rect x="2" y="2" width="1496" height="1326" rx="10" fill="none" stroke="#1f2a36" stroke-width="2"/>
+  <rect width="1400" height="920" fill="url(#bgGrad)"/>
+  <rect width="1400" height="920" fill="url(#grid)"/>
+  <rect x="2" y="2" width="1396" height="916" rx="10" fill="none" stroke="#1f2a36" stroke-width="2"/>
 
-  <text x="750" y="34" fill="#c0d0e0" font-size="22" font-family="'Segoe UI',sans-serif" text-anchor="middle" font-weight="600">ТЕПЛОВОЗ СЕРИЯ 07 (ТЭ109 «Людмила») — Пускане на дизеловия двигател</text>
+  <text x="700" y="28" fill="#c0d0e0" font-size="20" font-family="'Segoe UI',sans-serif" text-anchor="middle" font-weight="600">ТЕПЛОВОЗ СЕРИЯ 07 (ТЭ109 «Людмила») — Пускане на дизеловия двигател</text>
 
   <g id="viewport">
-    <!-- ============ СИЛОВИ ШИНИ ============ -->
-    <path id="wbus-plus" class="bus" d="M100,60 V1160" data-dev="ШЗБ" data-tip="ШЗБ — шина +"/>
-    <path id="wbus-minus" class="bus" d="M1380,60 V1160" data-wire="ШМ" data-tip="ШМ — шина –"/>
-    <text class="buslabel" x="86" y="600" transform="rotate(-90 86 600)" fill="#5f7a9a" font-size="14">ШЗБ +</text>
-    <text class="buslabel" x="1392" y="600" transform="rotate(90 1392 600)" fill="#5f7a9a" font-size="14">ШМ –</text>
 
-    <!-- ============ BATTERY & TOP CHAIN ============ -->
+    <!-- ============ ХОРИЗОНТАЛНИ ШИНИ ============ -->
+    <path id="wbus-plus" class="bus" d="M80,80 H1320" data-dev="ШЗБ" data-tip="+ШЗБ — шина плюс 110V"/>
+    <text class="buslabel" x="100" y="72" fill="#5f7a9a" font-size="14" font-weight="bold">+ШЗБ / +110V DC</text>
+
+    <path id="wbus-minus" class="bus" d="M80,860 H1320" data-wire="ШМ" data-tip="ШМ — шина минус / корпус"/>
+    <text class="buslabel" x="100" y="884" fill="#5f7a9a" font-size="14" font-weight="bold">ШИНА М / КОРПУС</text>
+
+    <!-- ============ АКУМУЛАТОРНА БАТАРЕЯ + ВБ ============ -->
     <g class="device" id="dev-АБ" data-dev="АБ" data-tip="АБ — акумулаторна батерия 110V">
-      <rect x="30" y="45" width="60" height="70" rx="3" fill="#131a24" stroke="#3a4a5c" stroke-width="2"/>
-      <text class="devlabel" x="60" y="72" text-anchor="middle" font-size="16" font-weight="bold">АБ</text>
-      <text class="devlabel" x="60" y="88" text-anchor="middle" font-size="10">110V</text>
-      <text x="86" y="78" fill="#4d8" font-size="14" font-weight="bold">+</text>
-      <text x="34" y="78" fill="#e66" font-size="14" font-weight="bold">−</text>
+      <rect x="20" y="430" width="56" height="80" rx="3" fill="#131a24" stroke="#3a4a5c" stroke-width="2"/>
+      <text class="devlabel" x="48" y="464" text-anchor="middle" font-size="14" font-weight="bold">АБ</text>
+      <text class="devlabel" x="48" y="480" text-anchor="middle" font-size="9">110V</text>
+      <text x="66" y="448" fill="#4d8" font-size="12" font-weight="bold">+</text>
+      <text x="30" y="500" fill="#e66" font-size="12" font-weight="bold">−</text>
     </g>
-    <path id="w138" class="wire" d="M90,80 H138" data-wire="138" data-tip="Пр. 138"/>
-    <text class="wirenum" x="112" y="72" data-wire="138">138</text>
+    <path id="w138" class="wire" d="M76,448 H80" data-wire="138" data-tip="Пр. 138"/>
+    <text class="wirenum" x="84" y="442" data-wire="138">138</text>
 
     <g class="contact" id="ct-wb" data-dev="ВБ" data-tip="ВБ — главен прекъсвач на батерията">
-      <line class="arm" x1="138" y1="80" x2="146" y2="80"/>
-      <circle class="hinge" cx="146" cy="80" r="3.5"/>
-      <line class="blade" x1="146" y1="80" x2="162" y2="80" style="--hinge:146px 80px"/>
-      <text class="ctlabel" x="150" y="60" text-anchor="middle">ВБ</text>
+      <line class="arm" x1="80" y1="448" x2="80" y2="440"/>
+      <circle class="hinge" cx="80" cy="440" r="3.5"/>
+      <line class="blade" x1="80" y1="440" x2="80" y2="424" style="--hinge:80px 440px"/>
+      <text class="ctlabel" x="96" y="436" font-size="10">ВБ</text>
     </g>
-    <path id="w137" class="wire" d="M162,80 H208" data-wire="137" data-tip="Пр. 137"/>
-    <text class="wirenum" x="178" y="72" data-wire="137">137</text>
+    <path id="w137" class="wire" d="M80,424 V80" data-wire="137" data-tip="Пр. 137"/>
+    <text class="wirenum" x="86" y="300" transform="rotate(-90 86 300)" data-wire="137">137</text>
 
-    <g class="contact" id="ct-szb" data-dev="СЗБ" data-tip="СЗБ — съединител на веригата на батерията">
-      <line class="arm" x1="208" y1="80" x2="216" y2="80"/>
-      <circle class="hinge" cx="216" cy="80" r="3.5"/>
-      <line class="blade" x1="216" y1="80" x2="232" y2="80" style="--hinge:216px 80px"/>
-      <text class="ctlabel" x="220" y="60" text-anchor="middle">СЗБ</text>
-    </g>
-    <path id="w191" class="wire" d="M232,80 H100" data-wire="191" data-tip="Пр. 191"/>
-    <text class="wirenum" x="158" y="94" data-wire="191">191</text>
-    <text class="note" x="108" y="108" font-size="9">кл. 1/63,62</text>
-
-    <path id="wmin" class="wire bus" d="M30,95 H16 V1180 H1380" stroke-dasharray="6 4" data-wire="мин" data-tip="Минусова верига на АБ"/>
-    <text class="wirenum" x="26" y="300" transform="rotate(-90 26 300)" fill="#b0b0b0" font-size="10">минус АБ</text>
-
-    <!-- ============ RUNG 1 — Горивна помпа (управление) ============ -->
-    <path id="w211" class="wire" d="M100,240 H270" data-wire="211" data-tip="Пр. 211"/>
-    <text class="wirenum" x="130" y="232" data-wire="211">211</text>
+    <!-- ============ КЛОН 1: КТН — Горивна помпа ============ -->
+    <path id="w211" class="wire" d="M200,80 V200" data-wire="211" data-tip="Пр. 211"/>
+    <text class="wirenum" x="206" y="120" data-wire="211">211</text>
 
     <g class="device automat" id="dev-А1" data-dev="А1" data-tip="А1 — автомат на горивната помпа">
-      <rect x="270" y="225" width="70" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <rect x="170" y="200" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
       <g class="contact automat-sw" id="sw-А1">
-        <line class="arm" x1="284" y1="240" x2="292" y2="240"/>
-        <line class="blade" x1="292" y1="240" x2="308" y2="240" style="--hinge:292px 240px"/>
+        <line class="arm" x1="200" y1="200" x2="200" y2="208"/>
+        <line class="blade" x1="200" y1="208" x2="200" y2="224" style="--hinge:200px 208px"/>
       </g>
-      <text class="devlabel" x="305" y="248" text-anchor="middle" font-size="11">А1</text>
+      <text class="devlabel" x="200" y="248" text-anchor="middle" font-size="11">А1</text>
     </g>
-    <path id="w224" class="wire" d="M340,240 H430" data-wire="224" data-tip="Пр. 224"/>
-    <text class="wirenum" x="360" y="232" data-wire="224">224</text>
-
-    <g class="device automat" id="dev-А2" data-dev="А2" data-tip="А2 — автомат на дизела">
-      <rect x="430" y="225" width="70" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <g class="contact automat-sw" id="sw-А2">
-        <line class="arm" x1="444" y1="240" x2="452" y2="240"/>
-        <line class="blade" x1="452" y1="240" x2="468" y2="240" style="--hinge:452px 240px"/>
-      </g>
-      <text class="devlabel" x="465" y="248" text-anchor="middle" font-size="11">А2</text>
-    </g>
-    <path id="w225" class="wire" d="M500,240 H636" data-wire="225" data-tip="225/341/343/379"/>
-    <text class="wirenum" x="505" y="230" font-size="9" data-wire="225">225/341/343/379</text>
+    <path id="w224" class="wire" d="M200,230 V320" data-wire="224" data-tip="Пр. 224"/>
+    <text class="wirenum" x="206" y="280" data-wire="224">224</text>
 
     <g id="dev-КТН" data-dev="КТН" data-tip="КТН — контактор на горивната помпа">
       <g class="coil" id="coil-КТН">
-        <line class="t1" x1="636" y1="240" x2="644" y2="240"/>
-        <circle cx="660" cy="240" r="24" class="coilring"/>
-        <path class="coilwind" d="M648,236 Q660,224 672,236 M648,240 Q660,228 672,240 M648,244 Q660,232 672,244" fill="none" stroke="#5a6b7d" stroke-width="2"/>
-        <line class="t2" x1="676" y1="240" x2="684" y2="240"/>
-        <text class="clabel" x="660" y="272" text-anchor="middle">КТН</text>
+        <rect x="170" y="320" width="60" height="40" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
+        <path class="coilwind" d="M178,328 Q200,316 222,328 M178,336 Q200,324 222,336 M178,344 Q200,332 222,344" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
+        <text class="clabel" x="200" y="380" text-anchor="middle">КТН</text>
       </g>
     </g>
-    <path id="wktnout" class="wire" d="M684,240 H760" data-wire="wktn" data-tip="Минусова верига на КТН"/>
-
-    <g class="device rail" id="dev-1М14" data-dev="1М14" data-tip="1М14 — клемна рейка">
-      <rect x="760" y="228" width="60" height="24" rx="2" fill="#111722" stroke="#2a3a4c" stroke-width="1"/>
-      <text class="devlabel" x="790" y="244" text-anchor="middle" font-size="10">1М14</text>
-    </g>
-    <path id="w1m14" class="wire" d="M820,240 H900" data-wire="1m14" data-tip="Рейка 1М14"/>
-
-    <g class="device rail" id="dev-1ТН1" data-dev="1ТН1" data-tip="1ТН1 — клемна рейка">
-      <rect x="900" y="228" width="60" height="24" rx="2" fill="#111722" stroke="#2a3a4c" stroke-width="1"/>
-      <text class="devlabel" x="930" y="244" text-anchor="middle" font-size="10">1ТН1</text>
-    </g>
-    <path id="w1tn1" class="wire" d="M960,240 H1060" data-wire="1tn1"/>
-
-    <g class="device" id="dev-Реверсор" data-dev="Реверсор" data-tip="Реверсор — трябва да е в неутрала">
-      <rect x="1060" y="225" width="70" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="1095" y="244" text-anchor="middle" font-size="10">Реверсор</text>
-    </g>
-    <path id="wrev" class="wire" d="M1130,240 H1228" data-wire="rev"/>
-
+    <path id="wktnout" class="wire" d="M200,360 V420" data-wire="wktn" data-tip="Минусова верига на КТН"/>
+    <path id="wru7" class="wire" d="M200,420 V860" data-wire="ru7" data-tip="Минус — РУ7 н.з."/>
     <g class="contact nc" id="ct-ru7-nc" data-dev="РУ7" data-tip="РУ7 — н.з. контакт в минусовата верига">
-      <line class="arm" x1="1228" y1="240" x2="1236" y2="240"/>
-      <circle class="hinge" cx="1236" cy="240" r="3.5"/>
-      <line class="blade nc" x1="1236" y1="240" x2="1252" y2="240" style="--hinge:1236px 240px"/>
-      <text class="ctlabel" x="1240" y="256" text-anchor="middle">РУ7</text>
+      <line class="arm" x1="200" y1="500" x2="200" y2="508"/>
+      <circle class="hinge" cx="200" cy="508" r="3.5"/>
+      <line class="blade nc" x1="200" y1="508" x2="200" y2="524" style="--hinge:200px 508px"/>
+      <text class="ctlabel" x="216" y="520" font-size="10">РУ7</text>
     </g>
-    <path id="wru7" class="wire" d="M1252,240 H1380" data-wire="ru7"/>
 
-    <!-- ============ RUNG 2 — Горивна помпа (силова) ============ -->
-    <path id="w2a" class="wire" d="M100,360 H278" data-wire="2a"/>
+    <!-- Силова верига КТН: +ШЗБ → КТН(сил) → МТ → ШМ -->
+    <path id="w2a" class="wire" d="M260,80 V200" data-wire="2a" data-tip="+ШЗБ → КТН сил"/>
     <g class="contact" id="ct-ktn-main" data-dev="КТН" data-tip="КТН — силов контакт">
-      <line class="arm" x1="278" y1="360" x2="286" y2="360"/>
-      <circle class="hinge" cx="286" cy="360" r="3.5"/>
-      <line class="blade" x1="286" y1="360" x2="302" y2="360" style="--hinge:286px 360px"/>
-      <text class="ctlabel" x="290" y="346" text-anchor="middle">КТН</text>
+      <line class="arm" x1="260" y1="200" x2="260" y2="208"/>
+      <circle class="hinge" cx="260" cy="208" r="3.5"/>
+      <line class="blade" x1="260" y1="208" x2="260" y2="224" style="--hinge:260px 208px"/>
+      <text class="ctlabel" x="276" y="220" font-size="10">КТН(сил)</text>
     </g>
-    <path id="w212" class="wire" d="M302,360 H480" data-wire="212" data-tip="Пр. 212"/>
-    <text class="wirenum" x="320" y="352" data-wire="212">212</text>
+    <path id="w212" class="wire" d="M260,224 V320" data-wire="212" data-tip="Пр. 212"/>
+    <text class="wirenum" x="266" y="280" data-wire="212">212</text>
 
     <g class="motor" id="dev-МТ" data-dev="МТ" data-tip="МТ — двигател на горивната помпа">
-      <circle cx="520" cy="360" r="36" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
-      <circle class="rotor" cx="520" cy="360" r="26" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="9 15"/>
-      <text class="devlabel" x="520" y="364" text-anchor="middle" font-size="18" font-weight="bold">М</text>
-      <text class="devlabel" x="520" y="404" text-anchor="middle" font-size="11">МТ</text>
-      <text class="note" x="520" y="418" text-anchor="middle" font-size="9">горивна помпа</text>
-      <text class="rpm-label" id="rpm-МТ" x="520" y="432" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
+      <circle cx="260" cy="360" r="32" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
+      <circle class="rotor" cx="260" cy="360" r="22" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="8 12"/>
+      <text class="devlabel" x="260" y="364" text-anchor="middle" font-size="16" font-weight="bold">M</text>
+      <text class="note" x="260" y="404" text-anchor="middle" font-size="9">Горивна помпа</text>
+      <text class="rpm-label" id="rpm-МТ" x="260" y="418" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
     </g>
-    <path id="w213" class="wire" d="M556,360 H980" data-wire="213" data-tip="Пр. 213"/>
-    <text class="wirenum" x="600" y="352" data-wire="213">213</text>
-    <path id="w214" class="wire" d="M980,360 H1380" data-wire="214" data-tip="Пр. 214"/>
-    <text class="wirenum" x="1020" y="352" data-wire="214">214</text>
+    <path id="w213" class="wire" d="M260,392 V420" data-wire="213" data-tip="Пр. 213"/>
+    <path id="w214" class="wire" d="M260,420 V860" data-wire="214" data-tip="Пр. 214 → ШМ"/>
+    <text class="wirenum" x="266" y="600" data-wire="214">214</text>
 
-    <!-- ============ RUNG 3 — Маслопомпа (управление) ============ -->
-    <path id="w3a" class="wire" d="M100,480 H270" data-wire="3a"/>
-    <g class="device automat" id="dev-А5" data-dev="А5" data-tip="А5 — автомат на маслопомпата">
-      <rect x="270" y="465" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <g class="contact automat-sw" id="sw-А5">
-        <line class="arm" x1="284" y1="480" x2="292" y2="480"/>
-        <line class="blade" x1="292" y1="480" x2="308" y2="480" style="--hinge:292px 480px"/>
+    <!-- ============ КЛОН 2: КМН — Маслена помпа ============ -->
+    <path id="w3a" class="wire" d="M380,80 V160" data-wire="3a" data-tip="+ШЗБ → А2"/>
+    <g class="device automat" id="dev-А2" data-dev="А2" data-tip="А2 — автомат на дизела">
+      <rect x="350" y="160" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <g class="contact automat-sw" id="sw-А2">
+        <line class="arm" x1="380" y1="160" x2="380" y2="168"/>
+        <line class="blade" x1="380" y1="168" x2="380" y2="184" style="--hinge:380px 168px"/>
       </g>
-      <text class="devlabel" x="300" y="488" text-anchor="middle" font-size="11">А5</text>
+      <text class="devlabel" x="380" y="208" text-anchor="middle" font-size="11">А2</text>
     </g>
-    <path id="w3pd" class="wire" d="M330,480 H430" data-wire="3pd"/>
+    <path id="w225" class="wire" d="M380,190 V240" data-wire="225" data-tip="Пр. 225"/>
+    <text class="wirenum" x="386" y="220" data-wire="225">225</text>
+
+    <g class="device automat" id="dev-А5" data-dev="А5" data-tip="А5 — автомат на маслопомпата">
+      <rect x="350" y="240" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <g class="contact automat-sw" id="sw-А5">
+        <line class="arm" x1="380" y1="240" x2="380" y2="248"/>
+        <line class="blade" x1="380" y1="248" x2="380" y2="264" style="--hinge:380px 248px"/>
+      </g>
+      <text class="devlabel" x="380" y="288" text-anchor="middle" font-size="11">А5</text>
+    </g>
+    <path id="w3pd" class="wire" d="M380,270 V320" data-wire="3pd" data-tip="А5 → ПД"/>
     <g class="device" id="dev-ПД" data-dev="ПД" data-tip="ПД — бутон за пускане на дизела">
-      <circle class="press-ring" cx="460" cy="480" r="28" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="4 5" opacity="0"/>
-      <circle cx="460" cy="480" r="24" fill="#171e2a" stroke="#4a5a6e" stroke-width="2"/>
-      <text class="devlabel" x="460" y="484" text-anchor="middle" font-size="12">ПД</text>
+      <circle class="press-ring" cx="380" cy="340" r="24" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="4 5" opacity="0"/>
+      <circle cx="380" cy="340" r="20" fill="#171e2a" stroke="#4a5a6e" stroke-width="2"/>
+      <text class="devlabel" x="380" y="344" text-anchor="middle" font-size="11">ПД</text>
     </g>
-    <path id="w3rdm3" class="wire" d="M484,480 H598" data-wire="3rdm"/>
+    <path id="w3rdm3" class="wire" d="M380,360 V400" data-wire="3rdm" data-tip="ПД → РДМ3"/>
     <g class="contact" id="ct-rdm3" data-dev="РДМ3" data-tip="РДМ3 — реле за налягане на маслото (предпусково)">
-      <line class="arm" x1="598" y1="480" x2="606" y2="480"/>
-      <circle class="hinge" cx="606" cy="480" r="3.5"/>
-      <line class="blade" x1="606" y1="480" x2="622" y2="480" style="--hinge:606px 480px"/>
-      <text class="ctlabel" x="610" y="496" text-anchor="middle">РДМ3</text>
+      <line class="arm" x1="380" y1="400" x2="380" y2="408"/>
+      <circle class="hinge" cx="380" cy="408" r="3.5"/>
+      <line class="blade" x1="380" y1="408" x2="380" y2="424" style="--hinge:380px 408px"/>
+      <text class="ctlabel" x="396" y="420" font-size="10">РДМ3</text>
     </g>
-    <path id="w3bpd" class="wire" d="M622,480 H790" data-wire="3bpd"/>
+    <path id="w3bpd" class="wire" d="M380,424 V470" data-wire="3bpd" data-tip="РДМ3 → БПД"/>
     <g class="device" id="dev-БПД" data-dev="БПД" data-tip="БПД — блок за пускане на дизела (таймер+тиристор)">
-      <rect x="790" y="460" width="90" height="40" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="835" y="484" text-anchor="middle" font-size="12">БПД</text>
+      <rect x="340" y="470" width="80" height="50" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="380" y="494" text-anchor="middle" font-size="12">БПД</text>
+      <text class="note" x="380" y="510" text-anchor="middle" font-size="9">таймер 60s</text>
+      <text class="trv-counter" id="trvCounter" x="380" y="540" text-anchor="middle" font-size="10" fill="#5a6b7d">60</text>
     </g>
-    <path id="w3kmn" class="wire" d="M880,480 H1256" data-wire="3kmn"/>
+    <path id="w3kmn" class="wire" d="M380,520 V580" data-wire="3kmn" data-tip="БПД → КМН"/>
     <g id="dev-КМН" data-dev="КМН" data-tip="КМН — контактор на маслопомпата">
       <g class="coil" id="coil-КМН">
-        <line class="t1" x1="1256" y1="480" x2="1264" y2="480"/>
-        <circle cx="1280" cy="480" r="24" class="coilring"/>
-        <path class="coilwind" d="M1268,476 Q1280,464 1292,476 M1268,480 Q1280,468 1292,480 M1268,484 Q1280,472 1292,484" fill="none" stroke="#5a6b7d" stroke-width="2"/>
-        <line class="t2" x1="1296" y1="480" x2="1304" y2="480"/>
-        <text class="clabel" x="1280" y="512" text-anchor="middle">КМН</text>
+        <rect x="350" y="580" width="60" height="40" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
+        <path class="coilwind" d="M358,588 Q380,576 402,588 M358,596 Q380,584 402,596 M358,604 Q380,592 402,604" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
+        <text class="clabel" x="380" y="640" text-anchor="middle">КМН</text>
       </g>
     </g>
-    <path id="w3o" class="wire" d="M1304,480 H1380" data-wire="3o"/>
+    <path id="w3o" class="wire" d="M380,620 V860" data-wire="3o" data-tip="КМН → ШМ"/>
 
-    <!-- ============ RUNG 4 — Маслопомпа (силова) ============ -->
-    <path id="w4a" class="wire" d="M100,600 H278" data-wire="4a"/>
+    <!-- Силова верига КМН: +ШЗБ → КМН(сил) → МН → ШМ -->
+    <path id="w4a" class="wire" d="M440,80 V200" data-wire="4a" data-tip="+ШЗБ → КМН сил"/>
     <g class="contact" id="ct-kmn-main" data-dev="КМН" data-tip="КМН — силов контакт">
-      <line class="arm" x1="278" y1="600" x2="286" y2="600"/>
-      <circle class="hinge" cx="286" cy="600" r="3.5"/>
-      <line class="blade" x1="286" y1="600" x2="302" y2="600" style="--hinge:286px 600px"/>
-      <text class="ctlabel" x="290" y="586" text-anchor="middle">КМН</text>
+      <line class="arm" x1="440" y1="200" x2="440" y2="208"/>
+      <circle class="hinge" cx="440" cy="208" r="3.5"/>
+      <line class="blade" x1="440" y1="208" x2="440" y2="224" style="--hinge:440px 208px"/>
+      <text class="ctlabel" x="456" y="220" font-size="10">КМН(сил)</text>
     </g>
-    <path id="w4mn1" class="wire" d="M302,600 H470" data-wire="4mn1"/>
+    <path id="w4mn1" class="wire" d="M440,224 V320" data-wire="140" data-tip="Пр. 140"/>
+    <text class="wirenum" x="446" y="280" data-wire="140">140</text>
+
     <g class="motor" id="dev-МН" data-dev="МН" data-tip="МН — двигател на маслопомпата">
-      <circle cx="520" cy="600" r="36" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
-      <circle class="rotor" cx="520" cy="600" r="26" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="9 15"/>
-      <text class="devlabel" x="520" y="604" text-anchor="middle" font-size="18" font-weight="bold">М</text>
-      <text class="devlabel" x="520" y="644" text-anchor="middle" font-size="11">МН</text>
-      <text class="note" x="520" y="658" text-anchor="middle" font-size="9">маслопомпа</text>
-      <text class="rpm-label" id="rpm-МН" x="520" y="672" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
+      <circle cx="440" cy="360" r="32" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
+      <circle class="rotor" cx="440" cy="360" r="22" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="8 12"/>
+      <text class="devlabel" x="440" y="364" text-anchor="middle" font-size="16" font-weight="bold">M</text>
+      <text class="note" x="440" y="404" text-anchor="middle" font-size="9">Маслопомпа</text>
+      <text class="rpm-label" id="rpm-МН" x="440" y="418" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
     </g>
-    <path id="w4mn2" class="wire" d="M556,600 H1380" data-wire="4mn2"/>
+    <path id="w4mn2" class="wire" d="M440,392 V420" data-wire="141" data-tip="Пр. 141"/>
+    <text class="wirenum" x="446" y="410" data-wire="141">141</text>
+    <path id="w341" class="wire" d="M440,420 V860" data-wire="341" data-tip="Пр. 341 → ШМ"/>
+    <text class="wirenum" x="446" y="600" data-wire="341">341</text>
 
-    <!-- ============ RUNG 4b — МР6 и ТРВ ============ -->
-    <path id="w4ba" class="wire" d="M100,690 H278" data-wire="4ba"/>
+    <!-- Спомагателни контакти КМН: МР6 и ТРВ -->
+    <path id="w4ba" class="wire" d="M500,80 V180" data-wire="4ba" data-tip="+ШЗБ → КМН aux"/>
     <g class="contact" id="ct-kmn-aux" data-dev="КМН" data-tip="КМН — спомагателен контакт">
-      <line class="arm" x1="278" y1="690" x2="286" y2="690"/>
-      <circle class="hinge" cx="286" cy="690" r="3.5"/>
-      <line class="blade" x1="286" y1="690" x2="302" y2="690" style="--hinge:286px 690px"/>
-      <text class="ctlabel" x="290" y="676" text-anchor="middle">КМН</text>
+      <line class="arm" x1="500" y1="180" x2="500" y2="188"/>
+      <circle class="hinge" cx="500" cy="188" r="3.5"/>
+      <line class="blade" x1="500" y1="188" x2="500" y2="204" style="--hinge:500px 188px"/>
+      <text class="ctlabel" x="516" y="200" font-size="10">КМН</text>
     </g>
-    <path id="w4mr6" class="wire" d="M302,690 H470" data-wire="4mr6"/>
+    <path id="w4mr6" class="wire" d="M500,204 V250" data-wire="4mr6" data-tip="КМН → МР6"/>
     <g class="device" id="dev-МР6" data-dev="МР6" data-tip="МР6 — блок-магнит на рейката на горивната помпа">
-      <rect x="470" y="672" width="60" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="500" y="694" text-anchor="middle" font-size="11">МР6</text>
+      <rect x="470" y="250" width="60" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="500" y="272" text-anchor="middle" font-size="11">МР6</text>
     </g>
-    <path id="w4trv" class="wire" d="M530,690 H650" data-wire="4trv"/>
+    <path id="w4trv" class="wire" d="M500,286 V330" data-wire="4trv" data-tip="МР6 → ТРВ"/>
     <g class="device" id="dev-ТРВ" data-dev="ТРВ" data-tip="ТРВ — таймер за предварително смазване 60s">
-      <rect x="650" y="672" width="80" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="690" y="694" text-anchor="middle" font-size="11">ТРВ 60с</text>
-      <text class="trv-counter" id="trvCounter" x="690" y="720" text-anchor="middle" font-size="10" fill="#5a6b7d">60</text>
+      <rect x="460" y="330" width="80" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="500" y="352" text-anchor="middle" font-size="11">ТРВ 60с</text>
     </g>
-    <path id="w4bo" class="wire" d="M730,690 H1380" data-wire="4bo"/>
+    <path id="w4bo" class="wire" d="M500,366 V860" data-wire="4bo" data-tip="ТРВ → ШМ"/>
 
-    <!-- ============ RUNG 5 — Пуск (управление) ============ -->
-    <path id="w5a" class="wire" d="M100,800 H270" data-wire="5a"/>
+    <!-- ============ КЛОН 3: БПД изходи (управление на пуска) ============ -->
+    <path id="w5a" class="wire" d="M620,80 V160" data-wire="5a" data-tip="+ШЗБ → АУ"/>
     <g class="device automat" id="dev-АУ" data-dev="АУ" data-tip="АУ — автомат на веригите за пускане">
-      <rect x="270" y="785" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <rect x="590" y="160" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
       <g class="contact automat-sw" id="sw-АУ">
-        <line class="arm" x1="284" y1="800" x2="292" y2="800"/>
-        <line class="blade" x1="292" y1="800" x2="308" y2="800" style="--hinge:292px 800px"/>
+        <line class="arm" x1="620" y1="160" x2="620" y2="168"/>
+        <line class="blade" x1="620" y1="168" x2="620" y2="184" style="--hinge:620px 168px"/>
       </g>
-      <text class="devlabel" x="300" y="808" text-anchor="middle" font-size="11">АУ</text>
+      <text class="devlabel" x="620" y="208" text-anchor="middle" font-size="11">АУ</text>
     </g>
-    <path id="w5bpd" class="wire" d="M330,800 H438" data-wire="5bpd"/>
+    <path id="w5bpd" class="wire" d="M620,190 V240" data-wire="5bpd" data-tip="АУ → БПД таймер"/>
     <g class="contact" id="ct-bpd-timer" data-dev="БПД" data-tip="БПД — таймерен контакт">
-      <line class="arm" x1="438" y1="800" x2="446" y2="800"/>
-      <circle class="hinge" cx="446" cy="800" r="3.5"/>
-      <line class="blade" x1="446" y1="800" x2="462" y2="800" style="--hinge:446px 800px"/>
-      <text class="ctlabel" x="450" y="816" text-anchor="middle">БПД</text>
+      <line class="arm" x1="620" y1="240" x2="620" y2="248"/>
+      <circle class="hinge" cx="620" cy="248" r="3.5"/>
+      <line class="blade" x1="620" y1="248" x2="620" y2="264" style="--hinge:620px 248px"/>
+      <text class="ctlabel" x="636" y="260" font-size="10">БПД</text>
     </g>
-    <path id="w5ktn" class="wire" d="M462,800 H558" data-wire="5ktn"/>
+    <path id="w5ktn" class="wire" d="M620,264 V310" data-wire="5ktn" data-tip="БПД → КТН aux"/>
     <g class="contact" id="ct-ktn-aux" data-dev="КТН" data-tip="КТН — спомаг. контакт (затваря се при КТН)">
-      <line class="arm" x1="558" y1="800" x2="566" y2="800"/>
-      <circle class="hinge" cx="566" cy="800" r="3.5"/>
-      <line class="blade" x1="566" y1="800" x2="582" y2="800" style="--hinge:566px 800px"/>
-      <text class="ctlabel" x="570" y="816" text-anchor="middle">КТН</text>
+      <line class="arm" x1="620" y1="310" x2="620" y2="318"/>
+      <circle class="hinge" cx="620" cy="318" r="3.5"/>
+      <line class="blade" x1="620" y1="318" x2="620" y2="334" style="--hinge:620px 318px"/>
+      <text class="ctlabel" x="636" y="330" font-size="10">КТН</text>
     </g>
-    <path id="w5kmn" class="wire" d="M582,800 H678" data-wire="5kmn"/>
+    <path id="w5kmn" class="wire" d="M620,334 V380" data-wire="5kmn" data-tip="КТН aux → КМН aux"/>
     <g class="contact" id="ct-kmn-aux2" data-dev="КМН" data-tip="КМН — спомаг. контакт (затваря се при КМН)">
-      <line class="arm" x1="678" y1="800" x2="686" y2="800"/>
-      <circle class="hinge" cx="686" cy="800" r="3.5"/>
-      <line class="blade" x1="686" y1="800" x2="702" y2="800" style="--hinge:686px 800px"/>
-      <text class="ctlabel" x="690" y="816" text-anchor="middle">КМН</text>
+      <line class="arm" x1="620" y1="380" x2="620" y2="388"/>
+      <circle class="hinge" cx="620" cy="388" r="3.5"/>
+      <line class="blade" x1="620" y1="388" x2="620" y2="404" style="--hinge:620px 388px"/>
+      <text class="ctlabel" x="636" y="400" font-size="10">КМН</text>
     </g>
-    <path id="w5ru9" class="wire" d="M702,800 H798" data-wire="5ru9"/>
+    <path id="w5ru9" class="wire" d="M620,404 V450" data-wire="5ru9" data-tip="КМН aux → РУ9 н.з."/>
     <g class="contact nc" id="ct-ru9-nc" data-dev="РУ9" data-tip="РУ9 — н.з. контакт (разтваря се при задействане)">
-      <line class="arm" x1="798" y1="800" x2="806" y2="800"/>
-      <circle class="hinge" cx="806" cy="800" r="3.5"/>
-      <line class="blade nc" x1="806" y1="800" x2="822" y2="800" style="--hinge:806px 800px"/>
-      <text class="ctlabel" x="810" y="816" text-anchor="middle">РУ9</text>
+      <line class="arm" x1="620" y1="450" x2="620" y2="458"/>
+      <circle class="hinge" cx="620" cy="458" r="3.5"/>
+      <line class="blade nc" x1="620" y1="458" x2="620" y2="474" style="--hinge:620px 458px"/>
+      <text class="ctlabel" x="636" y="470" font-size="10">РУ9</text>
     </g>
-    <path id="w5fuse" class="wire" d="M822,800 H940" data-wire="5fuse"/>
+    <path id="w5fuse" class="wire" d="M620,474 V520" data-wire="5fuse" data-tip="РУ9 → 105"/>
     <g class="device" id="dev-105" data-dev="105" data-tip="105 — предпазител на защитата">
-      <rect x="940" y="785" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="970" y="804" text-anchor="middle" font-size="12">105</text>
+      <rect x="590" y="520" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="620" y="540" text-anchor="middle" font-size="12">105</text>
     </g>
-    <path id="w5d" class="wire" d="M1000,800 H1256" data-wire="5d"/>
+    <path id="w5d" class="wire" d="M620,550 V620" data-wire="5d" data-tip="105 → Д бобина"/>
 
     <g id="dev-Д" data-dev="Д" data-tip="Д — пусков контактор">
       <g class="coil" id="coil-Д">
-        <line class="t1" x1="1256" y1="800" x2="1264" y2="800"/>
-        <circle cx="1280" cy="800" r="24" class="coilring"/>
-        <path class="coilwind" d="M1268,796 Q1280,784 1292,796 M1268,800 Q1280,788 1292,800 M1268,804 Q1280,792 1292,804" fill="none" stroke="#5a6b7d" stroke-width="2"/>
-        <line class="t2" x1="1296" y1="800" x2="1304" y2="800"/>
-        <text class="clabel" x="1280" y="832" text-anchor="middle">Д</text>
+        <rect x="590" y="620" width="60" height="40" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
+        <path class="coilwind" d="M598,628 Q620,616 642,628 M598,636 Q620,624 642,636 M598,644 Q620,632 642,644" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
+        <text class="clabel" x="620" y="680" text-anchor="middle">Д</text>
       </g>
     </g>
-    <path id="w5o" class="wire" d="M1304,800 H1380" data-wire="5o"/>
+    <path id="w5o" class="wire" d="M620,660 V860" data-wire="5o" data-tip="Д → ШМ"/>
 
-    <!-- ВП7 вентиль -->
-    <path id="w5vp7a" class="wire" d="M1230,800 V910" data-wire="vp7a"/>
+    <!-- ВП7 вентил (разклонение от Д) -->
+    <path id="w5vp7a" class="wire" d="M620,550 H680 V700" data-wire="vp7a" data-tip="Д → ВП7"/>
     <g class="device" id="dev-ВП7" data-dev="ВП7" data-tip="ВП7 — пневмовентил на ускорителя на пускането">
-      <rect x="1120" y="898" width="110" height="42" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="1175" y="924" text-anchor="middle" font-size="12">ВП7</text>
-      <rect class="stem" x="1140" y="915" width="26" height="8" rx="2" fill="#2a3a4c"/>
-      <rect class="stem-move" x="1140" y="915" width="26" height="8" rx="2" fill="#4d78e0"/>
+      <rect x="650" y="700" width="60" height="42" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="680" y="726" text-anchor="middle" font-size="11">ВП7</text>
+      <rect class="stem" x="660" y="715" width="20" height="6" rx="2" fill="#2a3a4c"/>
+      <rect class="stem-move" x="660" y="715" width="20" height="6" rx="2" fill="#4d78e0"/>
     </g>
-    <path id="w5vp7b" class="wire" d="M1230,910 H1380" data-wire="vp7b"/>
+    <path id="w5vp7b" class="wire" d="M680,742 V860" data-wire="vp7b" data-tip="ВП7 → ШМ"/>
 
-    <!-- ============ RUNG 6 — Пуск (силова) ============ -->
-    <path id="w6a" class="wire" d="M100,960 H278" data-wire="131" data-tip="Пр. 131"/>
-    <text class="wirenum" x="120" y="952" data-wire="131">131</text>
+    <!-- ============ КЛОН 4: Д (силова) + СтГ + СВ ============ -->
+    <path id="w6a" class="wire" d="M760,80 V200" data-wire="131" data-tip="Пр. 131 — силов"/>
+    <text class="wirenum" x="766" y="120" data-wire="131">131</text>
     <g class="contact" id="ct-d-main" data-dev="Д" data-tip="Д — силов контакт на пусковия контактор">
-      <line class="arm" x1="278" y1="960" x2="286" y2="960"/>
-      <circle class="hinge" cx="286" cy="960" r="3.5"/>
-      <line class="blade" x1="286" y1="960" x2="302" y2="960" style="--hinge:286px 960px"/>
-      <text class="ctlabel" x="290" y="946" text-anchor="middle">Д</text>
+      <line class="arm" x1="760" y1="200" x2="760" y2="208"/>
+      <circle class="hinge" cx="760" cy="208" r="3.5"/>
+      <line class="blade" x1="760" y1="208" x2="760" y2="224" style="--hinge:760px 208px"/>
+      <text class="ctlabel" x="776" y="220" font-size="10">Д(сил)</text>
     </g>
-    <path id="w6s1" class="wire" d="M302,960 H500" data-wire="С1" data-tip="С1"/>
-    <text class="wirenum" x="330" y="952" data-wire="С1">С1</text>
+    <path id="w6s1" class="wire" d="M760,224 V340" data-wire="С1" data-tip="Пр. С1"/>
+    <text class="wirenum" x="766" y="290" data-wire="С1">С1</text>
 
     <g class="motor" id="dev-СтГ" data-dev="СтГ" data-tip="СтГ — стартер-генератор">
-      <rect x="500" y="935" width="120" height="50" rx="4" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
-      <circle cx="560" cy="960" r="16" fill="none" stroke="#4a5a6e" stroke-width="2"/>
-      <circle class="rotor" cx="560" cy="960" r="12" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="5 7"/>
-      <text class="devlabel" x="560" y="964" text-anchor="middle" font-size="14" font-weight="bold">СтГ</text>
-      <text class="rpm-label" id="rpm-СтГ" x="560" y="1000" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
+      <circle cx="760" cy="380" r="36" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
+      <circle class="rotor" cx="760" cy="380" r="26" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="9 15"/>
+      <text class="devlabel" x="760" y="384" text-anchor="middle" font-size="14" font-weight="bold">M</text>
+      <text class="note" x="760" y="430" text-anchor="middle" font-size="10">Стартер-генератор СтГ</text>
+      <text class="rpm-label" id="rpm-СтГ" x="760" y="448" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
     </g>
-    <path id="w6s2" class="wire" d="M620,960 H1380" data-wire="6s2"/>
+    <path id="w6s2" class="wire" d="M760,416 V860" data-wire="132" data-tip="Пр. 132 → ШМ"/>
+    <text class="wirenum" x="766" y="600" data-wire="132">132</text>
 
-    <!-- ============ RUNG 7 — Възбудител СВ ============ -->
-    <path id="w7a" class="wire" d="M100,1060 H260" data-wire="7a"/>
+    <!-- Възбудител СВ -->
+    <path id="w7a" class="wire" d="M820,80 V160" data-wire="7a" data-tip="+ШЗБ → СВ"/>
     <g class="device" id="dev-СВ" data-dev="СВ" data-tip="СВ — възбудител (захранва БПД)">
-      <rect x="260" y="1030" width="80" height="60" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="300" y="1060" text-anchor="middle" font-size="12">СВ</text>
-      <text class="note" x="300" y="1076" text-anchor="middle" font-size="9">възбудител</text>
+      <rect x="790" y="160" width="60" height="50" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="820" y="184" text-anchor="middle" font-size="12">СВ</text>
+      <text class="note" x="820" y="200" text-anchor="middle" font-size="9">възбудител</text>
     </g>
-    <path id="w7b" class="wire" d="M340,1060 V500" data-wire="410" data-tip="Пр. 410"/>
-    <text class="wirenum" x="326" y="700" transform="rotate(-90 326 700)" data-wire="410">410</text>
-    <path id="w7c" class="wire" d="M340,500 H790" data-wire="412" data-tip="Пр. 412"/>
-    <text class="wirenum" x="470" y="492" data-wire="412">412</text>
+    <path id="w7b" class="wire" d="M820,210 V280" data-wire="410" data-tip="Пр. 410"/>
+    <text class="wirenum" x="826" y="250" data-wire="410">410</text>
+    <path id="w7c" class="wire" d="M820,280 H420 V470" data-wire="412" data-tip="Пр. 412 → БПД"/>
+    <text class="wirenum" x="600" y="272" data-wire="412">412</text>
 
-    <!-- ============ RUNG 8 — Подхващане (РДМ4 -> РУ9/РУ10) ============ -->
-    <path id="w8a" class="wire" d="M100,1140 H238" data-wire="8a"/>
+    <!-- ============ КЛОН 5: РУ9 и РУ10 — Подхващане ============ -->
+    <path id="w8a" class="wire" d="M940,80 V160" data-wire="8a" data-tip="+ШЗБ → РДМ4"/>
     <g class="contact" id="ct-rdm4" data-dev="РДМ4" data-tip="РДМ4 — реле за налягане (затваря се при 0.6-0.8 kg/cm²)">
-      <line class="arm" x1="238" y1="1140" x2="246" y2="1140"/>
-      <circle class="hinge" cx="246" cy="1140" r="3.5"/>
-      <line class="blade" x1="246" y1="1140" x2="262" y2="1140" style="--hinge:246px 1140px"/>
-      <text class="ctlabel" x="250" y="1156" text-anchor="middle">РДМ4</text>
+      <line class="arm" x1="940" y1="160" x2="940" y2="168"/>
+      <circle class="hinge" cx="940" cy="168" r="3.5"/>
+      <line class="blade" x1="940" y1="168" x2="940" y2="184" style="--hinge:940px 168px"/>
+      <text class="ctlabel" x="956" y="180" font-size="10">РДМ4</text>
     </g>
-    <path id="w8b" class="wire" d="M262,1140 H440" data-wire="8b"/>
+    <path id="w8b" class="wire" d="M940,184 V240" data-wire="8b" data-tip="РДМ4 → тиристор"/>
     <g class="device" id="dev-тиристор" data-dev="БПД" data-tip="Тиристор БПД — ключ за подхващане">
-      <rect x="440" y="1120" width="120" height="40" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="500" y="1144" text-anchor="middle" font-size="11">тиристор БПД</text>
+      <rect x="900" y="240" width="80" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
+      <text class="devlabel" x="940" y="262" text-anchor="middle" font-size="10">тиристор БПД</text>
     </g>
-    <path id="w8c" class="wire" d="M560,1140 H856" data-wire="8c"/>
+    <path id="w8c" class="wire" d="M940,276 V340" data-wire="8c" data-tip="тиристор → РУ9/РУ10"/>
 
     <g id="dev-РУ9" data-dev="РУ9" data-tip="РУ9 — реле за подхващане">
       <g class="coil" id="coil-РУ9">
-        <line class="t1" x1="856" y1="1140" x2="864" y2="1140"/>
-        <circle cx="880" cy="1140" r="22" class="coilring"/>
-        <path class="coilwind" d="M868,1136 Q880,1126 892,1136 M868,1140 Q880,1130 892,1140 M868,1144 Q880,1134 892,1144" fill="none" stroke="#5a6b7d" stroke-width="2"/>
-        <line class="t2" x1="896" y1="1140" x2="904" y2="1140"/>
-        <text class="clabel" x="880" y="1170" text-anchor="middle">РУ9</text>
+        <rect x="880" y="340" width="60" height="40" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
+        <path class="coilwind" d="M888,348 Q910,336 932,348 M888,356 Q910,344 932,356 M888,364 Q910,352 932,364" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
+        <text class="clabel" x="910" y="400" text-anchor="middle">РУ9</text>
       </g>
     </g>
-    <path id="w8ru9" class="wire" d="M904,1140 H1056" data-wire="8ru9"/>
+    <path id="w8ru9" class="wire" d="M940,380 V420" data-wire="377" data-tip="Пр. 377"/>
+    <text class="wirenum" x="946" y="404" data-wire="377">377</text>
 
     <g id="dev-РУ10" data-dev="РУ10" data-tip="РУ10 — реле за подхващане">
       <g class="coil" id="coil-РУ10">
-        <line class="t1" x1="1056" y1="1140" x2="1064" y2="1140"/>
-        <circle cx="1080" cy="1140" r="22" class="coilring"/>
-        <path class="coilwind" d="M1068,1136 Q1080,1126 1092,1136 M1068,1140 Q1080,1130 1092,1140 M1068,1144 Q1080,1134 1092,1144" fill="none" stroke="#5a6b7d" stroke-width="2"/>
-        <line class="t2" x1="1096" y1="1140" x2="1104" y2="1140"/>
-        <text class="clabel" x="1080" y="1170" text-anchor="middle">РУ10</text>
+        <rect x="980" y="340" width="60" height="40" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
+        <path class="coilwind" d="M988,348 Q1010,336 1032,348 M988,356 Q1010,344 1032,356 M988,364 Q1010,352 1032,364" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
+        <text class="clabel" x="1010" y="400" text-anchor="middle">РУ10</text>
       </g>
     </g>
-    <path id="w8ru10" class="wire" d="M1104,1140 H1380" data-wire="8ru10"/>
+    <path id="w8ru10" class="wire" d="M1010,380 V420 H940 V860" data-wire="374" data-tip="Пр. 374 → ШМ"/>
+    <text class="wirenum" x="1016" y="404" data-wire="374">374</text>
 
-    <!-- ============ RUNG 9 — КРН (управление) ============ -->
-    <path id="w9a" class="wire" d="M100,1230 H338" data-wire="9a"/>
+    <!-- ============ КЛОН 6: КРН — Регулатор на напрежението ============ -->
+    <!-- +ШЗБ → РУ9 н.о. → РУ10 н.о. → КРН бобина → ШМ -->
+    <path id="w9a" class="wire" d="M1140,80 V160" data-wire="9a" data-tip="+ШЗБ → РУ9 н.о."/>
     <g class="contact" id="ct-ru9-no" data-dev="РУ9" data-tip="РУ9 — н.о. контакт (затваря се при задействане)">
-      <line class="arm" x1="338" y1="1230" x2="346" y2="1230"/>
-      <circle class="hinge" cx="346" cy="1230" r="3.5"/>
-      <line class="blade" x1="346" y1="1230" x2="362" y2="1230" style="--hinge:346px 1230px"/>
-      <text class="ctlabel" x="350" y="1216" text-anchor="middle">РУ9</text>
+      <line class="arm" x1="1140" y1="160" x2="1140" y2="168"/>
+      <circle class="hinge" cx="1140" cy="168" r="3.5"/>
+      <line class="blade" x1="1140" y1="168" x2="1140" y2="184" style="--hinge:1140px 168px"/>
+      <text class="ctlabel" x="1156" y="180" font-size="10">РУ9</text>
     </g>
-    <path id="w9b" class="wire" d="M362,1230 H468" data-wire="9b"/>
+    <path id="w9b" class="wire" d="M1140,184 V230" data-wire="9b" data-tip="РУ9 → РУ10"/>
     <g class="contact" id="ct-ru10-no" data-dev="РУ10" data-tip="РУ10 — н.о. контакт">
-      <line class="arm" x1="468" y1="1230" x2="476" y2="1230"/>
-      <circle class="hinge" cx="476" cy="1230" r="3.5"/>
-      <line class="blade" x1="476" y1="1230" x2="492" y2="1230" style="--hinge:476px 1230px"/>
-      <text class="ctlabel" x="480" y="1216" text-anchor="middle">РУ10</text>
+      <line class="arm" x1="1140" y1="230" x2="1140" y2="238"/>
+      <circle class="hinge" cx="1140" cy="238" r="3.5"/>
+      <line class="blade" x1="1140" y1="238" x2="1140" y2="254" style="--hinge:1140px 238px"/>
+      <text class="ctlabel" x="1156" y="250" font-size="10">РУ10</text>
     </g>
-    <path id="w9c" class="wire" d="M492,1230 H756" data-wire="9c"/>
+    <path id="w9c" class="wire" d="M1140,254 V320" data-wire="227" data-tip="Пр. 227 → КРН"/>
+    <text class="wirenum" x="1146" y="290" data-wire="227">227</text>
 
     <g id="dev-КРН" data-dev="КРН" data-tip="КРН — контактор за зареждане">
       <g class="coil" id="coil-КРН">
-        <line class="t1" x1="756" y1="1230" x2="764" y2="1230"/>
-        <circle cx="780" cy="1230" r="24" class="coilring"/>
-        <path class="coilwind" d="M768,1226 Q780,1214 792,1226 M768,1230 Q780,1218 792,1230 M768,1234 Q780,1222 792,1234" fill="none" stroke="#5a6b7d" stroke-width="2"/>
-        <line class="t2" x1="796" y1="1230" x2="804" y2="1230"/>
-        <text class="clabel" x="780" y="1262" text-anchor="middle">КРН</text>
+        <rect x="1110" y="320" width="60" height="40" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
+        <path class="coilwind" d="M1118,328 Q1140,316 1162,328 M1118,336 Q1140,324 1162,336 M1118,344 Q1140,332 1162,344" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
+        <text class="clabel" x="1140" y="380" text-anchor="middle">КРН</text>
       </g>
     </g>
-    <path id="w9o" class="wire" d="M804,1230 H1380" data-wire="9o"/>
+    <path id="w9o" class="wire" d="M1140,360 V500" data-wire="9o" data-tip="КРН → ШМ"/>
 
-    <!-- ============ ЗАРЯДНА ЛИНИЯ (КРН -> АБ) ============ -->
-    <path id="wch1" class="wire" d="M560,985 H60" data-wire="262" data-tip="Пр. 262"/>
-    <text class="wirenum" x="300" y="978" data-wire="262">262</text>
-    <path id="wch2a" class="wire" d="M60,985 V492" data-wire="254a"/>
+    <!-- КРН силов контакт: СтГ → КРН → АБ (зареждане) -->
+    <path id="wch1" class="wire" d="M760,416 V500 H1140" data-wire="262" data-tip="Пр. 262 — заряден"/>
+    <text class="wirenum" x="900" y="494" data-wire="262">262</text>
     <g class="contact" id="ct-krn-main" data-dev="КРН" data-tip="КРН — силов контакт (заряден)">
-      <g transform="rotate(90 60 480)">
-        <line class="arm" x1="46" y1="480" x2="54" y2="480"/>
-        <circle class="hinge" cx="54" cy="480" r="3.5"/>
-      <line class="blade" x1="54" y1="480" x2="70" y2="480" style="--hinge:54px 480px"/>
-      </g>
-      <text class="ctlabel" x="40" y="470" text-anchor="end">КРН</text>
+      <line class="arm" x1="1140" y1="500" x2="1140" y2="508"/>
+      <circle class="hinge" cx="1140" cy="508" r="3.5"/>
+      <line class="blade" x1="1140" y1="508" x2="1140" y2="524" style="--hinge:1140px 508px"/>
+      <text class="ctlabel" x="1156" y="520" font-size="10">КРН(сил)</text>
     </g>
-    <path id="wch2b" class="wire" d="M60,468 V115" data-wire="254" data-tip="Пр. 254"/>
-    <text class="wirenum" x="46" y="650" transform="rotate(-90 46 650)" data-wire="254">254</text>
+    <path id="wch2a" class="wire" d="M1140,524 V580" data-wire="254a" data-tip="Пр. 254"/>
+    <path id="wch2b" class="wire" d="M1140,580 H80 V448" data-wire="254" data-tip="Пр. 254 → АБ +"/>
+    <text class="wirenum" x="600" y="574" data-wire="254">254</text>
+
+    <!-- КРН → ШМ (минус) -->
+    <path id="wkrnmin" class="wire" d="M1140,524 V860" data-wire="krnmin" data-tip="КРН → ШМ"/>
+
   </g>
 </svg>
