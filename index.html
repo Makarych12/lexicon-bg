@@ -445,6 +445,85 @@
     <!-- КРН → ШМ (минус) -->
     <path id="wkrnmin" class="wire" d="M1200,524 V860" data-wire="krnmin" data-tip="КРН → ШМ"/>
 
+    <!-- ============ ДОПЪЛНИТЕЛНИ ПРОВОДИ ПО МЕТОДИЧКАТА ============ -->
+    <!-- Клон 1: КТН плюс верига (343, 379) -->
+    <path id="w343" class="wire" d="M200,280 V300" data-wire="343" data-tip="Пр. 343 — А2 → КТН"/>
+    <text class="wirenum" x="210" y="294" data-wire="343">343</text>
+    <path id="w379" class="wire" d="M200,300 V320" data-wire="379" data-tip="Пр. 379 → бобина КТН"/>
+    <text class="wirenum" x="210" y="314" data-wire="379">379</text>
+
+    <!-- Клон 1: КТН минус верига (499, 394, 363, 366, 368, 360, 381, 380) -->
+    <path id="w499" class="wire" d="M200,346 V370" data-wire="499" data-tip="Пр. 499 — КТН → 1М14"/>
+    <text class="wirenum" x="210" y="360" data-wire="499">499</text>
+    <path id="w394" class="wire" d="M200,370 V390" data-wire="394" data-tip="Пр. 394 → 1ТН1"/>
+    <text class="wirenum" x="210" y="384" data-wire="394">394</text>
+    <path id="w363" class="wire" d="M200,390 V410" data-wire="363" data-tip="Пр. 363 — 1ТН1 → реверсор"/>
+    <text class="wirenum" x="210" y="404" data-wire="363">363</text>
+    <path id="w366" class="wire" d="M200,410 V430" data-wire="366" data-tip="Пр. 366 — реверсор (нула)"/>
+    <text class="wirenum" x="210" y="424" data-wire="366">366</text>
+    <path id="w368" class="wire" d="M200,430 V450" data-wire="368" data-tip="Пр. 368"/>
+    <text class="wirenum" x="210" y="444" data-wire="368">368</text>
+    <path id="w360" class="wire" d="M200,450 V500" data-wire="360" data-tip="Пр. 360 → РУ7 н.з."/>
+    <text class="wirenum" x="210" y="470" data-wire="360">360</text>
+    <path id="w381" class="wire" d="M200,524 V560" data-wire="381" data-tip="Пр. 381 — РУ7 → М"/>
+    <text class="wirenum" x="210" y="540" data-wire="381">381</text>
+    <path id="w380" class="wire" d="M200,560 V860" data-wire="380" data-tip="Пр. 380 → ШМ"/>
+    <text class="wirenum" x="210" y="700" data-wire="380">380</text>
+
+    <!-- Клон 1: МТ минус верига (223, 222, 216) -->
+    <path id="w223" class="wire" d="M260,400 V420" data-wire="223" data-tip="Пр. 223 — МТ → М5"/>
+    <text class="wirenum" x="270" y="414" data-wire="223">223</text>
+    <path id="w222" class="wire" d="M260,420 V600" data-wire="222" data-tip="Пр. 222"/>
+    <text class="wirenum" x="270" y="500" data-wire="222">222</text>
+    <path id="w216" class="wire" d="M260,600 V860" data-wire="216" data-tip="Пр. 216 → ШМ"/>
+    <text class="wirenum" x="270" y="700" data-wire="216">216</text>
+
+    <!-- Клон 2: ПД верига (413, 414) -->
+    <path id="w413" class="wire" d="M380,280 V320" data-wire="413" data-tip="Пр. 413 — КМ(0поз) → ПД"/>
+    <text class="wirenum" x="390" y="300" data-wire="413">413</text>
+    <path id="w414" class="wire" d="M380,360 V380" data-wire="414" data-tip="Пр. 414 — ПД → СП"/>
+    <text class="wirenum" x="390" y="374" data-wire="414">414</text>
+
+    <!-- Клон 2: РДМ3 → БПД (353) -->
+    <path id="w353" class="wire" d="M380,424 V445" data-wire="353" data-tip="Пр. 353 — РДМ3 → БПД"/>
+    <text class="wirenum" x="390" y="438" data-wire="353">353</text>
+
+    <!-- Клон 2: КМН верига (349, 356, 352) -->
+    <path id="w349" class="wire" d="M380,560 V580" data-wire="349" data-tip="Пр. 349 — БПД → КМН"/>
+    <text class="wirenum" x="390" y="574" data-wire="349">349</text>
+    <path id="w356" class="wire" d="M680,334 V380" data-wire="356" data-tip="Пр. 356 — КТН aux → ОМН"/>
+    <text class="wirenum" x="690" y="358" data-wire="356">356</text>
+    <path id="w352" class="wire" d="M680,404 V450" data-wire="352" data-tip="Пр. 352 — ОМН → БПД"/>
+    <text class="wirenum" x="690" y="428" data-wire="352">352</text>
+
+    <!-- Клон 2: МР6 верига (255) -->
+    <path id="w255" class="wire" d="M560,204 V230" data-wire="255" data-tip="Пр. 255 — КМН → МР6"/>
+    <text class="wirenum" x="570" y="220" data-wire="255">255</text>
+
+    <!-- Клон 3: Д/ВП7 верига (253, 256, 258) -->
+    <path id="w253" class="wire" d="M680,264 V310" data-wire="253" data-tip="Пр. 253 — КМН → РУ9"/>
+    <text class="wirenum" x="690" y="290" data-wire="253">253</text>
+    <path id="w256" class="wire" d="M680,404 V430" data-wire="256" data-tip="Пр. 256 — КМН aux → РУ9 н.з."/>
+    <text class="wirenum" x="700" y="420" data-wire="256">256</text>
+    <path id="w258" class="wire" d="M680,474 V500" data-wire="258" data-tip="Пр. 258 — РУ9 → 105"/>
+    <text class="wirenum" x="690" y="490" data-wire="258">258</text>
+
+    <!-- Клон 4: СВ верига (927, 930) -->
+    <path id="w927" class="wire" d="M880,100 V130" data-wire="927" data-tip="Пр. 927 — А2 → СПД"/>
+    <text class="wirenum" x="890" y="118" data-wire="927">927</text>
+    <path id="w930" class="wire" d="M880,210 V250" data-wire="930" data-tip="Пр. 930 — Д контакт → Ш20"/>
+    <text class="wirenum" x="890" y="234" data-wire="930">930</text>
+
+    <!-- Клон 5: РУ9/РУ10 (250) -->
+    <path id="w250" class="wire" d="M1000,184 V220" data-wire="250" data-tip="Пр. 250 — РДМ4 → РУ9/РУ10"/>
+    <text class="wirenum" x="1010" y="204" data-wire="250">250</text>
+
+    <!-- Клон 6: КРН верига (342, 226) -->
+    <path id="w342" class="wire" d="M1200,100 V130" data-wire="342" data-tip="Пр. 342 — КТН → РУ9"/>
+    <text class="wirenum" x="1210" y="118" data-wire="342">342</text>
+    <path id="w226" class="wire" d="M1200,130 V160" data-wire="226" data-tip="Пр. 226 — РУ9 → КРН"/>
+    <text class="wirenum" x="1210" y="148" data-wire="226">226</text>
+
   </g>
 </svg></div>
 

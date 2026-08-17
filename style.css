@@ -465,8 +465,8 @@ main {
   position: absolute;
   top: 12px;
   left: 12px;
-  width: min(400px, calc(100% - 40px));
-  max-height: calc(100% - 180px);
+  width: min(420px, calc(100% - 40px));
+  max-height: calc(100% - 60px);
   background: rgba(13,18,25,.92);
   backdrop-filter: blur(6px);
   border: 1px solid var(--border-2);
@@ -475,6 +475,10 @@ main {
   overflow-y: auto;
   z-index: 30;
   box-shadow: 0 12px 30px rgba(0,0,0,.45);
+}
+#drawerText {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
 }
 .drawer h3 {
   font-size: 13px;
