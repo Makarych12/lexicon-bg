@@ -143,6 +143,7 @@
       <text class="devlabel" x="520" y="364" text-anchor="middle" font-size="18" font-weight="bold">М</text>
       <text class="devlabel" x="520" y="404" text-anchor="middle" font-size="11">МТ</text>
       <text class="note" x="520" y="418" text-anchor="middle" font-size="9">горивна помпа</text>
+      <text class="rpm-label" id="rpm-МТ" x="520" y="432" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
     </g>
     <path id="w213" class="wire" d="M556,360 H980" data-wire="213" data-tip="Пр. 213"/>
     <text class="wirenum" x="600" y="352" data-wire="213">213</text>
@@ -204,6 +205,7 @@
       <text class="devlabel" x="520" y="604" text-anchor="middle" font-size="18" font-weight="bold">М</text>
       <text class="devlabel" x="520" y="644" text-anchor="middle" font-size="11">МН</text>
       <text class="note" x="520" y="658" text-anchor="middle" font-size="9">маслопомпа</text>
+      <text class="rpm-label" id="rpm-МН" x="520" y="672" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
     </g>
     <path id="w4mn2" class="wire" d="M556,600 H1380" data-wire="4mn2"/>
 
@@ -311,6 +313,7 @@
       <circle cx="560" cy="960" r="16" fill="none" stroke="#4a5a6e" stroke-width="2"/>
       <circle class="rotor" cx="560" cy="960" r="12" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="5 7"/>
       <text class="devlabel" x="560" y="964" text-anchor="middle" font-size="14" font-weight="bold">СтГ</text>
+      <text class="rpm-label" id="rpm-СтГ" x="560" y="1000" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
     </g>
     <path id="w6s2" class="wire" d="M620,960 H1380" data-wire="6s2"/>
 
@@ -395,7 +398,7 @@
     <path id="wch1" class="wire" d="M560,985 H60" data-wire="262" data-tip="Пр. 262"/>
     <text class="wirenum" x="300" y="978" data-wire="262">262</text>
     <path id="wch2a" class="wire" d="M60,985 V492" data-wire="254a"/>
-    <g class="contact" id="ct-krn-main" data-dev="КРН" data-tip="КРН — силов контакт (заряден)"> data-dev="КРН" data-tip="КРН — силов контакт (заряден)">
+    <g class="contact" id="ct-krn-main" data-dev="КРН" data-tip="КРН — силов контакт (заряден)">
       <g transform="rotate(90 60 480)">
         <line class="arm" x1="46" y1="480" x2="54" y2="480"/>
         <circle class="hinge" cx="54" cy="480" r="3.5"/>

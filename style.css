@@ -154,26 +154,66 @@ main {
   fill: none;
   stroke: #3f5064;
   stroke-width: 2;
-  transition: stroke .35s, stroke-width .35s, filter .35s;
+  transition: stroke .4s ease, stroke-width .4s ease, filter .4s ease;
 }
 .bus { fill: none; stroke: #5a6e84; stroke-width: 4; }
 .wire.bus { stroke: #5a6e84; }
 
+/* Persistent active wire: stays lit with smooth flowing animation */
 .wire.active {
   stroke: var(--accent);
   stroke-width: 3.4;
   filter: url(#glow);
-  stroke-dasharray: 12 16;
-  animation: flow .85s linear infinite;
+  stroke-dasharray: 14 10;
+  animation: flow 1.2s linear infinite;
   stroke-linecap: round;
 }
 .wire.bus.active {
   stroke: var(--accent);
   stroke-width: 4.6;
   filter: url(#glow);
+  stroke-dasharray: 18 12;
+  animation: flow 1.5s linear infinite;
 }
 @keyframes flow {
-  to { stroke-dashoffset: -28; }
+  to { stroke-dashoffset: -24; }
+}
+
+/* Growing wire: new segment animates from origin to end */
+.wire.growing {
+  stroke: var(--accent);
+  stroke-width: 3.4;
+  filter: url(#glow);
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: grow .5s ease-out forwards;
+}
+@keyframes grow {
+  to { stroke-dashoffset: 0; }
+}
+/* After growing completes, switch to persistent flow */
+.wire.grown {
+  stroke: var(--accent);
+  stroke-width: 3.4;
+  filter: url(#glow);
+  stroke-dasharray: 14 10;
+  animation: flow 1.2s linear infinite;
+  stroke-linecap: round;
+}
+
+/* Wire being de-energized: smooth fade-out */
+.wire.fading {
+  animation: wireFade .6s ease-out forwards;
+}
+@keyframes wireFade {
+  to {
+    stroke: #3f5064;
+    stroke-width: 2;
+    filter: none;
+    stroke-dasharray: none;
+    animation: none;
+  }
 }
 
 .wirenum {
@@ -195,7 +235,7 @@ main {
 }
 
 /* устройства */
-.device rect, .device circle { transition: stroke .3s, fill .3s, filter .3s; }
+.device rect, .device circle { transition: stroke .4s ease, fill .4s ease, filter .4s ease; }
 .device text { user-select: none; }
 .device.on rect,
 .device.on circle {
@@ -210,16 +250,16 @@ main {
 }
 .device.rail rect { stroke-dasharray: 3 2; }
 
-/* контакти — подвижен нож */
-.contact .hinge { fill: #8fa2b5; }
-.contact .arm { stroke: #5a6b7d; stroke-width: 2.6; }
+/* контакти — подвижен нож (smooth physical rotation) */
+.contact .hinge { fill: #8fa2b5; transition: fill .3s ease; }
+.contact .arm { stroke: #5a6b7d; stroke-width: 2.6; transition: stroke .3s ease; }
 .contact .blade {
   stroke: #7a8ca0;
   stroke-width: 2.6;
   stroke-linecap: round;
   transform: rotate(38deg);
   transform-origin: var(--hinge);
-  transition: transform .32s cubic-bezier(.25,.9,.3,1.2), stroke .25s;
+  transition: transform .45s cubic-bezier(.25,.9,.3,1.2), stroke .3s ease;
 }
 .contact .blade.nc { transform: rotate(0deg); }
 .contact.closed .blade { transform: rotate(0deg); stroke: var(--accent); }
@@ -228,55 +268,79 @@ main {
 .contact .ctlabel { fill: #8fa2b5; font-size: 10px; font-family: var(--mono); }
 
 /* автомати — вътрешен ключ-нож */
-.automat-sw .arm { stroke: #4a5a6e; stroke-width: 2; }
+.automat-sw .arm { stroke: #4a5a6e; stroke-width: 2; transition: stroke .3s ease; }
 .automat-sw .blade {
   stroke: #6a7d92;
   stroke-width: 2.2;
   stroke-linecap: round;
   transform: rotate(38deg);
   transform-origin: var(--hinge);
-  transition: transform .3s cubic-bezier(.25,.9,.3,1.2), stroke .25s;
+  transition: transform .45s cubic-bezier(.25,.9,.3,1.2), stroke .3s ease;
 }
 .automat-sw.closed .blade { transform: rotate(0deg); stroke: var(--accent); }
 .automat-sw.closed .arm { stroke: var(--accent); }
 
-/* бобини — индукционно свечение */
+/* бобини — индукционно свечение (electromagnet effect) */
 .coil .coilring {
   fill: #0f141d;
   stroke: #3a4a5c;
   stroke-width: 2;
-  transition: stroke .25s, filter .25s;
+  transition: stroke .4s ease, fill .4s ease, filter .4s ease;
 }
-.coilwind { transition: stroke .3s; }
+.coilwind { transition: stroke .4s ease; }
 .coil .clabel {
   fill: #b8c6d4;
   font-size: 12px;
   font-family: var(--mono);
   text-anchor: middle;
-  transition: fill .25s;
+  transition: fill .3s ease;
 }
 .coil.on .coilring {
   stroke: var(--accent-2);
+  fill: #0a2a28;
   filter: url(#glowIntense);
-  animation: coilpulse 1s ease-in-out infinite;
+  animation: coilpulse 2s ease-in-out infinite;
 }
 .coil.on .coilwind.on { stroke: var(--accent-2); }
 .coil.on .clabel { fill: #8ff5e0; }
+/* Electromagnetic core glow */
+.coil.on .coilring {
+  box-shadow: 0 0 20px rgba(46,230,200,.4);
+}
 @keyframes coilpulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .45; }
+  0%, 100% { opacity: 1; filter: url(#glowIntense); }
+  50% { opacity: .72; filter: url(#glow); }
 }
 
-/* двигатели */
-.motor circle { transition: stroke .3s; }
-.motor .rotor { transition: stroke .3s; }
+/* двигатели — smooth rotation with RPM display */
+.motor circle { transition: stroke .4s ease; }
+.motor .rotor {
+  transition: stroke .4s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
 .motor.running .rotor {
   stroke: var(--accent-2);
-  animation: spin 1s linear infinite;
+  animation: spin 1.2s linear infinite;
   filter: url(#glow);
 }
 .motor.running circle:first-of-type { stroke: var(--accent-2); }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* RPM label */
+.rpm-label {
+  font-family: var(--mono);
+  transition: opacity .5s ease;
+  text-shadow: 0 0 6px rgba(46,230,200,.5);
+}
+.motor.running .rpm-label {
+  opacity: 1 !important;
+  animation: rpmPulse 2s ease-in-out infinite;
+}
+@keyframes rpmPulse {
+  0%, 100% { fill: #2ee6c8; }
+  50% { fill: #8ff5e0; }
+}
 
 .devlabel { fill: #b8c6d4; font-family: var(--mono); user-select: none; }
 
