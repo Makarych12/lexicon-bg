@@ -152,7 +152,7 @@ main {
 /* ============ SVG ВЪТРЕШНИ СТИЛОВЕ ============ */
 .wire {
   fill: none;
-  stroke: #3f5064;
+  stroke: #253342;
   stroke-width: 2;
   transition: stroke .4s ease, stroke-width .4s ease, filter .4s ease;
 }
@@ -208,7 +208,7 @@ main {
 }
 @keyframes wireFade {
   to {
-    stroke: #3f5064;
+    stroke: #253342;
     stroke-width: 2;
     filter: none;
     stroke-dasharray: none;
@@ -251,6 +251,12 @@ main {
 .device.rail rect { stroke-dasharray: 3 2; }
 
 /* контакти — подвижен нож (smooth physical rotation) */
+.contact .terminal {
+  fill: #5a6b7d;
+  stroke: #3a4a5c;
+  stroke-width: 1;
+  transition: fill .3s ease, stroke .3s ease;
+}
 .contact .hinge { fill: #8fa2b5; transition: fill .3s ease; }
 .contact .arm { stroke: #5a6b7d; stroke-width: 2.6; transition: stroke .3s ease; }
 .contact .blade {
@@ -265,6 +271,7 @@ main {
 .contact.closed .blade { transform: rotate(0deg); stroke: var(--accent); }
 .contact.closed .arm { stroke: var(--accent); }
 .contact.closed .hinge { fill: var(--accent); }
+.contact.closed .terminal { fill: var(--accent); stroke: var(--accent); }
 .contact .ctlabel { fill: #8fa2b5; font-size: 10px; font-family: var(--mono); }
 
 /* автомати — вътрешен ключ-нож */
@@ -318,9 +325,11 @@ main {
   transition: stroke .4s ease;
   transform-origin: center;
   transform-box: fill-box;
+  stroke-width: 1.5;
 }
 .motor.running .rotor {
   stroke: var(--accent-2);
+  stroke-width: 1.5;
   animation: spin 1.2s linear infinite;
   filter: url(#glow);
 }
