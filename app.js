@@ -728,11 +728,11 @@
     var host = svgHost;
     var w = host.clientWidth || 900;
     var h = host.clientHeight || 700;
-    var k = Math.min(w / 1500, h / 1330) * 0.97;
+    var k = Math.min(w / 1400, h / 920) * 0.97;
     k = Math.max(0.72, k);
     view.k = k;
-    view.x = (w - 1500 * view.k) / 2;
-    view.y = (h - 1330 * view.k) / 2;
+    view.x = (w - 1400 * view.k) / 2;
+    view.y = (h - 920 * view.k) / 2;
     setSmooth(true);
     applyView();
     if (smoothTimer) clearTimeout(smoothTimer);
@@ -744,9 +744,9 @@
     var host = svgHost;
     var w = host.clientWidth || 900;
     var h = host.clientHeight || 700;
-    var fit = Math.min(w / 1500, h / 1330) * 0.96;
+    var fit = Math.min(w / 1400, h / 920) * 0.96;
     view.k = Math.max(fit, 1.12);
-    view.x = (w - 1500 * view.k) / 2;
+    view.x = (w - 1400 * view.k) / 2;
     view.y = h / 2 - 380 * view.k;
     view.y = Math.min(view.y, 24);
     applyView();
@@ -1229,17 +1229,12 @@
   }
 
   function loadSchema() {
-    fetch('schema.svg').then(function (r) { return r.text(); }).then(function (txt) {
-      svgHost.innerHTML = txt;
-      viewport = svgHost.querySelector('#viewport');
-      bindEvents();
-      initialView();
-      setStep(0, true);
-      buildLegend();
-      refreshTips();
-    }).catch(function (err) {
-      svgHost.innerHTML = '<div style="color:#f66;padding:40px">Не удалось загрузить schema.svg: ' + err.message + '</div>';
-    });
+    viewport = svgHost.querySelector('#viewport');
+    bindEvents();
+    initialView();
+    setStep(0, true);
+    buildLegend();
+    refreshTips();
   }
 
   loadSchema();
