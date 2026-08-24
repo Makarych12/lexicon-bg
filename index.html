@@ -1,575 +1,371 @@
-<!DOCTYPE html>
-<html lang="bg">
+<!doctype html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ТЭ109 «Людмила» — Тренажор по схемите на тепловоз Серия 07 БДЖ</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#0f172a">
+  <title>Лексикон BG — болгарские карточки</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const verbsData = [
+      { id: 1, verb_bg: 'пиша', translation_ru: 'писать', conjugation_present: { az: 'пиша', ti: 'пишеш', toy: 'пише', nie: 'пишем', vie: 'пишете', te: 'пишат' }, tenses: [
+        { tense: 'Сегашно време', bg: 'Аз пиша писмо.', ru: 'Я пишу письмо.' }, { tense: 'Минало свършено време', bg: 'Аз написах писмо.', ru: 'Я написал письмо.' }, { tense: 'Минало несвършено време', bg: 'Аз пишех писмо.', ru: 'Я писал письмо в тот момент.' }, { tense: 'Минало неопределено време', bg: 'Аз съм писал писмо.', ru: 'Я писал письмо (есть опыт или результат).' }, { tense: 'Минало предварително време', bg: 'Аз бях писал писмото преди срещата.', ru: 'Я написал письмо до встречи.' }, { tense: 'Бъдеще време', bg: 'Аз ще пиша писмо.', ru: 'Я буду писать письмо.' }, { tense: 'Бъдеще предварително време', bg: 'Аз ще съм писал писмото до петък.', ru: 'Я уже напишу письмо к пятнице.' }, { tense: 'Бъдеще време в миналото', bg: 'Аз щях да пиша писмо.', ru: 'Я собирался писать письмо.' }, { tense: 'Бъдеще предварително време в миналото', bg: 'Аз щях да съм писал писмото до обяд.', ru: 'Я должен был уже написать письмо к полудню.' }
+      ], audio_phrases: ['пиша', 'написах', 'ще пиша'], ipa: 'пи́ша', type: 'I спряжение', rule: 'Пиша е несвършен глагол. За завършено действие се използва свършената форма напиша / написах.' },
+      { id: 2, verb_bg: 'чета', translation_ru: 'читать', conjugation_present: { az: 'чета', ti: 'четеш', toy: 'чете', nie: 'четем', vie: 'четете', te: 'четат' }, tenses: [
+        { tense: 'Сегашно време', bg: 'Аз чета книга.', ru: 'Я читаю книгу.' }, { tense: 'Минало свършено време', bg: 'Аз прочетох книгата.', ru: 'Я прочитал книгу.' }, { tense: 'Минало несвършено време', bg: 'Аз четях книга вечер.', ru: 'Я читал книгу по вечерам.' }, { tense: 'Минало неопределено време', bg: 'Аз съм чел тази книга.', ru: 'Я читал эту книгу (у меня есть такой опыт).' }, { tense: 'Минало предварително време', bg: 'Аз бях прочел книгата преди урока.', ru: 'Я прочитал книгу до урока.' }, { tense: 'Бъдеще време', bg: 'Аз ще чета книгата утре.', ru: 'Я буду читать книгу завтра.' }, { tense: 'Бъдеще предварително време', bg: 'Аз ще съм прочел книгата до утре.', ru: 'Я уже прочитаю книгу к завтрашнему дню.' }, { tense: 'Бъдеще време в миналото', bg: 'Аз щях да чета, но заспах.', ru: 'Я собирался читать, но уснул.' }, { tense: 'Бъдеще предварително време в миналото', bg: 'Аз щях да съм прочел книгата до вечерта.', ru: 'Я должен был прочитать книгу к вечеру.' }
+      ], audio_phrases: ['чета', 'прочетох', 'ще чета'], ipa: 'че́та', type: 'I спряжение', rule: 'При чета свършеното действие се изразява с прочета: четох описва процес, а прочетох — завършен резултат.' },
+      { id: 3, verb_bg: 'говоря', translation_ru: 'говорить', conjugation_present: { az: 'говоря', ti: 'говориш', toy: 'говори', nie: 'говорим', vie: 'говорите', te: 'говорят' }, tenses: [
+        { tense: 'Сегашно време', bg: 'Аз говоря български.', ru: 'Я говорю по-болгарски.' }, { tense: 'Минало свършено време', bg: 'Аз поговорих с него.', ru: 'Я поговорил с ним.' }, { tense: 'Минало несвършено време', bg: 'Аз говорех по телефона.', ru: 'Я разговаривал по телефону.' }, { tense: 'Минало неопределено време', bg: 'Аз съм говорил с директора.', ru: 'Я разговаривал с директором.' }, { tense: 'Минало предварително време', bg: 'Аз бях говорил с него преди срещата.', ru: 'Я поговорил с ним до встречи.' }, { tense: 'Бъдеще време', bg: 'Аз ще говоря с директора.', ru: 'Я поговорю с директором.' }, { tense: 'Бъдеще предварително време', bg: 'Аз ще съм говорил с него до обяд.', ru: 'Я уже поговорю с ним к полудню.' }, { tense: 'Бъдеще време в миналото', bg: 'Аз щях да говоря на събранието.', ru: 'Я собирался выступить на собрании.' }, { tense: 'Бъдеще предварително време в миналото', bg: 'Аз щях да съм говорил с него до петък.', ru: 'Я должен был поговорить с ним к пятнице.' }
+      ], audio_phrases: ['говоря', 'поговорих', 'ще говоря'], ipa: 'говоря́', type: 'II спряжение', rule: 'Говоря е глагол на -я. В 1 л. мн.ч. и 2 л. мн.ч. се използват говорим и говорите.' },
+      { id: 4, verb_bg: 'пътувам', translation_ru: 'путешествовать, ехать', conjugation_present: { az: 'пътувам', ti: 'пътуваш', toy: 'пътува', nie: 'пътуваме', vie: 'пътувате', te: 'пътуват' }, tenses: [
+        { tense: 'Сегашно време', bg: 'Аз пътувам за София.', ru: 'Я еду в Софию.' }, { tense: 'Минало свършено време', bg: 'Аз пътувах до София вчера.', ru: 'Я ездил в Софию вчера.' }, { tense: 'Минало несвършено време', bg: 'Аз пътувах цяла нощ.', ru: 'Я ехал всю ночь.' }, { tense: 'Минало неопределено време', bg: 'Аз съм пътувал много.', ru: 'Я много путешествовал.' }, { tense: 'Минало предварително време', bg: 'Аз бях пътувал преди да започна работа.', ru: 'Я путешествовал до того, как начал работать.' }, { tense: 'Бъдеще време', bg: 'Аз ще пътувам утре.', ru: 'Я поеду завтра.' }, { tense: 'Бъдеще предварително време', bg: 'Аз ще съм пътувал до края на месеца.', ru: 'Я уже съезжу к концу месяца.' }, { tense: 'Бъдеще време в миналото', bg: 'Аз щях да пътувам, но останах.', ru: 'Я собирался ехать, но остался.' }, { tense: 'Бъдеще предварително време в миналото', bg: 'Аз щях да съм пътувал до края на седмицата.', ru: 'Я должен был съездить к концу недели.' }
+      ], audio_phrases: ['пътувам', 'пътувах', 'ще пътувам'], ipa: 'пъ́тувам', type: 'I спряжение', rule: 'Пътувам е несвършен глагол за процес или повторяемо действие; формите му се образуват с наставката -ува-.' }
+    ];
+    const extraVerbSeeds = `
+работя|работать|i|работ|работих|работех|работил|проект|над проектом|Работа
+живея|жить|i|живе|живях|живеех|живял|в София|в Софии|Быт
+уча|учить, изучать|a|уч|учих|учех|учил|български език|болгарский язык|Образование
+изучавам|изучать|вам|изучав|изучавах|изучавах|изучавал|нов материал|новый материал|Образование
+разбирам|понимать|a|разбир|разбрах|разбирах|разбрал|въпроса|вопрос|Разговорный
+знам|знать|a|зна|знаех|знаех|знаел|отговора|ответ|Разговорный
+мога|мочь|a|мож|можах|можех|могъл|задачата|задача|Разговорный
+искам|хотеть|a|иск|исках|исках|искал|помощ|помощь|Быт
+трябва|быть должным|a|трябв|трябваше|трябваше|трябвало|да тръгна|отправиться|Разговорный
+харесвам|нравиться|вам|харесв|харесах|харесвах|харесал|филма|фильм|Быт
+обичам|любить|a|обич|обичах|обичах|обичал|семейството си|свою семью|Разговорный
+помня|помнить|i|помн|помних|помнех|помнил|името|имя|Разговорный
+забравям|забывать|вам|забрав|забравих|забравях|забравил|ключовете|ключи|Быт
+срещам|встречать|a|срещ|срещнах|срещах|срещнал|приятеля|друга|Разговорный
+посещавам|посещать|вам|посещав|посетих|посещавах|посетил|музея|музей|Путешествия
+връщам се|возвращаться|вам|връщ|върнах се|връщах се|върнал се|вкъщи|домой|Быт
+тръгвам|отправляться|вам|тръгв|тръгнах|тръгвах|тръгнал|рано|рано|Путешествия
+пристигам|прибывать|вам|пристиг|пристигнах|пристигвах|пристигнал|на гарата|на вокзале|Транспорт
+заминавам|уезжать|вам|заминав|заминах|заминавах|заминал|утре|завтра|Путешествия
+карам|водить|a|кар|карах|карах|карал|автомобил|автомобиль|Транспорт
+спирам|останавливать|a|спир|спрях|спирах|спрял|влак|поезд|Транспорт
+пристъпвам|приступать|вам|пристъпв|пристъпих|пристъпвах|пристъпил|към работа|к работе|Официальная речь
+отварям|открывать|вам|отвар|отворих|отварях|отворил|прозореца|окно|Быт
+затварям|закрывать|вам|затвар|затворих|затварях|затворил|вратата|дверь|Быт
+включвам|включать|вам|включв|включих|включвах|включил|уреда|прибор|Техника
+изключвам|выключать|вам|изключв|изключих|изключвах|изключил|машината|машина|Техника
+използвам|использовать|вам|използв|използвах|използвах|използвал|инструмента|инструмент|Техника
+правя|делать|i|прав|направих|правех|направил|проверка|проверка|Работа
+създавам|создавать|вам|създав|създадох|създавах|създал|документ|документ|Работа
+избирам|выбирать|a|избир|избрах|избирах|избрал|решение|решение|Работа
+решавам|решать|вам|решав|реших|решавах|решил|проблема|проблема|Работа
+проверявам|проверять|вам|проверяв|проверих|проверявах|проверил|данните|данные|Работа
+измервам|измерять|вам|измерв|измерих|измервах|измерил|налягането|давление|Техника
+сравнявам|сравнивать|вам|сравняв|сравних|сравнявах|сравнил|резултатите|результаты|Аналитика
+оценявам|оценивать|вам|оценяв|оцених|оценявах|оценил|риска|риск|Бизнес
+описвам|описывать|вам|описв|описах|описвах|описал|процеса|процесс|Технический
+обяснявам|объяснять|вам|обясняв|обясних|обяснявах|обяснил|правилото|правило|Образование
+предлагам|предлагать|a|предлаг|предложих|предлагах|предложил|решение|решение|Бизнес
+приемам|принимать|a|прием|приех|приемах|приел|условията|условия|Бизнес
+изпращам|отправлять|a|изпращ|изпратих|изпращах|изпратил|съобщението|сообщение|Работа
+получавам|получать|вам|получав|получих|получавах|получил|отговор|ответ|Работа
+изпълнявам|выполнять|вам|изпълняв|изпълних|изпълнявах|изпълнил|задачата|задача|Работа
+започвам|начинать|вам|започв|започнах|започвах|започнал|проекта|проект|Работа
+завършвам|заканчивать|вам|завършв|завърших|завършвах|завършил|курса|курс|Образование
+продължавам|продолжать|вам|продължав|продължих|продължавах|продължил|работата|работа|Работа
+спазвам|соблюдать|a|спаз|спазих|спазвах|спазил|правилата|правила|Регламенты
+нарушавам|нарушать|вам|нарушав|наруших|нарушавах|нарушил|срока|срок|Регламенты
+изисквам|требовать|вам|изискв|изисках|изисквах|изискал|доказателство|доказательство|Регламенты
+разрешавам|разрешать|вам|разрешав|разреших|разрешавах|разрешил|достъпа|доступ|Регламенты
+забранявам|запрещать|вам|забраняв|забраних|забранявах|забранил|влизането|вход|Регламенты
+уведомявам|уведомлять|вам|уведомяв|уведомих|уведомявах|уведомил|клиента|клиент|Бизнес
+информирам|информировать|a|информи|информирах|информирах|информирал|екипа|команду|Бизнес
+организирам|организовывать|a|организи|организирах|организирах|организирал|среща|встреча|Бизнес
+ръководя|руководить|i|ръковод|ръководих|ръководех|ръководил|екипа|команду|Бизнес
+управлявам|управлять|вам|управляв|управлявах|управлявах|управлявал|системата|система|Бизнес
+развивам|развивать|вам|развив|развих|развивах|развил|услугата|услуга|Бизнес
+подобрявам|улучшать|вам|подобряв|подобрих|подобрявах|подобрил|качеството|качество|Бизнес
+намалявам|уменьшать|вам|намаляв|намалих|намалявах|намалил|разходите|расходы|Экономика
+увеличавам|увеличивать|вам|увеличав|увеличих|увеличавах|увеличил|приходите|доходы|Экономика
+плащам|платить|a|плащ|платих|плащах|платил|сметката|счёт|Быт
+купувам|покупать|вам|купув|купих|купувах|купил|материали|материалы|Бизнес
+продавам|продавать|a|продава|продадох|продавах|продал|продукта|продукт|Бизнес
+доставям|доставлять|a|достав|доставих|доставях|доставил|пратката|посылка|Логистика
+изработвам|изготавливать|вам|изработв|изработих|изработвах|изработил|детайла|деталь|Производство
+ремонтирам|ремонтировать|a|ремонти|ремонтирах|ремонтирах|ремонтирал|машината|машина|Техника
+поддържам|поддерживать|a|поддърж|поддържах|поддържах|поддържал|оборудването|оборудование|Техника
+монтирам|монтировать|a|монти|монтирах|монтирах|монтирал|сензора|датчик|Техника
+демонтирам|демонтировать|a|демонти|демонтирах|демонтирах|демонтирал|капака|крышка|Техника
+свързвам|соединять|вам|свързв|свързах|свързвах|свързал|кабела|кабель|Техника
+разделям|разделять|a|раздел|разделих|разделях|разделил|веригата|цепь|Техника
+зареждам|заряжать|вам|зарежд|заредих|зареждах|заредил|батерията|батарея|Техника
+измервам|измерять|вам|измерв|измерих|измервах|измерил|напрежението|напряжение|Техника
+наблюдавам|наблюдать|вам|наблюдав|наблюдавах|наблюдавах|наблюдавал|показателя|показатель|Аналитика
+следя|следить|i|след|следих|следях|следил|сигнала|сигнал|Техника
+откривам|обнаруживать|вам|открив|открих|откривах|открил|повредата|неисправность|Диагностика
+установявам|устанавливать|вам|установяв|установих|установявах|установил|причината|причина|Диагностика
+отстранявам|устранять|вам|отстраняв|отстраних|отстранявах|отстранил|неизправността|неисправность|Диагностика
+предотвратявам|предотвращать|вам|предотвратяв|предотвратих|предотвратявах|предотвратил|аварията|авария|Безопасность
+защитавам|защищать|вам|защитав|защитих|защитавах|защитил|системата|система|Безопасность
+предупреждавам|предупреждать|вам|предупреждав|предупредих|предупреждавах|предупредил|оператора|оператор|Безопасность
+контролирам|контролировать|a|контроли|контролирах|контролирах|контролирал|параметрите|параметры|Техника
+регистрирам|регистрировать|a|регистри|регистрирах|регистрирах|регистрирал|събитието|событие|Документация
+документирам|документировать|a|документи|документирах|документирах|документирал|резултата|результат|Документация
+архивирам|архивировать|a|архиви|архивирах|архивирах|архивирал|файловете|файлы|Технологии
+изчислявам|вычислять|вам|изчисляв|изчислих|изчислявах|изчислил|стойността|значение|Аналитика
+прогнозирам|прогнозировать|a|прогнозира|прогнозирах|прогнозирах|прогнозирал|търсенето|спрос|Аналитика
+разработвам|разрабатывать|вам|разработв|разработих|разработвах|разработил|решение|решение|Технологии
+програмирам|программировать|a|програми|програмирах|програмирах|програмирал|приложението|приложение|Технологии
+тествам|тестировать|a|тества|тествах|тествах|тествал|функцията|функция|Технологии
+обработвам|обрабатывать|вам|обработв|обработих|обработвах|обработил|данните|данные|Технологии
+съхранявам|сохранять|вам|съхраняв|съхраних|съхранявах|съхранил|файла|файл|Технологии
+извличам|извлекать|вам|извлич|извлякох|извличах|извлякъл|информация|информация|Технологии
+въвеждам|вводить|вам|въвежд|въведох|въвеждах|въвел|данните|данные|Технологии
+изменям|изменять|a|измен|измених|изменях|изменил|настройката|настройка|Техника
+прилагам|применять|a|прилаг|приложих|прилагах|приложил|метода|метод|Технический
+изследвам|исследовать|вам|изследв|изследвах|изследвах|изследвал|проблема|проблема|Наука
+доказвам|доказывать|вам|доказв|доказах|доказвах|доказал|твърдението|утверждение|Наука
+предполагам|предполагать|a|предполаг|предположих|предполагах|предположил|причина|причина|Наука
+заключавам|заключать, делать вывод|вам|заключав|заключих|заключавах|заключил|от данните|по данным|Наука
+достигам|достигать|a|достиг|достигнах|достигах|достигнал|целта|цель|Бизнес
+постигам|постигать|a|постиг|постигнах|постигах|постигнал|резултата|результат|Образование
+споделям|делиться|a|сподел|споделих|споделях|споделил|опита си|своим опытом|Разговорный
+обсъждам|обсуждать|a|обсъжд|обсъдих|обсъждах|обсъдил|въпроса|вопрос|Бизнес
+съгласявам се|соглашаться|вам|съгласяв|съгласих се|съгласявах се|съгласил се|с предложението|с предложением|Разговорный
+отказвам се|отказываться|вам|отказв|отказах се|отказвах се|отказал се|от договора|от договора|Бизнес
+обещавам|обещать|вам|обещав|обещах|обещавах|обещал|помощ|помощь|Разговорный
+надявам се|надеяться|вам|надяв|надявах се|надявах се|надявал се|на добър резултат|на хороший результат|Разговорный
+страхувам се|бояться|вам|страхув|страхувах се|страхувах се|страхувал се|от промяната|изменений|Разговорный
+усмихвам се|улыбаться|вам|усмихв|усмихнах се|усмихвах се|усмихнал се|на детето|ребёнку|Разговорный
+смея се|смеяться|i|сме|смях се|смеех се|смял се|на шегата|над шуткой|Разговорный
+помагам|помогать|a|помаг|помогнах|помагах|помогнал|на колегата|коллеге|Разговорный
+изчаквам|выжидать|вам|изчакв|изчаках|изчаквах|изчакал|сигнала|сигнал|Транспорт
+проверявам|проверять|вам|проверяв|проверих|проверявах|проверил|спирачките|тормоза|Транспорт
+употребявам|употреблять|вам|употребяв|употребих|употребявах|употребил|термина|термин|Наука
+означавам|означать|вам|означав|означих|означавах|означил|това|это|Лингвистика
+произнасям|произносить|a|произнася|произнесох|произнасях|произнесъл|думата|слово|Лингвистика
+превеждам|переводить|вам|превежд|преведох|превеждах|превел|текста|текст|Лингвистика
+съставям|составлять|a|състав|съставих|съставях|съставил|изречението|предложение|Лингвистика
+изговарям|произносить, выговаривать|вам|изговар|изговорих|изговарях|изговорил|звука|звук|Лингвистика
+`.trim().split('\n').map(line => line.split('|'));
+    const extraVerbs = extraVerbSeeds.map((parts, index) => {
+      const [verb_bg, translation_ru, kind, stem, aorist, imperfect, participle, objectBg, objectRu, context] = parts;
+      const suffixes = kind === 'i' ? ['я', 'иш', 'и', 'им', 'ите', 'ят'] : kind === 'вам' ? ['ам', 'аш', 'а', 'аме', 'ате', 'ат'] : ['а', 'аш', 'а', 'аме', 'ате', 'ат'];
+      const forms = suffixes.map(suffix => `${stem}${suffix}`);
+      const conjugation_present = { az: forms[0], ti: forms[1], toy: forms[2], nie: forms[3], vie: forms[4], te: forms[5] };
+      const present = conjugation_present.az;
+      const tenses = [
+        ['Сегашно време', `Аз ${present} ${objectBg}.`, `Я ${translation_ru} ${objectRu}.`],
+        ['Минало свършено време', `Аз ${aorist} ${objectBg}.`, `Я ${translation_ru} ${objectRu} (завършено действие).`],
+        ['Минало несвършено време', `Аз ${imperfect} ${objectBg}.`, `Я ${translation_ru} ${objectRu} в тот момент.`],
+        ['Минало неопределено време', `Аз съм ${participle} ${objectBg}.`, `Я ${translation_ru} ${objectRu} (опит или резултат).`],
+        ['Минало предварително време', `Аз бях ${participle} ${objectBg} преди срещата.`, `Я ${translation_ru} ${objectRu} до встречи.`],
+        ['Бъдеще време', `Аз ще ${present} ${objectBg}.`, `Я буду ${translation_ru} ${objectRu}.`],
+        ['Бъдеще предварително време', `Аз ще съм ${participle} ${objectBg} до петък.`, `Я уже ${translation_ru} ${objectRu} к пятнице.`],
+        ['Бъдеще време в миналото', `Аз щях да ${present} ${objectBg}.`, `Я собирался ${translation_ru} ${objectRu}.`],
+        ['Бъдеще предварително време в миналото', `Аз щях да съм ${participle} ${objectBg} до обяд.`, `Я должен был ${translation_ru} ${objectRu} к полудню.`]
+      ].map(([tense, bg, ru]) => ({ tense, bg, ru }));
+      return { id: index + 5, verb_bg, translation_ru, conjugation_present, tenses, audio_phrases: [verb_bg, aorist, `ще ${present}`], ipa: verb_bg, type: kind === 'i' ? 'II спряжение' : 'I спряжение', rule: `Глагол „${verb_bg}“ употребява се в контекст „${context}“. Формите му са свързани с действие: ${translation_ru}.` };
+    });
+    verbsData.push(...extraVerbs);
+    const verbLabels = { az: 'Аз', ti: 'Ти', toy: 'Той/Тя/То', nie: 'Ние', vie: 'Вие', te: 'Те' };
+    let selectedVerbId = 1, activeVerbTab = 'conjugation', speechQueue = [];
+    let quizState = { question: null, score: 0, total: 0, hintUsed: false, answered: false, hiddenOption: null };
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] } } }
+    };
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background: #0f172a; }
+    .aurora { background: radial-gradient(circle at 80% 0%, rgba(245,158,11,.14), transparent 30%), radial-gradient(circle at 0% 30%, rgba(56,189,248,.08), transparent 28%); }
+    .scene { perspective: 1500px; }
+    .card-inner { transform-style: preserve-3d; transition: transform .65s cubic-bezier(.2,.75,.25,1); }
+    .card-inner.is-flipped { transform: rotateY(180deg); }
+    .card-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; pointer-events: none; }
+    .card-inner:not(.is-flipped) .card-face:not(.card-back), .card-inner.is-flipped .card-back { pointer-events: auto; }
+    .card-back { transform: rotateY(180deg); }
+    .grain { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E"); }
+    .focus-ring:focus-visible { outline: 2px solid #fbbf24; outline-offset: 3px; }
+    .module-hidden { display: none !important; }
+    .verb-tab.is-active { background: #fbbf24; color: #0f172a; }
+    .quiz-option.is-correct { border-color: #34d399; background: rgba(16,185,129,.16); color: #a7f3d0; }
+    .quiz-option.is-wrong { border-color: #fb7185; background: rgba(244,63,94,.14); color: #fecdd3; }
+    .quiz-option.is-muted { opacity: .35; pointer-events: none; }
+  </style>
 </head>
-<body>
-
-  <header class="topbar">
-    <div class="brand">
-      <span class="badge">07</span>
-      <div>
-        Серия 07 БДЖ · ТЭ109 «Людмила»
-        <small>Интерактивен тренажор на схемата за пускане на дизела</small>
-      </div>
-    </div>
-
-    <nav class="modes" id="modeNav">
-      <button data-mode="start" class="active">Пускане на дизела</button>
-      <button data-mode="excite">Възбуждане на ТГ</button>
-      <button data-mode="weaken">Отслабване на полето</button>
-      <button data-mode="protect">Защити и сигнализации</button>
-      <button data-mode="emergency">Аварийни премички</button>
-    </nav>
-
-    <button class="lang-switch" id="langSwitch">BG</button>
+<body class="min-h-screen text-slate-100 antialiased aurora grain">
+  <header class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6 lg:px-8">
+    <a href="#top" class="focus-ring flex items-center gap-3 rounded-xl" aria-label="Лексикон BG">
+      <span class="grid h-11 w-11 place-items-center rounded-2xl bg-amber-400 text-xl font-black text-slate-950 shadow-lg shadow-amber-400/20">Л</span>
+      <span><strong class="block text-lg tracking-tight">ЛЕКСИКОН <span class="text-amber-400">BG</span></strong><small class="text-xs text-slate-400">Болгарский без пробелов</small></span>
+    </a>
+    <div class="flex items-center gap-3"><div class="hidden items-center gap-2 text-xs font-semibold text-slate-400 sm:flex"><span class="h-2 w-2 rounded-full bg-emerald-400"></span> Словарь A2 → C2</div><button id="modeToggle" class="focus-ring rounded-xl border border-amber-400/50 bg-amber-400/10 px-3 py-2 text-xs font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950" type="button">Глаголи и времена</button></div>
   </header>
 
-  <main>
-    <div class="stage" id="schemaCard">
-      <div class="svg-panel" id="svgPanel">
-        <div id="svgHost"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 920" id="schemaRoot">
-  <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#111a24" stroke-width="0.5"/>
-    </pattern>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glowIntense">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0d1219"/>
-      <stop offset="100%" stop-color="#080b10"/>
-    </linearGradient>
-  </defs>
+  <main id="lexiconMode" class="mx-auto max-w-6xl px-5 pb-14 lg:px-8">
+    <section class="mb-8 max-w-3xl">
+      <p class="mb-3 text-xs font-bold uppercase tracking-[.25em] text-amber-400">Слово дня · Bulgarian flashcards</p>
+      <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Расширяй словарь.<br><span class="text-slate-400">Говори точнее.</span></h1>
+      <p class="mt-5 max-w-xl text-base leading-7 text-slate-400">Карточки с живыми примерами, точными оттенками смысла и терминологией для работы и профессиональной среды.</p>
+    </section>
 
-  <rect width="1400" height="920" fill="url(#bgGrad)"/>
-  <rect width="1400" height="920" fill="url(#grid)"/>
-  <rect x="2" y="2" width="1396" height="916" rx="10" fill="none" stroke="#1f2a36" stroke-width="2"/>
-
-  <text x="700" y="20" fill="#c0d0e0" font-size="16" font-family="'Segoe UI',sans-serif" text-anchor="middle" font-weight="600">ТЕПЛОВОЗ СЕРИЯ 07 (ТЭ109 «Людмила») — Пускане на дизеловия двигател</text>
-
-  <g id="viewport">
-
-    <!-- ============ ХОРИЗОНТАЛНИ ШИНИ ============ -->
-    <path id="wbus-plus" class="bus" d="M80,100 H1320" data-dev="ШЗБ" data-tip="+ШЗБ — шина плюс 110V"/>
-    <text class="buslabel" x="100" y="92" fill="#5f7a9a" font-size="14" font-weight="bold">+ШЗБ / +110V DC</text>
-
-    <path id="wbus-minus" class="bus" d="M80,860 H1320" data-wire="ШМ" data-tip="ШМ — шина минус / корпус"/>
-    <text class="buslabel" x="100" y="884" fill="#5f7a9a" font-size="14" font-weight="bold">ШИНА М / КОРПУС</text>
-
-    <!-- ============ АКУМУЛАТОРНА БАТАРЕЯ + ВБ ============ -->
-    <g class="device" id="dev-АБ" data-dev="АБ" data-tip="АБ — акумулаторна батерия 110V">
-      <rect x="20" y="430" width="56" height="80" rx="3" fill="#131a24" stroke="#3a4a5c" stroke-width="2"/>
-      <text class="devlabel" x="48" y="464" text-anchor="middle" font-size="14" font-weight="bold">АБ</text>
-      <text class="devlabel" x="48" y="480" text-anchor="middle" font-size="9">110V</text>
-      <text x="66" y="448" fill="#4d8" font-size="12" font-weight="bold">+</text>
-      <text x="30" y="500" fill="#e66" font-size="12" font-weight="bold">−</text>
-    </g>
-    <path id="w138" class="wire" d="M76,448 H80" data-wire="138" data-tip="Пр. 138"/>
-    <text class="wirenum" x="84" y="442" data-wire="138">138</text>
-
-    <g class="contact" id="ct-wb" data-dev="ВБ" data-tip="ВБ — главен прекъсвач на батерията">
-      <circle class="terminal" cx="80" cy="448" r="3.5"/>
-      <line class="arm" x1="80" y1="448" x2="80" y2="440"/>
-      <circle class="hinge" cx="80" cy="440" r="3.5"/>
-      <line class="blade" x1="80" y1="440" x2="80" y2="424" style="--hinge:80px 440px"/>
-      <circle class="terminal" cx="80" cy="424" r="3.5"/>
-      <text class="ctlabel" x="96" y="436" font-size="10">ВБ</text>
-    </g>
-    <path id="w137" class="wire" d="M80,424 V390" data-wire="137" data-tip="Пр. 137"/>
-    <text class="wirenum" x="86" y="412" transform="rotate(-90 86 412)" data-wire="137">137</text>
-
-    <g class="device" id="dev-СЗБ" data-dev="СЗБ" data-tip="СЗБ — съединител на веригата на батерията">
-      <rect x="60" y="360" width="40" height="30" rx="3" fill="#131a24" stroke="#3a4a5c" stroke-width="2"/>
-      <text class="devlabel" x="80" y="380" text-anchor="middle" font-size="10">СЗБ</text>
-    </g>
-    <path id="w191" class="wire" d="M80,360 V100" data-wire="191" data-tip="Пр. 191 — СЗБ → ШЗБ"/>
-    <text class="wirenum" x="86" y="240" transform="rotate(-90 86 240)" data-wire="191">191</text>
-
-    <!-- ============ КЛОН 1: КТН — Горивна помпа ============ -->
-    <path id="w211" class="wire" d="M200,100 V200" data-wire="211" data-tip="Пр. 211"/>
-    <text class="wirenum" x="206" y="140" data-wire="211">211</text>
-
-    <g class="device automat" id="dev-А1" data-dev="А1" data-tip="А1 — автомат на горивната помпа">
-      <rect x="170" y="200" width="60" height="20" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <g class="contact automat-sw" id="sw-А1">
-        <line class="arm" x1="200" y1="200" x2="200" y2="206"/>
-        <line class="blade" x1="200" y1="206" x2="200" y2="216" style="--hinge:200px 206px"/>
-      </g>
-      <text class="devlabel" x="200" y="232" text-anchor="middle" font-size="11">А1</text>
-    </g>
-    <path id="w224" class="wire" d="M200,220 V320" data-wire="224" data-tip="Пр. 224"/>
-    <text class="wirenum" x="206" y="280" data-wire="224">224</text>
-
-    <g id="dev-КТН" data-dev="КТН" data-tip="КТН — контактор на горивната помпа">
-      <g class="coil" id="coil-КТН">
-        <rect x="175" y="320" width="50" height="26" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
-        <path class="coilwind" d="M182,326 Q200,318 218,326 M182,332 Q200,324 218,332 M182,338 Q200,330 218,338" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
-        <text class="clabel" x="200" y="362" text-anchor="middle">КТН</text>
-      </g>
-    </g>
-    <path id="wktnout" class="wire" d="M200,346 V420" data-wire="wktn" data-tip="Минусова верига на КТН"/>
-    <path id="wru7" class="wire" d="M200,420 V860" data-wire="ru7" data-tip="Минус — РУ7 н.з."/>
-    <g class="contact nc" id="ct-ru7-nc" data-dev="РУ7" data-tip="РУ7 — н.з. контакт в минусовата верига">
-      <circle class="terminal" cx="200" cy="500" r="3.5"/>
-      <line class="arm" x1="200" y1="500" x2="200" y2="508"/>
-      <circle class="hinge" cx="200" cy="508" r="3.5"/>
-      <line class="blade nc" x1="200" y1="508" x2="200" y2="524" style="--hinge:200px 508px"/>
-      <circle class="terminal" cx="200" cy="524" r="3.5"/>
-      <text class="ctlabel" x="216" y="520" font-size="10">РУ7</text>
-    </g>
-
-    <!-- Силова верига КТН: +ШЗБ → КТН(сил) → МТ → ШМ -->
-    <path id="w2a" class="wire" d="M260,100 V200" data-wire="2a" data-tip="+ШЗБ → КТН сил"/>
-    <g class="contact" id="ct-ktn-main" data-dev="КТН" data-tip="КТН — силов контакт">
-      <circle class="terminal" cx="260" cy="200" r="3.5"/>
-      <line class="arm" x1="260" y1="200" x2="260" y2="208"/>
-      <circle class="hinge" cx="260" cy="208" r="3.5"/>
-      <line class="blade" x1="260" y1="208" x2="260" y2="224" style="--hinge:260px 208px"/>
-      <circle class="terminal" cx="260" cy="224" r="3.5"/>
-      <text class="ctlabel" x="276" y="220" font-size="10">КТН(сил)</text>
-    </g>
-    <path id="w212" class="wire" d="M260,224 V320" data-wire="212" data-tip="Пр. 212"/>
-    <text class="wirenum" x="266" y="280" data-wire="212">212</text>
-
-    <g class="motor" id="dev-МТ" data-dev="МТ" data-tip="МТ — двигател на горивната помпа">
-      <circle cx="260" cy="360" r="32" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
-      <circle class="rotor" cx="260" cy="360" r="22" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="8 12"/>
-      <text class="devlabel" x="260" y="364" text-anchor="middle" font-size="16" font-weight="bold">M</text>
-      <text class="note" x="260" y="404" text-anchor="middle" font-size="9">Горивна помпа</text>
-      <text class="rpm-label" id="rpm-МТ" x="260" y="418" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
-    </g>
-    <path id="w213" class="wire" d="M260,392 V420" data-wire="213" data-tip="Пр. 213"/>
-    <path id="w214" class="wire" d="M260,420 V860" data-wire="214" data-tip="Пр. 214 → ШМ"/>
-    <text class="wirenum" x="266" y="600" data-wire="214">214</text>
-
-    <!-- ============ КЛОН 2: КМН — Маслена помпа ============ -->
-    <path id="w3a" class="wire" d="M380,100 V160" data-wire="3a" data-tip="+ШЗБ → А2"/>
-    <g class="device automat" id="dev-А2" data-dev="А2" data-tip="А2 — автомат на дизела">
-      <rect x="350" y="160" width="60" height="20" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <g class="contact automat-sw" id="sw-А2">
-        <line class="arm" x1="380" y1="160" x2="380" y2="166"/>
-        <line class="blade" x1="380" y1="166" x2="380" y2="176" style="--hinge:380px 166px"/>
-      </g>
-      <text class="devlabel" x="380" y="192" text-anchor="middle" font-size="11">А2</text>
-    </g>
-    <path id="w225" class="wire" d="M380,180 V240" data-wire="225" data-tip="Пр. 225"/>
-    <text class="wirenum" x="386" y="220" data-wire="225">225</text>
-
-    <g class="device automat" id="dev-А5" data-dev="А5" data-tip="А5 — автомат на маслопомпата">
-      <rect x="350" y="240" width="60" height="20" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <g class="contact automat-sw" id="sw-А5">
-        <line class="arm" x1="380" y1="240" x2="380" y2="246"/>
-        <line class="blade" x1="380" y1="246" x2="380" y2="256" style="--hinge:380px 246px"/>
-      </g>
-      <text class="devlabel" x="380" y="272" text-anchor="middle" font-size="11">А5</text>
-    </g>
-    <path id="w3pd" class="wire" d="M380,260 V320" data-wire="3pd" data-tip="А5 → ПД"/>
-    <g class="device" id="dev-ПД" data-dev="ПД" data-tip="ПД — бутон за пускане на дизела">
-      <circle class="press-ring" cx="380" cy="340" r="24" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="4 5" opacity="0"/>
-      <circle cx="380" cy="340" r="20" fill="#171e2a" stroke="#4a5a6e" stroke-width="2"/>
-      <text class="devlabel" x="380" y="344" text-anchor="middle" font-size="11">ПД</text>
-    </g>
-    <path id="w3rdm3" class="wire" d="M380,360 V400" data-wire="3rdm" data-tip="ПД → РДМ3"/>
-    <g class="contact" id="ct-rdm3" data-dev="РДМ3" data-tip="РДМ3 — реле за налягане на маслото (предпусково)">
-      <circle class="terminal" cx="380" cy="400" r="3.5"/>
-      <line class="arm" x1="380" y1="400" x2="380" y2="408"/>
-      <circle class="hinge" cx="380" cy="408" r="3.5"/>
-      <line class="blade" x1="380" y1="408" x2="380" y2="424" style="--hinge:380px 408px"/>
-      <circle class="terminal" cx="380" cy="424" r="3.5"/>
-      <text class="ctlabel" x="396" y="420" font-size="10">РДМ3</text>
-    </g>
-    <path id="w3bpd" class="wire" d="M380,424 V470" data-wire="3bpd" data-tip="РДМ3 → БПД"/>
-    <g class="device" id="dev-БПД" data-dev="БПД" data-tip="БПД — блок за пускане на дизела (таймер+тиристор)">
-      <rect x="340" y="470" width="80" height="50" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="380" y="494" text-anchor="middle" font-size="12">БПД</text>
-      <text class="note" x="380" y="510" text-anchor="middle" font-size="9">таймер 60s</text>
-      <text class="trv-counter" id="trvCounter" x="380" y="540" text-anchor="middle" font-size="10" fill="#5a6b7d">60</text>
-    </g>
-    <path id="w3kmn" class="wire" d="M380,520 V580" data-wire="3kmn" data-tip="БПД → КМН"/>
-    <g id="dev-КМН" data-dev="КМН" data-tip="КМН — контактор на маслопомпата">
-      <g class="coil" id="coil-КМН">
-        <rect x="355" y="580" width="50" height="26" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
-        <path class="coilwind" d="M362,586 Q380,578 398,586 M362,592 Q380,584 398,592 M362,598 Q380,590 398,598" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
-        <text class="clabel" x="380" y="622" text-anchor="middle">КМН</text>
-      </g>
-    </g>
-    <path id="w3o" class="wire" d="M380,606 V860" data-wire="3o" data-tip="КМН → ШМ"/>
-
-    <!-- Силова верига КМН: +ШЗБ → КМН(сил) → МН → ШМ -->
-    <path id="w4a" class="wire" d="M440,100 V200" data-wire="4a" data-tip="+ШЗБ → КМН сил"/>
-    <g class="contact" id="ct-kmn-main" data-dev="КМН" data-tip="КМН — силов контакт">
-      <circle class="terminal" cx="440" cy="200" r="3.5"/>
-      <line class="arm" x1="440" y1="200" x2="440" y2="208"/>
-      <circle class="hinge" cx="440" cy="208" r="3.5"/>
-      <line class="blade" x1="440" y1="208" x2="440" y2="224" style="--hinge:440px 208px"/>
-      <circle class="terminal" cx="440" cy="224" r="3.5"/>
-      <text class="ctlabel" x="456" y="220" font-size="10">КМН(сил)</text>
-    </g>
-    <path id="w4mn1" class="wire" d="M440,224 V320" data-wire="140" data-tip="Пр. 140"/>
-    <text class="wirenum" x="446" y="280" data-wire="140">140</text>
-
-    <g class="motor" id="dev-МН" data-dev="МН" data-tip="МН — двигател на маслопомпата">
-      <circle cx="440" cy="360" r="32" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
-      <circle class="rotor" cx="440" cy="360" r="22" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="8 12"/>
-      <text class="devlabel" x="440" y="364" text-anchor="middle" font-size="16" font-weight="bold">M</text>
-      <text class="note" x="440" y="404" text-anchor="middle" font-size="9">Маслопомпа</text>
-      <text class="rpm-label" id="rpm-МН" x="440" y="418" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
-    </g>
-    <path id="w4mn2" class="wire" d="M440,392 V420" data-wire="141" data-tip="Пр. 141"/>
-    <text class="wirenum" x="446" y="410" data-wire="141">141</text>
-    <path id="w341" class="wire" d="M440,420 V860" data-wire="341" data-tip="Пр. 341 → ШМ"/>
-    <text class="wirenum" x="446" y="600" data-wire="341">341</text>
-
-    <!-- Спомагателни контакти КМН: МР6 и ТРВ -->
-    <path id="w4ba" class="wire" d="M560,100 V180" data-wire="4ba" data-tip="+ШЗБ → КМН aux"/>
-    <g class="contact" id="ct-kmn-aux" data-dev="КМН" data-tip="КМН — спомагателен контакт">
-      <circle class="terminal" cx="560" cy="180" r="3.5"/>
-      <line class="arm" x1="560" y1="180" x2="560" y2="188"/>
-      <circle class="hinge" cx="560" cy="188" r="3.5"/>
-      <line class="blade" x1="560" y1="188" x2="560" y2="204" style="--hinge:560px 188px"/>
-      <circle class="terminal" cx="560" cy="204" r="3.5"/>
-      <text class="ctlabel" x="576" y="200" font-size="10">КМН</text>
-    </g>
-    <path id="w4mr6" class="wire" d="M560,204 V250" data-wire="4mr6" data-tip="КМН → МР6"/>
-    <g class="device" id="dev-МР6" data-dev="МР6" data-tip="МР6 — блок-магнит на рейката на горивната помпа">
-      <rect x="530" y="250" width="60" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="560" y="272" text-anchor="middle" font-size="11">МР6</text>
-    </g>
-    <path id="w4trv" class="wire" d="M560,286 V330" data-wire="4trv" data-tip="МР6 → ТРВ"/>
-    <g class="device" id="dev-ТРВ" data-dev="ТРВ" data-tip="ТРВ — таймер за предварително смазване 60s">
-      <rect x="520" y="330" width="80" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="560" y="352" text-anchor="middle" font-size="11">ТРВ 60с</text>
-    </g>
-    <path id="w4bo" class="wire" d="M560,366 V860" data-wire="4bo" data-tip="ТРВ → ШМ"/>
-
-    <!-- ============ КЛОН 3: БПД изходи (управление на пуска) ============ -->
-    <path id="w5a" class="wire" d="M680,100 V160" data-wire="5a" data-tip="+ШЗБ → АУ"/>
-    <g class="device automat" id="dev-АУ" data-dev="АУ" data-tip="АУ — автомат на веригите за пускане">
-      <rect x="650" y="160" width="60" height="20" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <g class="contact automat-sw" id="sw-АУ">
-        <line class="arm" x1="680" y1="160" x2="680" y2="166"/>
-        <line class="blade" x1="680" y1="166" x2="680" y2="176" style="--hinge:680px 166px"/>
-      </g>
-      <text class="devlabel" x="680" y="192" text-anchor="middle" font-size="11">АУ</text>
-    </g>
-    <path id="w5bpd" class="wire" d="M680,180 V240" data-wire="5bpd" data-tip="АУ → БПД таймер"/>
-    <g class="contact" id="ct-bpd-timer" data-dev="БПД" data-tip="БПД — таймерен контакт">
-      <circle class="terminal" cx="680" cy="240" r="3.5"/>
-      <line class="arm" x1="680" y1="240" x2="680" y2="248"/>
-      <circle class="hinge" cx="680" cy="248" r="3.5"/>
-      <line class="blade" x1="680" y1="248" x2="680" y2="264" style="--hinge:680px 248px"/>
-      <circle class="terminal" cx="680" cy="264" r="3.5"/>
-      <text class="ctlabel" x="696" y="260" font-size="10">БПД</text>
-    </g>
-    <path id="w5ktn" class="wire" d="M680,264 V310" data-wire="5ktn" data-tip="БПД → КТН aux"/>
-    <g class="contact" id="ct-ktn-aux" data-dev="КТН" data-tip="КТН — спомаг. контакт (затваря се при КТН)">
-      <circle class="terminal" cx="680" cy="310" r="3.5"/>
-      <line class="arm" x1="680" y1="310" x2="680" y2="318"/>
-      <circle class="hinge" cx="680" cy="318" r="3.5"/>
-      <line class="blade" x1="680" y1="318" x2="680" y2="334" style="--hinge:680px 318px"/>
-      <circle class="terminal" cx="680" cy="334" r="3.5"/>
-      <text class="ctlabel" x="696" y="330" font-size="10">КТН</text>
-    </g>
-    <path id="w5kmn" class="wire" d="M680,334 V380" data-wire="5kmn" data-tip="КТН aux → КМН aux"/>
-    <g class="contact" id="ct-kmn-aux2" data-dev="КМН" data-tip="КМН — спомаг. контакт (затваря се при КМН)">
-      <circle class="terminal" cx="680" cy="380" r="3.5"/>
-      <line class="arm" x1="680" y1="380" x2="680" y2="388"/>
-      <circle class="hinge" cx="680" cy="388" r="3.5"/>
-      <line class="blade" x1="680" y1="388" x2="680" y2="404" style="--hinge:680px 388px"/>
-      <circle class="terminal" cx="680" cy="404" r="3.5"/>
-      <text class="ctlabel" x="696" y="400" font-size="10">КМН</text>
-    </g>
-    <path id="w5ru9" class="wire" d="M680,404 V450" data-wire="5ru9" data-tip="КМН aux → РУ9 н.з."/>
-    <g class="contact nc" id="ct-ru9-nc" data-dev="РУ9" data-tip="РУ9 — н.з. контакт (разтваря се при задействане)">
-      <circle class="terminal" cx="680" cy="450" r="3.5"/>
-      <line class="arm" x1="680" y1="450" x2="680" y2="458"/>
-      <circle class="hinge" cx="680" cy="458" r="3.5"/>
-      <line class="blade nc" x1="680" y1="458" x2="680" y2="474" style="--hinge:680px 458px"/>
-      <circle class="terminal" cx="680" cy="474" r="3.5"/>
-      <text class="ctlabel" x="696" y="470" font-size="10">РУ9</text>
-    </g>
-    <path id="w5fuse" class="wire" d="M680,474 V520" data-wire="5fuse" data-tip="РУ9 → 105"/>
-    <g class="device" id="dev-105" data-dev="105" data-tip="105 — предпазител на защитата">
-      <rect x="650" y="520" width="60" height="30" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="680" y="540" text-anchor="middle" font-size="12">105</text>
-    </g>
-    <path id="w5d" class="wire" d="M680,550 V620" data-wire="5d" data-tip="105 → Д бобина"/>
-
-    <g id="dev-Д" data-dev="Д" data-tip="Д — пусков контактор">
-      <g class="coil" id="coil-Д">
-        <rect x="655" y="620" width="50" height="26" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
-        <path class="coilwind" d="M662,626 Q680,618 698,626 M662,632 Q680,624 698,632 M662,638 Q680,630 698,638" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
-        <text class="clabel" x="680" y="662" text-anchor="middle">Д</text>
-      </g>
-    </g>
-    <path id="w5o" class="wire" d="M680,646 V860" data-wire="5o" data-tip="Д → ШМ"/>
-
-    <!-- ВП7 вентил (разклонение от Д) -->
-    <path id="w5vp7a" class="wire" d="M680,550 H740 V700" data-wire="vp7a" data-tip="Д → ВП7"/>
-    <g class="device" id="dev-ВП7" data-dev="ВП7" data-tip="ВП7 — пневмовентил на ускорителя на пускането">
-      <rect x="710" y="700" width="60" height="42" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="740" y="726" text-anchor="middle" font-size="11">ВП7</text>
-      <rect class="stem" x="720" y="715" width="20" height="6" rx="2" fill="#2a3a4c"/>
-      <rect class="stem-move" x="720" y="715" width="20" height="6" rx="2" fill="#4d78e0"/>
-    </g>
-    <path id="w5vp7b" class="wire" d="M740,742 V860" data-wire="vp7b" data-tip="ВП7 → ШМ"/>
-
-    <!-- ============ КЛОН 4: Д (силова) + СтГ + СВ ============ -->
-    <path id="w6a" class="wire" d="M820,100 V200" data-wire="131" data-tip="Пр. 131 — силов"/>
-    <text class="wirenum" x="826" y="140" data-wire="131">131</text>
-    <g class="contact" id="ct-d-main" data-dev="Д" data-tip="Д — силов контакт на пусковия контактор">
-      <circle class="terminal" cx="820" cy="200" r="3.5"/>
-      <line class="arm" x1="820" y1="200" x2="820" y2="208"/>
-      <circle class="hinge" cx="820" cy="208" r="3.5"/>
-      <line class="blade" x1="820" y1="208" x2="820" y2="224" style="--hinge:820px 208px"/>
-      <circle class="terminal" cx="820" cy="224" r="3.5"/>
-      <text class="ctlabel" x="836" y="220" font-size="10">Д(сил)</text>
-    </g>
-    <path id="w6s1" class="wire" d="M820,224 V340" data-wire="С1" data-tip="Пр. С1"/>
-    <text class="wirenum" x="826" y="290" data-wire="С1">С1</text>
-
-    <g class="motor" id="dev-СтГ" data-dev="СтГ" data-tip="СтГ — стартер-генератор">
-      <circle cx="820" cy="380" r="36" fill="#111722" stroke="#3a4a5c" stroke-width="2"/>
-      <circle class="rotor" cx="820" cy="380" r="26" fill="none" stroke="#4a5a6e" stroke-width="2" stroke-dasharray="9 15"/>
-      <text class="devlabel" x="820" y="384" text-anchor="middle" font-size="14" font-weight="bold">M</text>
-      <text class="note" x="820" y="430" text-anchor="middle" font-size="10">Стартер-генератор СтГ</text>
-      <text class="rpm-label" id="rpm-СтГ" x="820" y="448" text-anchor="middle" font-size="10" fill="#2ee6c8" opacity="0">0 об/мин</text>
-    </g>
-    <path id="w6s2" class="wire" d="M820,416 V860" data-wire="132" data-tip="Пр. 132 → ШМ"/>
-    <text class="wirenum" x="826" y="600" data-wire="132">132</text>
-
-    <!-- Възбудител СВ -->
-    <path id="w7a" class="wire" d="M880,100 V160" data-wire="7a" data-tip="+ШЗБ → СВ"/>
-    <g class="device" id="dev-СВ" data-dev="СВ" data-tip="СВ — възбудител (захранва БПД)">
-      <rect x="850" y="160" width="60" height="50" rx="4" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="880" y="184" text-anchor="middle" font-size="12">СВ</text>
-      <text class="note" x="880" y="200" text-anchor="middle" font-size="9">възбудител</text>
-    </g>
-    <path id="w7b" class="wire" d="M880,210 V280" data-wire="410" data-tip="Пр. 410"/>
-    <text class="wirenum" x="886" y="250" data-wire="410">410</text>
-    <path id="w7c" class="wire" d="M880,280 H420 V470" data-wire="412" data-tip="Пр. 412 → БПД"/>
-    <text class="wirenum" x="600" y="272" data-wire="412">412</text>
-
-    <!-- ============ КЛОН 5: РУ9 и РУ10 — Подхващане ============ -->
-    <path id="w8a" class="wire" d="M1000,100 V160" data-wire="8a" data-tip="+ШЗБ → РДМ4"/>
-    <g class="contact" id="ct-rdm4" data-dev="РДМ4" data-tip="РДМ4 — реле за налягане (затваря се при 0.6-0.8 kg/cm²)">
-      <circle class="terminal" cx="1000" cy="160" r="3.5"/>
-      <line class="arm" x1="1000" y1="160" x2="1000" y2="168"/>
-      <circle class="hinge" cx="1000" cy="168" r="3.5"/>
-      <line class="blade" x1="1000" y1="168" x2="1000" y2="184" style="--hinge:1000px 168px"/>
-      <circle class="terminal" cx="1000" cy="184" r="3.5"/>
-      <text class="ctlabel" x="1016" y="180" font-size="10">РДМ4</text>
-    </g>
-    <path id="w8b" class="wire" d="M1000,184 V240" data-wire="8b" data-tip="РДМ4 → тиристор"/>
-    <g class="device" id="dev-тиристор" data-dev="БПД" data-tip="Тиристор БПД — ключ за подхващане">
-      <rect x="960" y="240" width="80" height="36" rx="3" fill="#131a27" stroke="#3a4a5c" stroke-width="1.5"/>
-      <text class="devlabel" x="1000" y="262" text-anchor="middle" font-size="10">тиристор БПД</text>
-    </g>
-    <path id="w8c" class="wire" d="M1000,276 V340" data-wire="8c" data-tip="тиристор → РУ9/РУ10"/>
-
-    <g id="dev-РУ9" data-dev="РУ9" data-tip="РУ9 — реле за подхващане">
-      <g class="coil" id="coil-РУ9">
-        <rect x="975" y="340" width="50" height="26" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
-        <path class="coilwind" d="M982,346 Q1000,338 1018,346 M982,352 Q1000,344 1018,352 M982,358 Q1000,350 1018,358" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
-        <text class="clabel" x="1000" y="382" text-anchor="middle">РУ9</text>
-      </g>
-    </g>
-    <path id="w8ru9" class="wire" d="M1000,366 V420" data-wire="377" data-tip="Пр. 377"/>
-    <text class="wirenum" x="1006" y="404" data-wire="377">377</text>
-
-    <g id="dev-РУ10" data-dev="РУ10" data-tip="РУ10 — реле за подхващане">
-      <g class="coil" id="coil-РУ10">
-        <rect x="1075" y="340" width="50" height="26" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
-        <path class="coilwind" d="M1082,346 Q1100,338 1118,346 M1082,352 Q1100,344 1118,352 M1082,358 Q1100,350 1118,358" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
-        <text class="clabel" x="1100" y="382" text-anchor="middle">РУ10</text>
-      </g>
-    </g>
-    <path id="w8ru10" class="wire" d="M1100,366 V420 H1000 V860" data-wire="374" data-tip="Пр. 374 → ШМ"/>
-    <text class="wirenum" x="1106" y="404" data-wire="374">374</text>
-
-    <!-- ============ КЛОН 6: КРН — Регулатор на напрежението ============ -->
-    <path id="w9a" class="wire" d="M1200,100 V160" data-wire="9a" data-tip="+ШЗБ → РУ9 н.о."/>
-    <g class="contact" id="ct-ru9-no" data-dev="РУ9" data-tip="РУ9 — н.о. контакт (затваря се при задействане)">
-      <circle class="terminal" cx="1200" cy="160" r="3.5"/>
-      <line class="arm" x1="1200" y1="160" x2="1200" y2="168"/>
-      <circle class="hinge" cx="1200" cy="168" r="3.5"/>
-      <line class="blade" x1="1200" y1="168" x2="1200" y2="184" style="--hinge:1200px 168px"/>
-      <circle class="terminal" cx="1200" cy="184" r="3.5"/>
-      <text class="ctlabel" x="1216" y="180" font-size="10">РУ9</text>
-    </g>
-    <path id="w9b" class="wire" d="M1200,184 V230" data-wire="9b" data-tip="РУ9 → РУ10"/>
-    <g class="contact" id="ct-ru10-no" data-dev="РУ10" data-tip="РУ10 — н.о. контакт">
-      <circle class="terminal" cx="1200" cy="230" r="3.5"/>
-      <line class="arm" x1="1200" y1="230" x2="1200" y2="238"/>
-      <circle class="hinge" cx="1200" cy="238" r="3.5"/>
-      <line class="blade" x1="1200" y1="238" x2="1200" y2="254" style="--hinge:1200px 238px"/>
-      <circle class="terminal" cx="1200" cy="254" r="3.5"/>
-      <text class="ctlabel" x="1216" y="250" font-size="10">РУ10</text>
-    </g>
-    <path id="w9c" class="wire" d="M1200,254 V320" data-wire="227" data-tip="Пр. 227 → КРН"/>
-    <text class="wirenum" x="1206" y="290" data-wire="227">227</text>
-
-    <g id="dev-КРН" data-dev="КРН" data-tip="КРН — контактор за зареждане">
-      <g class="coil" id="coil-КРН">
-        <rect x="1175" y="320" width="50" height="26" rx="3" fill="#0f141d" stroke="#3a4a5c" stroke-width="2" class="coilring"/>
-        <path class="coilwind" d="M1182,326 Q1200,318 1218,326 M1182,332 Q1200,324 1218,332 M1182,338 Q1200,330 1218,338" fill="none" stroke="#5a6b7d" stroke-width="1.5"/>
-        <text class="clabel" x="1200" y="362" text-anchor="middle">КРН</text>
-      </g>
-    </g>
-    <path id="w9o" class="wire" d="M1200,346 V500" data-wire="9o" data-tip="КРН → ШМ"/>
-
-    <!-- КРН силов контакт: СтГ → КРН → АБ (зареждане) -->
-    <path id="wch1" class="wire" d="M820,416 V500 H1200" data-wire="262" data-tip="Пр. 262 — заряден"/>
-    <text class="wirenum" x="900" y="494" data-wire="262">262</text>
-    <g class="contact" id="ct-krn-main" data-dev="КРН" data-tip="КРН — силов контакт (заряден)">
-      <circle class="terminal" cx="1200" cy="500" r="3.5"/>
-      <line class="arm" x1="1200" y1="500" x2="1200" y2="508"/>
-      <circle class="hinge" cx="1200" cy="508" r="3.5"/>
-      <line class="blade" x1="1200" y1="508" x2="1200" y2="524" style="--hinge:1200px 508px"/>
-      <circle class="terminal" cx="1200" cy="524" r="3.5"/>
-      <text class="ctlabel" x="1216" y="520" font-size="10">КРН(сил)</text>
-    </g>
-    <path id="wch2a" class="wire" d="M1200,524 V580" data-wire="254a" data-tip="Пр. 254"/>
-    <path id="wch2b" class="wire" d="M1200,580 H80 V448" data-wire="254" data-tip="Пр. 254 → АБ +"/>
-    <text class="wirenum" x="600" y="574" data-wire="254">254</text>
-
-    <!-- КРН → ШМ (минус) -->
-    <path id="wkrnmin" class="wire" d="M1200,524 V860" data-wire="krnmin" data-tip="КРН → ШМ"/>
-
-    <!-- ============ ДОПЪЛНИТЕЛНИ ПРОВОДИ ПО МЕТОДИЧКАТА ============ -->
-    <!-- Клон 1: КТН плюс верига (343, 379) -->
-    <path id="w343" class="wire" d="M200,280 V300" data-wire="343" data-tip="Пр. 343 — А2 → КТН"/>
-    <text class="wirenum" x="210" y="294" data-wire="343">343</text>
-    <path id="w379" class="wire" d="M200,300 V320" data-wire="379" data-tip="Пр. 379 → бобина КТН"/>
-    <text class="wirenum" x="210" y="314" data-wire="379">379</text>
-
-    <!-- Клон 1: КТН минус верига (499, 394, 363, 366, 368, 360, 381, 380) -->
-    <path id="w499" class="wire" d="M200,346 V370" data-wire="499" data-tip="Пр. 499 — КТН → 1М14"/>
-    <text class="wirenum" x="210" y="360" data-wire="499">499</text>
-    <path id="w394" class="wire" d="M200,370 V390" data-wire="394" data-tip="Пр. 394 → 1ТН1"/>
-    <text class="wirenum" x="210" y="384" data-wire="394">394</text>
-    <path id="w363" class="wire" d="M200,390 V410" data-wire="363" data-tip="Пр. 363 — 1ТН1 → реверсор"/>
-    <text class="wirenum" x="210" y="404" data-wire="363">363</text>
-    <path id="w366" class="wire" d="M200,410 V430" data-wire="366" data-tip="Пр. 366 — реверсор (нула)"/>
-    <text class="wirenum" x="210" y="424" data-wire="366">366</text>
-    <path id="w368" class="wire" d="M200,430 V450" data-wire="368" data-tip="Пр. 368"/>
-    <text class="wirenum" x="210" y="444" data-wire="368">368</text>
-    <path id="w360" class="wire" d="M200,450 V500" data-wire="360" data-tip="Пр. 360 → РУ7 н.з."/>
-    <text class="wirenum" x="210" y="470" data-wire="360">360</text>
-    <path id="w381" class="wire" d="M200,524 V560" data-wire="381" data-tip="Пр. 381 — РУ7 → М"/>
-    <text class="wirenum" x="210" y="540" data-wire="381">381</text>
-    <path id="w380" class="wire" d="M200,560 V860" data-wire="380" data-tip="Пр. 380 → ШМ"/>
-    <text class="wirenum" x="210" y="700" data-wire="380">380</text>
-
-    <!-- Клон 1: МТ минус верига (223, 222, 216) -->
-    <path id="w223" class="wire" d="M260,400 V420" data-wire="223" data-tip="Пр. 223 — МТ → М5"/>
-    <text class="wirenum" x="270" y="414" data-wire="223">223</text>
-    <path id="w222" class="wire" d="M260,420 V600" data-wire="222" data-tip="Пр. 222"/>
-    <text class="wirenum" x="270" y="500" data-wire="222">222</text>
-    <path id="w216" class="wire" d="M260,600 V860" data-wire="216" data-tip="Пр. 216 → ШМ"/>
-    <text class="wirenum" x="270" y="700" data-wire="216">216</text>
-
-    <!-- Клон 2: ПД верига (413, 414) -->
-    <path id="w413" class="wire" d="M380,280 V320" data-wire="413" data-tip="Пр. 413 — КМ(0поз) → ПД"/>
-    <text class="wirenum" x="390" y="300" data-wire="413">413</text>
-    <path id="w414" class="wire" d="M380,360 V380" data-wire="414" data-tip="Пр. 414 — ПД → СП"/>
-    <text class="wirenum" x="390" y="374" data-wire="414">414</text>
-
-    <!-- Клон 2: РДМ3 → БПД (353) -->
-    <path id="w353" class="wire" d="M380,424 V445" data-wire="353" data-tip="Пр. 353 — РДМ3 → БПД"/>
-    <text class="wirenum" x="390" y="438" data-wire="353">353</text>
-
-    <!-- Клон 2: КМН верига (349, 356, 352) -->
-    <path id="w349" class="wire" d="M380,560 V580" data-wire="349" data-tip="Пр. 349 — БПД → КМН"/>
-    <text class="wirenum" x="390" y="574" data-wire="349">349</text>
-    <path id="w356" class="wire" d="M680,334 V380" data-wire="356" data-tip="Пр. 356 — КТН aux → ОМН"/>
-    <text class="wirenum" x="690" y="358" data-wire="356">356</text>
-    <path id="w352" class="wire" d="M680,404 V450" data-wire="352" data-tip="Пр. 352 — ОМН → БПД"/>
-    <text class="wirenum" x="690" y="428" data-wire="352">352</text>
-
-    <!-- Клон 2: МР6 верига (255) -->
-    <path id="w255" class="wire" d="M560,204 V230" data-wire="255" data-tip="Пр. 255 — КМН → МР6"/>
-    <text class="wirenum" x="570" y="220" data-wire="255">255</text>
-
-    <!-- Клон 3: Д/ВП7 верига (253, 256, 258) -->
-    <path id="w253" class="wire" d="M680,264 V310" data-wire="253" data-tip="Пр. 253 — КМН → РУ9"/>
-    <text class="wirenum" x="690" y="290" data-wire="253">253</text>
-    <path id="w256" class="wire" d="M680,404 V430" data-wire="256" data-tip="Пр. 256 — КМН aux → РУ9 н.з."/>
-    <text class="wirenum" x="700" y="420" data-wire="256">256</text>
-    <path id="w258" class="wire" d="M680,474 V500" data-wire="258" data-tip="Пр. 258 — РУ9 → 105"/>
-    <text class="wirenum" x="690" y="490" data-wire="258">258</text>
-
-    <!-- Клон 4: СВ верига (927, 930) -->
-    <path id="w927" class="wire" d="M880,100 V130" data-wire="927" data-tip="Пр. 927 — А2 → СПД"/>
-    <text class="wirenum" x="890" y="118" data-wire="927">927</text>
-    <path id="w930" class="wire" d="M880,210 V250" data-wire="930" data-tip="Пр. 930 — Д контакт → Ш20"/>
-    <text class="wirenum" x="890" y="234" data-wire="930">930</text>
-
-    <!-- Клон 5: РУ9/РУ10 (250) -->
-    <path id="w250" class="wire" d="M1000,184 V220" data-wire="250" data-tip="Пр. 250 — РДМ4 → РУ9/РУ10"/>
-    <text class="wirenum" x="1010" y="204" data-wire="250">250</text>
-
-    <!-- Клон 6: КРН верига (342, 226) -->
-    <path id="w342" class="wire" d="M1200,100 V130" data-wire="342" data-tip="Пр. 342 — КТН → РУ9"/>
-    <text class="wirenum" x="1210" y="118" data-wire="342">342</text>
-    <path id="w226" class="wire" d="M1200,130 V160" data-wire="226" data-tip="Пр. 226 — РУ9 → КРН"/>
-    <text class="wirenum" x="1210" y="148" data-wire="226">226</text>
-
-  </g>
-</svg></div>
-
-        <div class="legend" id="legend">
-          <h4 id="legendTitle">Условни означения</h4>
-        </div>
-
-        <aside class="drawer" id="drawer">
-          <h3 id="drawerTitle">Стъпка 0 — Изходно състояние</h3>
-          <div id="drawerText"></div>
-        </aside>
-
-        <div class="hint">Колелце — мащаб · влачене — панорамиране · клик върху апарат — карта</div>
-
-        <div class="zoom-controls">
-          <button id="btnZoomIn" title="Увеличи">+</button>
-          <button id="btnZoomOut" title="Намали">−</button>
-          <button class="btn-reset" id="btnResetView" title="Нулиране на изгледа">Нулеглед</button>
-        </div>
-
-        <div class="stepbar">
-          <div class="step-info">
-            <div class="step-label" id="stepLabel"></div>
-            <div class="step-track"><div class="step-fill" id="stepProgress"></div></div>
-          </div>
-          <div class="controls">
-            <button id="btnPrev" disabled>‹ Предишна стъпка</button>
-            <button id="btnPlay" class="primary">Автовъзпроизвеждане</button>
-            <button id="btnNext">Следваща стъпка ›</button>
-          </div>
-        </div>
+    <section class="mb-5 flex flex-col gap-4 rounded-2xl border border-slate-700/80 bg-slate-900/70 p-3 shadow-2xl shadow-black/10 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-wrap items-center gap-2" id="levelFilters" role="group" aria-label="Фильтр по уровню">
+        <button class="focus-ring rounded-xl bg-amber-400 px-4 py-2 text-sm font-bold text-slate-950" data-level="all">Все</button>
+        <button class="focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white" data-level="A2">A2</button>
+        <button class="focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white" data-level="B1">B1</button>
+        <button class="focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white" data-level="B2">B2</button>
+        <button class="focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white" data-level="C1-C2">C1–C2 PRO</button>
       </div>
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center"><label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/50 px-3 py-2"><span class="text-slate-500">⌕</span><input id="searchInput" class="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-600 sm:w-48" type="search" placeholder="Поиск BG или RU" aria-label="Поиск по карточкам"></label><div class="flex items-center gap-3 px-2 text-sm text-slate-400"><span id="cardCounter">Карта 1 из 500</span><span class="h-1 w-1 rounded-full bg-slate-600"></span><span id="contextLabel">Быт</span></div></div>
+    </section>
 
-      <aside class="info-panel" id="infoPanel"></aside>
-    </div>
+    <section class="scene mx-auto max-w-4xl" aria-live="polite">
+      <div id="card" class="card-inner relative min-h-[520px] cursor-pointer" tabindex="0" role="button" aria-label="Карточка. Нажмите, чтобы перевернуть">
+        <article class="card-face absolute inset-0 overflow-hidden rounded-[2rem] border border-slate-700 bg-slate-800 shadow-2xl shadow-black/30">
+          <div class="relative h-44 overflow-hidden sm:h-56"><img id="cardImage" class="h-full w-full object-cover opacity-80" src="" alt="Тематическое изображение карточки" loading="eager"><div class="absolute inset-0 bg-gradient-to-b from-slate-950/10 via-slate-900/20 to-slate-800"></div></div>
+          <div class="absolute left-5 top-5 flex items-center gap-2"><span id="levelBadge" class="rounded-lg bg-amber-400 px-3 py-1 text-xs font-black text-slate-950">A2</span><span class="rounded-lg border border-white/20 bg-slate-950/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur">BG → RU</span></div>
+          <div class="flex flex-col items-center px-6 py-9 text-center sm:py-11"><p class="mb-3 text-sm font-semibold text-slate-400" id="frontPos">съществително име, ср.р.</p><h2 id="termBg" class="text-4xl font-black tracking-tight text-white sm:text-6xl">Пътешествие</h2><p id="ipa" class="mt-3 font-mono text-sm text-amber-300">pŭ-teshestviye</p><button id="speakFront" class="focus-ring mt-7 inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-5 py-3 text-sm font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950" type="button"><span class="text-lg">◖))</span> Слушать слово</button><p class="mt-7 text-xs text-slate-500">Нажмите на карточку, чтобы открыть перевод</p></div>
+        </article>
+        <article class="card-face card-back absolute inset-0 overflow-hidden rounded-[2rem] border border-amber-400/30 bg-slate-800 p-6 shadow-2xl shadow-black/30 sm:p-10"><div class="flex h-full flex-col"><div class="flex items-center justify-between"><span class="text-xs font-bold uppercase tracking-[.2em] text-amber-400">Перевод и контекст</span><span id="backLevel" class="rounded-lg border border-amber-400/30 px-3 py-1 text-xs font-bold text-amber-300">A2</span></div><h2 id="termRu" class="mt-8 text-3xl font-black text-white sm:text-5xl">Путешествие</h2><div class="my-7 h-px bg-slate-700"></div><div class="space-y-5"><div><p class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Пример</p><p id="exampleBg" class="text-lg font-semibold leading-8 text-slate-100">Това пътешествие промени живота ми.</p><p id="exampleRu" class="mt-1 leading-7 text-slate-400">Это путешествие изменило мою жизнь.</p></div><div><p class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Толкование</p><p id="desc" class="leading-7 text-slate-300">Движение или поездка с познавательной или развлекательной целью.</p></div></div><div class="mt-auto rounded-xl border border-slate-700 bg-slate-900/60 p-4"><p class="text-xs font-bold uppercase tracking-widest text-amber-400">Сфера</p><p id="backContext" class="mt-1 text-sm text-slate-300">Разговорный</p></div></div></article>
+      </div>
+    </section>
 
-    <div class="emergency" id="emergencyPanel">
-      <h3>⚠ Аварийни премички и неизправности</h3>
-      <select id="emergencySelect"></select>
-      <div id="emergencyBody"></div>
-    </div>
+    <div id="ttsWarning" class="mx-auto mt-4 hidden max-w-4xl rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-200" role="alert"></div>
+    <div id="emptyState" class="mx-auto mt-8 hidden max-w-xl rounded-2xl border border-slate-700 bg-slate-800 p-8 text-center text-slate-400">Для этого фильтра пока нет карточек.</div>
+
+    <nav class="mx-auto mt-6 flex max-w-4xl flex-col gap-3 sm:flex-row" aria-label="Навигация по карточкам">
+      <button id="prev" class="focus-ring flex-1 rounded-xl border border-slate-700 bg-slate-800 px-5 py-4 font-bold text-slate-300 hover:border-slate-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-40">← Назад</button>
+      <button id="listen" class="focus-ring flex-1 rounded-xl border border-amber-400/50 bg-amber-400 px-5 py-4 font-black text-slate-950 hover:bg-amber-300">◖)) &nbsp; Слушать</button>
+      <button id="shuffle" class="focus-ring flex-1 rounded-xl border border-slate-700 bg-slate-800 px-5 py-4 font-bold text-slate-300 hover:border-amber-400/60 hover:text-white">⤨ Случайная карта</button>
+      <button id="next" class="focus-ring flex-1 rounded-xl border border-slate-700 bg-slate-800 px-5 py-4 font-bold text-slate-300 hover:border-slate-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-40">Вперед →</button>
+    </nav>
+    <p class="mt-5 text-center text-xs text-slate-500">Клик по карточке — переворот · Пробел — переворот · ← → — навигация</p>
   </main>
 
-  <div id="tooltip"></div>
-  <div id="toast"></div>
+  <main id="verbMode" class="module-hidden mx-auto max-w-6xl px-5 pb-14 lg:px-8">
+    <section class="mb-8 max-w-3xl"><p class="mb-3 text-xs font-bold uppercase tracking-[.25em] text-amber-400">Verb engine · Bulgarian grammar</p><h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Глаголи и <span class="text-slate-400">времена.</span></h1><p class="mt-5 max-w-2xl text-base leading-7 text-slate-400">Спряжение, девять времён и живые примеры для ключевых болгарских глаголов.</p></section>
+    <section class="mb-5 flex flex-col gap-4 rounded-2xl border border-slate-700/80 bg-slate-900/70 p-4 shadow-2xl shadow-black/10 backdrop-blur sm:flex-row sm:items-center sm:justify-between"><label class="text-sm font-bold text-slate-300">Выберите глагол <select id="verbSelect" class="focus-ring ml-2 rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-white"></select></label><div class="flex items-center gap-3"><span id="verbInfinitive" class="text-2xl font-black text-amber-300">пиша</span><span id="verbTranslation" class="text-sm text-slate-400">писать</span></div></section>
+    <section class="mb-5 grid gap-4 md:grid-cols-[1fr_auto]">
+      <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4"><div class="flex flex-wrap gap-2" id="verbTabs" role="tablist"><button class="verb-tab is-active focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-tab="conjugation" role="tab">Спряжение</button><button class="verb-tab focus-ring rounded-xl px-4 py-2 text-sm font-bold text-slate-400 hover:bg-slate-800 hover:text-white" data-tab="tenses" role="tab">9 времён</button><button class="verb-tab focus-ring rounded-xl px-4 py-2 text-sm font-bold text-slate-400 hover:bg-slate-800 hover:text-white" data-tab="rules" role="tab">Правила</button></div><div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-400"><span id="verbIpa">pi-sha</span><span class="h-1 w-1 rounded-full bg-slate-600"></span><span id="verbType">I спряжение</span></div></div>
+      <div class="flex flex-col gap-2"><button id="speakConjugation" class="focus-ring rounded-2xl border border-amber-400/50 bg-amber-400 px-5 py-4 text-sm font-black text-slate-950 hover:bg-amber-300">◖)) Озвучить все спряжения</button><button id="quizToggle" class="focus-ring rounded-2xl border border-sky-400/50 bg-sky-400/10 px-5 py-4 text-sm font-black text-sky-300 hover:bg-sky-400 hover:text-slate-950">✦ Мини-викторина</button></div>
+    </section>
+    <section id="verbPanel" class="rounded-2xl border border-slate-700 bg-slate-900/70 p-5 shadow-2xl shadow-black/10"></section>
+    <section id="quizPanel" class="module-hidden rounded-2xl border border-sky-400/30 bg-slate-900/80 p-5 shadow-2xl shadow-sky-950/20"></section>
+    <div id="verbTtsWarning" class="mt-4 hidden rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-200" role="alert"></div>
+  </main>
 
-  <script src="app.js"></script>
+  <script>
+    const imagePool = [
+      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80'
+    ];
+    const sceneTemplates = [
+      { bg: 'Трябва да проверя {term} преди да тръгна.', ru: 'Мне нужно проверить {ru} перед тем, как отправиться.', context: 'Быт / Поездки' },
+      { bg: 'Не разбрах напълно какво означава „{term}“ в този разговор.', ru: 'Я не до конца понял, что означает «{ru}» в этом разговоре.', context: 'Разговорный' },
+      { bg: 'В документа „{term}“ е посочено като задължително условие.', ru: 'В документе «{ru}» указано как обязательное условие.', context: 'Официальная речь' },
+      { bg: 'Екипът обсъди {term} по време на работната среща.', ru: 'Команда обсудила {ru} во время рабочего совещания.', context: 'Работа / Бизнес' },
+      { bg: 'Инженерът описа ролята на {term} в техническия отчет.', ru: 'Инженер описал роль понятия «{ru}» в техническом отчёте.', context: 'Технический / Нормативный' }
+    ];
+    const makeCards = (level, words, context, pos = 'съществително име, ср.р.') => words.map((word, wordIndex) => {
+      const scene = word.scene || sceneTemplates[wordIndex % sceneTemplates.length];
+      const term = word.bg;
+      return { id: 0, level, term_bg: term, ipa: word.ipa || term.split(' ').join('-'), pos: word.pos || pos, term_ru: word.ru, example_bg: scene.bg.replaceAll('{term}', term), example_ru: scene.ru.replaceAll('{ru}', word.ru), desc: word.desc, context: scene.context || context, img: word.img || imagePool[wordIndex % imagePool.length] };
+    });
+    const definitions = {
+      билет: 'Документ или електронен код, който дава право на пътуване или посещение.', багаж: 'Лични вещи, пренасяни при пътуване.', летище: 'Транспортен обект с писти, терминали и съоръжения за самолети.', гара: 'Място за спиране, обслужване и отпътуване на влакове.', хотел: 'Сграда, която предлага стаи и услуги за временно настаняване.', стая: 'Отделно помещение в жилище, хотел или друга сграда.', закуска: 'Храна, която се приема обикновено в началото на деня.', ресторант: 'Заведение, в което се приготвя и сервира храна.', сметка: 'Документ с посочени стоки, услуги и дължимата сума.', магазин: 'Търговски обект за продажба на стоки.', пазар: 'Място или система, в която се купуват и продават стоки.', улица: 'Път в населено място, предназначен за движение и достъп до сгради.', площад: 'Открито градско пространство, обикновено за срещи и обществени събития.', автобус: 'Пътно превозно средство за превоз на много пътници.', влак: 'Състав от вагони, теглени от локомотив.', такси: 'Автомобил с шофьор, който превозва пътници срещу заплащане.', карта: 'Схематично или цифрово изображение на местност, маршрут или обект.', адрес: 'Данни за местоположението на жилище, сграда или организация.', телефон: 'Устройство или номер за осъществяване на гласова или цифрова връзка.', съобщение: 'Кратък текст, изпратен до друг човек или група.', среща: 'Уговорено събиране на хора на определено място и време.', време: 'Продължителност или момент, в който се случва нещо.', времето: 'Състоянието на атмосферата в даден момент и място.', дъжд: 'Валеж от водни капки, падащи от облаците.', слънце: 'Звездата, която осветява и затопля Земята.',
+      работа: 'Дейност, извършвана срещу възнаграждение или за постигане на определен резултат.', задача: 'Конкретна работа или проблем, който трябва да бъде изпълнен или решен.', проект: 'Планирана съвкупност от дейности с цел, срок и очакван резултат.', екип: 'Група хора, които работят координирано за обща цел.', решение: 'Избран начин за действие или отговор на проблем.', опит: 'Знания и умения, придобити чрез практическа дейност.', умение: 'Способност да се изпълнява действие качествено.', цел: 'Резултатът, към който са насочени действията.', план: 'Предварително подредена програма от действия.', срок: 'Определен момент или период, до който трябва да се изпълни нещо.', договор: 'Споразумение между страни, което поражда права и задължения.', клиент: 'Лице или организация, която купува стока или използва услуга.', услуга: 'Дейност, извършена в полза на друг срещу определено възнаграждение.', причина: 'Обстоятелство, което поражда дадено действие или събитие.', резултат: 'Полученият ефект или изход от действие, процес или работа.', промяна: 'Преминаване от едно състояние в друго.', възможност: 'Условие или шанс за извършване на действие.', избор: 'Решение между две или повече алтернативи.', въпрос: 'Формулирано искане за информация или отговор.', отговор: 'Дума или изказване, с което се реагира на въпрос.', отношение: 'Начинът, по който човек възприема или третира някого или нещо.', доверие: 'Убеждение, че някой е честен, надежден или способен.', мнение: 'Лично становище или оценка по даден въпрос.', разговор: 'Общуване чрез последователен обмен на реплики.', история: 'Разказ за събития или последователност от случки.', навик: 'Утвърден начин на действие, който се повтаря редовно.', пътуване: 'Придвижване до друго място, обикновено с определена цел.',
+      анализ: 'Методично изследване на съставни части, данни или явления.', система: 'Съвкупност от взаимосвързани елементи, които образуват едно цяло.', процес: 'Последователност от действия или промени, водещи до резултат.', ресурс: 'Наличен източник, който може да бъде използван за определена цел.', качество: 'Степен, в която продукт или услуга отговаря на изискванията.', сигурност: 'Състояние, при което рисковете са предотвратени или ограничени.', данни: 'Факти и стойности, представени във форма, подходяща за обработка.', мрежа: 'Свързана група от устройства, лица или структури.', устройство: 'Технически предмет, предназначен да изпълнява определена функция.', двигател: 'Механизъм, който преобразува енергия в механично движение.', енергия: 'Способност на система или тяло да извършва работа.', материал: 'Вещество, използвано за изработване на продукт или конструкция.', производство: 'Процес на създаване на стоки или извършване на промишлена дейност.', доставка: 'Пренасяне и предаване на стоки до определен получател.', поръчка: 'Заявка за изработване, доставка или предоставяне на нещо.', инвестиция: 'Влагане на средства с очакване за бъдеща полза или доход.', бюджет: 'План за очакваните приходи и разходи за определен период.', приход: 'Парични средства, получени от дейност или продажба.', разход: 'Изразходвана сума или ресурс.', стратегия: 'Дългосрочен план за постигане на важна цел.', показател: 'Измерима величина, чрез която се оценява състояние или резултат.', ефективност: 'Съотношение между постигнатия резултат и използваните ресурси.', натоварване: 'Количество работа или сила, приложена към система или елемент.', въздействие: 'Промяна, причинена от действие, фактор или решение.', устойчивост: 'Способност да се запази функционирането при промени и натоварване.',
+      регламент: 'Официален набор от правила, който урежда определена дейност.', съответствие: 'Изпълнение на установено изискване, стандарт или норматив.', норматив: 'Правило или документ, който определя задължителна норма.', изискване: 'Условие, което трябва да бъде изпълнено.', сертификация: 'Процедура за официално потвърждаване на съответствие.', одит: 'Систематична проверка на документи, процеси или финансови записи.', отговорност: 'Задължение да се носи последица за действие или бездействие.', компетентност: 'Съвкупност от знания и умения за качествено изпълнение на задача.', параметър: 'Величина или характеристика, която описва състоянието на система.', конфигурация: 'Начинът, по който са подредени и настроени елементите на система.', интерфейс: 'Средство за взаимодействие между човек, програма или технически системи.', протокол: 'Установена процедура или формат за обмен на данни и действия.', алгоритъм: 'Крайна последователност от правила за решаване на задача.', архитектура: 'Структура и принципи на изграждане на сложна система.', инфраструктура: 'Съвкупност от базови обекти и средства, осигуряващи дейност.', калибриране: 'Сравняване и настройване на измервателен уред спрямо еталон.', диагностика: 'Установяване на причините за повреда или отклонение.', поддръжка: 'Дейности за запазване на работоспособността на техника или система.', експлоатация: 'Използване на технически обект според предназначението му.', локомотив: 'Железопътно превозно средство, което задвижва влаков състав.', стрелоуловител: 'Устройство, което задържа или спира подвижната част на стрелочен механизъм.', 'железопътен състав': 'Съвкупност от локомотив и вагони, движещи се като един влак.', 'пропускателна способност': 'Максималният обем движение или данни за единица време.', 'безопасност на движението': 'Състояние, при което рискът от произшествия е контролиран.', непротиворечивост: 'Липса на логически несъвместими твърдения или данни.', взаимозаменяемост: 'Способност на елементи да се заменят без загуба на функция.', доказателство: 'Факт или документ, който потвърждава твърдение.', методология: 'Система от принципи и методи за извършване на изследване или дейност.', конфиденциалност: 'Задължение информацията да не се разкрива на неупълномощени лица.', 'устойчиво развитие': 'Развитие, съчетаващо икономически, социални и екологични цели.'
+    };
+    const makeWord = (bg, ru, level, pos, ipa) => ({ bg, ru, pos, ipa, desc: definitions[bg] || `Терминът „${bg}“ се използва в контекст, свързан с ${ru}.` });
+    const buildWords = (items, level, pos = 'съществително име, ср.р.') => items.map((item, i) => makeWord(item.bg, item.ru, level, item.pos || pos, item.ipa || item.bg.split(' ').join('-')));
+    const a2Words = buildWords('билет|багаж|летище|гара|хотел|стая|закуска|ресторант|сметка|магазин|пазар|улица|площад|автобус|влак|такси|карта|адрес|телефон|съобщение|среща|време|времето|дъжд|слънце'.split('|').map((bg, i) => ({ bg, ru: ['билет','багаж','аэропорт','вокзал','отель','комната','завтрак','ресторант','счёт','магазин','рынок','улица','площадь','автобус','поезд','такси','карта','адрес','телефон','сообщение','встреча','время','погода','дождь','солнце'][i] })), 'A2');
+    const b1Words = buildWords('работа|задача|проект|екип|среща|решение|опит|умение|цел|план|срок|почивка|заплата|договор|клиент|услуга|причина|резултат|промяна|възможност|избор|въпрос|отговор|отношение|доверие|мнение|разговор|история|навик|пътуване'.split('|').map((bg, i) => ({ bg, ru: ['работа','задача','проект','команда','встреча','решение','опыт','навык','цель','план','срок','отдых','зарплата','договор','клиент','услуга','причина','результат','изменение','возможность','выбор','вопрос','ответ','отношение','доверие','мнение','разговор','история','привычка','путешествие'][i] })), 'B1');
+    const b2Words = buildWords('анализ|система|процес|ресурс|качество|сигурност|данни|мрежа|устройство|двигател|енергия|материал|производство|доставка|поръчка|пазар|инвестиция|бюджет|приход|разход|стратегия|показател|ефективност|натоварване|въздействие|устойчивост'.split('|').map((bg, i) => ({ bg, ru: ['анализ','система','процесс','ресурс','качество','безопасность','данные','сеть','устройство','двигатель','энергия','материал','производство','поставка','заказ','рынок','инвестиция','бюджет','доход','расход','стратегия','показатель','эффективность','нагрузка','воздействие','устойчивость'][i] })), 'B2');
+    const proWords = buildWords('регламент|съответствие|норматив|изискване|сертификация|одит|отговорност|компетентност|параметър|конфигурация|интерфейс|протокол|алгоритъм|архитектура|инфраструктура|калибриране|диагностика|поддръжка|експлоатация|локомотив|стрелоуловител|железопътен състав|пропускателна способност|безопасност на движението|непротиворечивост|взаимозаменяемост|доказателство|методология|конфиденциалност|устойчиво развитие'.split('|').map((bg, i) => ({ bg, ru: ['регламент','соответствие','норматив','требование','сертификация','аудит','ответственность','компетентность','параметр','конфигурация','интерфейс','протокол','алгоритм','архитектура','инфраструктура','калибровка','диагностика','обслуживание','эксплуатация','локомотив','стрелоулавливатель','железнодорожный состав','пропускная способность','безопасность движения','непротиворечивость','взаимозаменяемость','доказательство','методология','конфиденциальность','устойчивое развитие'][i] })), 'C1-C2');
+    const cardsData = [...makeCards('A2', a2Words, 'Быт / Поездки'), ...makeCards('B1', b1Words, 'Работа / Разговорный'), ...makeCards('B2', b2Words, 'Техника / Бизнес'), ...makeCards('C1-C2', proWords, 'Регламенты / Транспорт')].map((card, i) => ({ ...card, id: i + 1 }));
+    const storageKey = 'lexiconBgViewed';
+    let viewed = new Set();
+    try { viewed = new Set(JSON.parse(window.localStorage.getItem(storageKey) || '[]')); } catch (error) { viewed = new Set(); }
+    const $ = id => document.getElementById(id);
+    let activeLevel = 'all', query = '', filtered = [...cardsData], index = 0, flipped = false;
+    function render() {
+      const item = filtered[index];
+      $('emptyState').classList.toggle('hidden', Boolean(item)); $('card').classList.toggle('hidden', !item);
+      if (!item) { $('cardCounter').textContent = 'Нет карточек'; return; }
+      viewed.add(item.id); try { window.localStorage.setItem(storageKey, JSON.stringify([...viewed])); } catch (error) { /* Private browsing may block storage. */ }
+      $('cardCounter').textContent = `Карта ${index + 1} из ${filtered.length}`; $('contextLabel').textContent = `${item.context} · просмотрено ${viewed.size}`;
+      $('levelBadge').textContent = item.level; $('backLevel').textContent = item.level; $('termBg').textContent = item.term_bg; $('ipa').textContent = item.ipa; $('frontPos').textContent = item.pos; $('termRu').textContent = item.term_ru; $('exampleBg').textContent = item.example_bg; $('exampleRu').textContent = item.example_ru; $('desc').textContent = item.desc; $('backContext').textContent = item.context; $('cardImage').src = item.img; $('cardImage').alt = `Илюстрация: ${item.term_bg}`;
+      $('prev').disabled = index === 0; $('next').disabled = index === filtered.length - 1;
+    }
+    function flip() { if (!filtered.length) return; flipped = !flipped; $('card').classList.toggle('is-flipped', flipped); $('card').setAttribute('aria-label', flipped ? 'Карточка перевёрнута. Нажмите, чтобы показать болгарское слово' : 'Карточка. Нажмите, чтобы показать перевод'); }
+    function speak() { if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { showWarning('Озвучка недоступна: этот браузер не поддерживает Web Speech API.'); return; } const utterance = new SpeechSynthesisUtterance(filtered[index].term_bg); utterance.lang = 'bg-BG'; utterance.rate = 0.85; const voices = speechSynthesis.getVoices(); const bgVoice = voices.find(voice => voice.lang.toLowerCase().startsWith('bg')); if (voices.length && !bgVoice) showWarning('Болгарский голос не найден. Браузер использует голос по умолчанию.'); speechSynthesis.cancel(); speechSynthesis.speak(utterance); }
+    let warningTimer; function showWarning(message) { $('ttsWarning').textContent = message; $('ttsWarning').classList.remove('hidden'); clearTimeout(warningTimer); warningTimer = setTimeout(() => $('ttsWarning').classList.add('hidden'), 6000); }
+    function move(step) { if (!filtered.length) return; index = Math.max(0, Math.min(filtered.length - 1, index + step)); flipped = false; $('card').classList.remove('is-flipped'); render(); }
+    function applyFilters() { filtered = cardsData.filter(item => (activeLevel === 'all' || item.level === activeLevel) && `${item.term_bg} ${item.term_ru}`.toLocaleLowerCase('ru').includes(query.toLocaleLowerCase('ru'))); index = 0; flipped = false; $('card').classList.remove('is-flipped'); render(); }
+    function currentVerb() { return verbsData.find(verb => verb.id === selectedVerbId) || verbsData[0]; }
+    function speakText(text) {
+      if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { $('verbTtsWarning').textContent = 'Озвучка недоступна: браузер не поддерживает Web Speech API.'; $('verbTtsWarning').classList.remove('hidden'); return; }
+      const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'bg-BG'; utterance.rate = 0.85; speechSynthesis.speak(utterance);
+    }
+    function renderVerbPanel() {
+      const verb = currentVerb(); $('verbInfinitive').textContent = verb.verb_bg; $('verbTranslation').textContent = verb.translation_ru; $('verbIpa').textContent = verb.ipa; $('verbType').textContent = verb.type;
+      if (activeVerbTab === 'conjugation') {
+        $('verbPanel').innerHTML = `<div class="mb-4 flex items-center justify-between gap-3"><div><h2 class="text-xl font-black text-white">Сегашно време</h2><p class="mt-1 text-sm text-slate-400">Настоящее время · кликните по форме для озвучки</p></div><span class="rounded-lg border border-slate-700 px-3 py-1 text-xs font-bold text-amber-300">${verb.ipa}</span></div><div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">${Object.entries(verb.conjugation_present).map(([key, form]) => `<button class="focus-ring flex items-center justify-between rounded-xl border border-slate-700 bg-slate-800 p-4 text-left hover:border-amber-400/60" data-speak="${form.replaceAll('"', '&quot;')}"><span><span class="block text-xs font-bold uppercase tracking-widest text-slate-500">${verbLabels[key]}</span><strong class="mt-1 block text-lg text-white">${form}</strong></span><span class="text-amber-400">◖))</span></button>`).join('')}</div>`;
+      } else if (activeVerbTab === 'tenses') {
+        $('verbPanel').innerHTML = `<div class="mb-5"><h2 class="text-xl font-black text-white">Девет глаголни времена</h2><p class="mt-1 text-sm text-slate-400">Каждое предложение связано с глаголом „${verb.verb_bg}“.</p></div><div class="grid gap-3">${verb.tenses.map(item => `<article class="rounded-xl border border-slate-700 bg-slate-800/70 p-4"><div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"><div><p class="text-xs font-bold uppercase tracking-widest text-amber-400">${item.tense}</p><p class="mt-2 text-lg font-bold text-white">${item.bg}</p><p class="mt-1 leading-6 text-slate-400">${item.ru}</p></div><button class="focus-ring shrink-0 rounded-lg border border-amber-400/40 px-3 py-2 text-sm font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950" data-speak="${item.bg.replaceAll('"', '&quot;')}">◖)) Слушать</button></div></article>`).join('')}</div>`;
+      } else {
+        $('verbPanel').innerHTML = `<div class="max-w-3xl"><p class="text-xs font-bold uppercase tracking-widest text-amber-400">Экспресс-правило</p><h2 class="mt-3 text-2xl font-black text-white">Как употреблять „${verb.verb_bg}“</h2><p class="mt-4 text-lg leading-8 text-slate-300">${verb.rule}</p><div class="mt-6 grid gap-3 sm:grid-cols-3"><div class="rounded-xl border border-slate-700 bg-slate-800 p-4"><p class="text-xs font-bold uppercase tracking-widest text-slate-500">Инфинитив</p><p class="mt-2 text-lg font-bold text-white">${verb.verb_bg}</p></div><div class="rounded-xl border border-slate-700 bg-slate-800 p-4"><p class="text-xs font-bold uppercase tracking-widest text-slate-500">Перевод</p><p class="mt-2 text-lg font-bold text-white">${verb.translation_ru}</p></div><div class="rounded-xl border border-slate-700 bg-slate-800 p-4"><p class="text-xs font-bold uppercase tracking-widest text-slate-500">Тип</p><p class="mt-2 text-lg font-bold text-white">${verb.type}</p></div></div></div>`;
+      }
+      $('verbPanel').querySelectorAll('[data-speak]').forEach(button => button.addEventListener('click', () => speakText(button.dataset.speak)));
+    }
+    function renderVerbSelect() { $('verbSelect').innerHTML = verbsData.map(verb => `<option value="${verb.id}">${verb.verb_bg} — ${verb.translation_ru}</option>`).join(''); $('verbSelect').value = selectedVerbId; }
+    function speakAllConjugations() { const verb = currentVerb(); if (!('speechSynthesis' in window)) { speakText(''); return; } speechSynthesis.cancel(); speechQueue = Object.values(verb.conjugation_present); let delay = 0; speechQueue.forEach(form => { setTimeout(() => speakText(form), delay); delay += 1200; }); }
+    function shuffleItems(items) { return [...items].sort(() => Math.random() - 0.5); }
+    function makeQuizQuestion() {
+      const verb = verbsData[Math.floor(Math.random() * verbsData.length)];
+      const type = Math.random() < 0.5 ? 'conjugation' : 'tense';
+      if (type === 'conjugation') {
+        const keys = Object.keys(verb.conjugation_present); const key = keys[Math.floor(Math.random() * keys.length)]; const correct = verb.conjugation_present[key];
+        const distractors = shuffleItems(verbsData.filter(item => item.id !== verb.id).map(item => item.conjugation_present[key])).slice(0, 3);
+        return { type, verb, prompt: `Как выглядит форма глагола „${verb.verb_bg}“ для «${verbLabels[key]}»?`, note: 'Сегашно време · правилната форма трябва да съвпадне с лицето.', correct, options: shuffleItems([correct, ...distractors]) };
+      }
+      const tense = verb.tenses[Math.floor(Math.random() * verb.tenses.length)]; const alternatives = shuffleItems(verbsData.filter(item => item.id !== verb.id).map(item => item.tenses.find(entry => entry.tense === tense.tense)?.bg).filter(Boolean)).slice(0, 3);
+      return { type, verb, prompt: `Кое изречение е в „${tense.tense}“ за глагола „${verb.verb_bg}“?`, note: 'Ориентир: търсете правилната комбинация от спомагателен глагол и форма.', correct: tense.bg, options: shuffleItems([tense.bg, ...alternatives]) };
+    }
+    function renderQuiz() {
+      const q = quizState.question; if (!q) return;
+      $('quizPanel').innerHTML = `<div class="flex flex-col gap-5"><div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-xs font-bold uppercase tracking-[.2em] text-sky-300">Exam mode · въпрос ${quizState.total + 1}</p><h2 class="mt-2 text-2xl font-black text-white">${q.prompt}</h2></div><div class="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-center"><span class="block text-xs uppercase tracking-widest text-slate-500">Резултат</span><strong class="text-xl text-amber-300">${quizState.score} / ${quizState.total}</strong></div></div><p class="rounded-xl border border-slate-700 bg-slate-800/70 px-4 py-3 text-sm leading-6 text-slate-300">${q.note}</p><div id="quizOptions" class="grid gap-3">${q.options.map((option, i) => `<button class="quiz-option focus-ring rounded-xl border border-slate-700 bg-slate-800 px-4 py-4 text-left font-semibold text-slate-200 hover:border-sky-400/70" data-option-index="${i}">${option}</button>`).join('')}</div><div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><button id="quizHint" class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-amber-400/60 bg-amber-400/10 px-5 py-3 text-sm font-black text-amber-300 hover:bg-amber-400 hover:text-slate-950" type="button">✦ Подсказка</button><button id="quizNext" class="focus-ring hidden rounded-xl bg-sky-400 px-5 py-3 text-sm font-black text-slate-950 hover:bg-sky-300" type="button">Следующий вопрос →</button></div><p id="quizFeedback" class="min-h-6 text-sm font-semibold"></p></div>`;
+      $('quizPanel').querySelectorAll('[data-option-index]').forEach(button => button.addEventListener('click', () => answerQuiz(Number(button.dataset.optionIndex))));
+      $('quizHint').addEventListener('click', giveQuizHint); $('quizNext').addEventListener('click', nextQuizQuestion);
+    }
+    function answerQuiz(optionIndex) {
+      if (quizState.answered) return; const selected = quizState.question.options[optionIndex]; const correct = selected === quizState.question.correct; quizState.answered = true; quizState.total += 1; if (correct) quizState.score += 1;
+      $('quizPanel').querySelectorAll('[data-option-index]').forEach((button, index) => { const option = quizState.question.options[index]; if (option === quizState.question.correct) button.classList.add('is-correct'); else if (index === optionIndex) button.classList.add('is-wrong'); });
+      $('quizFeedback').textContent = correct ? 'Правильно. Отличная работа.' : `Почти. Правильный ответ: ${quizState.question.correct}`; $('quizFeedback').className = `min-h-6 text-sm font-semibold ${correct ? 'text-emerald-300' : 'text-rose-300'}`; $('quizNext').classList.remove('hidden'); $('quizHint').disabled = true; $('quizHint').classList.add('opacity-40');
+    }
+    function giveQuizHint() { if (quizState.hintUsed || quizState.answered) return; quizState.hintUsed = true; const wrong = quizState.question.options.findIndex(option => option !== quizState.question.correct); quizState.hiddenOption = wrong; const button = $('quizPanel').querySelector(`[data-option-index="${wrong}"]`); if (button) { button.classList.add('is-muted'); button.textContent = 'Вариант исключён подсказкой'; } $('quizFeedback').textContent = quizState.question.type === 'conjugation' ? 'Подсказка: согласуйте окончание с лицето; форма для «Аз» часто отличается от формы для «Те».' : 'Подсказка: обратите внимание на помощните глаголи „съм“, „бях“, „ще“ и „щях“.'; $('quizFeedback').className = 'min-h-6 text-sm font-semibold text-amber-300'; }
+    function nextQuizQuestion() { quizState.question = makeQuizQuestion(); quizState.hintUsed = false; quizState.answered = false; quizState.hiddenOption = null; renderQuiz(); }
+    function startQuiz() { $('verbPanel').classList.add('module-hidden'); $('quizPanel').classList.remove('module-hidden'); $('quizToggle').textContent = '× Закрыть викторину'; quizState = { question: makeQuizQuestion(), score: 0, total: 0, hintUsed: false, answered: false, hiddenOption: null }; renderQuiz(); }
+    function closeQuiz() { $('quizPanel').classList.add('module-hidden'); $('verbPanel').classList.remove('module-hidden'); $('quizToggle').textContent = '✦ Мини-викторина'; }
+    function setVerbMode(isVerbMode) { $('lexiconMode').classList.toggle('module-hidden', isVerbMode); $('verbMode').classList.toggle('module-hidden', !isVerbMode); $('modeToggle').textContent = isVerbMode ? '← Словарь карточек' : 'Глаголи и времена'; if (isVerbMode) { renderVerbSelect(); renderVerbPanel(); } }
+    $('modeToggle').addEventListener('click', () => setVerbMode($('verbMode').classList.contains('module-hidden')));
+    $('verbSelect').addEventListener('change', event => { selectedVerbId = Number(event.target.value); activeVerbTab = 'conjugation'; document.querySelectorAll('.verb-tab').forEach(tab => tab.classList.toggle('is-active', tab.dataset.tab === activeVerbTab)); renderVerbPanel(); });
+    $('verbTabs').addEventListener('click', event => { const tab = event.target.closest('[data-tab]'); if (!tab) return; activeVerbTab = tab.dataset.tab; document.querySelectorAll('.verb-tab').forEach(item => item.classList.toggle('is-active', item === tab)); renderVerbPanel(); });
+    $('speakConjugation').addEventListener('click', speakAllConjugations);
+    $('quizToggle').addEventListener('click', () => $('quizPanel').classList.contains('module-hidden') ? startQuiz() : closeQuiz());
+    $('card').addEventListener('click', event => { if (!event.target.closest('button')) flip(); }); $('card').addEventListener('keydown', event => { if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); flip(); } }); $('speakFront').addEventListener('click', event => { event.stopPropagation(); speak(); }); $('listen').addEventListener('click', speak); $('prev').addEventListener('click', () => move(-1)); $('next').addEventListener('click', () => move(1));
+    $('shuffle').addEventListener('click', () => { if (!filtered.length) return; index = Math.floor(Math.random() * filtered.length); flipped = false; $('card').classList.remove('is-flipped'); render(); });
+    $('searchInput').addEventListener('input', event => { query = event.target.value.trim(); applyFilters(); });
+    $('levelFilters').addEventListener('click', event => { const button = event.target.closest('button'); if (!button) return; activeLevel = button.dataset.level; document.querySelectorAll('#levelFilters button').forEach(item => item.className = item === button ? 'focus-ring rounded-xl bg-amber-400 px-4 py-2 text-sm font-bold text-slate-950' : 'focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white'); applyFilters(); });
+    document.addEventListener('keydown', event => { if (event.target.matches('button, select, input')) return; if (event.key === 'ArrowLeft') move(-1); if (event.key === 'ArrowRight') move(1); });
+    render();
+  </script>
 </body>
 </html>
