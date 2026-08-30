@@ -1,6 +1,4 @@
 {
-  "version": 2,
-  "public": true,
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -8,13 +6,6 @@
       "source": "/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/schema.svg",
-      "headers": [
-        { "key": "Content-Type", "value": "image/svg+xml" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
