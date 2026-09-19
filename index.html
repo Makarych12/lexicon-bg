@@ -294,6 +294,11 @@
       .sl-scene.sl-enter, .sl-tab-anim, .sl-quiz-option.is-correct, .sl-quiz-option.is-wrong { animation: none !important; }
       .sl-scene:hover { transform: none; }
     }
+    .sl-alpha-grid { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); }
+    .sl-alpha-scene { height: 19rem; }
+    .sl-alpha-letter { font-size: 2.6rem; line-height: 1; font-weight: 900; letter-spacing: -.02em; background: linear-gradient(135deg, var(--sl-ink), var(--sl-accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sl-alpha-front { background: radial-gradient(circle at 80% 0%, var(--sl-accent-soft), transparent 45%), var(--sl-card); }
+    .sl-alpha-back .sl-example { overflow-y: auto; scrollbar-width: thin; }
   </style>
 </head>
 <body class="min-h-screen text-slate-100 antialiased aurora grain">
@@ -371,6 +376,16 @@
       </div>
     </section>
 
+    <div id="slViewSwitch" class="mb-5 flex flex-wrap gap-2" role="tablist" aria-label="Разделы словенского блока"><button class="sl-chip focus-ring is-active rounded-xl px-4 py-2 text-sm font-bold" data-view="verbs" role="tab">Глаголы</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="alphabet" role="tab">Алфавит и произношение</button></div>
+
+    <section id="slAlphaView" class="module-hidden">
+      <div class="mb-5 max-w-3xl"><p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Slovenska abeceda</p><h2 class="text-3xl font-black tracking-tight sm:text-4xl">25 букв латиницы</h2><p class="sl-muted mt-3 text-base leading-7">Три «шумника» с галочкой — č, š, ž — и ни одной буквы q, w, x, y. Читается почти как пишется: главное — ударение, долгота гласных и буквы l и v, которые в конце слова превращаются в [w]. Нажмите на карточку, чтобы увидеть пример и послушать.</p></div>
+      <div class="sl-panel mb-5 flex flex-wrap items-center gap-2 rounded-2xl p-3" id="slAlphaFilters" role="group" aria-label="Фильтр букв"><button class="sl-chip focus-ring is-active rounded-xl px-3 py-2 text-xs font-bold" data-alpha="all">Все</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-alpha="v">Гласные</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-alpha="c">Согласные</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-alpha="s">Šumniki č š ž</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-alpha="d">Сочетания</button></div>
+      <div id="slAlphaGrid" class="sl-alpha-grid" aria-live="polite"></div>
+      <div class="mt-8"><p class="sl-faint mb-3 text-xs font-bold uppercase tracking-widest">Шесть правил чтения</p><div id="slAlphaRules" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div></div>
+    </section>
+
+    <div id="slVerbsView">
     <section class="mb-5 grid gap-2 sm:grid-cols-5" id="slLevelTabs" role="tablist" aria-label="Уровни CEFR"></section>
 
     <section class="sl-panel mb-5 flex flex-col gap-3 rounded-2xl p-3 lg:flex-row lg:items-center lg:justify-between">
@@ -390,6 +405,7 @@
     <div id="slEmpty" class="sl-panel mx-auto mt-8 hidden max-w-xl rounded-2xl p-8 text-center sl-muted">Для этого фильтра пока нет глаголов.</div>
     <section id="slQuiz" class="sl-panel module-hidden rounded-2xl p-5"></section>
     <div id="slTtsWarning" class="mt-4 hidden rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-300" role="alert"></div>
+    </div>
     <p class="sl-faint mt-6 text-center text-xs">Клик по карточке — переворот · Вкладки внутри карточки: обзор, спряжение, примеры · Клик по форме — озвучка</p>
   </main>
 
@@ -545,7 +561,7 @@ poslúšati|🎧 🎵|слушать|n|poslušam|poslušal|poslušaj|glasbo|му
 védeti|💡 ✅|знать (что-л.)|n|vem,veš,ve,veva,vesta,vesta,vemo,veste,vedo|vedel|vedi|odgovor|ответ|Учёба|знаю|знают|знал|знали|буду знать|знай|nepravilni glagol: vem, veš, ve …, 3. os. mn. vedo/vejo
 hotéti|🍦 🤤|хотеть|n|hočem|hotel|-|sladoled|мороженое|Эмоции|хочу|хотят|хотел|хотели|захочу|-|zanikanje: nočem, nočeš, noče …
 móči|💪 🙋|мочь|n|morem|mogel/mog|-|pomagati|помочь|Общение|могу|могут|мог|могли|смогу|-|sedanjik morem (ne moči); zanikanje: ne morem
-mórati|📋 ⚠️|быть должным|n|moram|moral|-|delati|работать|Работа|должен|должны|должен был|должны были|буду должен|-|modalni glagol: moram + nedoločnik
+mórati|📋 ⚠️|быть должным|n|moram|moral|-|delati|работать|Работа|должен|должны|должен был|должны были|должен буду|-|modalni glagol: moram + nedoločnik
 kúpiti|🍞 🛒|купить|d|kupim|kupil|kupi|kruh|хлеб|Деньги|покупаю|покупают|купил|купили|куплю|купи|vidski par: kupiti (dov.) — kupovati (nedov.)
 kupováti|🥦 🧺|покупать|n|kupujem|kupoval|kupuj|zelenjavo|овощи|Деньги|покупаю|покупают|покупал|покупали|буду покупать|покупай|-ova- → -uje- (kupovati → kupujem)
 plačáti|💳 🧾|заплатить|d|plačam|plačal|plačaj|račun|счёт|Деньги|плачу|платят|заплатил|заплатили|заплачу|заплати
@@ -587,7 +603,7 @@ plávati|🏊 🌊|плавать|n|plavam|plaval|plavaj|v morju|в море|П�
 téči|🏃 🌳|бежать|n|tečem|tekel/tek|teci|po parku|по парку|Движение|бегу|бегут|бежал|бежали|буду бежать|беги|premena soglasnika: k → č (tek- → teč-), velelnik teci
 plésati|💃 🕺|танцевать|n|plešem|plesal|pleši|valček|вальс|Быт|танцую|танцуют|танцевал|танцевали|буду танцевать|танцуй|premena soglasnika: s → š (plesati → plešem)
 péti|🎤 🎶|петь|n|pojem|pel|poj|pesem|песню|Быт|пою|поют|пел|пели|буду петь|пой|sedanjik iz osnove poj-: pojem, deležnik pel
-vozíti|🚗 🛞|водить, возить|n|vozim|vozil|vozi|avto|машину|Движение|вожу|водят|водил|водили|буду водить|веди
+vozíti|🚗 🛞|водить, возить|n|vozim|vozil|vozi|avto|машину|Движение|вожу|водят|водил|водили|буду водить|води
 vozíti se|🚆 🎫|ехать (на транспорте)|n|vozim se|vozil se|vozi se|z vlakom|на поезде|Движение|еду|едут|ехал|ехали|буду ехать|поезжай|povratni glagol: voziti se = ехать (пассажиром)
 pripeljáti|🚙 👶|привезти, привести|d|pripeljem|pripeljal|pripelji|otroke|детей|Движение|привожу|привозят|привёз|привезли|привезу|привези
 odíti|🚶 🚪|уйти|d|odidem|odšel/odš|odidi|domov|домой|Движение|ухожу|уходят|ушёл|ушли|уйду|уходи|deležnik odšel/odšla (kot iti)
@@ -619,11 +635,11 @@ pošíljati|📮 ✉️|отправлять|n|pošiljam|pošiljal|pošiljaj|spo
 posláti|📦 🚚|отправить|d|pošljem|poslal|pošlji|paket|посылку|Общение|отправляю|отправляют|отправил|отправили|отправлю|отправь|premena soglasnika: sl → šlj (poslati → pošljem)
 dobíti|📬 ✉️|получить|d|dobim|dobil|dobi|pismo|письмо|Быт|получаю|получают|получил|получили|получу|получи
 nakupováti|🛍️ 🏬|делать покупки|n|nakupujem|nakupoval|nakupuj|v trgovini|в магазине|Деньги|делаю покупки|делают покупки|делал покупки|делали покупки|буду делать покупки|делай покупки|-ova- → -uje- (nakupovati → nakupujem)
-prodáti|🚲 💰|продать|d|prodam|prodal|prodaj|staro kolo|старый велосипед|Деньги|продаю|продают|продал|продали|продам|продай
+prodáti|🚲 💰|продать|d|prodam,prodaš,proda,prodava,prodasta,prodasta,prodamo,prodaste,prodajo|prodal|prodaj|staro kolo|старый велосипед|Деньги|продаю|продают|продал|продали|продам|продай|sprega se kot dati: prodam, prodaš, proda, prodava, prodasta …
 prodájati|🍎 💵|продавать|n|prodajam|prodajal|prodajaj|sadje|фрукты|Деньги|продаю|продают|продавал|продавали|буду продавать|продавай
 zaslúžiti|💰 📈|заработать|d|zaslužim|zaslužil|zasluži|dovolj denarja|достаточно денег|Деньги|зарабатываю|зарабатывают|заработал|заработали|заработаю|заработай
 varčeváti|🐖 💰|экономить, копить|n|varčujem|varčeval|varčuj|za dopust|на отпуск|Деньги|коплю|копят|копил|копили|буду копить|копи|-eva- → -uje- (varčevati → varčujem)
-potrebováti|📱 ✨|нуждаться|n|potrebujem|potreboval|-|nov telefon|новый телефон|Быт|мне нужен|им нужен|мне был нужен|им был нужен|мне будет нужен|-|-ova- → -uje- (potrebovati → potrebujem)
+potrebováti|📱 ✨|нуждаться (в чём-л.)|n|potrebujem|potreboval|-|nov telefon|в новом телефоне|Быт|нуждаюсь|нуждаются|нуждался|нуждались|буду нуждаться|-|-ova- → -uje- (potrebovati → potrebujem)
 uporábljati|💻 ⌨️|использовать|n|uporabljam|uporabljal|uporabljaj|računalnik|компьютер|Техника|использую|используют|использовал|использовали|буду использовать|используй
 vklópiti|💡 🔛|включить|d|vklopim|vklopil|vklopi|luč|свет|Техника|включаю|включают|включил|включили|включу|включи
 izklópiti|📺 🔴|выключить|d|izklopim|izklopil|izklopi|televizor|телевизор|Техника|выключаю|выключают|выключил|выключили|выключу|выключи
@@ -752,7 +768,7 @@ načrtováti|🗺️ 🗓️|планировать|n|načrtujem|načrtoval|nač
 organizírati|🗓️ 🎤|организовать|dv|organiziram|organiziral|organiziraj|konferenco|конференцию|Работа|организую|организуют|организовал|организовали|организую|организуй|dvovidski glagol (-irati)
 sodelováti|🤝 🧑‍💻|сотрудничать, участвовать|n|sodelujem|sodeloval|sodeluj|pri projektu|в проекте|Работа|участвую|участвуют|участвовал|участвовали|буду участвовать|участвуй|sodelovati pri + mestnik
 tekmováti|🏁 🏃|соревноваться|n|tekmujem|tekmoval|tekmuj|na prvenstvu|на чемпионате|Здоровье|соревнуюсь|соревнуются|соревновался|соревновались|буду соревноваться|соревнуйся
-zmágati|🏆 🗳️|победить|d|zmagam|zmagal|zmagaj|na volitvah|на выборах|Общество|побеждаю|побеждают|победил|победили|побежу|победи
+zmágati|🏆 🗳️|победить|d|zmagam|zmagal|zmagaj|na volitvah|на выборах|Общество|побеждаю|побеждают|победил|победили|одержу победу|победи
 izgúbljati|😤 ⏳|терять, проигрывать|n|izgubljam|izgubljal|-|potrpljenje|терпение|Эмоции|теряю|теряют|терял|теряли|буду терять|-
 dosêči|🎯 🏔️|достичь|d|dosežem|dosegel/doseg|dosezi|cilj|цели|Работа|достигаю|достигают|достиг|достигли|достигну|достигни|premena: g → ž (doseg- → dosež-), velelnik dosezi
 dosegáti|📈 🎯|достигать|n|dosegam|dosegal|dosegaj|dobre rezultate|хороших результатов|Работа|достигаю|достигают|достигал|достигали|буду достигать|достигай
@@ -775,7 +791,7 @@ domnévati|🌧️ 🤔|предполагать|n|domnevam|domneval|-|najslabš
 sklépati|🧮 💡|заключать, делать вывод|n|sklepam|sklepal|sklepaj|iz podatkov|из данных|Наука|делаю вывод|делают выводы|делал вывод|делали выводы|буду делать вывод|делай вывод
 opazíti|👀 ✨|заметить|d|opazim|opazil|-|spremembo|перемену|Эмоции|замечаю|замечают|заметил|заметили|замечу|-
 opazováti|🔭 🐦|наблюдать|n|opazujem|opazoval|opazuj|ptice|за птицами|Природа|наблюдаю|наблюдают|наблюдал|наблюдали|буду наблюдать|наблюдай|-ova- → -uje-
-prepričáti|🗣️ 🧑‍💼|убедить|d|prepričam|prepričal|prepričaj|stranko|клиента|Работа|убеждаю|убеждают|убедил|убедили|убежу|убеди
+prepričáti|🗣️ 🧑‍💼|убедить|d|prepričam|prepričal|prepričaj|stranko|клиента|Работа|убеждаю|убеждают|убедил|убедили|смогу убедить|убеди
 prepričeváti|💬 👥|убеждать|n|prepričujem|prepričeval|prepričuj|sodelavce|коллег|Работа|убеждаю|убеждают|убеждал|убеждали|буду убеждать|убеждай|-eva- → -uje-
 zavrníti|✋ 📄|отклонить, отказать|d|zavrnem|zavrnil|zavrni|ponudbo|предложение|Работа|отклоняю|отклоняют|отклонил|отклонили|отклоню|отклони|glagoli na -niti: sedanjik -nem
 spréjeti|📩 ✅|принять|d|sprejmem|sprejel|sprejmi|odločitev|решение|Работа|принимаю|принимают|принял|приняли|приму|прими|sedanjik sprejmem (vzeti-tip), deležnik sprejel
@@ -1186,6 +1202,87 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
       $('slQuizAgain').addEventListener('click', () => { quiz.index = 0; quiz.score = 0; quiz.mistakes = []; quiz.finished = false; quiz.total = 10; slNextQuestion(); });
       $('slQuizClose').addEventListener('click', slCloseQuiz);
     }
+    // ===== Словенский алфавит (abeceda): 25 букв + сочетания =====
+    // Поля: буква, IPA, название буквы, русское соответствие, пример (слово, IPA, перевод), тип (v — гласная, c — согласная, s — šumnik, d — сочетание), заметка
+    const slAlphabet = [
+      ['A a', '[a]', 'a', 'а', ['avto', '[ˈaːwtɔ]', 'автомобиль'], 'v', 'Под ударением долгое [aː], без ударения — краткое.'],
+      ['B b', '[b]', 'be', 'б', ['brat', '[ˈbraːt]', 'брат'], 'c', 'В конце слова оглушается: zob [zɔp] «зуб».'],
+      ['C c', '[ts]', 'ce', 'ц', ['cesta', '[ˈtseːsta]', 'дорога'], 'c', 'Всегда [ц], никогда не [к] и не [с].'],
+      ['Č č', '[tʃ]', 'če', 'ч (твёрже русского)', ['čas', '[ˈtʃaːs]', 'время'], 's', 'Один из трёх «шумников» (č, š, ž) — согласных с галочкой.'],
+      ['D d', '[d]', 'de', 'д', ['dan', '[ˈdaːn]', 'день'], 'c', 'В конце слова оглушается: grad [graːt] «замок».'],
+      ['E e', '[e] / [ɛ] / [ə]', 'e', 'э (закрытое или открытое)', ['pet', '[ˈpeːt]', 'пять'], 'v', 'Три звука: закрытое [e] (pet), открытое [ɛ] (sestra) и беглое [ə] (pes «пёс»). На письме не различаются.'],
+      ['F f', '[f]', 'ef', 'ф', ['film', '[ˈfiːlm]', 'фильм'], 'c', 'Встречается в основном в заимствованиях.'],
+      ['G g', '[ɡ]', 'ge', 'г', ['gora', '[ˈɡɔːra]', 'гора'], 'c', 'Всегда взрывное [г]; в конце слова оглушается: sneg [sneːk].'],
+      ['H h', '[x]', 'ha', 'х', ['hiša', '[ˈxiːʃa]', 'дом'], 'c', 'Читается как русское [х], а не как английское h.'],
+      ['I i', '[i]', 'i', 'и', ['igra', '[ˈiːɡra]', 'игра'], 'v', 'Согласные перед i не смягчаются: ti [ti], а не [ти].'],
+      ['J j', '[j]', 'je', 'й', ['jabolko', '[ˈjaːbɔwkɔ]', 'яблоко'], 'c', 'Сочетания ja, je, ju читаются как «я, е, ю».'],
+      ['K k', '[k]', 'ka', 'к', ['kruh', '[ˈkruːx]', 'хлеб'], 'c', 'Без придыхания.'],
+      ['L l', '[l] / [w]', 'el', 'л; в конце слова — [у̯]', ['leto', '[ˈleːtɔ]', 'год, лето'], 'c', 'В конце слова и перед согласной часто звучит как [w]: bil [biw] «был», delal [ˈdeːlaw].'],
+      ['M m', '[m]', 'em', 'м', ['mesto', '[ˈmeːstɔ]', 'город'], 'c', ''],
+      ['N n', '[n]', 'en', 'н', ['noč', '[ˈnoːtʃ]', 'ночь'], 'c', 'Перед k, g звучит как [ŋ]: banka [ˈbaːŋka].'],
+      ['O o', '[o] / [ɔ]', 'o', 'о (закрытое или открытое)', ['okno', '[ˈoːknɔ]', 'окно'], 'v', 'Закрытое [o] (nos «нос») и открытое [ɔ] (voda «вода»); без ударения не редуцируется в [а].'],
+      ['P p', '[p]', 'pe', 'п', ['pot', '[ˈpoːt]', 'путь'], 'c', 'Без придыхания.'],
+      ['R r', '[r]', 'er', 'р (раскатистое)', ['roka', '[ˈroːka]', 'рука'], 'c', 'Между согласными слогообразующее: vrt [vərt] «сад», trg [tərk] «площадь».'],
+      ['S s', '[s]', 'es', 'с', ['sonce', '[ˈsoːntsɛ]', 'солнце'], 'c', 'Всегда глухое [с], даже между гласными.'],
+      ['Š š', '[ʃ]', 'eš', 'ш (мягче русского)', ['šola', '[ˈʃoːla]', 'школа'], 's', 'Šumnik. Sestra «сестра» — без галочки, обычное [с].'],
+      ['T t', '[t]', 'te', 'т', ['trg', '[ˈtərk]', 'площадь'], 'c', 'Без придыхания.'],
+      ['U u', '[u]', 'u', 'у', ['ura', '[ˈuːra]', 'час, часы'], 'v', ''],
+      ['V v', '[ʋ] / [w]', 've', 'в; перед согласной — [у̯]', ['voda', '[ˈʋoːda]', 'вода'], 'c', 'Перед гласной — [ʋ]; перед согласной и в конце слова — [w]: vsak [wsaːk] «каждый», prav [praːw] «правильно».'],
+      ['Z z', '[z]', 'ze', 'з', ['zima', '[ˈziːma]', 'зима'], 'c', 'В конце слова оглушается: mraz [mraːs] «мороз».'],
+      ['Ž ž', '[ʒ]', 'že', 'ж (мягче русского)', ['žena', '[ˈʒeːna]', 'женщина, жена'], 's', 'Šumnik. В конце слова оглушается в [ʃ]: mož [moːʃ] «муж».'],
+      ['lj', '[lj] / [l]', 'el-je', 'ль', ['ljubezen', '[ljuˈbeːzən]', 'любовь'], 'd', 'Перед гласной — [lj]; в конце слова и перед согласной — просто [l]: kralj [kraːl] «король».'],
+      ['nj', '[nj] / [n]', 'en-je', 'нь', ['knjiga', '[ˈknjiːɡa]', 'книга'], 'd', 'Перед гласной — [nj]; в конце слова — [n]: konj [koːn] «конь».'],
+      ['dž', '[dʒ]', 'de-že', 'дж', ['džungla', '[ˈdʒuːŋɡla]', 'джунгли'], 'd', 'Только в заимствованиях (džez, džungla).'],
+      ['q w x y', '—', '—', 'нет в алфавите', ['taxi', '[ˈtaksi]', 'такси'], 'd', 'Этих букв в словенском алфавите нет — только в иностранных именах и заимствованиях.']
+    ];
+    const slAlphaTypes = { v: ['Гласная', 'sl-tag-n'], c: ['Согласная', 'sl-tag-group'], s: ['Šumnik', 'sl-tag-alt'], d: ['Сочетание', 'sl-tag-dv'] };
+    const slAlphaRules = [
+      ['Ударение', 'Может падать на любой слог и на письме не обозначается — запоминайте вместе со словом: délati, govoríti, potováti.'],
+      ['Долгота', 'Ударный гласный обычно долгий ([deːlati]), безударные — краткие. Безударные o и e не редуцируются, как в русском.'],
+      ['Оглушение', 'Звонкие b, d, g, z, ž в конце слова звучат глухо: zob [zɔp], grad [graːt], mož [moːʃ]. На письме сохраняется звонкая буква.'],
+      ['Буква v', 'Перед гласной — [ʋ] (voda), перед согласной и в конце слова — неслоговое [w]: vsi [wsi], nov [noːw].'],
+      ['Буква l', 'В конце слова и перед согласной чаще всего [w]: bil [biw], šel [ʃəw], delal [ˈdeːlaw] — это касается всех форм прошедшего времени на -l.'],
+      ['Мягкость', 'Согласные перед e и i не смягчаются: ne [nɛ], ti [ti], dan — den. Мягкие звуки передаются только сочетаниями lj, nj.']
+    ];
+    let slAlphaFilter = 'all';
+    function slAlphaCard([letter, ipa, name, ru, [word, wordIpa, wordRu], type, note], i) {
+      const [typeLabel, typeClass] = slAlphaTypes[type];
+      const speakLetter = letter.split(' ')[0].toLowerCase();
+      return `<div class="sl-scene sl-alpha-scene sl-enter" style="animation-delay:${Math.min(i, 16) * 35}ms"><div class="card-inner relative h-full cursor-pointer" data-letter="${slEsc(letter)}" tabindex="0" role="button" aria-label="Буква ${slEsc(letter)}. Нажмите, чтобы перевернуть">
+        <article class="card-face sl-face sl-alpha-front absolute inset-0 flex flex-col items-center justify-between p-4 text-center">
+          <span class="sl-tag ${typeClass} self-start">${typeLabel}</span>
+          <div><p class="sl-alpha-letter">${slEsc(letter)}</p><p class="sl-accent mt-1 font-mono text-sm">${slEsc(ipa)}</p></div>
+          <p class="sl-muted text-xs leading-4">${slEsc(ru)}</p>
+        </article>
+        <article class="card-face card-back sl-face sl-alpha-back absolute inset-0 flex flex-col p-4">
+          <div class="flex items-start justify-between gap-2"><div><p class="sl-accent text-[10px] font-bold uppercase tracking-[.2em]">${slEsc(name)}</p><p class="text-2xl font-black leading-none">${slEsc(letter)}</p></div><button class="sl-btn focus-ring shrink-0 rounded-full px-2.5 py-1 text-xs font-bold" type="button" data-flip-back aria-label="Вернуться">↺</button></div>
+          <div class="sl-example mt-3 flex-1"><p class="sl-faint text-[10px] font-bold uppercase tracking-widest">Пример</p><p class="mt-1 text-lg font-black">${slEsc(word)} <span class="sl-accent font-mono text-xs font-normal">${slEsc(wordIpa)}</span></p><p class="sl-muted text-sm">${slEsc(wordRu)}</p>${note ? `<p class="sl-ink-2 mt-2 text-xs leading-5">${slEsc(note)}</p>` : ''}</div>
+          <div class="mt-3 flex gap-2"><button class="sl-btn focus-ring flex-1 rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-speak="${slEsc(speakLetter)}">◖)) ${slEsc(speakLetter)}</button><button class="sl-btn focus-ring flex-1 rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-speak="${slEsc(word)}">◖)) ${slEsc(word)}</button></div>
+        </article>
+      </div></div>`;
+    }
+    function slRenderAlphabet() {
+      const items = slAlphabet.filter(item => slAlphaFilter === 'all' || item[5] === slAlphaFilter);
+      $('slAlphaGrid').innerHTML = items.map(slAlphaCard).join('');
+      $('slAlphaRules').innerHTML = slAlphaRules.map(([title, text]) => `<div class="sl-example"><p class="sl-accent text-[10px] font-bold uppercase tracking-widest">${slEsc(title)}</p><p class="mt-1 text-sm leading-6">${slEsc(text)}</p></div>`).join('');
+    }
+    function slSetView(view) {
+      slState.view = view;
+      $('slVerbsView').classList.toggle('module-hidden', view !== 'verbs');
+      $('slAlphaView').classList.toggle('module-hidden', view !== 'alphabet');
+      document.querySelectorAll('#slViewSwitch [data-view]').forEach(button => button.classList.toggle('is-active', button.dataset.view === view));
+      if (view === 'alphabet' && !$('slAlphaGrid').innerHTML) slRenderAlphabet();
+    }
+    $('slViewSwitch').addEventListener('click', event => { const button = event.target.closest('[data-view]'); if (button) slSetView(button.dataset.view); });
+    $('slAlphaFilters').addEventListener('click', event => { const button = event.target.closest('[data-alpha]'); if (!button) return; slAlphaFilter = button.dataset.alpha; document.querySelectorAll('#slAlphaFilters button').forEach(item => item.classList.toggle('is-active', item === button)); slRenderAlphabet(); });
+    $('slAlphaGrid').addEventListener('click', event => {
+      const card = event.target.closest('[data-letter]'); if (!card) return;
+      const speak = event.target.closest('[data-speak]'); if (speak) { event.stopPropagation(); slSpeak(speak.dataset.speak); return; }
+      if (event.target.closest('[data-flip-back]')) { card.classList.remove('is-flipped'); return; }
+      if (event.target.closest('.card-back')) return;
+      card.classList.toggle('is-flipped');
+    });
+    $('slAlphaGrid').addEventListener('keydown', event => { const card = event.target.closest('[data-letter]'); if (card && event.target === card && (event.key === ' ' || event.key === 'Enter')) { event.preventDefault(); card.classList.toggle('is-flipped'); } });
     // --- События словенского блока ---
     $('slLevelTabs').addEventListener('click', event => { const tab = event.target.closest('[data-level]'); if (!tab || tab.dataset.level === slState.level) return; slState.level = tab.dataset.level; slWrite(slStorage.level, slState.level); document.querySelectorAll('#slLevelTabs [data-level]').forEach(item => { item.classList.toggle('is-active', item === tab); item.setAttribute('aria-selected', item === tab); }); slRenderProgress(); if (slState.quiz) { slState.quiz.level = slState.level; slState.quiz.index = 0; slState.quiz.score = 0; slState.quiz.mistakes = []; slNextQuestion(); } else slRenderGrid(); });
     $('slAspectFilters').addEventListener('click', event => { const button = event.target.closest('[data-aspect]'); if (!button) return; slState.aspect = button.dataset.aspect; document.querySelectorAll('#slAspectFilters button').forEach(item => item.classList.toggle('is-active', item === button)); slRenderGrid(); });
