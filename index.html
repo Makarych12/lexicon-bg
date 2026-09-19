@@ -240,6 +240,13 @@
     .sl-scene:hover .sl-face { box-shadow: 0 30px 50px -18px var(--sl-shadow); border-color: var(--sl-accent-line); }
     .sl-face.card-back { border-color: var(--sl-accent-line); display: flex; flex-direction: column; }
     .sl-back-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+    .sl-pic { position: relative; height: 7rem; border-radius: 1.1rem; overflow: hidden; display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, hsl(var(--pic-hue) 80% 70% / .45), transparent 55%), radial-gradient(circle at 80% 90%, hsl(calc(var(--pic-hue) + 60) 80% 60% / .35), transparent 50%), linear-gradient(135deg, hsl(var(--pic-hue) 45% 30% / .55), hsl(calc(var(--pic-hue) + 40) 45% 22% / .55)); border: 1px solid hsl(var(--pic-hue) 60% 60% / .35); }
+    body.sl-light .sl-pic { background: radial-gradient(circle at 30% 20%, hsl(var(--pic-hue) 85% 75% / .7), transparent 55%), radial-gradient(circle at 80% 90%, hsl(calc(var(--pic-hue) + 60) 85% 70% / .6), transparent 50%), linear-gradient(135deg, hsl(var(--pic-hue) 70% 92%), hsl(calc(var(--pic-hue) + 40) 70% 88%)); }
+    .sl-pic::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(hsl(var(--pic-hue) 80% 80% / .18) 1px, transparent 1px); background-size: 12px 12px; }
+    .sl-pic-main { position: relative; font-size: 3.6rem; line-height: 1; filter: drop-shadow(0 8px 14px rgb(0 0 0 / .35)); transition: transform .3s cubic-bezier(.2,.75,.25,1); }
+    .sl-scene:hover .sl-pic-main { transform: scale(1.08) rotate(-3deg); }
+    .sl-pic-side { position: absolute; right: .7rem; bottom: .5rem; font-size: 1.7rem; line-height: 1; filter: drop-shadow(0 4px 8px rgb(0 0 0 / .3)); }
+    .sl-pic-side-2 { right: auto; left: .7rem; top: .5rem; }
     .sl-tag { border-radius: .5rem; padding: .2rem .55rem; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .sl-tag-level { background: var(--sl-accent); color: var(--sl-accent-ink); }
     .sl-tag-d { background: rgba(251,146,60,.16); color: #fb923c; border: 1px solid rgba(251,146,60,.4); }
@@ -514,353 +521,353 @@
     render();
     const slSeeds = {
       A1: `
-bíti|быть, находиться|n|sem,si,je,sva,sta,sta,smo,ste,so|bil|bodi|doma|дома|Быт|нахожусь|находятся|был|были|буду|будь|nepravilni glagol: sedanjik sem, si, je …; prihodnjik bom, boš, bo …
-iméti|иметь|n|imam|imel|imej|dovolj časa|достаточно времени|Быт|имею|имеют|имел|имели|буду иметь|имей|zanikanje: nimam, nimaš, nima …
-délati|делать, работать|n|delam|delal|delaj|domačo nalogo|домашнее задание|Учёба|делаю|делают|делал|делали|буду делать|делай
-íti|идти|n|grem,greš,gre,greva,gresta,gresta,gremo,greste,gredo|šel/š|pojdi|v šolo|в школу|Движение|иду|идут|шёл|шли|пойду|иди|nepravilni glagol: sedanjik grem, deležnik šel/šla, velelnik pojdi
-jésti|есть, кушать|n|jem,ješ,je,jeva,jesta,jesta,jemo,jeste,jedo|jedel/jed|jej|kosilo|обед|Еда|ем|едят|ел|ели|буду есть|ешь|nepravilni glagol: jem, ješ, je …; deležnik jedel/jedla
-píti|пить|n|pijem|pil|pij|kavo|кофе|Еда|пью|пьют|пил|пили|буду пить|пей|sedanjik z vrinjenim -j-: pi-jem
-spáti|спать|n|spim|spal|spi|do osmih|до восьми|Быт|сплю|спят|спал|спали|буду спать|спи
-govoríti|говорить|n|govorim|govoril|govori|slovensko|по-словенски|Общение|говорю|говорят|говорил|говорили|буду говорить|говори
-bráti|читать|n|berem|bral|beri|knjigo|книгу|Учёба|читаю|читают|читал|читали|буду читать|читай|premena osnove: bra- → ber-
-pisáti|писать|n|pišem|pisal|piši|pismo|письмо|Общение|пишу|пишут|писал|писали|буду писать|пиши|premena soglasnika: s → š (pisati → pišem)
-glédati|смотреть|n|gledam|gledal|glej|film|фильм|Быт|смотрю|смотрят|смотрел|смотрели|буду смотреть|смотри|velelnik glej (ne gledaj)
-poslúšati|слушать|n|poslušam|poslušal|poslušaj|glasbo|музыку|Быт|слушаю|слушают|слушал|слушали|буду слушать|слушай
-živéti|жить|n|živim|živel|živi|v Ljubljani|в Любляне|Быт|живу|живут|жил|жили|буду жить|живи
-védeti|знать (что-л.)|n|vem,veš,ve,veva,vesta,vesta,vemo,veste,vedo|vedel|vedi|odgovor|ответ|Учёба|знаю|знают|знал|знали|буду знать|знай|nepravilni glagol: vem, veš, ve …, 3. os. mn. vedo/vejo
-hotéti|хотеть|n|hočem|hotel|-|sladoled|мороженое|Эмоции|хочу|хотят|хотел|хотели|захочу|-|zanikanje: nočem, nočeš, noče …
-móči|мочь|n|morem|mogel/mog|-|pomagati|помочь|Общение|могу|могут|мог|могли|смогу|-|sedanjik morem (ne moči); zanikanje: ne morem
-mórati|быть должным|n|moram|moral|-|delati|работать|Работа|должен|должны|должен был|должны были|буду должен|-|modalni glagol: moram + nedoločnik
-kúpiti|купить|d|kupim|kupil|kupi|kruh|хлеб|Деньги|покупаю|покупают|купил|купили|куплю|купи|vidski par: kupiti (dov.) — kupovati (nedov.)
-kupováti|покупать|n|kupujem|kupoval|kupuj|zelenjavo|овощи|Деньги|покупаю|покупают|покупал|покупали|буду покупать|покупай|-ova- → -uje- (kupovati → kupujem)
-plačáti|заплатить|d|plačam|plačal|plačaj|račun|счёт|Деньги|плачу|платят|заплатил|заплатили|заплачу|заплати
-stanováti|проживать|n|stanujem|stanoval|stanuj|v centru|в центре|Дом|проживаю|проживают|проживал|проживали|буду проживать|проживай|-ova- → -uje- (stanovati → stanujem)
-učíti se|учить, учиться|n|učim se|učil se|uči se|slovenščino|словенский|Учёба|учу|учат|учил|учили|буду учить|учи|povratni glagol: klitika se stoji na 2. mestu v stavku
-razuméti|понимать, понять|dv|razumem|razumel|razumi|vprašanje|вопрос|Общение|понимаю|понимают|понял|поняли|пойму|пойми|dvovidski glagol: isti glagol za oba vida
-poznáti|знать (кого-л.)|n|poznam|poznal|poznaj|soseda|соседа|Общение|знаю|знают|знал|знали|буду знать|знай
-réči|сказать|d|rečem|rekel/rek|reci|resnico|правду|Общение|говорю|говорят|сказал|сказали|скажу|скажи|premena soglasnika: k → č (rek- → reč-), velelnik reci
-povédati|сказать, рассказать|d|povem,poveš,pove,poveva,povesta,povesta,povemo,poveste,povedo|povedal|povej|zgodbo|историю|Общение|рассказываю|рассказывают|рассказал|рассказали|расскажу|расскажи|sprega se kot vedeti: povem, poveš …
-vprášati|спросить|d|vprašam|vprašal|vprašaj|učitelja|учителя|Общение|спрашиваю|спрашивают|спросил|спросили|спрошу|спроси
-odgovoríti|ответить|d|odgovorim|odgovoril|odgovori|na vprašanje|на вопрос|Общение|отвечаю|отвечают|ответил|ответили|отвечу|ответь
-príti|прийти|d|pridem|prišel/priš|pridi|domov|домой|Движение|прихожу|приходят|пришёл|пришли|приду|приходи|deležnik prišel/prišla (kot iti: šel/šla)
-hodíti|ходить|n|hodim|hodil|hodi|v službo|на работу|Движение|хожу|ходят|ходил|ходили|буду ходить|ходи
-potováti|путешествовать|n|potujem|potoval|potuj|po Evropi|по Европе|Путешествия|путешествую|путешествуют|путешествовал|путешествовали|буду путешествовать|путешествуй|-ova- → -uje- (potovati → potujem)
-sedéti|сидеть|n|sedim|sedel|sedi|na klopi|на скамейке|Быт|сижу|сидят|сидел|сидели|буду сидеть|сиди
-státi|стоять|n|stojim|stal|stoj|v vrsti|в очереди|Быт|стою|стоят|стоял|стояли|буду стоять|стой|sedanjik iz osnove stoj-: stojim, deležnik stal
-ležáti|лежать|n|ležim|ležal|lezi|na plaži|на пляже|Быт|лежу|лежат|лежал|лежали|буду лежать|лежи|velelnik lezi (ž → z)
-vstáti|встать|d|vstanem|vstal|vstani|ob šestih|в шесть|Быт|встаю|встают|встал|встали|встану|вставай|sedanjik z -ne-: vsta-nem
-kúhati|готовить (еду)|n|kuham|kuhal|kuhaj|večerjo|ужин|Еда|готовлю|готовят|готовил|готовили|буду готовить|готовь
-čákati|ждать|n|čakam|čakal|čakaj|avtobus|автобус|Движение|жду|ждут|ждал|ждали|буду ждать|жди
-iskáti|искать|n|iščem|iskal|išči|ključe|ключи|Быт|ищу|ищут|искал|искали|буду искать|ищи|premena soglasnika: sk → šč (iskati → iščem)
-nájti|найти|d|najdem|našel/naš|najdi|pravo pot|правильный путь|Движение|нахожу|находят|нашёл|нашли|найду|найди|deležnik našel/našla
-dáti|дать|d|dam,daš,da,dava,dasta,dasta,damo,daste,dajo|dal|daj|darilo|подарок|Общение|даю|дают|дал|дали|дам|дай|nepravilni glagol: dam, daš, da …, 3. os. mn. dajo
-vzéti|взять|d|vzamem|vzel|vzemi|dežnik|зонт|Быт|беру|берут|взял|взяли|возьму|возьми|sedanjik vzamem, deležnik vzel
-odpréti|открыть|d|odprem|odprl|odpri|okno|окно|Дом|открываю|открывают|открыл|открыли|открою|открой|deležnik odprl/odprla (zlogotvorni r)
-zapréti|закрыть|d|zaprem|zaprl|zapri|vrata|дверь|Дом|закрываю|закрывают|закрыл|закрыли|закрою|закрой|deležnik zaprl/zaprla (zlogotvorni r)
-igráti|играть|n|igram|igral|igraj|nogomet|в футбол|Быт|играю|играют|играл|играли|буду играть|играй
-pomágati|помогать|n|pomagam|pomagal|pomagaj|mami|маме|Общение|помогаю|помогают|помогал|помогали|буду помогать|помогай
-mísliti|думать|n|mislim|mislil|misli|na počitnice|об отпуске|Эмоции|думаю|думают|думал|думали|буду думать|думай
-počívati|отдыхать|n|počivam|počival|počivaj|po kosilu|после обеда|Быт|отдыхаю|отдыхают|отдыхал|отдыхали|буду отдыхать|отдыхай
-klícati|звать, звонить|n|kličem|klical|kliči|prijatelja|другу|Общение|звоню|звонят|звонил|звонили|буду звонить|звони|premena soglasnika: c → č (klicati → kličem)
-začéti|начать|d|začnem|začel|začni|z delom|работу|Работа|начинаю|начинают|начал|начали|начну|начни|sedanjik z -ne-: zač-nem
-končáti|закончить|d|končam|končal|končaj|nalogo|задание|Работа|заканчиваю|заканчивают|закончил|закончили|закончу|закончи
-vídeti|видеть|n|vidim|videl|-|morje|море|Природа|вижу|видят|видел|видели|увижу|-|velelnik se nadomešča z glej
-slíšati|слышать|n|slišim|slišal|-|glasbo|музыку|Быт|слышу|слышат|слышал|слышали|услышу|-|velelnik se nadomešča s poslušaj
+bíti|🧍 🏠|быть, находиться|n|sem,si,je,sva,sta,sta,smo,ste,so|bil|bodi|doma|дома|Быт|нахожусь|находятся|был|были|буду|будь|nepravilni glagol: sedanjik sem, si, je …; prihodnjik bom, boš, bo …
+iméti|🎒 ⏰|иметь|n|imam|imel|imej|dovolj časa|достаточно времени|Быт|имею|имеют|имел|имели|буду иметь|имей|zanikanje: nimam, nimaš, nima …
+délati|🛠️ 📝|делать, работать|n|delam|delal|delaj|domačo nalogo|домашнее задание|Учёба|делаю|делают|делал|делали|буду делать|делай
+íti|🚶 🏫|идти|n|grem,greš,gre,greva,gresta,gresta,gremo,greste,gredo|šel/š|pojdi|v šolo|в школу|Движение|иду|идут|шёл|шли|пойду|иди|nepravilni glagol: sedanjik grem, deležnik šel/šla, velelnik pojdi
+jésti|🍽️ 🍝|есть, кушать|n|jem,ješ,je,jeva,jesta,jesta,jemo,jeste,jedo|jedel/jed|jej|kosilo|обед|Еда|ем|едят|ел|ели|буду есть|ешь|nepravilni glagol: jem, ješ, je …; deležnik jedel/jedla
+píti|☕ 🥤|пить|n|pijem|pil|pij|kavo|кофе|Еда|пью|пьют|пил|пили|буду пить|пей|sedanjik z vrinjenim -j-: pi-jem
+spáti|😴 🛏️|спать|n|spim|spal|spi|do osmih|до восьми|Быт|сплю|спят|спал|спали|буду спать|спи
+govoríti|🗣️ 💬|говорить|n|govorim|govoril|govori|slovensko|по-словенски|Общение|говорю|говорят|говорил|говорили|буду говорить|говори
+bráti|📖 👓|читать|n|berem|bral|beri|knjigo|книгу|Учёба|читаю|читают|читал|читали|буду читать|читай|premena osnove: bra- → ber-
+pisáti|✍️ ✉️|писать|n|pišem|pisal|piši|pismo|письмо|Общение|пишу|пишут|писал|писали|буду писать|пиши|premena soglasnika: s → š (pisati → pišem)
+glédati|📺 🍿|смотреть|n|gledam|gledal|glej|film|фильм|Быт|смотрю|смотрят|смотрел|смотрели|буду смотреть|смотри|velelnik glej (ne gledaj)
+poslúšati|🎧 🎵|слушать|n|poslušam|poslušal|poslušaj|glasbo|музыку|Быт|слушаю|слушают|слушал|слушали|буду слушать|слушай
+živéti|🏡 🌳|жить|n|živim|živel|živi|v Ljubljani|в Любляне|Быт|живу|живут|жил|жили|буду жить|живи
+védeti|💡 ✅|знать (что-л.)|n|vem,veš,ve,veva,vesta,vesta,vemo,veste,vedo|vedel|vedi|odgovor|ответ|Учёба|знаю|знают|знал|знали|буду знать|знай|nepravilni glagol: vem, veš, ve …, 3. os. mn. vedo/vejo
+hotéti|🍦 🤤|хотеть|n|hočem|hotel|-|sladoled|мороженое|Эмоции|хочу|хотят|хотел|хотели|захочу|-|zanikanje: nočem, nočeš, noče …
+móči|💪 🙋|мочь|n|morem|mogel/mog|-|pomagati|помочь|Общение|могу|могут|мог|могли|смогу|-|sedanjik morem (ne moči); zanikanje: ne morem
+mórati|📋 ⚠️|быть должным|n|moram|moral|-|delati|работать|Работа|должен|должны|должен был|должны были|буду должен|-|modalni glagol: moram + nedoločnik
+kúpiti|🍞 🛒|купить|d|kupim|kupil|kupi|kruh|хлеб|Деньги|покупаю|покупают|купил|купили|куплю|купи|vidski par: kupiti (dov.) — kupovati (nedov.)
+kupováti|🥦 🧺|покупать|n|kupujem|kupoval|kupuj|zelenjavo|овощи|Деньги|покупаю|покупают|покупал|покупали|буду покупать|покупай|-ova- → -uje- (kupovati → kupujem)
+plačáti|💳 🧾|заплатить|d|plačam|plačal|plačaj|račun|счёт|Деньги|плачу|платят|заплатил|заплатили|заплачу|заплати
+stanováti|🏢 🔑|проживать|n|stanujem|stanoval|stanuj|v centru|в центре|Дом|проживаю|проживают|проживал|проживали|буду проживать|проживай|-ova- → -uje- (stanovati → stanujem)
+učíti se|📚 🎓|учить, учиться|n|učim se|učil se|uči se|slovenščino|словенский|Учёба|учу|учат|учил|учили|буду учить|учи|povratni glagol: klitika se stoji na 2. mestu v stavku
+razuméti|🤔 ❓|понимать, понять|dv|razumem|razumel|razumi|vprašanje|вопрос|Общение|понимаю|понимают|понял|поняли|пойму|пойми|dvovidski glagol: isti glagol za oba vida
+poznáti|🤝 🧑|знать (кого-л.)|n|poznam|poznal|poznaj|soseda|соседа|Общение|знаю|знают|знал|знали|буду знать|знай
+réči|💬 👄|сказать|d|rečem|rekel/rek|reci|resnico|правду|Общение|говорю|говорят|сказал|сказали|скажу|скажи|premena soglasnika: k → č (rek- → reč-), velelnik reci
+povédati|📣 📜|сказать, рассказать|d|povem,poveš,pove,poveva,povesta,povesta,povemo,poveste,povedo|povedal|povej|zgodbo|историю|Общение|рассказываю|рассказывают|рассказал|рассказали|расскажу|расскажи|sprega se kot vedeti: povem, poveš …
+vprášati|🙋 ❓|спросить|d|vprašam|vprašal|vprašaj|učitelja|учителя|Общение|спрашиваю|спрашивают|спросил|спросили|спрошу|спроси
+odgovoríti|💁 ✅|ответить|d|odgovorim|odgovoril|odgovori|na vprašanje|на вопрос|Общение|отвечаю|отвечают|ответил|ответили|отвечу|ответь
+príti|🚪 🏠|прийти|d|pridem|prišel/priš|pridi|domov|домой|Движение|прихожу|приходят|пришёл|пришли|приду|приходи|deležnik prišel/prišla (kot iti: šel/šla)
+hodíti|👣 💼|ходить|n|hodim|hodil|hodi|v službo|на работу|Движение|хожу|ходят|ходил|ходили|буду ходить|ходи
+potováti|✈️ 🌍|путешествовать|n|potujem|potoval|potuj|po Evropi|по Европе|Путешествия|путешествую|путешествуют|путешествовал|путешествовали|буду путешествовать|путешествуй|-ova- → -uje- (potovati → potujem)
+sedéti|🪑 🌳|сидеть|n|sedim|sedel|sedi|na klopi|на скамейке|Быт|сижу|сидят|сидел|сидели|буду сидеть|сиди
+státi|🧍 🚏|стоять|n|stojim|stal|stoj|v vrsti|в очереди|Быт|стою|стоят|стоял|стояли|буду стоять|стой|sedanjik iz osnove stoj-: stojim, deležnik stal
+ležáti|🛌 🏖️|лежать|n|ležim|ležal|lezi|na plaži|на пляже|Быт|лежу|лежат|лежал|лежали|буду лежать|лежи|velelnik lezi (ž → z)
+vstáti|⏰ 🌅|встать|d|vstanem|vstal|vstani|ob šestih|в шесть|Быт|встаю|встают|встал|встали|встану|вставай|sedanjik z -ne-: vsta-nem
+kúhati|👩‍🍳 🍲|готовить (еду)|n|kuham|kuhal|kuhaj|večerjo|ужин|Еда|готовлю|готовят|готовил|готовили|буду готовить|готовь
+čákati|⌛ 🚌|ждать|n|čakam|čakal|čakaj|avtobus|автобус|Движение|жду|ждут|ждал|ждали|буду ждать|жди
+iskáti|🔍 🔑|искать|n|iščem|iskal|išči|ključe|ключи|Быт|ищу|ищут|искал|искали|буду искать|ищи|premena soglasnika: sk → šč (iskati → iščem)
+nájti|🎯 🗺️|найти|d|najdem|našel/naš|najdi|pravo pot|правильный путь|Движение|нахожу|находят|нашёл|нашли|найду|найди|deležnik našel/našla
+dáti|🎁 🤲|дать|d|dam,daš,da,dava,dasta,dasta,damo,daste,dajo|dal|daj|darilo|подарок|Общение|даю|дают|дал|дали|дам|дай|nepravilni glagol: dam, daš, da …, 3. os. mn. dajo
+vzéti|☂️ ✋|взять|d|vzamem|vzel|vzemi|dežnik|зонт|Быт|беру|берут|взял|взяли|возьму|возьми|sedanjik vzamem, deležnik vzel
+odpréti|🪟 ☀️|открыть|d|odprem|odprl|odpri|okno|окно|Дом|открываю|открывают|открыл|открыли|открою|открой|deležnik odprl/odprla (zlogotvorni r)
+zapréti|🚪 🔒|закрыть|d|zaprem|zaprl|zapri|vrata|дверь|Дом|закрываю|закрывают|закрыл|закрыли|закрою|закрой|deležnik zaprl/zaprla (zlogotvorni r)
+igráti|⚽ 🥅|играть|n|igram|igral|igraj|nogomet|в футбол|Быт|играю|играют|играл|играли|буду играть|играй
+pomágati|🤲 👩|помогать|n|pomagam|pomagal|pomagaj|mami|маме|Общение|помогаю|помогают|помогал|помогали|буду помогать|помогай
+mísliti|💭 🌴|думать|n|mislim|mislil|misli|na počitnice|об отпуске|Эмоции|думаю|думают|думал|думали|буду думать|думай
+počívati|🧘 🌤️|отдыхать|n|počivam|počival|počivaj|po kosilu|после обеда|Быт|отдыхаю|отдыхают|отдыхал|отдыхали|буду отдыхать|отдыхай
+klícati|📞 👥|звать, звонить|n|kličem|klical|kliči|prijatelja|другу|Общение|звоню|звонят|звонил|звонили|буду звонить|звони|premena soglasnika: c → č (klicati → kličem)
+začéti|🚀 🏁|начать|d|začnem|začel|začni|z delom|работу|Работа|начинаю|начинают|начал|начали|начну|начни|sedanjik z -ne-: zač-nem
+končáti|🏁 ✅|закончить|d|končam|končal|končaj|nalogo|задание|Работа|заканчиваю|заканчивают|закончил|закончили|закончу|закончи
+vídeti|👀 🌊|видеть|n|vidim|videl|-|morje|море|Природа|вижу|видят|видел|видели|увижу|-|velelnik se nadomešča z glej
+slíšati|👂 🎶|слышать|n|slišim|slišal|-|glasbo|музыку|Быт|слышу|слышат|слышал|слышали|услышу|-|velelnik se nadomešča s poslušaj
 `,
       A2: `
-plávati|плавать|n|plavam|plaval|plavaj|v morju|в море|Природа|плаваю|плавают|плавал|плавали|буду плавать|плавай
-téči|бежать|n|tečem|tekel/tek|teci|po parku|по парку|Движение|бегу|бегут|бежал|бежали|буду бежать|беги|premena soglasnika: k → č (tek- → teč-), velelnik teci
-plésati|танцевать|n|plešem|plesal|pleši|valček|вальс|Быт|танцую|танцуют|танцевал|танцевали|буду танцевать|танцуй|premena soglasnika: s → š (plesati → plešem)
-péti|петь|n|pojem|pel|poj|pesem|песню|Быт|пою|поют|пел|пели|буду петь|пой|sedanjik iz osnove poj-: pojem, deležnik pel
-vozíti|водить, возить|n|vozim|vozil|vozi|avto|машину|Движение|вожу|водят|водил|водили|буду водить|веди
-vozíti se|ехать (на транспорте)|n|vozim se|vozil se|vozi se|z vlakom|на поезде|Движение|еду|едут|ехал|ехали|буду ехать|поезжай|povratni glagol: voziti se = ехать (пассажиром)
-pripeljáti|привезти, привести|d|pripeljem|pripeljal|pripelji|otroke|детей|Движение|привожу|привозят|привёз|привезли|привезу|привези
-odíti|уйти|d|odidem|odšel/odš|odidi|domov|домой|Движение|ухожу|уходят|ушёл|ушли|уйду|уходи|deležnik odšel/odšla (kot iti)
-ostáti|остаться|d|ostanem|ostal|ostani|doma|дома|Быт|остаюсь|остаются|остался|остались|останусь|останься|sedanjik z -ne-: osta-nem
-vrníti se|вернуться|d|vrnem se|vrnil se|vrni se|iz službe|с работы|Движение|возвращаюсь|возвращаются|вернулся|вернулись|вернусь|вернись|vidski par: vrniti se (dov.) — vračati se (nedov.)
-vráčati se|возвращаться|n|vračam se|vračal se|vračaj se|pozno|поздно|Движение|возвращаюсь|возвращаются|возвращался|возвращались|буду возвращаться|возвращайся
-obléči se|одеться|d|oblečem se|oblekel se/oblek|obleci se|toplo|тепло|Быт|одеваюсь|одеваются|оделся|оделись|оденусь|оденься|premena soglasnika: k → č (oblek- → obleč-), velelnik obleci
-umíti se|умыться|d|umijem se|umil se|umij se|s hladno vodo|холодной водой|Быт|умываюсь|умываются|умылся|умылись|умоюсь|умойся
-tušírati se|принимать душ|n|tuširam se|tuširal se|tuširaj se|zjutraj|утром|Быт|принимаю душ|принимают душ|принимал душ|принимали душ|буду принимать душ|прими душ
-čístiti|чистить, убирать|n|čistim|čistil|čisti|stanovanje|квартиру|Дом|убираю|убирают|убирал|убирали|буду убирать|убирай
-práti|стирать|n|perem|pral|peri|perilo|бельё|Дом|стираю|стирают|стирал|стирали|буду стирать|стирай|premena osnove: pra- → per-
-líkati|гладить (одежду)|n|likam|likal|likaj|srajco|рубашку|Дом|глажу|гладят|гладил|гладили|буду гладить|гладь
-pomívati|мыть (посуду)|n|pomivam|pomival|pomivaj|posodo|посуду|Дом|мою|моют|мыл|мыли|буду мыть|мой
-naročíti|заказать|d|naročim|naročil|naroči|pico|пиццу|Еда|заказываю|заказывают|заказал|заказали|закажу|закажи
-prinésti|принести|d|prinesem|prinesel/prines|prinesi|vodo|воду|Еда|приношу|приносят|принёс|принесли|принесу|принеси|deležnik prinesel/prinesla
-péči|печь|n|pečem|pekel/pek|peci|potico|потицу|Еда|пеку|пекут|пёк|пекли|буду печь|пеки|premena soglasnika: k → č (pek- → peč-), velelnik peci
-rézati|резать|n|režem|rezal|reži|kruh|хлеб|Еда|режу|режут|резал|резали|буду резать|режь|premena soglasnika: z → ž (rezati → režem)
-poskúsiti|попробовать|d|poskusim|poskusil|poskusi|juho|суп|Еда|пробую|пробуют|попробовал|попробовали|попробую|попробуй
-srečáti|встретить|d|srečam|srečal|srečaj|prijatelje|друзей|Общение|встречаю|встречают|встретил|встретили|встречу|встреть
-spoznáti|познакомиться, узнать|d|spoznam|spoznal|spoznaj|nove ljudi|новых людей|Общение|узнаю|узнают|узнал|узнали|узнаю|узнай
-pogovárjati se|разговаривать|n|pogovarjam se|pogovarjal se|pogovarjaj se|s sosedom|с соседом|Общение|разговариваю|разговаривают|разговаривал|разговаривали|буду разговаривать|поговори
-pozdráviti|поздороваться, поприветствовать|d|pozdravim|pozdravil|pozdravi|učiteljico|учительницу|Общение|приветствую|приветствуют|поприветствовал|поприветствовали|поприветствую|поприветствуй
-zahváliti se|поблагодарить|d|zahvalim se|zahvalil se|zahvali se|za pomoč|за помощь|Общение|благодарю|благодарят|поблагодарил|поблагодарили|поблагодарю|поблагодари
-opravíčiti se|извиниться|d|opravičim se|opravičil se|opraviči se|za zamudo|за опоздание|Общение|извиняюсь|извиняются|извинился|извинились|извинюсь|извинись
-povábiti|пригласить|d|povabim|povabil|povabi|goste|гостей|Общение|приглашаю|приглашают|пригласил|пригласили|приглашу|пригласи
-obískati|навестить, посетить|d|obiščem|obiskal|obišči|babico|бабушку|Общение|навещаю|навещают|навестил|навестили|навещу|навести|premena soglasnika: sk → šč (obiskati → obiščem)
-telefonírati|звонить по телефону|n|telefoniram|telefoniral|telefoniraj|v pisarno|в офис|Общение|звоню|звонят|звонил|звонили|буду звонить|позвони
-pošíljati|отправлять|n|pošiljam|pošiljal|pošiljaj|sporočila|сообщения|Общение|отправляю|отправляют|отправлял|отправляли|буду отправлять|отправляй
-posláti|отправить|d|pošljem|poslal|pošlji|paket|посылку|Общение|отправляю|отправляют|отправил|отправили|отправлю|отправь|premena soglasnika: sl → šlj (poslati → pošljem)
-dobíti|получить|d|dobim|dobil|dobi|pismo|письмо|Быт|получаю|получают|получил|получили|получу|получи
-nakupováti|делать покупки|n|nakupujem|nakupoval|nakupuj|v trgovini|в магазине|Деньги|делаю покупки|делают покупки|делал покупки|делали покупки|буду делать покупки|делай покупки|-ova- → -uje- (nakupovati → nakupujem)
-prodáti|продать|d|prodam|prodal|prodaj|staro kolo|старый велосипед|Деньги|продаю|продают|продал|продали|продам|продай
-prodájati|продавать|n|prodajam|prodajal|prodajaj|sadje|фрукты|Деньги|продаю|продают|продавал|продавали|буду продавать|продавай
-zaslúžiti|заработать|d|zaslužim|zaslužil|zasluži|dovolj denarja|достаточно денег|Деньги|зарабатываю|зарабатывают|заработал|заработали|заработаю|заработай
-varčeváti|экономить, копить|n|varčujem|varčeval|varčuj|za dopust|на отпуск|Деньги|коплю|копят|копил|копили|буду копить|копи|-eva- → -uje- (varčevati → varčujem)
-potrebováti|нуждаться|n|potrebujem|potreboval|-|nov telefon|новый телефон|Быт|мне нужен|им нужен|мне был нужен|им был нужен|мне будет нужен|-|-ova- → -uje- (potrebovati → potrebujem)
-uporábljati|использовать|n|uporabljam|uporabljal|uporabljaj|računalnik|компьютер|Техника|использую|используют|использовал|использовали|буду использовать|используй
-vklópiti|включить|d|vklopim|vklopil|vklopi|luč|свет|Техника|включаю|включают|включил|включили|включу|включи
-izklópiti|выключить|d|izklopim|izklopil|izklopi|televizor|телевизор|Техника|выключаю|выключают|выключил|выключили|выключу|выключи
-popráviti|починить|d|popravim|popravil|popravi|kolo|велосипед|Техника|чиню|чинят|починил|починили|починю|почини
-letéti|лететь|n|letim|letel|leti|v Pariz|в Париж|Путешествия|лечу|летят|летел|летели|буду лететь|лети
-odpotováti|уехать, отправиться|d|odpotujem|odpotoval|odpotuj|na morje|на море|Путешествия|уезжаю|уезжают|уехал|уехали|уеду|уезжай|-ova- → -uje- (odpotovati → odpotujem)
-prispéti|прибыть|d|prispem|prispel|prispi|na postajo|на станцию|Путешествия|прибываю|прибывают|прибыл|прибыли|прибуду|прибудь
-rezervírati|забронировать|dv|rezerviram|rezerviral|rezerviraj|sobo|номер|Путешествия|бронирую|бронируют|забронировал|забронировали|забронирую|забронируй|dvovidski glagol (-irati)
-parkírati|парковать|dv|parkiram|parkiral|parkiraj|avto|машину|Движение|паркую|паркуют|припарковал|припарковали|припаркую|припаркуй|dvovidski glagol (-irati)
-zamúditi|опоздать|d|zamudim|zamudil|-|na vlak|на поезд|Движение|опаздываю|опаздывают|опоздал|опоздали|опоздаю|-
-pohitéti|поспешить|d|pohitim|pohitel|pohiti|na sestanek|на встречу|Движение|спешу|спешат|поспешил|поспешили|поспешу|поспеши
-zbudíti se|проснуться|d|zbudim se|zbudil se|zbudi se|ob sedmih|в семь|Быт|просыпаюсь|просыпаются|проснулся|проснулись|проснусь|проснись
-zaspáti|заснуть|d|zaspim|zaspal|zaspi|hitro|быстро|Быт|засыпаю|засыпают|заснул|заснули|засну|засни
-utrúditi se|устать|d|utrudim se|utrudil se|-|od dela|от работы|Здоровье|устаю|устают|устал|устали|устану|-
-zbolêti|заболеть|d|zbolim|zbolel|-|za gripo|гриппом|Здоровье|заболеваю|заболевают|заболел|заболели|заболею|-
-ozdravéti|выздороветь|d|ozdravim|ozdravel|ozdravi|do petka|к пятнице|Здоровье|выздоравливаю|выздоравливают|выздоровел|выздоровели|выздоровею|выздоравливай
-jemáti|брать, принимать|n|jemljem|jemal|jemlji|zdravila|лекарства|Здоровье|принимаю|принимают|принимал|принимали|буду принимать|принимай|premena soglasnika: m → mlj (jemati → jemljem)
-telováditi|заниматься спортом|n|telovadim|telovadil|telovadi|vsak dan|каждый день|Здоровье|занимаюсь спортом|занимаются спортом|занимался спортом|занимались спортом|буду заниматься спортом|занимайся спортом
-smejáti se|смеяться|n|smejem se|smejal se|smej se|na ves glas|во весь голос|Эмоции|смеюсь|смеются|смеялся|смеялись|буду смеяться|смейся
-jókati|плакать|n|jokam|jokal|jokaj|od sreče|от счастья|Эмоции|плачу|плачут|плакал|плакали|буду плакать|плачь
-veselíti se|радоваться|n|veselim se|veselil se|veseli se|počitnic|каникулам|Эмоции|радуюсь|радуются|радовался|радовались|буду радоваться|радуйся|veseliti se + rodilnik (veselim se počitnic)
-báti se|бояться|n|bojim se|bal se|-|teme|темноты|Эмоции|боюсь|боятся|боялся|боялись|буду бояться|-|sedanjik bojim se, deležnik bal se; bati se + rodilnik
-upáti|надеяться|n|upam|upal|upaj|na najboljše|на лучшее|Эмоции|надеюсь|надеются|надеялся|надеялись|буду надеяться|надейся
-ljúbiti|любить|n|ljubim|ljubil|ljubi|svojo družino|свою семью|Эмоции|люблю|любят|любил|любили|буду любить|люби
-pogrešáti|скучать по|n|pogrešam|pogrešal|-|dom|дому|Эмоции|скучаю по|скучают по|скучал по|скучали по|буду скучать по|-
-rísati|рисовать|n|rišem|risal|riši|portret|портрет|Учёба|рисую|рисуют|рисовал|рисовали|буду рисовать|рисуй|premena soglasnika: s → š (risati → rišem)
-fotografírati|фотографировать|n|fotografiram|fotografiral|fotografiraj|mesto|город|Путешествия|фотографирую|фотографируют|фотографировал|фотографировали|буду фотографировать|фотографируй
-váditi|упражняться, тренировать|n|vadim|vadil|vadi|izgovorjavo|произношение|Учёба|тренирую|тренируют|тренировал|тренировали|буду тренировать|тренируй
-ponovíti|повторить|d|ponovim|ponovil|ponovi|snov|материал|Учёба|повторяю|повторяют|повторил|повторили|повторю|повтори
-pozábiti|забыть|d|pozabim|pozabil|-|geslo|пароль|Быт|забываю|забывают|забыл|забыли|забуду|-
-spómniti se|вспомнить|d|spomnim se|spomnil se|spomni se|imena|имя|Учёба|вспоминаю|вспоминают|вспомнил|вспомнили|вспомню|вспомни|spomniti se + rodilnik (spomnim se imena)
+plávati|🏊 🌊|плавать|n|plavam|plaval|plavaj|v morju|в море|Природа|плаваю|плавают|плавал|плавали|буду плавать|плавай
+téči|🏃 🌳|бежать|n|tečem|tekel/tek|teci|po parku|по парку|Движение|бегу|бегут|бежал|бежали|буду бежать|беги|premena soglasnika: k → č (tek- → teč-), velelnik teci
+plésati|💃 🕺|танцевать|n|plešem|plesal|pleši|valček|вальс|Быт|танцую|танцуют|танцевал|танцевали|буду танцевать|танцуй|premena soglasnika: s → š (plesati → plešem)
+péti|🎤 🎶|петь|n|pojem|pel|poj|pesem|песню|Быт|пою|поют|пел|пели|буду петь|пой|sedanjik iz osnove poj-: pojem, deležnik pel
+vozíti|🚗 🛞|водить, возить|n|vozim|vozil|vozi|avto|машину|Движение|вожу|водят|водил|водили|буду водить|веди
+vozíti se|🚆 🎫|ехать (на транспорте)|n|vozim se|vozil se|vozi se|z vlakom|на поезде|Движение|еду|едут|ехал|ехали|буду ехать|поезжай|povratni glagol: voziti se = ехать (пассажиром)
+pripeljáti|🚙 👶|привезти, привести|d|pripeljem|pripeljal|pripelji|otroke|детей|Движение|привожу|привозят|привёз|привезли|привезу|привези
+odíti|🚶 🚪|уйти|d|odidem|odšel/odš|odidi|domov|домой|Движение|ухожу|уходят|ушёл|ушли|уйду|уходи|deležnik odšel/odšla (kot iti)
+ostáti|🏠 🛋️|остаться|d|ostanem|ostal|ostani|doma|дома|Быт|остаюсь|остаются|остался|остались|останусь|останься|sedanjik z -ne-: osta-nem
+vrníti se|🔙 🏢|вернуться|d|vrnem se|vrnil se|vrni se|iz službe|с работы|Движение|возвращаюсь|возвращаются|вернулся|вернулись|вернусь|вернись|vidski par: vrniti se (dov.) — vračati se (nedov.)
+vráčati se|🌙 🚶|возвращаться|n|vračam se|vračal se|vračaj se|pozno|поздно|Движение|возвращаюсь|возвращаются|возвращался|возвращались|буду возвращаться|возвращайся
+obléči se|🧥 🧣|одеться|d|oblečem se|oblekel se/oblek|obleci se|toplo|тепло|Быт|одеваюсь|одеваются|оделся|оделись|оденусь|оденься|premena soglasnika: k → č (oblek- → obleč-), velelnik obleci
+umíti se|🚿 💧|умыться|d|umijem se|umil se|umij se|s hladno vodo|холодной водой|Быт|умываюсь|умываются|умылся|умылись|умоюсь|умойся
+tušírati se|🚿 🌅|принимать душ|n|tuširam se|tuširal se|tuširaj se|zjutraj|утром|Быт|принимаю душ|принимают душ|принимал душ|принимали душ|буду принимать душ|прими душ
+čístiti|🧹 🧽|чистить, убирать|n|čistim|čistil|čisti|stanovanje|квартиру|Дом|убираю|убирают|убирал|убирали|буду убирать|убирай
+práti|🧺 👕|стирать|n|perem|pral|peri|perilo|бельё|Дом|стираю|стирают|стирал|стирали|буду стирать|стирай|premena osnove: pra- → per-
+líkati|👔 ♨️|гладить (одежду)|n|likam|likal|likaj|srajco|рубашку|Дом|глажу|гладят|гладил|гладили|буду гладить|гладь
+pomívati|🍽️ 🧼|мыть (посуду)|n|pomivam|pomival|pomivaj|posodo|посуду|Дом|мою|моют|мыл|мыли|буду мыть|мой
+naročíti|🍕 📝|заказать|d|naročim|naročil|naroči|pico|пиццу|Еда|заказываю|заказывают|заказал|заказали|закажу|закажи
+prinésti|💧 🥤|принести|d|prinesem|prinesel/prines|prinesi|vodo|воду|Еда|приношу|приносят|принёс|принесли|принесу|принеси|deležnik prinesel/prinesla
+péči|🥧 🔥|печь|n|pečem|pekel/pek|peci|potico|потицу|Еда|пеку|пекут|пёк|пекли|буду печь|пеки|premena soglasnika: k → č (pek- → peč-), velelnik peci
+rézati|🔪 🍞|резать|n|režem|rezal|reži|kruh|хлеб|Еда|режу|режут|резал|резали|буду резать|режь|premena soglasnika: z → ž (rezati → režem)
+poskúsiti|🥣 😋|попробовать|d|poskusim|poskusil|poskusi|juho|суп|Еда|пробую|пробуют|попробовал|попробовали|попробую|попробуй
+srečáti|🤝 🎉|встретить|d|srečam|srečal|srečaj|prijatelje|друзей|Общение|встречаю|встречают|встретил|встретили|встречу|встреть
+spoznáti|👋 🧑‍🤝‍🧑|познакомиться, узнать|d|spoznam|spoznal|spoznaj|nove ljudi|новых людей|Общение|узнаю|узнают|узнал|узнали|узнаю|узнай
+pogovárjati se|💬 🏡|разговаривать|n|pogovarjam se|pogovarjal se|pogovarjaj se|s sosedom|с соседом|Общение|разговариваю|разговаривают|разговаривал|разговаривали|буду разговаривать|поговори
+pozdráviti|👋 👩‍🏫|поздороваться, поприветствовать|d|pozdravim|pozdravil|pozdravi|učiteljico|учительницу|Общение|приветствую|приветствуют|поприветствовал|поприветствовали|поприветствую|поприветствуй
+zahváliti se|🙏 💐|поблагодарить|d|zahvalim se|zahvalil se|zahvali se|za pomoč|за помощь|Общение|благодарю|благодарят|поблагодарил|поблагодарили|поблагодарю|поблагодари
+opravíčiti se|😔 🙏|извиниться|d|opravičim se|opravičil se|opraviči se|za zamudo|за опоздание|Общение|извиняюсь|извиняются|извинился|извинились|извинюсь|извинись
+povábiti|💌 🎈|пригласить|d|povabim|povabil|povabi|goste|гостей|Общение|приглашаю|приглашают|пригласил|пригласили|приглашу|пригласи
+obískati|👵 🏠|навестить, посетить|d|obiščem|obiskal|obišči|babico|бабушку|Общение|навещаю|навещают|навестил|навестили|навещу|навести|premena soglasnika: sk → šč (obiskati → obiščem)
+telefonírati|📱 🏢|звонить по телефону|n|telefoniram|telefoniral|telefoniraj|v pisarno|в офис|Общение|звоню|звонят|звонил|звонили|буду звонить|позвони
+pošíljati|📮 ✉️|отправлять|n|pošiljam|pošiljal|pošiljaj|sporočila|сообщения|Общение|отправляю|отправляют|отправлял|отправляли|буду отправлять|отправляй
+posláti|📦 🚚|отправить|d|pošljem|poslal|pošlji|paket|посылку|Общение|отправляю|отправляют|отправил|отправили|отправлю|отправь|premena soglasnika: sl → šlj (poslati → pošljem)
+dobíti|📬 ✉️|получить|d|dobim|dobil|dobi|pismo|письмо|Быт|получаю|получают|получил|получили|получу|получи
+nakupováti|🛍️ 🏬|делать покупки|n|nakupujem|nakupoval|nakupuj|v trgovini|в магазине|Деньги|делаю покупки|делают покупки|делал покупки|делали покупки|буду делать покупки|делай покупки|-ova- → -uje- (nakupovati → nakupujem)
+prodáti|🚲 💰|продать|d|prodam|prodal|prodaj|staro kolo|старый велосипед|Деньги|продаю|продают|продал|продали|продам|продай
+prodájati|🍎 💵|продавать|n|prodajam|prodajal|prodajaj|sadje|фрукты|Деньги|продаю|продают|продавал|продавали|буду продавать|продавай
+zaslúžiti|💰 📈|заработать|d|zaslužim|zaslužil|zasluži|dovolj denarja|достаточно денег|Деньги|зарабатываю|зарабатывают|заработал|заработали|заработаю|заработай
+varčeváti|🐖 💰|экономить, копить|n|varčujem|varčeval|varčuj|za dopust|на отпуск|Деньги|коплю|копят|копил|копили|буду копить|копи|-eva- → -uje- (varčevati → varčujem)
+potrebováti|📱 ✨|нуждаться|n|potrebujem|potreboval|-|nov telefon|новый телефон|Быт|мне нужен|им нужен|мне был нужен|им был нужен|мне будет нужен|-|-ova- → -uje- (potrebovati → potrebujem)
+uporábljati|💻 ⌨️|использовать|n|uporabljam|uporabljal|uporabljaj|računalnik|компьютер|Техника|использую|используют|использовал|использовали|буду использовать|используй
+vklópiti|💡 🔛|включить|d|vklopim|vklopil|vklopi|luč|свет|Техника|включаю|включают|включил|включили|включу|включи
+izklópiti|📺 🔴|выключить|d|izklopim|izklopil|izklopi|televizor|телевизор|Техника|выключаю|выключают|выключил|выключили|выключу|выключи
+popráviti|🔧 🚲|починить|d|popravim|popravil|popravi|kolo|велосипед|Техника|чиню|чинят|починил|починили|починю|почини
+letéti|✈️ 🗼|лететь|n|letim|letel|leti|v Pariz|в Париж|Путешествия|лечу|летят|летел|летели|буду лететь|лети
+odpotováti|🚗 🌊|уехать, отправиться|d|odpotujem|odpotoval|odpotuj|na morje|на море|Путешествия|уезжаю|уезжают|уехал|уехали|уеду|уезжай|-ova- → -uje- (odpotovati → odpotujem)
+prispéti|🚉 🧳|прибыть|d|prispem|prispel|prispi|na postajo|на станцию|Путешествия|прибываю|прибывают|прибыл|прибыли|прибуду|прибудь
+rezervírati|🛏️ 📅|забронировать|dv|rezerviram|rezerviral|rezerviraj|sobo|номер|Путешествия|бронирую|бронируют|забронировал|забронировали|забронирую|забронируй|dvovidski glagol (-irati)
+parkírati|🅿️ 🚗|парковать|dv|parkiram|parkiral|parkiraj|avto|машину|Движение|паркую|паркуют|припарковал|припарковали|припаркую|припаркуй|dvovidski glagol (-irati)
+zamúditi|⏰ 🚆|опоздать|d|zamudim|zamudil|-|na vlak|на поезд|Движение|опаздываю|опаздывают|опоздал|опоздали|опоздаю|-
+pohitéti|🏃 💨|поспешить|d|pohitim|pohitel|pohiti|na sestanek|на встречу|Движение|спешу|спешат|поспешил|поспешили|поспешу|поспеши
+zbudíti se|⏰ 😊|проснуться|d|zbudim se|zbudil se|zbudi se|ob sedmih|в семь|Быт|просыпаюсь|просыпаются|проснулся|проснулись|проснусь|проснись
+zaspáti|😪 🛏️|заснуть|d|zaspim|zaspal|zaspi|hitro|быстро|Быт|засыпаю|засыпают|заснул|заснули|засну|засни
+utrúditi se|😩 🧱|устать|d|utrudim se|utrudil se|-|od dela|от работы|Здоровье|устаю|устают|устал|устали|устану|-
+zbolêti|🤒 🌡️|заболеть|d|zbolim|zbolel|-|za gripo|гриппом|Здоровье|заболеваю|заболевают|заболел|заболели|заболею|-
+ozdravéti|💊 😊|выздороветь|d|ozdravim|ozdravel|ozdravi|do petka|к пятнице|Здоровье|выздоравливаю|выздоравливают|выздоровел|выздоровели|выздоровею|выздоравливай
+jemáti|💊 💧|брать, принимать|n|jemljem|jemal|jemlji|zdravila|лекарства|Здоровье|принимаю|принимают|принимал|принимали|буду принимать|принимай|premena soglasnika: m → mlj (jemati → jemljem)
+telováditi|🏋️ 🏅|заниматься спортом|n|telovadim|telovadil|telovadi|vsak dan|каждый день|Здоровье|занимаюсь спортом|занимаются спортом|занимался спортом|занимались спортом|буду заниматься спортом|занимайся спортом
+smejáti se|😂 🎭|смеяться|n|smejem se|smejal se|smej se|na ves glas|во весь голос|Эмоции|смеюсь|смеются|смеялся|смеялись|буду смеяться|смейся
+jókati|😢 💧|плакать|n|jokam|jokal|jokaj|od sreče|от счастья|Эмоции|плачу|плачут|плакал|плакали|буду плакать|плачь
+veselíti se|🥳 🏖️|радоваться|n|veselim se|veselil se|veseli se|počitnic|каникулам|Эмоции|радуюсь|радуются|радовался|радовались|буду радоваться|радуйся|veseliti se + rodilnik (veselim se počitnic)
+báti se|😨 🌑|бояться|n|bojim se|bal se|-|teme|темноты|Эмоции|боюсь|боятся|боялся|боялись|буду бояться|-|sedanjik bojim se, deležnik bal se; bati se + rodilnik
+upáti|🌈 🙏|надеяться|n|upam|upal|upaj|na najboljše|на лучшее|Эмоции|надеюсь|надеются|надеялся|надеялись|буду надеяться|надейся
+ljúbiti|❤️ 👨‍👩‍👧|любить|n|ljubim|ljubil|ljubi|svojo družino|свою семью|Эмоции|люблю|любят|любил|любили|буду любить|люби
+pogrešáti|🥺 🏡|скучать по|n|pogrešam|pogrešal|-|dom|дому|Эмоции|скучаю по|скучают по|скучал по|скучали по|буду скучать по|-
+rísati|🎨 🖼️|рисовать|n|rišem|risal|riši|portret|портрет|Учёба|рисую|рисуют|рисовал|рисовали|буду рисовать|рисуй|premena soglasnika: s → š (risati → rišem)
+fotografírati|📷 🏙️|фотографировать|n|fotografiram|fotografiral|fotografiraj|mesto|город|Путешествия|фотографирую|фотографируют|фотографировал|фотографировали|буду фотографировать|фотографируй
+váditi|🗣️ 🔁|упражняться, тренировать|n|vadim|vadil|vadi|izgovorjavo|произношение|Учёба|тренирую|тренируют|тренировал|тренировали|буду тренировать|тренируй
+ponovíti|🔁 📖|повторить|d|ponovim|ponovil|ponovi|snov|материал|Учёба|повторяю|повторяют|повторил|повторили|повторю|повтори
+pozábiti|🔑 ❔|забыть|d|pozabim|pozabil|-|geslo|пароль|Быт|забываю|забывают|забыл|забыли|забуду|-
+spómniti se|💡 📛|вспомнить|d|spomnim se|spomnil se|spomni se|imena|имя|Учёба|вспоминаю|вспоминают|вспомнил|вспомнили|вспомню|вспомни|spomniti se + rodilnik (spomnim se imena)
 `,
       B1: `
-odločíti se|решиться, принять решение|d|odločim se|odločil se|odloči se|za selitev|на переезд|Работа|решаюсь|решаются|решился|решились|решусь|решись|vidski par: odločiti se (dov.) — odločati se (nedov.)
-odlóčati se|решаться, колебаться|n|odločam se|odločal se|odločaj se|med dvema ponudbama|между двумя предложениями|Работа|выбираю|выбирают|выбирал|выбирали|буду выбирать|выбирай
-pripráviti|приготовить, подготовить|d|pripravim|pripravil|pripravi|zajtrk|завтрак|Еда|готовлю|готовят|приготовил|приготовили|приготовлю|приготовь|vidski par: pripraviti (dov.) — pripravljati (nedov.)
-priprávljati|готовить, подготавливать|n|pripravljam|pripravljal|pripravljaj|predstavitev|презентацию|Работа|готовлю|готовят|готовил|готовили|буду готовить|готовь|premena: v → vlj (pripraviti → pripravljati)
-pripráviti se|подготовиться|d|pripravim se|pripravil se|pripravi se|na izpit|к экзамену|Учёба|готовлюсь|готовятся|подготовился|подготовились|подготовлюсь|подготовься
-napisáti|написать|d|napišem|napisal|napiši|poročilo|отчёт|Работа|пишу|пишут|написал|написали|напишу|напиши|vidski par: napisati (dov.) — pisati (nedov.); s → š
-prebráti|прочитать|d|preberem|prebral|preberi|članek|статью|Учёба|читаю|читают|прочитал|прочитали|прочитаю|прочитай|vidski par: prebrati (dov.) — brati (nedov.)
-naučíti se|выучить, научиться|d|naučim se|naučil se|nauči se|novih besed|новые слова|Учёба|учу|учат|выучил|выучили|выучу|выучи|naučiti se + rodilnik; vidski par z učiti se
-pojésti|съесть|d|pojem,poješ,poje,pojeva,pojesta,pojesta,pojemo,pojeste,pojedo|pojedel/pojed|pojej|celo pico|целую пиццу|Еда|ем|едят|съел|съели|съем|съешь|sprega se kot jesti; vidski par pojesti (dov.) — jesti (nedov.)
-popíti|выпить|d|popijem|popil|popij|čaj|чай|Еда|пью|пьют|выпил|выпили|выпью|выпей|vidski par: popiti (dov.) — piti (nedov.)
-skúhati|сварить, приготовить|d|skuham|skuhal|skuhaj|juho|суп|Еда|варю|варят|сварил|сварили|сварю|свари|vidski par: skuhati (dov.) — kuhati (nedov.)
-spéči|испечь|d|spečem|spekel/spek|speci|kruh|хлеб|Еда|пеку|пекут|испёк|испекли|испеку|испеки|premena: k → č; vidski par speči (dov.) — peči (nedov.)
-poklícati|позвонить, позвать|d|pokličem|poklical|pokliči|zdravnika|врача|Общение|звоню|звонят|позвонил|позвонили|позвоню|позвони|premena: c → č; vidski par poklicati (dov.) — klicati (nedov.)
-pogovoríti se|поговорить|d|pogovorim se|pogovoril se|pogovori se|s šefom|с начальником|Общение|разговариваю|разговаривают|поговорил|поговорили|поговорю|поговори|vidski par: pogovoriti se (dov.) — pogovarjati se (nedov.)
-dogovoríti se|договориться|d|dogovorim se|dogovoril se|dogovori se|za sestanek|о встрече|Работа|договариваюсь|договариваются|договорился|договорились|договорюсь|договорись|dogovoriti se za + tožilnik
-strínjati se|соглашаться|n|strinjam se|strinjal se|strinjaj se|s predlogom|с предложением|Общение|соглашаюсь|соглашаются|соглашался|соглашались|буду соглашаться|соглашайся|strinjati se s/z + orodnik
-prepírati se|ссориться, спорить|n|prepiram se|prepiral se|-|zaradi malenkosti|из-за мелочей|Эмоции|ссорюсь|ссорятся|ссорился|ссорились|буду ссориться|-
-zaljúbiti se|влюбиться|d|zaljubim se|zaljubil se|-|v sosedo|в соседку|Эмоции|влюбляюсь|влюбляются|влюбился|влюбились|влюблюсь|-
-poročíti se|пожениться, выйти замуж|d|poročim se|poročil se|poroči se|spomladi|весной|Общество|женюсь|женятся|женился|женились|женюсь|женись
-razíti se|разойтись, расстаться|d|razidem se|razšel se/razš|-|v miru|мирно|Общество|расстаюсь|расстаются|расстался|расстались|расстанусь|-|sprega se kot iti: razidem se, razšel/razšla
-rodíti se|родиться|d|rodim se|rodil se|-|v Mariboru|в Мариборе|Общество|рождаюсь|рождаются|родился|родились|рожусь|-
-odrásti|вырасти|d|odrastem|odrasel/odras|-|na vasi|в деревне|Общество|расту|растут|вырос|выросли|вырасту|-|deležnik odrasel/odrasla
-umréti|умереть|d|umrem|umrl|-|v starosti|в старости|Общество|умираю|умирают|умер|умерли|умру|-|deležnik umrl/umrla (zlogotvorni r)
-preselíti se|переехать|d|preselim se|preselil se|preseli se|v večje stanovanje|в квартиру побольше|Дом|переезжаю|переезжают|переехал|переехали|перееду|переезжай
-najéti|снять (жильё), арендовать|d|najamem|najel|najemi|stanovanje|квартиру|Дом|снимаю|снимают|снял|сняли|сниму|сними|sedanjik najamem (kot vzeti → vzamem)
-plačeváti|платить, оплачивать|n|plačujem|plačeval|plačuj|najemnino|аренду|Деньги|плачу|платят|платил|платили|буду платить|плати|-eva- → -uje-; vidski par plačevati (nedov.) — plačati (dov.)
-zapravíti|потратить, растратить|d|zapravim|zapravil|-|ves denar|все деньги|Деньги|трачу|тратят|потратил|потратили|потрачу|-
-porábiti|израсходовать, потратить|d|porabim|porabil|porabi|manj energije|меньше энергии|Дом|расходую|расходуют|израсходовал|израсходовали|израсходую|израсходуй
-izgubíti|потерять|d|izgubim|izgubil|-|denarnico|кошелёк|Быт|теряю|теряют|потерял|потеряли|потеряю|-|vidski par: izgubiti (dov.) — izgubljati (nedov.)
-poiskáti|поискать, найти|d|poiščem|poiskal|poišči|nov klub|новый клуб|Быт|ищу|ищут|поискал|поискали|поищу|поищи|premena: sk → šč
-rešíti|решить, спасти|d|rešim|rešil|reši|težavo|проблему|Работа|решаю|решают|решил|решили|решу|реши|vidski par: rešiti (dov.) — reševati (nedov.)
-reševáti|решать, спасать|n|rešujem|reševal|rešuj|naloge|задачи|Учёба|решаю|решают|решал|решали|буду решать|решай|-eva- → -uje- (reševati → rešujem)
-razložíti|объяснить|d|razložim|razložil|razloži|pravilo|правило|Учёба|объясняю|объясняют|объяснил|объяснили|объясню|объясни|vidski par: razložiti (dov.) — razlagati (nedov.)
-razlágati|объяснять|n|razlagam|razlagal|razlagaj|slovnico|грамматику|Учёба|объясняю|объясняют|объяснял|объясняли|буду объяснять|объясняй
-prevésti|перевести|d|prevedem|prevedel/preved|prevedi|besedilo|текст|Учёба|перевожу|переводят|перевёл|перевели|переведу|переведи|deležnik prevedel/prevedla
-prevájati|переводить|n|prevajam|prevajal|prevajaj|pogodbe|договоры|Работа|перевожу|переводят|переводил|переводили|буду переводить|переводи
-vprašáti se|задаться вопросом|d|vprašam se|vprašal se|vprašaj se|zakaj|почему|Эмоции|спрашиваю себя|спрашивают себя|спросил себя|спросили себя|спрошу себя|спроси себя
-zanímati se|интересоваться|n|zanimam se|zanimal se|zanimaj se|za zgodovino|историей|Учёба|интересуюсь|интересуются|интересовался|интересовались|буду интересоваться|интересуйся|zanimati se za + tožilnik
-ukvárjati se|заниматься|n|ukvarjam se|ukvarjal se|ukvarjaj se|s športom|спортом|Здоровье|занимаюсь|занимаются|занимался|занимались|буду заниматься|занимайся|ukvarjati se s/z + orodnik
-trudíti se|стараться|n|trudim se|trudil se|trudi se|po najboljših močeh|изо всех сил|Работа|стараюсь|стараются|старался|старались|буду стараться|старайся
-naváditi se|привыкнуть|d|navadim se|navadil se|navadi se|na hrup|к шуму|Быт|привыкаю|привыкают|привык|привыкли|привыкну|привыкни|navaditi se na + tožilnik
-spremeníti|изменить|d|spremenim|spremenil|spremeni|načrt|план|Работа|меняю|меняют|изменил|изменили|изменю|измени|vidski par: spremeniti (dov.) — spreminjati (nedov.)
-spremínjati|менять, изменять|n|spreminjam|spreminjal|spreminjaj|mnenje|мнение|Эмоции|меняю|меняют|менял|меняли|буду менять|меняй
-izbráti|выбрать|d|izberem|izbral|izberi|darilo|подарок|Быт|выбираю|выбирают|выбрал|выбрали|выберу|выбери|premena osnove: izbra- → izber-
-izbírati|выбирать|n|izbiram|izbiral|izbiraj|med barvami|между цветами|Быт|выбираю|выбирают|выбирал|выбирали|буду выбирать|выбирай
-pokazáti|показать|d|pokažem|pokazal|pokaži|pot|дорогу|Движение|показываю|показывают|показал|показали|покажу|покажи|premena: z → ž (pokazati → pokažem)
-kázati|показывать|n|kažem|kazal|kaži|slike|фотографии|Общение|показываю|показывают|показывал|показывали|буду показывать|показывай|premena: z → ž (kazati → kažem)
-opísati|описать|d|opišem|opisal|opiši|dogodek|событие|Общение|описываю|описывают|описал|описали|опишу|опиши|premena: s → š
-opisováti|описывать|n|opisujem|opisoval|opisuj|kraje|места|Путешествия|описываю|описывают|описывал|описывали|буду описывать|описывай|-ova- → -uje-
-obljúbiti|пообещать|d|obljubim|obljubil|obljubi|pomoč|помощь|Общение|обещаю|обещают|пообещал|пообещали|пообещаю|пообещай
-lagáti|лгать|n|lažem|lagal|-|prijateljem|друзьям|Общение|лгу|лгут|лгал|лгали|буду лгать|-|premena: g → ž (lagati → lažem)
-verjéti|верить|n|verjamem|verjel|verjemi|v uspeh|в успех|Эмоции|верю|верят|верил|верили|буду верить|верь|sedanjik verjamem, deležnik verjel
-zaupáti|доверять|dv|zaupam|zaupal|zaupaj|kolegom|коллегам|Общение|доверяю|доверяют|доверял|доверяли|буду доверять|доверяй|zaupati + dajalnik
-skrbéti|заботиться|n|skrbim|skrbel|skrbi|za vrt|о саде|Дом|забочусь|заботятся|заботился|заботились|буду заботиться|заботься|skrbeti za + tožilnik
-poskrbéti|позаботиться|d|poskrbim|poskrbel|poskrbi|za goste|о гостях|Дом|забочусь|заботятся|позаботился|позаботились|позабочусь|позаботься
-čutíti|чувствовать|n|čutim|čutil|-|utrujenost|усталость|Здоровье|чувствую|чувствуют|чувствовал|чувствовали|буду чувствовать|-
-počútiti se|чувствовать себя|n|počutim se|počutil se|-|odlično|отлично|Здоровье|чувствую себя|чувствуют себя|чувствовал себя|чувствовали себя|буду чувствовать себя|-
-zdráviti|лечить|n|zdravim|zdravil|zdravi|prehlad|простуду|Здоровье|лечу|лечат|лечил|лечили|буду лечить|лечи
-sprehájati se|гулять|n|sprehajam se|sprehajal se|sprehajaj se|ob reki|вдоль реки|Движение|гуляю|гуляют|гулял|гуляли|буду гулять|гуляй
-povzpéti se|подняться, взобраться|d|povzpnem se|povzpel se|povzpni se|na Triglav|на Триглав|Природа|поднимаюсь|поднимаются|поднялся|поднялись|поднимусь|поднимись|sedanjik povzpnem se
-spustíti se|спуститься|d|spustim se|spustil se|spusti se|v dolino|в долину|Природа|спускаюсь|спускаются|спустился|спустились|спущусь|спустись
-kolesáriti|кататься на велосипеде|n|kolesarim|kolesaril|kolesari|po Gorenjskem|по Гореньской|Движение|катаюсь на велосипеде|катаются на велосипеде|катался на велосипеде|катались на велосипеде|буду кататься на велосипеде|катайся на велосипеде
-smúčati|кататься на лыжах|n|smučam|smučal|smučaj|na Krvavcu|на Крваваце|Природа|катаюсь на лыжах|катаются на лыжах|катался на лыжах|катались на лыжах|буду кататься на лыжах|катайся на лыжах
-sadíti|сажать|n|sadim|sadil|sadi|rože|цветы|Природа|сажаю|сажают|сажал|сажали|буду сажать|сажай
-zalívati|поливать|n|zalivam|zalival|zalivaj|vrt|сад|Дом|поливаю|поливают|поливал|поливали|буду поливать|поливай
-pospráviti|прибрать, убрать|d|pospravim|pospravil|pospravi|sobo|комнату|Дом|убираю|убирают|прибрал|прибрали|приберу|прибери|vidski par: pospraviti (dov.) — pospravljati (nedov.)
-zgradíti|построить|d|zgradim|zgradil|zgradi|hišo|дом|Дом|строю|строят|построил|построили|построю|построй
-premákniti|передвинуть|d|premaknem|premaknil|premakni|mizo|стол|Дом|двигаю|двигают|передвинул|передвинули|передвину|передвинь|glagoli na -niti: sedanjik -nem
-dvígniti|поднять|d|dvignem|dvignil|dvigni|roko|руку|Быт|поднимаю|поднимают|поднял|подняли|подниму|подними|glagoli na -niti: sedanjik -nem
-spustíti|опустить, отпустить|d|spustim|spustil|spusti|zaveso|штору|Дом|опускаю|опускают|опустил|опустили|опущу|опусти
-nasmehníti se|улыбнуться|d|nasmehnem se|nasmehnil se|nasmehni se|otroku|ребёнку|Эмоции|улыбаюсь|улыбаются|улыбнулся|улыбнулись|улыбнусь|улыбнись|glagoli na -niti: sedanjik -nem; nasmehniti se + dajalnik
+odločíti se|✅ 📦|решиться, принять решение|d|odločim se|odločil se|odloči se|za selitev|на переезд|Работа|решаюсь|решаются|решился|решились|решусь|решись|vidski par: odločiti se (dov.) — odločati se (nedov.)
+odlóčati se|⚖️ 📄|решаться, колебаться|n|odločam se|odločal se|odločaj se|med dvema ponudbama|между двумя предложениями|Работа|выбираю|выбирают|выбирал|выбирали|буду выбирать|выбирай
+pripráviti|🍳 🥚|приготовить, подготовить|d|pripravim|pripravil|pripravi|zajtrk|завтрак|Еда|готовлю|готовят|приготовил|приготовили|приготовлю|приготовь|vidski par: pripraviti (dov.) — pripravljati (nedov.)
+priprávljati|📊 🧑‍💼|готовить, подготавливать|n|pripravljam|pripravljal|pripravljaj|predstavitev|презентацию|Работа|готовлю|готовят|готовил|готовили|буду готовить|готовь|premena: v → vlj (pripraviti → pripravljati)
+pripráviti se|📝 🎓|подготовиться|d|pripravim se|pripravil se|pripravi se|na izpit|к экзамену|Учёба|готовлюсь|готовятся|подготовился|подготовились|подготовлюсь|подготовься
+napisáti|📝 ✅|написать|d|napišem|napisal|napiši|poročilo|отчёт|Работа|пишу|пишут|написал|написали|напишу|напиши|vidski par: napisati (dov.) — pisati (nedov.); s → š
+prebráti|📗 ✅|прочитать|d|preberem|prebral|preberi|članek|статью|Учёба|читаю|читают|прочитал|прочитали|прочитаю|прочитай|vidski par: prebrati (dov.) — brati (nedov.)
+naučíti se|🧠 🔤|выучить, научиться|d|naučim se|naučil se|nauči se|novih besed|новые слова|Учёба|учу|учат|выучил|выучили|выучу|выучи|naučiti se + rodilnik; vidski par z učiti se
+pojésti|🍕 ✅|съесть|d|pojem,poješ,poje,pojeva,pojesta,pojesta,pojemo,pojeste,pojedo|pojedel/pojed|pojej|celo pico|целую пиццу|Еда|ем|едят|съел|съели|съем|съешь|sprega se kot jesti; vidski par pojesti (dov.) — jesti (nedov.)
+popíti|🍵 ✅|выпить|d|popijem|popil|popij|čaj|чай|Еда|пью|пьют|выпил|выпили|выпью|выпей|vidski par: popiti (dov.) — piti (nedov.)
+skúhati|🥘 🔥|сварить, приготовить|d|skuham|skuhal|skuhaj|juho|суп|Еда|варю|варят|сварил|сварили|сварю|свари|vidski par: skuhati (dov.) — kuhati (nedov.)
+spéči|🍞 🔥|испечь|d|spečem|spekel/spek|speci|kruh|хлеб|Еда|пеку|пекут|испёк|испекли|испеку|испеки|premena: k → č; vidski par speči (dov.) — peči (nedov.)
+poklícati|📞 👨‍⚕️|позвонить, позвать|d|pokličem|poklical|pokliči|zdravnika|врача|Общение|звоню|звонят|позвонил|позвонили|позвоню|позвони|premena: c → č; vidski par poklicati (dov.) — klicati (nedov.)
+pogovoríti se|👔 💬|поговорить|d|pogovorim se|pogovoril se|pogovori se|s šefom|с начальником|Общение|разговариваю|разговаривают|поговорил|поговорили|поговорю|поговори|vidski par: pogovoriti se (dov.) — pogovarjati se (nedov.)
+dogovoríti se|🤝 📅|договориться|d|dogovorim se|dogovoril se|dogovori se|za sestanek|о встрече|Работа|договариваюсь|договариваются|договорился|договорились|договорюсь|договорись|dogovoriti se za + tožilnik
+strínjati se|👍 💬|соглашаться|n|strinjam se|strinjal se|strinjaj se|s predlogom|с предложением|Общение|соглашаюсь|соглашаются|соглашался|соглашались|буду соглашаться|соглашайся|strinjati se s/z + orodnik
+prepírati se|😠 💥|ссориться, спорить|n|prepiram se|prepiral se|-|zaradi malenkosti|из-за мелочей|Эмоции|ссорюсь|ссорятся|ссорился|ссорились|буду ссориться|-
+zaljúbiti se|😍 💘|влюбиться|d|zaljubim se|zaljubil se|-|v sosedo|в соседку|Эмоции|влюбляюсь|влюбляются|влюбился|влюбились|влюблюсь|-
+poročíti se|💍 👰|пожениться, выйти замуж|d|poročim se|poročil se|poroči se|spomladi|весной|Общество|женюсь|женятся|женился|женились|женюсь|женись
+razíti se|💔 👋|разойтись, расстаться|d|razidem se|razšel se/razš|-|v miru|мирно|Общество|расстаюсь|расстаются|расстался|расстались|расстанусь|-|sprega se kot iti: razidem se, razšel/razšla
+rodíti se|👶 🏥|родиться|d|rodim se|rodil se|-|v Mariboru|в Мариборе|Общество|рождаюсь|рождаются|родился|родились|рожусь|-
+odrásti|🌱 🧑|вырасти|d|odrastem|odrasel/odras|-|na vasi|в деревне|Общество|расту|растут|вырос|выросли|вырасту|-|deležnik odrasel/odrasla
+umréti|🕊️ ⚰️|умереть|d|umrem|umrl|-|v starosti|в старости|Общество|умираю|умирают|умер|умерли|умру|-|deležnik umrl/umrla (zlogotvorni r)
+preselíti se|🚚 🏠|переехать|d|preselim se|preselil se|preseli se|v večje stanovanje|в квартиру побольше|Дом|переезжаю|переезжают|переехал|переехали|перееду|переезжай
+najéti|🔑 🏢|снять (жильё), арендовать|d|najamem|najel|najemi|stanovanje|квартиру|Дом|снимаю|снимают|снял|сняли|сниму|сними|sedanjik najamem (kot vzeti → vzamem)
+plačeváti|💳 🏠|платить, оплачивать|n|plačujem|plačeval|plačuj|najemnino|аренду|Деньги|плачу|платят|платил|платили|буду платить|плати|-eva- → -uje-; vidski par plačevati (nedov.) — plačati (dov.)
+zapravíti|💸 🛍️|потратить, растратить|d|zapravim|zapravil|-|ves denar|все деньги|Деньги|трачу|тратят|потратил|потратили|потрачу|-
+porábiti|⚡ 📉|израсходовать, потратить|d|porabim|porabil|porabi|manj energije|меньше энергии|Дом|расходую|расходуют|израсходовал|израсходовали|израсходую|израсходуй
+izgubíti|😱 👛|потерять|d|izgubim|izgubil|-|denarnico|кошелёк|Быт|теряю|теряют|потерял|потеряли|потеряю|-|vidski par: izgubiti (dov.) — izgubljati (nedov.)
+poiskáti|🔎 🎾|поискать, найти|d|poiščem|poiskal|poišči|nov klub|новый клуб|Быт|ищу|ищут|поискал|поискали|поищу|поищи|premena: sk → šč
+rešíti|🧩 ✅|решить, спасти|d|rešim|rešil|reši|težavo|проблему|Работа|решаю|решают|решил|решили|решу|реши|vidski par: rešiti (dov.) — reševati (nedov.)
+reševáti|🧩 📚|решать, спасать|n|rešujem|reševal|rešuj|naloge|задачи|Учёба|решаю|решают|решал|решали|буду решать|решай|-eva- → -uje- (reševati → rešujem)
+razložíti|👩‍🏫 📐|объяснить|d|razložim|razložil|razloži|pravilo|правило|Учёба|объясняю|объясняют|объяснил|объяснили|объясню|объясни|vidski par: razložiti (dov.) — razlagati (nedov.)
+razlágati|📚 📏|объяснять|n|razlagam|razlagal|razlagaj|slovnico|грамматику|Учёба|объясняю|объясняют|объяснял|объясняли|буду объяснять|объясняй
+prevésti|🔤 📄|перевести|d|prevedem|prevedel/preved|prevedi|besedilo|текст|Учёба|перевожу|переводят|перевёл|перевели|переведу|переведи|deležnik prevedel/prevedla
+prevájati|📑 🔤|переводить|n|prevajam|prevajal|prevajaj|pogodbe|договоры|Работа|перевожу|переводят|переводил|переводили|буду переводить|переводи
+vprašáti se|🤷 ❓|задаться вопросом|d|vprašam se|vprašal se|vprašaj se|zakaj|почему|Эмоции|спрашиваю себя|спрашивают себя|спросил себя|спросили себя|спрошу себя|спроси себя
+zanímati se|🏛️ 📜|интересоваться|n|zanimam se|zanimal se|zanimaj se|za zgodovino|историей|Учёба|интересуюсь|интересуются|интересовался|интересовались|буду интересоваться|интересуйся|zanimati se za + tožilnik
+ukvárjati se|⚽ 🏅|заниматься|n|ukvarjam se|ukvarjal se|ukvarjaj se|s športom|спортом|Здоровье|занимаюсь|занимаются|занимался|занимались|буду заниматься|занимайся|ukvarjati se s/z + orodnik
+trudíti se|💪 📈|стараться|n|trudim se|trudil se|trudi se|po najboljših močeh|изо всех сил|Работа|стараюсь|стараются|старался|старались|буду стараться|старайся
+naváditi se|🔊 😌|привыкнуть|d|navadim se|navadil se|navadi se|na hrup|к шуму|Быт|привыкаю|привыкают|привык|привыкли|привыкну|привыкни|navaditi se na + tožilnik
+spremeníti|🔄 🗓️|изменить|d|spremenim|spremenil|spremeni|načrt|план|Работа|меняю|меняют|изменил|изменили|изменю|измени|vidski par: spremeniti (dov.) — spreminjati (nedov.)
+spremínjati|💭 🔄|менять, изменять|n|spreminjam|spreminjal|spreminjaj|mnenje|мнение|Эмоции|меняю|меняют|менял|меняли|буду менять|меняй
+izbráti|🎁 ✅|выбрать|d|izberem|izbral|izberi|darilo|подарок|Быт|выбираю|выбирают|выбрал|выбрали|выберу|выбери|premena osnove: izbra- → izber-
+izbírati|🎨 🤔|выбирать|n|izbiram|izbiral|izbiraj|med barvami|между цветами|Быт|выбираю|выбирают|выбирал|выбирали|буду выбирать|выбирай
+pokazáti|🧭 👉|показать|d|pokažem|pokazal|pokaži|pot|дорогу|Движение|показываю|показывают|показал|показали|покажу|покажи|premena: z → ž (pokazati → pokažem)
+kázati|🖼️ 👉|показывать|n|kažem|kazal|kaži|slike|фотографии|Общение|показываю|показывают|показывал|показывали|буду показывать|показывай|premena: z → ž (kazati → kažem)
+opísati|📝 🎪|описать|d|opišem|opisal|opiši|dogodek|событие|Общение|описываю|описывают|описал|описали|опишу|опиши|premena: s → š
+opisováti|🗺️ 📝|описывать|n|opisujem|opisoval|opisuj|kraje|места|Путешествия|описываю|описывают|описывал|описывали|буду описывать|описывай|-ova- → -uje-
+obljúbiti|🤝 🫶|пообещать|d|obljubim|obljubil|obljubi|pomoč|помощь|Общение|обещаю|обещают|пообещал|пообещали|пообещаю|пообещай
+lagáti|🤥 👥|лгать|n|lažem|lagal|-|prijateljem|друзьям|Общение|лгу|лгут|лгал|лгали|буду лгать|-|premena: g → ž (lagati → lažem)
+verjéti|🙌 🏆|верить|n|verjamem|verjel|verjemi|v uspeh|в успех|Эмоции|верю|верят|верил|верили|буду верить|верь|sedanjik verjamem, deležnik verjel
+zaupáti|🤝 💼|доверять|dv|zaupam|zaupal|zaupaj|kolegom|коллегам|Общение|доверяю|доверяют|доверял|доверяли|буду доверять|доверяй|zaupati + dajalnik
+skrbéti|🌻 🚿|заботиться|n|skrbim|skrbel|skrbi|za vrt|о саде|Дом|забочусь|заботятся|заботился|заботились|буду заботиться|заботься|skrbeti za + tožilnik
+poskrbéti|🍽️ 👥|позаботиться|d|poskrbim|poskrbel|poskrbi|za goste|о гостях|Дом|забочусь|заботятся|позаботился|позаботились|позабочусь|позаботься
+čutíti|😶‍🌫️ 🥱|чувствовать|n|čutim|čutil|-|utrujenost|усталость|Здоровье|чувствую|чувствуют|чувствовал|чувствовали|буду чувствовать|-
+počútiti se|🤒 ✨|чувствовать себя|n|počutim se|počutil se|-|odlično|отлично|Здоровье|чувствую себя|чувствуют себя|чувствовал себя|чувствовали себя|буду чувствовать себя|-
+zdráviti|🩺 🤧|лечить|n|zdravim|zdravil|zdravi|prehlad|простуду|Здоровье|лечу|лечат|лечил|лечили|буду лечить|лечи
+sprehájati se|🚶 🌊|гулять|n|sprehajam se|sprehajal se|sprehajaj se|ob reki|вдоль реки|Движение|гуляю|гуляют|гулял|гуляли|буду гулять|гуляй
+povzpéti se|🧗 🏔️|подняться, взобраться|d|povzpnem se|povzpel se|povzpni se|na Triglav|на Триглав|Природа|поднимаюсь|поднимаются|поднялся|поднялись|поднимусь|поднимись|sedanjik povzpnem se
+spustíti se|⛰️ ⬇️|спуститься|d|spustim se|spustil se|spusti se|v dolino|в долину|Природа|спускаюсь|спускаются|спустился|спустились|спущусь|спустись
+kolesáriti|🚴 🌄|кататься на велосипеде|n|kolesarim|kolesaril|kolesari|po Gorenjskem|по Гореньской|Движение|катаюсь на велосипеде|катаются на велосипеде|катался на велосипеде|катались на велосипеде|буду кататься на велосипеде|катайся на велосипеде
+smúčati|⛷️ 🏔️|кататься на лыжах|n|smučam|smučal|smučaj|na Krvavcu|на Крваваце|Природа|катаюсь на лыжах|катаются на лыжах|катался на лыжах|катались на лыжах|буду кататься на лыжах|катайся на лыжах
+sadíti|🌷 🌱|сажать|n|sadim|sadil|sadi|rože|цветы|Природа|сажаю|сажают|сажал|сажали|буду сажать|сажай
+zalívati|🪴 💧|поливать|n|zalivam|zalival|zalivaj|vrt|сад|Дом|поливаю|поливают|поливал|поливали|буду поливать|поливай
+pospráviti|🧺 🛏️|прибрать, убрать|d|pospravim|pospravil|pospravi|sobo|комнату|Дом|убираю|убирают|прибрал|прибрали|приберу|прибери|vidski par: pospraviti (dov.) — pospravljati (nedov.)
+zgradíti|🏗️ 🏠|построить|d|zgradim|zgradil|zgradi|hišo|дом|Дом|строю|строят|построил|построили|построю|построй
+premákniti|🪑 ➡️|передвинуть|d|premaknem|premaknil|premakni|mizo|стол|Дом|двигаю|двигают|передвинул|передвинули|передвину|передвинь|glagoli na -niti: sedanjik -nem
+dvígniti|✋ ⬆️|поднять|d|dvignem|dvignil|dvigni|roko|руку|Быт|поднимаю|поднимают|поднял|подняли|подниму|подними|glagoli na -niti: sedanjik -nem
+spustíti|🪟 ⬇️|опустить, отпустить|d|spustim|spustil|spusti|zaveso|штору|Дом|опускаю|опускают|опустил|опустили|опущу|опусти
+nasmehníti se|🙂 👶|улыбнуться|d|nasmehnem se|nasmehnil se|nasmehni se|otroku|ребёнку|Эмоции|улыбаюсь|улыбаются|улыбнулся|улыбнулись|улыбнусь|улыбнись|glagoli na -niti: sedanjik -nem; nasmehniti se + dajalnik
 `,
       B2: `
-sméti|сметь, иметь право|n|smem|smel|-|parkirati tukaj|парковаться здесь|Общество|имею право|имеют право|имел право|имели право|буду иметь право|-|modalni glagol: smem + nedoločnik; zanikanje ne smem = нельзя
-znáti|уметь|n|znam|znal|-|plavati|плавать|Здоровье|умею|умеют|умел|умели|буду уметь|-|znati + nedoločnik = уметь (znam plavati); ne zamenjuj z vedeti
-želéti|желать, хотеть|n|želim|želel|-|spremembo|перемен|Эмоции|желаю|желают|желал|желали|буду желать|-|želeti + rodilnik/tožilnik ali nedoločnik (želim iti)
-namerávati|намереваться|n|nameravam|nameraval|-|oditi|уйти|Работа|намереваюсь|намереваются|намеревался|намеревались|буду намереваться|-|nameravati + nedoločnik
-upáti si|осмеливаться|n|upam si|upal si|upaj si|reči resnico|сказать правду|Эмоции|осмеливаюсь|осмеливаются|осмеливался|осмеливались|буду осмеливаться|осмелься|povratna klitika si (ne se): upam si, upal sem si
-tvégati|рисковать|n|tvegam|tvegal|tvegaj|vse|всем|Работа|рискую|рискуют|рисковал|рисковали|буду рисковать|рискуй
-zmóči|смочь, осилить|d|zmorem|zmogel/zmog|-|vse naloge|все задачи|Работа|осиливаю|осиливают|осилил|осилили|осилю|-|sprega se kot moči: zmorem, zmogel/zmogla
-uspéti|успеть, удаться|d|uspem|uspel|-|pravočasno|вовремя|Работа|успеваю|успевают|успел|успели|успею|-|uspelo mi je = мне удалось (brezosebno)
-vodíti|вести, руководить|n|vodim|vodil|vodi|projekt|проект|Работа|руковожу|руководят|руководил|руководили|буду руководить|руководи
-uprávljati|управлять|n|upravljam|upravljal|upravljaj|podjetje|компанией|Работа|управляю|управляют|управлял|управляли|буду управлять|управляй
-zaposlíti|нанять, трудоустроить|d|zaposlim|zaposlil|zaposli|nove sodelavce|новых сотрудников|Работа|нанимаю|нанимают|нанял|наняли|найму|найми
-odpustíti|уволить; простить|d|odpustim|odpustil|odpusti|napako|ошибку|Общение|прощаю|прощают|простил|простили|прощу|прости|dva pomena: odpustiti delavca (уволить) / odpustiti napako (простить)
-prijáviti se|записаться, подать заявку|d|prijavim se|prijavil se|prijavi se|na tečaj|на курс|Учёба|записываюсь|записываются|записался|записались|запишусь|запишись|prijaviti se na + tožilnik
-odjáviti se|выписаться, выйти (из системы)|d|odjavim se|odjavil se|odjavi se|iz sistema|из системы|Техника|выхожу|выходят|вышел|вышли|выйду|выйди
-predlágati|предлагать|dv|predlagam|predlagal|predlagaj|kompromis|компромисс|Работа|предлагаю|предлагают|предложил|предложили|предложу|предложи|dvovidski glagol
-svetováti|советовать|dv|svetujem|svetoval|svetuj|potrpežljivost|терпение|Общение|советую|советуют|посоветовал|посоветовали|посоветую|посоветуй|-ova- → -uje-; svetovati + dajalnik
-pogájati se|вести переговоры|n|pogajam se|pogajal se|pogajaj se|o ceni|о цене|Работа|веду переговоры|ведут переговоры|вёл переговоры|вели переговоры|буду вести переговоры|веди переговоры|pogajati se o + mestnik
-odločáti|решать (определять)|n|odločam|odločal|odločaj|o proračunu|о бюджете|Работа|решаю|решают|решал|решали|буду решать|решай|odločati o + mestnik
-načrtováti|планировать|n|načrtujem|načrtoval|načrtuj|potovanje|поездку|Путешествия|планирую|планируют|планировал|планировали|буду планировать|планируй|-ova- → -uje-
-organizírati|организовать|dv|organiziram|organiziral|organiziraj|konferenco|конференцию|Работа|организую|организуют|организовал|организовали|организую|организуй|dvovidski glagol (-irati)
-sodelováti|сотрудничать, участвовать|n|sodelujem|sodeloval|sodeluj|pri projektu|в проекте|Работа|участвую|участвуют|участвовал|участвовали|буду участвовать|участвуй|sodelovati pri + mestnik
-tekmováti|соревноваться|n|tekmujem|tekmoval|tekmuj|na prvenstvu|на чемпионате|Здоровье|соревнуюсь|соревнуются|соревновался|соревновались|буду соревноваться|соревнуйся
-zmágati|победить|d|zmagam|zmagal|zmagaj|na volitvah|на выборах|Общество|побеждаю|побеждают|победил|победили|побежу|победи
-izgúbljati|терять, проигрывать|n|izgubljam|izgubljal|-|potrpljenje|терпение|Эмоции|теряю|теряют|терял|теряли|буду терять|-
-dosêči|достичь|d|dosežem|dosegel/doseg|dosezi|cilj|цели|Работа|достигаю|достигают|достиг|достигли|достигну|достигни|premena: g → ž (doseg- → dosež-), velelnik dosezi
-dosegáti|достигать|n|dosegam|dosegal|dosegaj|dobre rezultate|хороших результатов|Работа|достигаю|достигают|достигал|достигали|буду достигать|достигай
-razvíti|развить|d|razvijem|razvil|razvij|novo idejo|новую идею|Работа|развиваю|развивают|развил|развили|разовью|развей
-razvíjati|развивать|n|razvijam|razvijal|razvijaj|aplikacijo|приложение|Техника|разрабатываю|разрабатывают|разрабатывал|разрабатывали|буду разрабатывать|разрабатывай
-izboljšáti|улучшить|d|izboljšam|izboljšal|izboljšaj|izgovorjavo|произношение|Учёба|улучшаю|улучшают|улучшил|улучшили|улучшу|улучши
-poslábšati se|ухудшиться|d|poslabšam se|poslabšal se|-|čez noč|за ночь|Здоровье|ухудшаюсь|ухудшаются|ухудшился|ухудшились|ухудшусь|-
-povečáti|увеличить|d|povečam|povečal|povečaj|prodajo|продажи|Работа|увеличиваю|увеличивают|увеличил|увеличили|увеличу|увеличь
-zmanjšáti|уменьшить|d|zmanjšam|zmanjšal|zmanjšaj|stroške|расходы|Деньги|уменьшаю|уменьшают|уменьшил|уменьшили|уменьшу|уменьши
-primérjati|сравнивать|n|primerjam|primerjal|primerjaj|ponudbe|предложения|Деньги|сравниваю|сравнивают|сравнивал|сравнивали|буду сравнивать|сравнивай
-océniti|оценить|d|ocenim|ocenil|oceni|tveganje|риск|Работа|оцениваю|оценивают|оценил|оценили|оценю|оцени
-ocenjeváti|оценивать|n|ocenjujem|ocenjeval|ocenjuj|izdelke|товары|Работа|оцениваю|оценивают|оценивал|оценивали|буду оценивать|оценивай|-eva- → -uje-
-preveríti|проверить|d|preverim|preveril|preveri|podatke|данные|Техника|проверяю|проверяют|проверил|проверили|проверю|проверь
-preverjáti|проверять|n|preverjam|preverjal|preverjaj|kakovost|качество|Работа|проверяю|проверяют|проверял|проверяли|буду проверять|проверяй
-razískati|исследовать|d|raziščem|raziskal|razišči|vzroke|причины|Наука|исследую|исследуют|исследовал|исследовали|исследую|исследуй|premena: sk → šč (raziskati → raziščem)
-raziskováti|исследовать (длительно)|n|raziskujem|raziskoval|raziskuj|vesolje|космос|Наука|исследую|исследуют|исследовал|исследовали|буду исследовать|исследуй|-ova- → -uje-
-ugotovíti|установить, выяснить|d|ugotovim|ugotovil|ugotovi|vzrok napake|причину ошибки|Наука|выясняю|выясняют|выяснил|выяснили|выясню|выясни
-dokazáti|доказать|d|dokažem|dokazal|dokaži|nedolžnost|невиновность|Общество|доказываю|доказывают|доказал|доказали|докажу|докажи|premena: z → ž (dokazati → dokažem)
-domnévati|предполагать|n|domnevam|domneval|-|najslabše|худшее|Эмоции|предполагаю|предполагают|предполагал|предполагали|буду предполагать|-
-sklépati|заключать, делать вывод|n|sklepam|sklepal|sklepaj|iz podatkov|из данных|Наука|делаю вывод|делают выводы|делал вывод|делали выводы|буду делать вывод|делай вывод
-opazíti|заметить|d|opazim|opazil|-|spremembo|перемену|Эмоции|замечаю|замечают|заметил|заметили|замечу|-
-opazováti|наблюдать|n|opazujem|opazoval|opazuj|ptice|за птицами|Природа|наблюдаю|наблюдают|наблюдал|наблюдали|буду наблюдать|наблюдай|-ova- → -uje-
-prepričáti|убедить|d|prepričam|prepričal|prepričaj|stranko|клиента|Работа|убеждаю|убеждают|убедил|убедили|убежу|убеди
-prepričeváti|убеждать|n|prepričujem|prepričeval|prepričuj|sodelavce|коллег|Работа|убеждаю|убеждают|убеждал|убеждали|буду убеждать|убеждай|-eva- → -uje-
-zavrníti|отклонить, отказать|d|zavrnem|zavrnil|zavrni|ponudbo|предложение|Работа|отклоняю|отклоняют|отклонил|отклонили|отклоню|отклони|glagoli na -niti: sedanjik -nem
-spréjeti|принять|d|sprejmem|sprejel|sprejmi|odločitev|решение|Работа|принимаю|принимают|принял|приняли|приму|прими|sedanjik sprejmem (vzeti-tip), deležnik sprejel
-sprejémati|принимать|n|sprejemam|sprejemal|sprejemaj|goste|гостей|Общение|принимаю|принимают|принимал|принимали|буду принимать|принимай
-zahtévati|требовать|n|zahtevam|zahteval|zahtevaj|pojasnilo|объяснений|Работа|требую|требуют|требовал|требовали|буду требовать|требуй
-dovolíti|разрешить|d|dovolim|dovolil|dovoli|izjemo|исключение|Общество|разрешаю|разрешают|разрешил|разрешили|разрешу|разреши
-prepovédati|запретить|d|prepovem,prepoveš,prepove,prepoveva,prepovesta,prepovesta,prepovemo,prepoveste,prepovedo|prepovedal|prepovej|kajenje|курение|Общество|запрещаю|запрещают|запретил|запретили|запрещу|запрети|sprega se kot povedati
-opozoríti|предупредить|d|opozorim|opozoril|opozori|na nevarnost|об опасности|Общество|предупреждаю|предупреждают|предупредил|предупредили|предупрежу|предупреди|opozoriti na + tožilnik
-obvestíti|уведомить, известить|d|obvestim|obvestil|obvesti|vse udeležence|всех участников|Работа|уведомляю|уведомляют|уведомил|уведомили|уведомлю|уведоми
-objáviti|опубликовать|d|objavim|objavil|objavi|rezultate|результаты|Наука|публикую|публикуют|опубликовал|опубликовали|опубликую|опубликуй
-poročáti|докладывать, сообщать|n|poročam|poročal|poročaj|o napredku|о прогрессе|Работа|докладываю|докладывают|докладывал|докладывали|буду докладывать|докладывай|poročati o + mestnik
-razpravljáti|обсуждать, дискутировать|n|razpravljam|razpravljal|razpravljaj|o zakonu|о законе|Общество|обсуждаю|обсуждают|обсуждал|обсуждали|буду обсуждать|обсуждай
-ugovárjati|возражать|n|ugovarjam|ugovarjal|-|odločitvi|решению|Общение|возражаю|возражают|возражал|возражали|буду возражать|-|ugovarjati + dajalnik
-trdíti|утверждать|n|trdim|trdil|-|nasprotno|обратное|Общение|утверждаю|утверждают|утверждал|утверждали|буду утверждать|-|zlogotvorni r: trdim [tərdim]
-priznáti|признать|d|priznam|priznal|priznaj|napako|ошибку|Эмоции|признаю|признают|признал|признали|признаю|признай
-zanikáti|отрицать|dv|zanikam|zanikal|zanikaj|obtožbe|обвинения|Общество|отрицаю|отрицают|отрицал|отрицали|буду отрицать|отрицай
-skríti|спрятать|d|skrijem|skril|skrij|ključ|ключ|Быт|прячу|прячут|спрятал|спрятали|спрячу|спрячь
-odkríti|открыть, обнаружить|d|odkrijem|odkril|odkrij|novo vrsto|новый вид|Наука|обнаруживаю|обнаруживают|обнаружил|обнаружили|обнаружу|обнаружь
-izumíti|изобрести|d|izumim|izumil|izumi|novo napravo|новое устройство|Техника|изобретаю|изобретают|изобрёл|изобрели|изобрету|изобрети
-namestíti|установить (программу)|d|namestim|namestil|namesti|posodobitev|обновление|Техника|устанавливаю|устанавливают|установил|установили|установлю|установи
-shraníti|сохранить|d|shranim|shranil|shrani|dokument|документ|Техника|сохраняю|сохраняют|сохранил|сохранили|сохраню|сохрани
-izbrísati|удалить, стереть|d|izbrišem|izbrisal|izbriši|stare datoteke|старые файлы|Техника|удаляю|удаляют|удалил|удалили|удалю|удали|premena: s → š
-prenésti|перенести, скачать|d|prenesem|prenesel/prenes|prenesi|datoteko|файл|Техника|скачиваю|скачивают|скачал|скачали|скачаю|скачай|deležnik prenesel/prenesla
-povezáti|соединить, связать|d|povežem|povezal|poveži|napravi|устройства|Техника|соединяю|соединяют|соединил|соединили|соединю|соедини|premena: z → ž (povezati → povežem)
-onesnažévati|загрязнять|n|onesnažujem|onesnaževal|-|reke|реки|Природа|загрязняю|загрязняют|загрязнял|загрязняли|буду загрязнять|-|-eva- → -uje-
-varováti|охранять, беречь|n|varujem|varoval|varuj|okolje|окружающую среду|Природа|берегу|берегут|берёг|берегли|буду беречь|береги|-ova- → -uje-
-reciklírati|перерабатывать (отходы)|dv|recikliram|recikliral|recikliraj|plastiko|пластик|Природа|перерабатываю|перерабатывают|переработал|переработали|переработаю|переработай|dvovidski glagol (-irati)
+sméti|🅿️ ✅|сметь, иметь право|n|smem|smel|-|parkirati tukaj|парковаться здесь|Общество|имею право|имеют право|имел право|имели право|буду иметь право|-|modalni glagol: smem + nedoločnik; zanikanje ne smem = нельзя
+znáti|🏊 🏅|уметь|n|znam|znal|-|plavati|плавать|Здоровье|умею|умеют|умел|умели|буду уметь|-|znati + nedoločnik = уметь (znam plavati); ne zamenjuj z vedeti
+želéti|🌠 🙏|желать, хотеть|n|želim|želel|-|spremembo|перемен|Эмоции|желаю|желают|желал|желали|буду желать|-|želeti + rodilnik/tožilnik ali nedoločnik (želim iti)
+namerávati|🚪 🗓️|намереваться|n|nameravam|nameraval|-|oditi|уйти|Работа|намереваюсь|намереваются|намеревался|намеревались|буду намереваться|-|nameravati + nedoločnik
+upáti si|😤 🗣️|осмеливаться|n|upam si|upal si|upaj si|reči resnico|сказать правду|Эмоции|осмеливаюсь|осмеливаются|осмеливался|осмеливались|буду осмеливаться|осмелься|povratna klitika si (ne se): upam si, upal sem si
+tvégati|🎲 💼|рисковать|n|tvegam|tvegal|tvegaj|vse|всем|Работа|рискую|рискуют|рисковал|рисковали|буду рисковать|рискуй
+zmóči|✅ 📋|смочь, осилить|d|zmorem|zmogel/zmog|-|vse naloge|все задачи|Работа|осиливаю|осиливают|осилил|осилили|осилю|-|sprega se kot moči: zmorem, zmogel/zmogla
+uspéti|⏱️ 🏁|успеть, удаться|d|uspem|uspel|-|pravočasno|вовремя|Работа|успеваю|успевают|успел|успели|успею|-|uspelo mi je = мне удалось (brezosebno)
+vodíti|🧑‍💼 📊|вести, руководить|n|vodim|vodil|vodi|projekt|проект|Работа|руковожу|руководят|руководил|руководили|буду руководить|руководи
+uprávljati|🏭 💼|управлять|n|upravljam|upravljal|upravljaj|podjetje|компанией|Работа|управляю|управляют|управлял|управляли|буду управлять|управляй
+zaposlíti|👥 📄|нанять, трудоустроить|d|zaposlim|zaposlil|zaposli|nove sodelavce|новых сотрудников|Работа|нанимаю|нанимают|нанял|наняли|найму|найми
+odpustíti|😢 🖊️|уволить; простить|d|odpustim|odpustil|odpusti|napako|ошибку|Общение|прощаю|прощают|простил|простили|прощу|прости|dva pomena: odpustiti delavca (уволить) / odpustiti napako (простить)
+prijáviti se|📝 🏫|записаться, подать заявку|d|prijavim se|prijavil se|prijavi se|na tečaj|на курс|Учёба|записываюсь|записываются|записался|записались|запишусь|запишись|prijaviti se na + tožilnik
+odjáviti se|🚪 💻|выписаться, выйти (из системы)|d|odjavim se|odjavil se|odjavi se|iz sistema|из системы|Техника|выхожу|выходят|вышел|вышли|выйду|выйди
+predlágati|💡 📢|предлагать|dv|predlagam|predlagal|predlagaj|kompromis|компромисс|Работа|предлагаю|предлагают|предложил|предложили|предложу|предложи|dvovidski glagol
+svetováti|🧑‍🏫 💡|советовать|dv|svetujem|svetoval|svetuj|potrpežljivost|терпение|Общение|советую|советуют|посоветовал|посоветовали|посоветую|посоветуй|-ova- → -uje-; svetovati + dajalnik
+pogájati se|💰 🤝|вести переговоры|n|pogajam se|pogajal se|pogajaj se|o ceni|о цене|Работа|веду переговоры|ведут переговоры|вёл переговоры|вели переговоры|буду вести переговоры|веди переговоры|pogajati se o + mestnik
+odločáti|📊 🗳️|решать (определять)|n|odločam|odločal|odločaj|o proračunu|о бюджете|Работа|решаю|решают|решал|решали|буду решать|решай|odločati o + mestnik
+načrtováti|🗺️ 🗓️|планировать|n|načrtujem|načrtoval|načrtuj|potovanje|поездку|Путешествия|планирую|планируют|планировал|планировали|буду планировать|планируй|-ova- → -uje-
+organizírati|🗓️ 🎤|организовать|dv|organiziram|organiziral|organiziraj|konferenco|конференцию|Работа|организую|организуют|организовал|организовали|организую|организуй|dvovidski glagol (-irati)
+sodelováti|🤝 🧑‍💻|сотрудничать, участвовать|n|sodelujem|sodeloval|sodeluj|pri projektu|в проекте|Работа|участвую|участвуют|участвовал|участвовали|буду участвовать|участвуй|sodelovati pri + mestnik
+tekmováti|🏁 🏃|соревноваться|n|tekmujem|tekmoval|tekmuj|na prvenstvu|на чемпионате|Здоровье|соревнуюсь|соревнуются|соревновался|соревновались|буду соревноваться|соревнуйся
+zmágati|🏆 🗳️|победить|d|zmagam|zmagal|zmagaj|na volitvah|на выборах|Общество|побеждаю|побеждают|победил|победили|побежу|победи
+izgúbljati|😤 ⏳|терять, проигрывать|n|izgubljam|izgubljal|-|potrpljenje|терпение|Эмоции|теряю|теряют|терял|теряли|буду терять|-
+dosêči|🎯 🏔️|достичь|d|dosežem|dosegel/doseg|dosezi|cilj|цели|Работа|достигаю|достигают|достиг|достигли|достигну|достигни|premena: g → ž (doseg- → dosež-), velelnik dosezi
+dosegáti|📈 🎯|достигать|n|dosegam|dosegal|dosegaj|dobre rezultate|хороших результатов|Работа|достигаю|достигают|достигал|достигали|буду достигать|достигай
+razvíti|💡 🌱|развить|d|razvijem|razvil|razvij|novo idejo|новую идею|Работа|развиваю|развивают|развил|развили|разовью|развей
+razvíjati|📱 💻|развивать|n|razvijam|razvijal|razvijaj|aplikacijo|приложение|Техника|разрабатываю|разрабатывают|разрабатывал|разрабатывали|буду разрабатывать|разрабатывай
+izboljšáti|🗣️ ⭐|улучшить|d|izboljšam|izboljšal|izboljšaj|izgovorjavo|произношение|Учёба|улучшаю|улучшают|улучшил|улучшили|улучшу|улучши
+poslábšati se|🌡️ 📉|ухудшиться|d|poslabšam se|poslabšal se|-|čez noč|за ночь|Здоровье|ухудшаюсь|ухудшаются|ухудшился|ухудшились|ухудшусь|-
+povečáti|📈 💰|увеличить|d|povečam|povečal|povečaj|prodajo|продажи|Работа|увеличиваю|увеличивают|увеличил|увеличили|увеличу|увеличь
+zmanjšáti|📉 💸|уменьшить|d|zmanjšam|zmanjšal|zmanjšaj|stroške|расходы|Деньги|уменьшаю|уменьшают|уменьшил|уменьшили|уменьшу|уменьши
+primérjati|⚖️ 🛍️|сравнивать|n|primerjam|primerjal|primerjaj|ponudbe|предложения|Деньги|сравниваю|сравнивают|сравнивал|сравнивали|буду сравнивать|сравнивай
+océniti|📝 ⚠️|оценить|d|ocenim|ocenil|oceni|tveganje|риск|Работа|оцениваю|оценивают|оценил|оценили|оценю|оцени
+ocenjeváti|⭐ 📦|оценивать|n|ocenjujem|ocenjeval|ocenjuj|izdelke|товары|Работа|оцениваю|оценивают|оценивал|оценивали|буду оценивать|оценивай|-eva- → -uje-
+preveríti|🔍 📊|проверить|d|preverim|preveril|preveri|podatke|данные|Техника|проверяю|проверяют|проверил|проверили|проверю|проверь
+preverjáti|✔️ 🏭|проверять|n|preverjam|preverjal|preverjaj|kakovost|качество|Работа|проверяю|проверяют|проверял|проверяли|буду проверять|проверяй
+razískati|🔬 ❓|исследовать|d|raziščem|raziskal|razišči|vzroke|причины|Наука|исследую|исследуют|исследовал|исследовали|исследую|исследуй|premena: sk → šč (raziskati → raziščem)
+raziskováti|🔭 🌌|исследовать (длительно)|n|raziskujem|raziskoval|raziskuj|vesolje|космос|Наука|исследую|исследуют|исследовал|исследовали|буду исследовать|исследуй|-ova- → -uje-
+ugotovíti|🔍 🐞|установить, выяснить|d|ugotovim|ugotovil|ugotovi|vzrok napake|причину ошибки|Наука|выясняю|выясняют|выяснил|выяснили|выясню|выясни
+dokazáti|⚖️ 📜|доказать|d|dokažem|dokazal|dokaži|nedolžnost|невиновность|Общество|доказываю|доказывают|доказал|доказали|докажу|докажи|premena: z → ž (dokazati → dokažem)
+domnévati|🌧️ 🤔|предполагать|n|domnevam|domneval|-|najslabše|худшее|Эмоции|предполагаю|предполагают|предполагал|предполагали|буду предполагать|-
+sklépati|🧮 💡|заключать, делать вывод|n|sklepam|sklepal|sklepaj|iz podatkov|из данных|Наука|делаю вывод|делают выводы|делал вывод|делали выводы|буду делать вывод|делай вывод
+opazíti|👀 ✨|заметить|d|opazim|opazil|-|spremembo|перемену|Эмоции|замечаю|замечают|заметил|заметили|замечу|-
+opazováti|🔭 🐦|наблюдать|n|opazujem|opazoval|opazuj|ptice|за птицами|Природа|наблюдаю|наблюдают|наблюдал|наблюдали|буду наблюдать|наблюдай|-ova- → -uje-
+prepričáti|🗣️ 🧑‍💼|убедить|d|prepričam|prepričal|prepričaj|stranko|клиента|Работа|убеждаю|убеждают|убедил|убедили|убежу|убеди
+prepričeváti|💬 👥|убеждать|n|prepričujem|prepričeval|prepričuj|sodelavce|коллег|Работа|убеждаю|убеждают|убеждал|убеждали|буду убеждать|убеждай|-eva- → -uje-
+zavrníti|✋ 📄|отклонить, отказать|d|zavrnem|zavrnil|zavrni|ponudbo|предложение|Работа|отклоняю|отклоняют|отклонил|отклонили|отклоню|отклони|glagoli na -niti: sedanjik -nem
+spréjeti|📩 ✅|принять|d|sprejmem|sprejel|sprejmi|odločitev|решение|Работа|принимаю|принимают|принял|приняли|приму|прими|sedanjik sprejmem (vzeti-tip), deležnik sprejel
+sprejémati|🏠 👥|принимать|n|sprejemam|sprejemal|sprejemaj|goste|гостей|Общение|принимаю|принимают|принимал|принимали|буду принимать|принимай
+zahtévati|✊ 📄|требовать|n|zahtevam|zahteval|zahtevaj|pojasnilo|объяснений|Работа|требую|требуют|требовал|требовали|буду требовать|требуй
+dovolíti|✅ ⭐|разрешить|d|dovolim|dovolil|dovoli|izjemo|исключение|Общество|разрешаю|разрешают|разрешил|разрешили|разрешу|разреши
+prepovédati|🚭 🚫|запретить|d|prepovem,prepoveš,prepove,prepoveva,prepovesta,prepovesta,prepovemo,prepoveste,prepovedo|prepovedal|prepovej|kajenje|курение|Общество|запрещаю|запрещают|запретил|запретили|запрещу|запрети|sprega se kot povedati
+opozoríti|⚠️ 🔔|предупредить|d|opozorim|opozoril|opozori|na nevarnost|об опасности|Общество|предупреждаю|предупреждают|предупредил|предупредили|предупрежу|предупреди|opozoriti na + tožilnik
+obvestíti|📨 👥|уведомить, известить|d|obvestim|obvestil|obvesti|vse udeležence|всех участников|Работа|уведомляю|уведомляют|уведомил|уведомили|уведомлю|уведоми
+objáviti|📰 🌐|опубликовать|d|objavim|objavil|objavi|rezultate|результаты|Наука|публикую|публикуют|опубликовал|опубликовали|опубликую|опубликуй
+poročáti|📊 🗣️|докладывать, сообщать|n|poročam|poročal|poročaj|o napredku|о прогрессе|Работа|докладываю|докладывают|докладывал|докладывали|буду докладывать|докладывай|poročati o + mestnik
+razpravljáti|🏛️ 💬|обсуждать, дискутировать|n|razpravljam|razpravljal|razpravljaj|o zakonu|о законе|Общество|обсуждаю|обсуждают|обсуждал|обсуждали|буду обсуждать|обсуждай
+ugovárjati|🙅 🗣️|возражать|n|ugovarjam|ugovarjal|-|odločitvi|решению|Общение|возражаю|возражают|возражал|возражали|буду возражать|-|ugovarjati + dajalnik
+trdíti|☝️ 📢|утверждать|n|trdim|trdil|-|nasprotno|обратное|Общение|утверждаю|утверждают|утверждал|утверждали|буду утверждать|-|zlogotvorni r: trdim [tərdim]
+priznáti|🙇 ❌|признать|d|priznam|priznal|priznaj|napako|ошибку|Эмоции|признаю|признают|признал|признали|признаю|признай
+zanikáti|🙅‍♂️ 📜|отрицать|dv|zanikam|zanikal|zanikaj|obtožbe|обвинения|Общество|отрицаю|отрицают|отрицал|отрицали|буду отрицать|отрицай
+skríti|🙈 🔑|спрятать|d|skrijem|skril|skrij|ključ|ключ|Быт|прячу|прячут|спрятал|спрятали|спрячу|спрячь
+odkríti|🧭 🦎|открыть, обнаружить|d|odkrijem|odkril|odkrij|novo vrsto|новый вид|Наука|обнаруживаю|обнаруживают|обнаружил|обнаружили|обнаружу|обнаружь
+izumíti|💡 ⚙️|изобрести|d|izumim|izumil|izumi|novo napravo|новое устройство|Техника|изобретаю|изобретают|изобрёл|изобрели|изобрету|изобрети
+namestíti|💾 ⬇️|установить (программу)|d|namestim|namestil|namesti|posodobitev|обновление|Техника|устанавливаю|устанавливают|установил|установили|установлю|установи
+shraníti|💾 📄|сохранить|d|shranim|shranil|shrani|dokument|документ|Техника|сохраняю|сохраняют|сохранил|сохранили|сохраню|сохрани
+izbrísati|🗑️ 📁|удалить, стереть|d|izbrišem|izbrisal|izbriši|stare datoteke|старые файлы|Техника|удаляю|удаляют|удалил|удалили|удалю|удали|premena: s → š
+prenésti|📥 📄|перенести, скачать|d|prenesem|prenesel/prenes|prenesi|datoteko|файл|Техника|скачиваю|скачивают|скачал|скачали|скачаю|скачай|deležnik prenesel/prenesla
+povezáti|🔌 📱|соединить, связать|d|povežem|povezal|poveži|napravi|устройства|Техника|соединяю|соединяют|соединил|соединили|соединю|соедини|premena: z → ž (povezati → povežem)
+onesnažévati|🏭 🌫️|загрязнять|n|onesnažujem|onesnaževal|-|reke|реки|Природа|загрязняю|загрязняют|загрязнял|загрязняли|буду загрязнять|-|-eva- → -uje-
+varováti|🛡️ 🌍|охранять, беречь|n|varujem|varoval|varuj|okolje|окружающую среду|Природа|берегу|берегут|берёг|берегли|буду беречь|береги|-ova- → -uje-
+reciklírati|♻️ 🥤|перерабатывать (отходы)|dv|recikliram|recikliral|recikliraj|plastiko|пластик|Природа|перерабатываю|перерабатывают|переработал|переработали|переработаю|переработай|dvovidski glagol (-irati)
 `,
       C1: `
-zavédati se|осознавать|n|zavedam se|zavedal se|zavedaj se|posledic|последствия|Эмоции|осознаю|осознают|осознавал|осознавали|буду осознавать|осознавай|zavedati se + rodilnik (zavedam se posledic)
-douméti|уразуметь, постичь|d|doumem|doumel|-|bistvo|суть|Эмоции|постигаю|постигают|постиг|постигли|постигну|-
-slutíti|предчувствовать|n|slutim|slutil|-|nevarnost|опасность|Эмоции|предчувствую|предчувствуют|предчувствовал|предчувствовали|буду предчувствовать|-
-hrepenéti|тосковать, томиться|n|hrepenim|hrepenel|-|po domovini|по родине|Эмоции|тоскую|тоскуют|тосковал|тосковали|буду тосковать|-|hrepeneti po + mestnik
-prizadéti|задеть, причинить боль|d|prizadenem|prizadel|-|prijatelja|друга|Эмоции|задеваю|задевают|задел|задели|задену|-|sedanjik prizadenem, deležnik prizadel
-užáliti|обидеть|d|užalim|užalil|-|sogovornika|собеседника|Эмоции|обижаю|обижают|обидел|обидели|обижу|-
-zamériti|обидеться, затаить обиду|d|zamerim|zameril|-|sosedu|на соседа|Эмоции|обижаюсь|обижаются|обиделся|обиделись|обижусь|-|zameriti + dajalnik: zamerim ti = я на тебя обиделся
-pomíriti se|успокоиться, примириться|d|pomirim se|pomiril se|pomiri se|z usodo|с судьбой|Эмоции|смиряюсь|смиряются|смирился|смирились|смирюсь|смирись
-razvnéti|разжечь, распалить|d|razvnamem|razvnel|razvnemi|razpravo|дискуссию|Общение|разжигаю|разжигают|разжёг|разожгли|разожгу|разожги|sedanjik razvnamem (kot vzeti → vzamem)
-pretehtáti|взвесить (обдумать)|d|pretehtam|pretehtal|pretehtaj|vse možnosti|все возможности|Работа|взвешиваю|взвешивают|взвесил|взвесили|взвешу|взвесь
-razmíšljati|размышлять|n|razmišljam|razmišljal|razmišljaj|o prihodnosti|о будущем|Эмоции|размышляю|размышляют|размышлял|размышляли|буду размышлять|размышляй|razmišljati o + mestnik
-premísliti si|передумать|d|premislim si|premislil si|premisli si|v zadnjem trenutku|в последний момент|Эмоции|передумываю|передумывают|передумал|передумали|передумаю|передумай|povratna klitika si: premislil sem si
-snováti|замышлять, задумывать|n|snujem|snoval|snuj|nov roman|новый роман|Наука|задумываю|задумывают|задумывал|задумывали|буду задумывать|задумывай|-ova- → -uje- (snovati → snujem)
-uresničíti|осуществить|d|uresničim|uresničil|uresniči|sanje|мечту|Работа|осуществляю|осуществляют|осуществил|осуществили|осуществлю|осуществи
-izpolníti|выполнить, исполнить|d|izpolnim|izpolnil|izpolni|obljubo|обещание|Работа|выполняю|выполняют|выполнил|выполнили|выполню|выполни
-zanemáriti|запустить, пренебречь|d|zanemarim|zanemaril|-|zdravje|здоровьем|Здоровье|пренебрегаю|пренебрегают|пренебрёг|пренебрегли|пренебрегу|-
-opustíti|бросить, оставить (занятие)|d|opustim|opustil|opusti|kajenje|курение|Здоровье|бросаю|бросают|бросил|бросили|брошу|брось
-vztrájati|настаивать, упорствовать|n|vztrajam|vztrajal|vztrajaj|pri svojem|на своём|Эмоции|настаиваю|настаивают|настаивал|настаивали|буду настаивать|настаивай|vztrajati pri + mestnik
-popustíti|уступить, ослабить|d|popustim|popustil|popusti|pri ceni|в цене|Деньги|уступаю|уступают|уступил|уступили|уступлю|уступи
-odnéhati|отступиться, перестать|d|odneham|odnehal|odnehaj|s prepiri|ссориться|Эмоции|перестаю|перестают|перестал|перестали|перестану|перестань
-posredováti|посредничать, вмешаться|dv|posredujem|posredoval|posreduj|v sporu|в споре|Общество|вмешиваюсь|вмешиваются|вмешался|вмешались|вмешаюсь|вмешайся|-ova- → -uje-
-vmešávati se|вмешиваться|n|vmešavam se|vmešaval se|-|v tuje zadeve|в чужие дела|Общество|вмешиваюсь|вмешиваются|вмешивался|вмешивались|буду вмешиваться|-
-izogíbati se|избегать|n|izogibam se|izogibal se|izogibaj se|konfliktov|конфликтов|Эмоции|избегаю|избегают|избегал|избегали|буду избегать|избегай|izogibati se + rodilnik
-izogníti se|избежать|d|izognem se|izognil se|izogni se|nesreči|аварии|Движение|избегаю|избегают|избежал|избежали|избегу|избеги|izogniti se + dajalnik; glagoli na -niti
-prikríti|скрыть, утаить|d|prikrijem|prikril|prikrij|resnico|правду|Общество|скрываю|скрывают|скрыл|скрыли|скрою|скрой
-razkríti|раскрыть, разоблачить|d|razkrijem|razkril|razkrij|prevaro|обман|Общество|раскрываю|раскрывают|раскрыл|раскрыли|раскрою|раскрой
-zatajíti|утаить; отказать (о технике)|d|zatajim|zatajil|-|dohodke|доходы|Деньги|утаиваю|утаивают|утаил|утаили|утаю|-|motor je zatajil = мотор отказал
-ponevériti|растратить (присвоить)|d|poneverim|poneveril|-|sredstva|средства|Деньги|присваиваю|присваивают|присвоил|присвоили|присвою|-
-podkupíti|подкупить|d|podkupim|podkupil|-|uradnika|чиновника|Общество|подкупаю|подкупают|подкупил|подкупили|подкуплю|-
-obsodíti|осудить|d|obsodim|obsodil|obsodi|nasilje|насилие|Общество|осуждаю|осуждают|осудил|осудили|осужу|осуди
-oprostíti|простить|d|oprostim|oprostil|oprosti|žalitev|обиду|Эмоции|прощаю|прощают|простил|простили|прощу|прости|oprostite! = извините!
-pomilostíti|помиловать|d|pomilostim|pomilostil|pomilosti|obsojenca|осуждённого|Общество|милую|милуют|помиловал|помиловали|помилую|помилуй
-zaslíšati|допросить|d|zaslišim|zaslišal|zasliši|pričo|свидетеля|Общество|допрашиваю|допрашивают|допросил|допросили|допрошу|допроси
-príčati|свидетельствовать|n|pričam|pričal|pričaj|na sodišču|в суде|Общество|свидетельствую|свидетельствуют|свидетельствовал|свидетельствовали|буду свидетельствовать|свидетельствуй
-uveljáviti|ввести в действие, утвердить|d|uveljavim|uveljavil|uveljavi|nova pravila|новые правила|Общество|ввожу|вводят|ввёл|ввели|введу|введи|uveljaviti se = утвердиться, добиться признания
-ukíniti|упразднить, отменить|d|ukinem|ukinil|ukini|zastarel zakon|устаревший закон|Общество|упраздняю|упраздняют|упразднил|упразднили|упраздню|упраздни|glagoli na -niti: sedanjik -nem
-odpráviti|устранить; отправить|d|odpravim|odpravil|odpravi|pomanjkljivosti|недостатки|Техника|устраняю|устраняют|устранил|устранили|устраню|устрани
-odpráviti se|отправиться (в путь)|d|odpravim se|odpravil se|odpravi se|na pot|в путь|Путешествия|отправляюсь|отправляются|отправился|отправились|отправлюсь|отправляйся
-zatéči se|прибегнуть, найти прибежище|d|zatečem se|zatekel se/zatek|zateci se|k prijateljem|к друзьям|Общество|прибегаю|прибегают|прибегнул|прибегли|прибегну|прибегни|premena: k → č; zateči se k + dajalnik
-ubežáti|сбежать, ускользнуть|d|ubežim|ubežal|ubeži|preganjalcem|от преследователей|Движение|убегаю|убегают|убежал|убежали|убегу|убеги|ubežati + dajalnik
-preganjáti|преследовать|n|preganjam|preganjal|-|nasprotnike|противников|Общество|преследую|преследуют|преследовал|преследовали|буду преследовать|-
-zasledováti|преследовать, отслеживать|n|zasledujem|zasledoval|zasleduj|cilje|цели|Работа|отслеживаю|отслеживают|отслеживал|отслеживали|буду отслеживать|отслеживай|-ova- → -uje-
-spremljáti|сопровождать, следить за|n|spremljam|spremljal|spremljaj|novice|новости|Общество|слежу за|следят за|следил за|следили за|буду следить за|следи за
-razlikováti|различать|n|razlikujem|razlikoval|razlikuj|odtenke|оттенки|Наука|различаю|различают|различал|различали|буду различать|различай|-ova- → -uje-
-prevládati|возобладать, преобладать|d|prevladam|prevladal|-|v razpravi|в дискуссии|Общество|преобладаю|преобладают|возобладал|возобладали|возобладаю|-
-prevladováti|преобладать|n|prevladujem|prevladoval|-|na trgu|на рынке|Деньги|преобладаю|преобладают|преобладал|преобладали|буду преобладать|-
-izstópati|выделяться|n|izstopam|izstopal|-|po kakovosti|качеством|Работа|выделяюсь|выделяются|выделялся|выделялись|буду выделяться|-
-zaostájati|отставать|n|zaostajam|zaostajal|-|za urnikom|от графика|Работа|отстаю|отстают|отставал|отставали|буду отставать|-|zaostajati za + orodnik
-dohitéti|догнать|d|dohitim|dohitel|dohiti|sošolce|одноклассников|Учёба|догоняю|догоняют|догнал|догнали|догоню|догони
-prehitéti|обогнать|d|prehitim|prehitel|prehiti|tovornjak|грузовик|Движение|обгоняю|обгоняют|обогнал|обогнали|обгоню|обгони
-izčŕpati|исчерпать|d|izčrpam|izčrpal|-|zaloge|запасы|Деньги|исчерпываю|исчерпывают|исчерпал|исчерпали|исчерпаю|-|zlogotvorni r: izčrpati [istʃərpati]
-obnovíti|обновить, восстановить|d|obnovim|obnovil|obnovi|staro hišo|старый дом|Дом|восстанавливаю|восстанавливают|восстановил|восстановили|восстановлю|восстанови
-poglobíti|углубить|d|poglobim|poglobil|poglobi|znanje|знания|Учёба|углубляю|углубляют|углубил|углубили|углублю|углуби
-razčleníti|проанализировать, разобрать|d|razčlenim|razčlenil|razčleni|besedilo|текст|Наука|разбираю|разбирают|разобрал|разобрали|разберу|разбери
-povzéti|обобщить, резюмировать|d|povzamem|povzel|povzemi|glavne ugotovitve|основные выводы|Наука|обобщаю|обобщают|обобщил|обобщили|обобщу|обобщи|sedanjik povzamem (kot vzeti)
-utemeljíti|обосновать|d|utemeljim|utemeljil|utemelji|svoje stališče|свою позицию|Наука|обосновываю|обосновывают|обосновал|обосновали|обосную|обоснуй
-izpodbíjati|оспаривать, опровергать|n|izpodbijam|izpodbijal|izpodbijaj|trditev|утверждение|Наука|оспариваю|оспаривают|оспаривал|оспаривали|буду оспаривать|оспаривай
-ovréči|опровергнуть|d|ovržem|ovrgel/ovrg|ovrzi|hipotezo|гипотезу|Наука|опровергаю|опровергают|опроверг|опровергли|опровергну|опровергни|premena: g → ž (ovrg- → ovrž-), velelnik ovrzi
-pojasníti|пояснить|d|pojasnim|pojasnil|pojasni|nesporazum|недоразумение|Общение|поясняю|поясняют|пояснил|пояснили|поясню|поясни
-namigníti|намекнуть|d|namignem|namignil|namigni|na rešitev|на решение|Общение|намекаю|намекают|намекнул|намекнули|намекну|намекни|glagoli na -niti: sedanjik -nem
-zamólčati|умолчать|d|zamolčim|zamolčal|-|pomembno podrobnost|важную деталь|Общение|умалчиваю|умалчивают|умолчал|умолчали|умолчу|-
-pretirávati|преувеличивать|n|pretiravam|pretiraval|-|s pohvalami|с похвалами|Общение|преувеличиваю|преувеличивают|преувеличивал|преувеличивали|буду преувеличивать|-
-omalovažévati|принижать, умалять|n|omalovažujem|omalovaževal|-|tuje dosežke|чужие достижения|Общение|принижаю|принижают|принижал|принижали|буду принижать|-|-eva- → -uje-
-občudováti|восхищаться|n|občudujem|občudoval|občuduj|razgled|видом|Природа|восхищаюсь|восхищаются|восхищался|восхищались|буду восхищаться|восхищайся|-ova- → -uje-; občudovati + tožilnik
-uživáti|наслаждаться|n|uživam|užival|uživaj|v tišini|тишиной|Природа|наслаждаюсь|наслаждаются|наслаждался|наслаждались|буду наслаждаться|наслаждайся|uživati v + mestnik
-osupníti|ошеломить; опешить|d|osupnem|osupnil|-|občinstvo|публику|Эмоции|ошеломляю|ошеломляют|ошеломил|ошеломили|ошеломлю|-|glagoli na -niti
-prebolêti|переболеть; пережить (горе)|d|prebolim|prebolel|preboli|razočaranje|разочарование|Эмоции|переживаю|переживают|пережил|пережили|переживу|переживи
+zavédati se|🧠 💡|осознавать|n|zavedam se|zavedal se|zavedaj se|posledic|последствия|Эмоции|осознаю|осознают|осознавал|осознавали|буду осознавать|осознавай|zavedati se + rodilnik (zavedam se posledic)
+douméti|🧩 🧠|уразуметь, постичь|d|doumem|doumel|-|bistvo|суть|Эмоции|постигаю|постигают|постиг|постигли|постигну|-
+slutíti|🔮 ⚠️|предчувствовать|n|slutim|slutil|-|nevarnost|опасность|Эмоции|предчувствую|предчувствуют|предчувствовал|предчувствовали|буду предчувствовать|-
+hrepenéti|🌅 🏡|тосковать, томиться|n|hrepenim|hrepenel|-|po domovini|по родине|Эмоции|тоскую|тоскуют|тосковал|тосковали|буду тосковать|-|hrepeneti po + mestnik
+prizadéti|💔 🗡️|задеть, причинить боль|d|prizadenem|prizadel|-|prijatelja|друга|Эмоции|задеваю|задевают|задел|задели|задену|-|sedanjik prizadenem, deležnik prizadel
+užáliti|😢 🗯️|обидеть|d|užalim|užalil|-|sogovornika|собеседника|Эмоции|обижаю|обижают|обидел|обидели|обижу|-
+zamériti|😒 🧊|обидеться, затаить обиду|d|zamerim|zameril|-|sosedu|на соседа|Эмоции|обижаюсь|обижаются|обиделся|обиделись|обижусь|-|zameriti + dajalnik: zamerim ti = я на тебя обиделся
+pomíriti se|🕊️ 🌊|успокоиться, примириться|d|pomirim se|pomiril se|pomiri se|z usodo|с судьбой|Эмоции|смиряюсь|смиряются|смирился|смирились|смирюсь|смирись
+razvnéti|🔥 🗣️|разжечь, распалить|d|razvnamem|razvnel|razvnemi|razpravo|дискуссию|Общение|разжигаю|разжигают|разжёг|разожгли|разожгу|разожги|sedanjik razvnamem (kot vzeti → vzamem)
+pretehtáti|⚖️ 🤔|взвесить (обдумать)|d|pretehtam|pretehtal|pretehtaj|vse možnosti|все возможности|Работа|взвешиваю|взвешивают|взвесил|взвесили|взвешу|взвесь
+razmíšljati|💭 🌌|размышлять|n|razmišljam|razmišljal|razmišljaj|o prihodnosti|о будущем|Эмоции|размышляю|размышляют|размышлял|размышляли|буду размышлять|размышляй|razmišljati o + mestnik
+premísliti si|🔄 💭|передумать|d|premislim si|premislil si|premisli si|v zadnjem trenutku|в последний момент|Эмоции|передумываю|передумывают|передумал|передумали|передумаю|передумай|povratna klitika si: premislil sem si
+snováti|📐 📚|замышлять, задумывать|n|snujem|snoval|snuj|nov roman|новый роман|Наука|задумываю|задумывают|задумывал|задумывали|буду задумывать|задумывай|-ova- → -uje- (snovati → snujem)
+uresničíti|✨ 🌠|осуществить|d|uresničim|uresničil|uresniči|sanje|мечту|Работа|осуществляю|осуществляют|осуществил|осуществили|осуществлю|осуществи
+izpolníti|✅ 🤞|выполнить, исполнить|d|izpolnim|izpolnil|izpolni|obljubo|обещание|Работа|выполняю|выполняют|выполнил|выполнили|выполню|выполни
+zanemáriti|🌵 🥀|запустить, пренебречь|d|zanemarim|zanemaril|-|zdravje|здоровьем|Здоровье|пренебрегаю|пренебрегают|пренебрёг|пренебрегли|пренебрегу|-
+opustíti|🚭 🚶|бросить, оставить (занятие)|d|opustim|opustil|opusti|kajenje|курение|Здоровье|бросаю|бросают|бросил|бросили|брошу|брось
+vztrájati|✊ 🧱|настаивать, упорствовать|n|vztrajam|vztrajal|vztrajaj|pri svojem|на своём|Эмоции|настаиваю|настаивают|настаивал|настаивали|буду настаивать|настаивай|vztrajati pri + mestnik
+popustíti|🤏 💰|уступить, ослабить|d|popustim|popustil|popusti|pri ceni|в цене|Деньги|уступаю|уступают|уступил|уступили|уступлю|уступи
+odnéhati|🏳️ 💬|отступиться, перестать|d|odneham|odnehal|odnehaj|s prepiri|ссориться|Эмоции|перестаю|перестают|перестал|перестали|перестану|перестань
+posredováti|⚖️ 👥|посредничать, вмешаться|dv|posredujem|posredoval|posreduj|v sporu|в споре|Общество|вмешиваюсь|вмешиваются|вмешался|вмешались|вмешаюсь|вмешайся|-ova- → -uje-
+vmešávati se|👃 🚪|вмешиваться|n|vmešavam se|vmešaval se|-|v tuje zadeve|в чужие дела|Общество|вмешиваюсь|вмешиваются|вмешивался|вмешивались|буду вмешиваться|-
+izogíbati se|🚧 🔀|избегать|n|izogibam se|izogibal se|izogibaj se|konfliktov|конфликтов|Эмоции|избегаю|избегают|избегал|избегали|буду избегать|избегай|izogibati se + rodilnik
+izogníti se|🛣️ 🚗|избежать|d|izognem se|izognil se|izogni se|nesreči|аварии|Движение|избегаю|избегают|избежал|избежали|избегу|избеги|izogniti se + dajalnik; glagoli na -niti
+prikríti|🎭 📜|скрыть, утаить|d|prikrijem|prikril|prikrij|resnico|правду|Общество|скрываю|скрывают|скрыл|скрыли|скрою|скрой
+razkríti|🔦 🎭|раскрыть, разоблачить|d|razkrijem|razkril|razkrij|prevaro|обман|Общество|раскрываю|раскрывают|раскрыл|раскрыли|раскрою|раскрой
+zatajíti|🤫 💸|утаить; отказать (о технике)|d|zatajim|zatajil|-|dohodke|доходы|Деньги|утаиваю|утаивают|утаил|утаили|утаю|-|motor je zatajil = мотор отказал
+ponevériti|💼 💰|растратить (присвоить)|d|poneverim|poneveril|-|sredstva|средства|Деньги|присваиваю|присваивают|присвоил|присвоили|присвою|-
+podkupíti|💵 🤫|подкупить|d|podkupim|podkupil|-|uradnika|чиновника|Общество|подкупаю|подкупают|подкупил|подкупили|подкуплю|-
+obsodíti|👨‍⚖️ ⛔|осудить|d|obsodim|obsodil|obsodi|nasilje|насилие|Общество|осуждаю|осуждают|осудил|осудили|осужу|осуди
+oprostíti|🤝 🕊️|простить|d|oprostim|oprostil|oprosti|žalitev|обиду|Эмоции|прощаю|прощают|простил|простили|прощу|прости|oprostite! = извините!
+pomilostíti|👑 🔓|помиловать|d|pomilostim|pomilostil|pomilosti|obsojenca|осуждённого|Общество|милую|милуют|помиловал|помиловали|помилую|помилуй
+zaslíšati|🕵️ 🎙️|допросить|d|zaslišim|zaslišal|zasliši|pričo|свидетеля|Общество|допрашиваю|допрашивают|допросил|допросили|допрошу|допроси
+príčati|🙋 ⚖️|свидетельствовать|n|pričam|pričal|pričaj|na sodišču|в суде|Общество|свидетельствую|свидетельствуют|свидетельствовал|свидетельствовали|буду свидетельствовать|свидетельствуй
+uveljáviti|📜 ✅|ввести в действие, утвердить|d|uveljavim|uveljavil|uveljavi|nova pravila|новые правила|Общество|ввожу|вводят|ввёл|ввели|введу|введи|uveljaviti se = утвердиться, добиться признания
+ukíniti|📜 ✂️|упразднить, отменить|d|ukinem|ukinil|ukini|zastarel zakon|устаревший закон|Общество|упраздняю|упраздняют|упразднил|упразднили|упраздню|упраздни|glagoli na -niti: sedanjik -nem
+odpráviti|🔧 ✅|устранить; отправить|d|odpravim|odpravil|odpravi|pomanjkljivosti|недостатки|Техника|устраняю|устраняют|устранил|устранили|устраню|устрани
+odpráviti se|🧳 🚶|отправиться (в путь)|d|odpravim se|odpravil se|odpravi se|na pot|в путь|Путешествия|отправляюсь|отправляются|отправился|отправились|отправлюсь|отправляйся
+zatéči se|🧭 🛤️|прибегнуть, найти прибежище|d|zatečem se|zatekel se/zatek|zateci se|k prijateljem|к друзьям|Общество|прибегаю|прибегают|прибегнул|прибегли|прибегну|прибегни|premena: k → č; zateči se k + dajalnik
+ubežáti|🏃 🌫️|сбежать, ускользнуть|d|ubežim|ubežal|ubeži|preganjalcem|от преследователей|Движение|убегаю|убегают|убежал|убежали|убегу|убеги|ubežati + dajalnik
+preganjáti|👮 🏃|преследовать|n|preganjam|preganjal|-|nasprotnike|противников|Общество|преследую|преследуют|преследовал|преследовали|буду преследовать|-
+zasledováti|📡 🎯|преследовать, отслеживать|n|zasledujem|zasledoval|zasleduj|cilje|цели|Работа|отслеживаю|отслеживают|отслеживал|отслеживали|буду отслеживать|отслеживай|-ova- → -uje-
+spremljáti|📰 👀|сопровождать, следить за|n|spremljam|spremljal|spremljaj|novice|новости|Общество|слежу за|следят за|следил за|следили за|буду следить за|следи за
+razlikováti|🎨 🔍|различать|n|razlikujem|razlikoval|razlikuj|odtenke|оттенки|Наука|различаю|различают|различал|различали|буду различать|различай|-ova- → -uje-
+prevládati|🏋️ 🏆|возобладать, преобладать|d|prevladam|prevladal|-|v razpravi|в дискуссии|Общество|преобладаю|преобладают|возобладал|возобладали|возобладаю|-
+prevladováti|📈 🏪|преобладать|n|prevladujem|prevladoval|-|na trgu|на рынке|Деньги|преобладаю|преобладают|преобладал|преобладали|буду преобладать|-
+izstópati|🌟 👥|выделяться|n|izstopam|izstopal|-|po kakovosti|качеством|Работа|выделяюсь|выделяются|выделялся|выделялись|буду выделяться|-
+zaostájati|🐢 ⏰|отставать|n|zaostajam|zaostajal|-|za urnikom|от графика|Работа|отстаю|отстают|отставал|отставали|буду отставать|-|zaostajati za + orodnik
+dohitéti|🏃 🏃|догнать|d|dohitim|dohitel|dohiti|sošolce|одноклассников|Учёба|догоняю|догоняют|догнал|догнали|догоню|догони
+prehitéti|🏎️ 🚛|обогнать|d|prehitim|prehitel|prehiti|tovornjak|грузовик|Движение|обгоняю|обгоняют|обогнал|обогнали|обгоню|обгони
+izčŕpati|🏜️ 📦|исчерпать|d|izčrpam|izčrpal|-|zaloge|запасы|Деньги|исчерпываю|исчерпывают|исчерпал|исчерпали|исчерпаю|-|zlogotvorni r: izčrpati [istʃərpati]
+obnovíti|🏚️ 🏡|обновить, восстановить|d|obnovim|obnovil|obnovi|staro hišo|старый дом|Дом|восстанавливаю|восстанавливают|восстановил|восстановили|восстановлю|восстанови
+poglobíti|⛏️ 📚|углубить|d|poglobim|poglobil|poglobi|znanje|знания|Учёба|углубляю|углубляют|углубил|углубили|углублю|углуби
+razčleníti|🔬 📄|проанализировать, разобрать|d|razčlenim|razčlenil|razčleni|besedilo|текст|Наука|разбираю|разбирают|разобрал|разобрали|разберу|разбери
+povzéti|📝 📌|обобщить, резюмировать|d|povzamem|povzel|povzemi|glavne ugotovitve|основные выводы|Наука|обобщаю|обобщают|обобщил|обобщили|обобщу|обобщи|sedanjik povzamem (kot vzeti)
+utemeljíti|🏛️ 📖|обосновать|d|utemeljim|utemeljil|utemelji|svoje stališče|свою позицию|Наука|обосновываю|обосновывают|обосновал|обосновали|обосную|обоснуй
+izpodbíjati|⚔️ 📝|оспаривать, опровергать|n|izpodbijam|izpodbijal|izpodbijaj|trditev|утверждение|Наука|оспариваю|оспаривают|оспаривал|оспаривали|буду оспаривать|оспаривай
+ovréči|❌ 🔬|опровергнуть|d|ovržem|ovrgel/ovrg|ovrzi|hipotezo|гипотезу|Наука|опровергаю|опровергают|опроверг|опровергли|опровергну|опровергни|premena: g → ž (ovrg- → ovrž-), velelnik ovrzi
+pojasníti|💡 💬|пояснить|d|pojasnim|pojasnil|pojasni|nesporazum|недоразумение|Общение|поясняю|поясняют|пояснил|пояснили|поясню|поясни
+namigníti|😉 💡|намекнуть|d|namignem|namignil|namigni|na rešitev|на решение|Общение|намекаю|намекают|намекнул|намекнули|намекну|намекни|glagoli na -niti: sedanjik -nem
+zamólčati|🤐 🗝️|умолчать|d|zamolčim|zamolčal|-|pomembno podrobnost|важную деталь|Общение|умалчиваю|умалчивают|умолчал|умолчали|умолчу|-
+pretirávati|🐘 🐭|преувеличивать|n|pretiravam|pretiraval|-|s pohvalami|с похвалами|Общение|преувеличиваю|преувеличивают|преувеличивал|преувеличивали|буду преувеличивать|-
+omalovažévati|👎 🏅|принижать, умалять|n|omalovažujem|omalovaževal|-|tuje dosežke|чужие достижения|Общение|принижаю|принижают|принижал|принижали|буду принижать|-|-eva- → -uje-
+občudováti|😍 🏔️|восхищаться|n|občudujem|občudoval|občuduj|razgled|видом|Природа|восхищаюсь|восхищаются|восхищался|восхищались|буду восхищаться|восхищайся|-ova- → -uje-; občudovati + tožilnik
+uživáti|😌 🌿|наслаждаться|n|uživam|užival|uživaj|v tišini|тишиной|Природа|наслаждаюсь|наслаждаются|наслаждался|наслаждались|буду наслаждаться|наслаждайся|uživati v + mestnik
+osupníti|😲 🎤|ошеломить; опешить|d|osupnem|osupnil|-|občinstvo|публику|Эмоции|ошеломляю|ошеломляют|ошеломил|ошеломили|ошеломлю|-|glagoli na -niti
+prebolêti|💪 💔|переболеть; пережить (горе)|d|prebolim|prebolel|preboli|razočaranje|разочарование|Эмоции|переживаю|переживают|пережил|пережили|переживу|переживи
 `
     };
     // ===== Словенский блок: данные и генератор =====
-    // Формат сида: инфинитив (с ударением)|перевод|вид (d/n/dv)|1 л. ед. наст. (или 9 форм через запятую)|деležnik -l м.р. [/основа]|velelnik 2 л. ед. (или -)|объект SL|объект RU|тема|RU наст. 1 л.|RU наст. 3 л. мн.|RU прош. м.р.|RU прош. мн.|RU буд. 1 л.|RU повел.|заметка (необязательно)
+    // Формат сида: инфинитив (с ударением)|картинка (emoji-сцена: главный + второстепенный)|перевод|вид (d/n/dv)|1 л. ед. наст. (или 9 форм через запятую)|деležnik -l м.р. [/основа]|velelnik 2 л. ед. (или -)|объект SL|объект RU|тема|RU наст. 1 л.|RU наст. 3 л. мн.|RU прош. м.р.|RU прош. мн.|RU буд. 1 л.|RU повел.|заметка (необязательно)
     const slLevels = ['A1', 'A2', 'B1', 'B2', 'C1'];
     const slLevelMeta = { A1: 'базовые глаголы, настоящее время', A2: 'быт, прошедшее и будущее', B1: 'возвратные глаголы, видовые пары', B2: 'двойственное число, модальные глаголы', C1: 'идиоматика и оттенки значения' };
     const slPronouns = ['jaz', 'ti', 'on/ona', 'midva', 'vidva', 'onadva', 'mi', 'vi', 'oni'];
@@ -902,7 +909,7 @@ prebolêti|переболеть; пережить (горе)|d|prebolim|prebolel
       return `[${out}]`;
     }
     function slBuildVerb(parts, level, order) {
-      const [infAcc, translation, aspect, presRaw, partRaw, impRaw, objSl, objRu, topic, ruPres1, ruPres3pl, ruPastM, ruPastPl, ruFut1, ruImp, note = ''] = parts;
+      const [infAcc, picture, translation, aspect, presRaw, partRaw, impRaw, objSl, objRu, topic, ruPres1, ruPres3pl, ruPastM, ruPastPl, ruFut1, ruImp, note = ''] = parts;
       const inf = slStrip(infAcc);
       const clitic = (inf.match(/ (se|si)$/) || [])[1] || '';
       const infBase = inf.replace(/ (se|si)$/, '');
@@ -939,7 +946,7 @@ prebolêti|переболеть; пережить (горе)|d|prebolim|prebolel
       const alternation = !irregular && presStem !== infStem && !presStem.startsWith(infStem) ? `${infStem}- → ${presStem}-` : '';
       const rule = note || (alternation ? `premena osnove: ${alternation}` : irregular ? 'nepravilni glagol — oblike sedanjika glej v tabeli' : `pravilna spregatev na ${group}: osnova ${presStem}- + ${present[0].slice(-2, -1)}m, -š, -, -va, -ta, -ta, -mo, -te, -jo`);
       const ruImpPl = ruImp === '-' ? '' : ruImp.split(' ').map((word, i) => i ? word : word.endsWith('ся') ? `${word.slice(0, -2)}тесь` : `${word}те`).join(' ');
-      const verb = { id: inf, level, order, inf, infAcc, ipa: slIpa(infAcc), translation, aspect, clitic: se, present, participle, partStem, tenses, group, alternation, rule, note, topic, objSl, objRu, ru: { pres1: ruPres1, pres3pl: ruPres3pl, pastM: ruPastM, pastPl: ruPastPl, fut1: ruFut1, imp: ruImp === '-' ? null : ruImp, impPl: ruImpPl }, hasImperative: Boolean(impBase) };
+      const verb = { id: inf, level, order, inf, infAcc, picture: picture.split(' '), hue: [...inf].reduce((sum, ch) => (sum * 31 + ch.charCodeAt(0)) % 360, 7), ipa: slIpa(infAcc), translation, aspect, clitic: se, present, participle, partStem, tenses, group, alternation, rule, note, topic, objSl, objRu, ru: { pres1: ruPres1, pres3pl: ruPres3pl, pastM: ruPastM, pastPl: ruPastPl, fut1: ruFut1, imp: ruImp === '-' ? null : ruImp, impPl: ruImpPl }, hasImperative: Boolean(impBase) };
       verb.examples = slBuildExamples(verb, { pres: withSe, perf, plup, fut, cond, imp });
       return verb;
     }
@@ -1018,7 +1025,8 @@ prebolêti|переболеть; пережить (горе)|d|prebolim|prebolel
       const learned = slState.learned.has(verb.id);
       return `<article class="card-face sl-face sl-front absolute inset-0 flex flex-col p-5">
         <div class="flex flex-wrap items-center gap-1.5"><span class="sl-tag sl-tag-level">${verb.level}</span>${slTagAspect(verb)}<span class="sl-tag sl-tag-group sl-tip" data-tip="${slEsc(`группа спряжения ${verb.group}`)}">${slEsc(verb.group)}</span>${verb.alternation ? `<span class="sl-tag sl-tag-alt sl-tip" data-tip="${slEsc(`чередование: ${verb.alternation}`)}">premena</span>` : ''}</div>
-        <div class="flex flex-1 flex-col items-center justify-center text-center"><p class="sl-faint mb-2 text-xs font-semibold uppercase tracking-widest">${slEsc(verb.topic)}</p><h2 class="text-3xl font-black tracking-tight sm:text-4xl">${slEsc(verb.inf)}</h2><p class="sl-accent mt-2 font-mono text-sm" title="приблизительная транскрипция">${slEsc(verb.ipa)}</p><p class="sl-ink-2 mt-4 text-lg font-semibold">${slEsc(verb.translation)}</p></div>
+        <div class="sl-pic mt-3" style="--pic-hue:${verb.hue}" aria-hidden="true"><span class="sl-pic-main">${verb.picture[0]}</span>${verb.picture[1] ? `<span class="sl-pic-side">${verb.picture[1]}</span>` : ''}${verb.picture[2] ? `<span class="sl-pic-side sl-pic-side-2">${verb.picture[2]}</span>` : ''}</div>
+        <div class="flex flex-1 flex-col items-center justify-center text-center"><p class="sl-faint mb-1 text-xs font-semibold uppercase tracking-widest">${slEsc(verb.topic)}</p><h2 class="text-3xl font-black tracking-tight">${slEsc(verb.inf)}</h2><p class="sl-accent mt-2 font-mono text-sm" title="приблизительная транскрипция">${slEsc(verb.ipa)}</p><p class="sl-ink-2 mt-2 text-base font-semibold leading-5">${slEsc(verb.translation)}</p></div>
         <div class="flex items-center justify-between gap-2"><button class="sl-btn focus-ring rounded-full px-4 py-2 text-xs font-bold" type="button" data-speak="${slEsc(verb.inf)}">◖)) Слушать</button><button class="focus-ring rounded-full px-4 py-2 text-xs font-bold ${learned ? 'sl-btn-accent' : 'sl-btn'}" type="button" data-learn="${slEsc(verb.id)}" aria-pressed="${learned}">${learned ? '✓ Выучено' : '○ Выучил'}</button></div>
         <p class="sl-faint mt-3 text-center text-[11px]">Нажмите, чтобы перевернуть</p>
       </article>`;
