@@ -1297,8 +1297,8 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
       const speakAll = event.target.closest('[data-speak-all]'); if (speakAll) { const verb = slVerbs.find(item => item.id === speakAll.dataset.speakAll); if (!('speechSynthesis' in window)) { slSpeak(''); return; } speechSynthesis.cancel(); verb.tenses.sedanjik.forEach((form, i) => setTimeout(() => { const utterance = new SpeechSynthesisUtterance(form); utterance.lang = 'sl-SI'; utterance.rate = 0.85; speechSynthesis.speak(utterance); }, i * 1100)); return; }
       const learn = event.target.closest('[data-learn]'); if (learn) { slToggleLearned(learn.dataset.learn); return; }
       const innerTab = event.target.closest('[data-inner-tab]'); if (innerTab) { slSetInnerTab(card, innerTab.dataset.innerTab); return; }
-      const tenseChip = event.target.closest('[data-tense]'); if (tenseChip) { card.dataset.tense = tenseChip.dataset.tense; slSetInnerTab(card, 'conjugation'); return; }
       if (event.target.closest('[data-flip-back]')) { slFlip(card, false); return; }
+      const tenseChip = event.target.closest('[data-tense-chips] [data-tense]'); if (tenseChip) { card.dataset.tense = tenseChip.dataset.tense; slSetInnerTab(card, 'conjugation'); return; }
       if (event.target.closest('.card-back') && !event.target.closest('[data-flip-back]')) return; // Клики внутри вкладок не переворачивают карточку.
       slFlip(card);
     });
