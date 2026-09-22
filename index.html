@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0f172a">
   <title>Glagolica — болгарские карточки</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Glagolica">
   <link rel="preconnect" href="https://images.pexels.com" crossorigin>
   <link rel="preload" as="image" media="(min-width: 937px)" imagesrcset="https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 940w, https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 1880w" imagesizes="896px">
   <link rel="preload" as="image" media="(max-width: 936px)" imagesrcset="https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=350 520w, https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 940w" imagesizes="calc(100vw - 40px)">
@@ -56,6 +61,7 @@ img, video { max-width: 100%; height: auto; }
 .inset-x-0 { left: 0px; right: 0px; }
 .bottom-0 { bottom: 0px; }
 .left-5 { left: 1.25rem; }
+.right-5 { right: 1.25rem; }
 .top-5 { top: 1.25rem; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 .my-7 { margin-top: 1.75rem; margin-bottom: 1.75rem; }
@@ -64,6 +70,7 @@ img, video { max-width: 100%; height: auto; }
 .mb-4 { margin-bottom: 1rem; }
 .mb-5 { margin-bottom: 1.25rem; }
 .mb-8 { margin-bottom: 2rem; }
+.ml-auto { margin-left: auto; }
 .mt-1 { margin-top: 0.25rem; }
 .mt-3 { margin-top: 0.75rem; }
 .mt-4 { margin-top: 1rem; }
@@ -75,7 +82,7 @@ img, video { max-width: 100%; height: auto; }
 .mt-2 { margin-top: 0.5rem; }
 .mb-1 { margin-bottom: 0.25rem; }
 .ml-1 { margin-left: 0.25rem; }
-.ml-auto { margin-left: auto; }
+.mt-0\.5 { margin-top: 0.125rem; }
 .block { display: block; }
 .inline { display: inline; }
 .flex { display: flex; }
@@ -92,8 +99,8 @@ img, video { max-width: 100%; height: auto; }
 .h-44 { height: 11rem; }
 .h-full { height: 100%; }
 .h-px { height: 1px; }
-.min-h-\[520px\] { min-height: 520px; }
 .min-h-screen { min-height: 100vh; }
+.min-h-\[520px\] { min-height: 520px; }
 .min-h-6 { min-height: 1.5rem; }
 .min-h-5 { min-height: 1.25rem; }
 .w-1 { width: 0.25rem; }
@@ -138,6 +145,7 @@ img, video { max-width: 100%; height: auto; }
 .overflow-y-auto { overflow-y: auto; }
 .overscroll-contain { overscroll-behavior: contain; }
 .whitespace-nowrap { white-space: nowrap; }
+.rounded { border-radius: 0.25rem; }
 .rounded-2xl { border-radius: 1rem; }
 .rounded-\[2rem\] { border-radius: 2rem; }
 .rounded-full { border-radius: 9999px; }
@@ -159,6 +167,7 @@ img, video { max-width: 100%; height: auto; }
 .border-amber-400\/60 { border-color: rgba(251, 191, 36, 0.6); }
 .bg-amber-400 { --tw-bg-opacity: 1; background-color: rgb(251 191 36 / var(--tw-bg-opacity, 1)); }
 .bg-amber-400\/10 { background-color: rgba(251, 191, 36, 0.1); }
+.bg-amber-400\/20 { background-color: rgba(251, 191, 36, 0.2); }
 .bg-emerald-400 { --tw-bg-opacity: 1; background-color: rgb(52 211 153 / var(--tw-bg-opacity, 1)); }
 .bg-rose-400\/10 { background-color: rgba(251, 113, 133, 0.1); }
 .bg-sky-400 { --tw-bg-opacity: 1; background-color: rgb(56 189 248 / var(--tw-bg-opacity, 1)); }
@@ -189,6 +198,7 @@ img, video { max-width: 100%; height: auto; }
 .p-5 { padding: 1.25rem; }
 .p-6 { padding: 1.5rem; }
 .p-8 { padding: 2rem; }
+.px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
 .px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
 .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
 .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
@@ -236,18 +246,18 @@ img, video { max-width: 100%; height: auto; }
 .tracking-\[\.2em\] { letter-spacing: 0.2em; }
 .tracking-tight { letter-spacing: -0.025em; }
 .tracking-widest { letter-spacing: 0.1em; }
+.text-slate-100 { --tw-text-opacity: 1; color: rgb(241 245 249 / var(--tw-text-opacity, 1)); }
 .text-amber-300 { --tw-text-opacity: 1; color: rgb(252 211 77 / var(--tw-text-opacity, 1)); }
 .text-amber-400 { --tw-text-opacity: 1; color: rgb(251 191 36 / var(--tw-text-opacity, 1)); }
 .text-rose-200 { --tw-text-opacity: 1; color: rgb(254 205 211 / var(--tw-text-opacity, 1)); }
+.text-rose-300 { --tw-text-opacity: 1; color: rgb(253 164 175 / var(--tw-text-opacity, 1)); }
 .text-sky-300 { --tw-text-opacity: 1; color: rgb(125 211 252 / var(--tw-text-opacity, 1)); }
-.text-slate-100 { --tw-text-opacity: 1; color: rgb(241 245 249 / var(--tw-text-opacity, 1)); }
 .text-slate-200 { --tw-text-opacity: 1; color: rgb(226 232 240 / var(--tw-text-opacity, 1)); }
 .text-slate-300 { --tw-text-opacity: 1; color: rgb(203 213 225 / var(--tw-text-opacity, 1)); }
 .text-slate-400 { --tw-text-opacity: 1; color: rgb(148 163 184 / var(--tw-text-opacity, 1)); }
 .text-slate-500 { --tw-text-opacity: 1; color: rgb(100 116 139 / var(--tw-text-opacity, 1)); }
 .text-slate-950 { --tw-text-opacity: 1; color: rgb(2 6 23 / var(--tw-text-opacity, 1)); }
 .text-white { --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity, 1)); }
-.text-rose-300 { --tw-text-opacity: 1; color: rgb(253 164 175 / var(--tw-text-opacity, 1)); }
 .text-rose-400 { --tw-text-opacity: 1; color: rgb(251 113 133 / var(--tw-text-opacity, 1)); }
 .underline { text-decoration-line: underline; }
 .antialiased { -webkit-font-smoothing: antialiased; }
@@ -269,6 +279,7 @@ img, video { max-width: 100%; height: auto; }
 .hover\:border-sky-400\/70:hover { border-color: rgba(56, 189, 248, 0.7); }
 .hover\:bg-amber-300:hover { --tw-bg-opacity: 1; background-color: rgb(252 211 77 / var(--tw-bg-opacity, 1)); }
 .hover\:bg-amber-400:hover { --tw-bg-opacity: 1; background-color: rgb(251 191 36 / var(--tw-bg-opacity, 1)); }
+.hover\:bg-amber-400\/10:hover { background-color: rgba(251, 191, 36, 0.1); }
 .hover\:bg-sky-300:hover { --tw-bg-opacity: 1; background-color: rgb(125 211 252 / var(--tw-bg-opacity, 1)); }
 .hover\:bg-sky-400:hover { --tw-bg-opacity: 1; background-color: rgb(56 189 248 / var(--tw-bg-opacity, 1)); }
 .hover\:bg-sky-400\/10:hover { background-color: rgba(56, 189, 248, 0.1); }
@@ -286,6 +297,7 @@ img, video { max-width: 100%; height: auto; }
 .sm\:h-52 { height: 13rem; }
 .sm\:h-56 { height: 14rem; }
 .sm\:w-11 { width: 2.75rem; }
+.sm\:w-40 { width: 10rem; }
 .sm\:w-44 { width: 11rem; }
 .sm\:w-48 { width: 12rem; }
 .sm\:w-auto { width: auto; }
@@ -316,6 +328,7 @@ img, video { max-width: 100%; height: auto; }
 .md\:grid-cols-\[1fr_auto\] { grid-template-columns: 1fr auto; }
 }
 @media (min-width: 1024px) {
+.lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
 .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
 .lg\:flex-row { flex-direction: row; }
 .lg\:items-start { align-items: flex-start; }
@@ -615,6 +628,14 @@ img, video { max-width: 100%; height: auto; }
     .sl-cell-hint { display: block; margin-top: .2rem; font-size: .72rem; line-height: 1.35; color: var(--sl-muted, #94a3b8); }
     .sl-cell-hint mark { background: var(--sl-mark, rgba(45,212,191,.22)); color: var(--sl-accent, #2dd4bf); border-radius: .25rem; padding: 0 .12rem; font-weight: 700; }
     .sl-conj.is-write td { padding-top: .45rem; padding-bottom: .45rem; }
+.sl-kbd { border-radius: .3rem; border: 1px solid var(--sl-line); background: var(--sl-card-2); padding: 0 .3rem; font-family: ui-monospace, monospace; font-size: .85em; }
+        .sl-phrase { border: 1px solid var(--sl-line-soft); background: var(--sl-card-2); border-radius: .85rem; padding: .6rem .75rem; }
+    /* Сравнение языков. */
+    .sl-compare-row { display: grid; gap: .6rem; align-items: start; border: 1px solid var(--sl-line-soft); background: var(--sl-card); border-radius: 1rem; padding: .8rem .9rem; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .sl-compare-row { grid-template-columns: 1.2fr 1fr 1fr; } .sl-compare-note { grid-column: 1 / -1; } }
+    .sl-compare-cell { border-left: 2px solid var(--sl-line-soft); padding-left: .7rem; }
+    @media (max-width: 719px) { .sl-compare-cell { border-left: none; border-top: 1px solid var(--sl-line-soft); padding: .5rem 0 0; } }
+    .sl-compare-note { border-top: 1px dashed var(--sl-accent-line); padding-top: .55rem; }
     /* Игровые режимы. */
     .sl-tile { border: 1px solid var(--sl-line); background: var(--sl-card-2); color: var(--sl-ink); transition: border-color .18s, background-color .18s, transform .18s; }
     .sl-tile.is-picked { border-color: var(--sl-accent); background: var(--sl-accent-soft); }
@@ -704,14 +725,14 @@ img, video { max-width: 100%; height: auto; }
         <button class="focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white" data-level="B2">B2</button>
         <button class="focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white" data-level="C1-C2">C1–C2 PRO</button>
       </div>
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-center"><button id="reviewToggle" class="focus-ring whitespace-nowrap rounded-xl border border-sky-400/40 px-4 py-2 text-sm font-bold text-sky-300 hover:bg-sky-400/10" type="button" aria-pressed="false">⟳ Повторение <span id="reviewDue" class="rounded-md bg-sky-400/20 px-1.5 py-0.5 text-xs">0</span></button><label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/50 px-3 py-2"><span class="text-slate-500">⌕</span><input id="searchInput" class="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-600 sm:w-48" type="search" placeholder="Поиск BG или RU" aria-label="Поиск по карточкам"></label><div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-2 text-xs text-slate-400 sm:text-sm"><span id="cardCounter" class="whitespace-nowrap">Карта 1 из 500</span><span class="hidden h-1 w-1 rounded-full bg-slate-600 sm:block"></span><span id="contextLabel">Быт</span></div></div>
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center"><button id="reviewToggle" class="focus-ring whitespace-nowrap rounded-xl border border-sky-400/40 px-4 py-2 text-sm font-bold text-sky-300 hover:bg-sky-400/10" type="button" aria-pressed="false">⟳ Повторение <span id="reviewDue" class="rounded-md bg-sky-400/20 px-1.5 py-0.5 text-xs">0</span></button><button id="favToggle" class="focus-ring whitespace-nowrap rounded-xl border border-amber-400/40 px-4 py-2 text-sm font-bold text-amber-300 hover:bg-amber-400/10" type="button" aria-pressed="false">★ Избранное <span id="favCount" class="rounded-md bg-amber-400/20 px-1.5 py-0.5 text-xs">0</span></button><label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/50 px-3 py-2"><span class="text-slate-500">⌕</span><input id="searchInput" class="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-600 sm:w-48" type="search" placeholder="Поиск BG или RU" aria-label="Поиск по карточкам"></label><div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-2 text-xs text-slate-400 sm:text-sm"><span id="cardCounter" class="whitespace-nowrap">Карта 1 из 500</span><span class="hidden h-1 w-1 rounded-full bg-slate-600 sm:block"></span><span id="contextLabel">Быт</span></div></div>
     </section>
 
     <section class="scene mx-auto max-w-4xl" aria-live="polite">
       <div id="card" class="card-inner relative min-h-[520px] cursor-pointer" tabindex="0" role="button" aria-label="Карточка. Нажмите, чтобы перевернуть">
         <article class="card-face absolute inset-0 overflow-hidden rounded-[2rem] border border-slate-700 bg-slate-800 shadow-2xl shadow-black/30">
           <div class="sl-media relative h-44 overflow-hidden sm:h-56"><picture><source id="cardImageWide" media="(min-width: 937px)" srcset="https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 940w, https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 1880w" sizes="896px"><img id="cardImage" class="h-full w-full object-cover" src="https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" srcset="https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=350 520w, https://images.pexels.com/photos/33497885/pexels-photo-33497885.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 940w" sizes="calc(100vw - 40px)" alt="" width="896" height="224" decoding="async" fetchpriority="high"></picture><div class="absolute inset-0 bg-gradient-to-b from-slate-950/10 via-slate-900/20 to-slate-800"></div></div>
-          <div class="absolute left-5 top-5 flex items-center gap-2"><span id="levelBadge" class="rounded-lg bg-amber-400 px-3 py-1 text-xs font-black text-slate-950">A2</span><span class="rounded-lg border border-white/20 bg-slate-950/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur">BG → RU</span></div>
+          <div class="absolute left-5 top-5 flex items-center gap-2"><span id="levelBadge" class="rounded-lg bg-amber-400 px-3 py-1 text-xs font-black text-slate-950">A2</span><span class="rounded-lg border border-white/20 bg-slate-950/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur">BG → RU</span></div><div class="absolute right-5 top-5 flex items-center gap-2"><button id="bgFav" class="focus-ring rounded-lg border border-white/20 bg-slate-950/50 px-3 py-1 text-xs font-bold text-white backdrop-blur" type="button" aria-pressed="false" title="В избранное">☆</button><button id="bgLink" class="focus-ring rounded-lg border border-white/20 bg-slate-950/50 px-3 py-1 text-xs font-bold text-white backdrop-blur" type="button" title="Ссылка на карточку">↗</button></div>
           <div class="flex flex-col items-center px-6 py-9 text-center sm:py-11"><p class="mb-3 text-sm font-semibold text-slate-400" id="frontPos">съществително име, ср.р.</p><h2 id="termBg" class="text-4xl font-black tracking-tight text-white sm:text-6xl">Пътешествие</h2><p id="ipa" class="mt-3 font-mono text-sm text-amber-300">pŭ-teshestviye</p><button id="speakFront" class="focus-ring mt-7 inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-5 py-3 text-sm font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950" type="button"><span class="text-lg">◖))</span> Слушать слово</button><p class="mt-7 text-xs text-slate-500">Нажмите на карточку, чтобы открыть перевод</p></div>
         </article>
         <article class="card-face card-back absolute inset-0 overflow-hidden rounded-[2rem] border border-amber-400/30 bg-slate-800 p-6 shadow-2xl shadow-black/30 sm:p-10"><div class="flex h-full flex-col overflow-y-auto overscroll-contain"><div class="flex items-center justify-between"><span class="text-xs font-bold uppercase tracking-[.2em] text-amber-400">Перевод и контекст</span><span id="backLevel" class="rounded-lg border border-amber-400/30 px-3 py-1 text-xs font-bold text-amber-300">A2</span></div><h2 id="termRu" class="mt-8 text-3xl font-black text-white sm:text-5xl">Путешествие</h2><div class="my-7 h-px bg-slate-700"></div><div class="space-y-5"><div><p class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Пример</p><p id="exampleBg" class="text-lg font-semibold leading-8 text-slate-100">Това пътешествие промени живота ми.</p><p id="exampleRu" class="mt-1 leading-7 text-slate-400">Это путешествие изменило мою жизнь.</p></div><div><p class="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500">Толкование</p><p id="desc" class="leading-7 text-slate-300">Движение или поездка с познавательной или развлекательной целью.</p></div></div><div class="mt-auto rounded-xl border border-slate-700 bg-slate-900/60 p-4"><p class="text-xs font-bold uppercase tracking-widest text-amber-400">Сфера</p><p id="backContext" class="mt-1 text-sm text-slate-300">Разговорный</p></div>
@@ -728,7 +749,7 @@ img, video { max-width: 100%; height: auto; }
       <button id="shuffle" class="focus-ring flex-1 rounded-xl border border-slate-700 bg-slate-800 px-5 py-4 font-bold text-slate-300 hover:border-amber-400/60 hover:text-white">⤨ Случайная карта</button>
       <button id="next" class="focus-ring flex-1 rounded-xl border border-slate-700 bg-slate-800 px-5 py-4 font-bold text-slate-300 hover:border-slate-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-40">Вперёд →</button>
     </nav>
-    <p class="mt-5 text-center text-xs text-slate-500">Клик по карточке — переворот · Пробел — переворот · ← → — навигация</p>
+    <p class="mt-5 text-center text-xs text-slate-500">Клик или пробел — переворот · ← → — навигация · <kbd class="rounded bg-slate-800 px-1">1</kbd> не знаю · <kbd class="rounded bg-slate-800 px-1">2</kbd> знаю · <kbd class="rounded bg-slate-800 px-1">F</kbd> в избранное</p>
   </main>
 
   <main id="verbMode" class="module-hidden lang-fade mx-auto max-w-6xl px-5 pb-14 lg:px-8">
@@ -759,7 +780,7 @@ img, video { max-width: 100%; height: auto; }
       </div>
     </section>
 
-    <div id="slViewSwitch" class="mb-5 flex flex-wrap gap-2" role="tablist" aria-label="Разделы словенского блока"><button class="sl-chip focus-ring is-active rounded-xl px-4 py-2 text-sm font-bold" data-view="verbs" role="tab">Глаголы</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="words" role="tab">Существительные и прилагательные</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="review" role="tab">Повторение</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="games" role="tab">Игры</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="alphabet" role="tab">Алфавит и произношение</button></div>
+    <div id="slViewSwitch" class="mb-5 flex flex-wrap gap-2" role="tablist" aria-label="Разделы словенского блока"><button class="sl-chip focus-ring is-active rounded-xl px-4 py-2 text-sm font-bold" data-view="verbs" role="tab">Глаголы</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="words" role="tab">Существительные и прилагательные</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="review" role="tab">Повторение</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="compare" role="tab">BG ↔ SL</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="phrases" role="tab">Разговорник</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="grammar" role="tab">Грамматика</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="games" role="tab">Игры</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="alphabet" role="tab">Алфавит и произношение</button></div>
 
     <section id="slWordsView" class="module-hidden">
       <div class="mb-5 max-w-3xl">
@@ -771,6 +792,7 @@ img, video { max-width: 100%; height: auto; }
       <section class="sl-panel mb-5 flex flex-col gap-3 rounded-2xl p-3 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-wrap items-center gap-2">
           <div class="flex items-center gap-1" id="slWordKind" role="group" aria-label="Часть речи"><button class="sl-chip focus-ring is-active rounded-xl px-3 py-2 text-xs font-bold" data-kind="all">Всё</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-kind="noun">Существительные</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-kind="adj">Прилагательные</button></div>
+          <button id="slWordFavFilter" class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" type="button" aria-pressed="false">★ Избранное <span data-fav-count>0</span></button>
           <select id="slWordTopic" class="sl-input focus-ring rounded-xl px-3 py-2 text-sm" aria-label="Фильтр по теме"></select>
           <label class="sl-input flex items-center gap-2 rounded-xl px-3 py-2"><span class="sl-faint">⌕</span><input id="slWordSearch" class="w-full bg-transparent text-sm outline-none sm:w-44" type="search" placeholder="Поиск SL или RU" aria-label="Поиск по словам"></label>
         </div>
@@ -778,6 +800,44 @@ img, video { max-width: 100%; height: auto; }
       </section>
       <section id="slWordGrid" class="sl-grid"></section>
       <div id="slWordEmpty" class="sl-panel mx-auto mt-8 hidden max-w-xl rounded-2xl p-8 text-center sl-muted">Для этого фильтра пока нет слов.</div>
+    </section>
+
+    <section id="slCompareView" class="module-hidden">
+      <div class="mb-5 max-w-3xl">
+        <p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Bolgarščina ↔ slovenščina</p>
+        <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Сравнение языков</h2>
+        <p class="sl-muted mt-3 text-base leading-7">Одно значение — болгарское и словенское слово рядом. Так видно, где языки совпадают, где расходятся корнями и где подстерегает ложный друг. Пары, у которых есть карточка в словенском блоке, открываются стрелкой.</p>
+      </div>
+      <div class="sl-panel mb-4 flex flex-wrap items-center gap-2 rounded-2xl p-3">
+        <div class="flex flex-wrap items-center gap-1" id="slCompareKind" role="group" aria-label="Часть речи"><button class="sl-chip focus-ring is-active rounded-xl px-3 py-2 text-xs font-bold" data-compare-kind="all">Всё</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-compare-kind="verb">Глаголы</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-compare-kind="noun">Существительные</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-compare-kind="adj">Прилагательные</button></div>
+        <select id="slCompareLevel" class="sl-input focus-ring rounded-xl px-3 py-2 text-sm" aria-label="Уровень"></select>
+        <label class="sl-input flex items-center gap-2 rounded-xl px-3 py-2"><span class="sl-faint">⌕</span><input id="slCompareSearch" class="w-full bg-transparent text-sm outline-none sm:w-40" type="search" placeholder="Поиск" aria-label="Поиск по парам"></label>
+        <button id="slCompareNotes" class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" type="button" aria-pressed="false">Только с заметкой</button>
+        <span id="slCompareCount" class="sl-muted ml-auto px-2 text-sm" role="status" aria-live="polite">0 пар</span>
+      </div>
+      <div id="slCompareBody" class="grid gap-2"></div>
+    </section>
+
+    <section id="slPhrasesView" class="module-hidden">
+      <div class="mb-5 max-w-3xl">
+        <p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Vsakdanji izrazi</p>
+        <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Разговорник</h2>
+        <p class="sl-muted mt-3 text-base leading-7">Сорок восемь ходовых фраз уровня A1–A2 сразу на двух языках: болгарский и словенский рядом с русским. Кнопка рядом с фразой читает её на нужном языке.</p>
+      </div>
+      <div class="sl-panel mb-4 flex flex-wrap items-center gap-2 rounded-2xl p-3">
+        <div class="flex flex-wrap items-center gap-1" id="slPhraseCats" role="group" aria-label="Тема разговорника"></div>
+        <label class="sl-input ml-auto flex items-center gap-2 rounded-xl px-3 py-2"><span class="sl-faint">⌕</span><input id="slPhraseSearch" class="w-full bg-transparent text-sm outline-none sm:w-44" type="search" placeholder="Поиск фразы" aria-label="Поиск по фразам"></label>
+      </div>
+      <div id="slPhraseBody" class="grid gap-2"></div>
+    </section>
+
+    <section id="slGrammarView" class="module-hidden">
+      <div class="mb-5 max-w-3xl">
+        <p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Slovnica na kratko</p>
+        <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Грамматический справочник</h2>
+        <p class="sl-muted mt-3 text-base leading-7">Коротко о том, что чаще всего сбивает: падежи, двойственное число, склонения, клитики и чтение. С примерами и с оговорками там, где болгарский устроен иначе.</p>
+      </div>
+      <div id="slGrammarBody" class="grid gap-3 lg:grid-cols-2"></div>
     </section>
 
     <section id="slGamesView" class="module-hidden">
@@ -795,7 +855,7 @@ img, video { max-width: 100%; height: auto; }
       <div class="mb-5 max-w-3xl">
         <p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Ponavljanje</p>
         <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Интервальные повторения</h2>
-        <p class="sl-muted mt-3 text-base leading-7">За один заход — до 20 карточек. Глагол возвращается, пока вы не вспомните его несколько раз подряд. «Не знаю» вернёт карточку ещё в этой сессии, «Знаю» отодвигает её дальше: сначала на день, потом на три, затем с растущим интервалом. Прогресс хранится в браузере отдельно от болгарского блока.</p>
+        <p class="sl-muted mt-3 text-base leading-7">Клавиши: пробел — показать ответ, <kbd class="sl-kbd">1</kbd> — не знаю, <kbd class="sl-kbd">2</kbd> — знаю. За один заход — до 20 карточек. Глагол возвращается, пока вы не вспомните его несколько раз подряд. «Не знаю» вернёт карточку ещё в этой сессии, «Знаю» отодвигает её дальше: сначала на день, потом на три, затем с растущим интервалом. Прогресс хранится в браузере отдельно от болгарского блока.</p>
       </div>
       <div class="sl-panel mb-4 flex flex-wrap items-center gap-2 rounded-2xl p-3" id="slReviewLevels" role="group" aria-label="Уровень для повторения"></div>
       <div class="mb-5 grid grid-cols-2 gap-3 sm:grid-cols-4" id="slReviewStats"></div>
@@ -819,6 +879,7 @@ img, video { max-width: 100%; height: auto; }
     <section class="sl-panel mb-5 flex flex-col gap-3 rounded-2xl p-3 lg:flex-row lg:items-center lg:justify-between">
       <div class="flex flex-wrap items-center gap-2">
         <div class="flex items-center gap-1" id="slAspectFilters" role="group" aria-label="Фильтр по виду глагола"><button class="sl-chip focus-ring is-active rounded-xl px-3 py-2 text-xs font-bold" data-aspect="all">Все виды</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-aspect="d">dovršni</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-aspect="n">nedovršni</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-aspect="dv">dvovidski</button></div>
+        <button id="slFavFilter" class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" type="button" aria-pressed="false">★ Избранное <span data-fav-count>0</span></button>
         <select id="slTopic" class="sl-input focus-ring rounded-xl px-3 py-2 text-sm" aria-label="Фильтр по теме"></select>
         <label class="sl-input flex items-center gap-2 rounded-xl px-3 py-2"><span class="sl-faint">⌕</span><input id="slSearch" class="w-full bg-transparent text-sm outline-none sm:w-44" type="search" placeholder="Поиск SL или RU" aria-label="Поиск по глаголам"></label>
       </div>
@@ -921,6 +982,33 @@ img, video { max-width: 100%; height: auto; }
       }, 300);
     }
     const srsKey = { word: id => `w${id}`, verb: id => `v${id}` };
+    // ===== Избранное =====
+    const FAV_KEY = { bg: 'lexiconBgFavorites', sl: 'lexiconSlFavorites' };
+    const favSets = {};
+    function favSet(ns) {
+      if (!favSets[ns]) {
+        let list = [];
+        try { list = JSON.parse(window.localStorage.getItem(FAV_KEY[ns]) || '[]') || []; } catch (error) { list = []; }
+        favSets[ns] = new Set(list);
+      }
+      return favSets[ns];
+    }
+    const favHas = (ns, id) => favSet(ns).has(id);
+    function favToggle(ns, id) {
+      const set = favSet(ns);
+      if (set.has(id)) set.delete(id); else set.add(id);
+      try { window.localStorage.setItem(FAV_KEY[ns], JSON.stringify([...set])); } catch (error) { /* Private browsing may block storage. */ }
+      return set.has(id);
+    }
+    // ===== Ссылка на конкретную карточку =====
+    const isTypingTarget = (target, selector) => target instanceof Element && target.matches(selector);
+    const cardLink = hash => `${location.origin}${location.pathname}#${hash}`;
+    function copyLink(hash, button) {
+      const url = cardLink(hash);
+      const done = () => { if (!button) return; const old = button.textContent; button.textContent = '✓ Скопировано'; setTimeout(() => { button.textContent = old; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(done, () => prompt('Ссылка на карточку:', url)); return; }
+      prompt('Ссылка на карточку:', url);
+    }
     const srsCard = (ns, id) => srsAll(ns)[id] || null;
     const srsIsDue = (ns, id) => { const card = srsCard(ns, id); return !card || card.due <= Date.now(); };
     function srsGrade(ns, id, known) {
@@ -987,7 +1075,7 @@ img, video { max-width: 100%; height: auto; }
       const head = correct.slice(0, k), tail = correct.slice(k);
       return { state: 'wrong', hint: t ? `${esc(head)}<mark>${esc(tail)}</mark>` : `<mark>${esc(correct)}</mark>` };
     }
-    let activeLevel = 'all', query = '', filtered = [...cardsData], index = 0, flipped = false, reviewMode = false;
+    let activeLevel = 'all', query = '', filtered = [...cardsData], index = 0, flipped = false, reviewMode = false, favMode = false;
     let heroSkeletonTimer;
     function setHeroPhoto(img, wide, path, alt) {
       const box = img.closest('.sl-media');
@@ -1036,13 +1124,16 @@ img, video { max-width: 100%; height: auto; }
       const item = filtered[index];
       $('emptyState').classList.toggle('hidden', Boolean(item)); $('card').classList.toggle('hidden', !item);
       if (!item) {
-        $('cardCounter').textContent = reviewMode ? 'Повторять нечего' : 'Нет карточек';
-        $('emptyState').textContent = reviewMode ? 'На сегодня всё повторено. Выключите режим повторения, чтобы листать карточки дальше.' : 'Для этого фильтра пока нет карточек.';
+        $('cardCounter').textContent = reviewMode ? 'Повторять нечего' : favMode ? 'Избранное пусто' : 'Нет карточек';
+        $('emptyState').textContent = reviewMode ? 'На сегодня всё повторено. Выключите режим повторения, чтобы листать карточки дальше.' : favMode ? 'Вы пока ничего не добавили в избранное — нажмите ☆ на карточке.' : 'Для этого фильтра пока нет карточек.';
         return;
       }
       viewed.add(item.id); saveViewed();
       $('cardCounter').textContent = `Карта ${index + 1} из ${filtered.length}`; $('contextLabel').textContent = `${item.context} · просмотрено ${viewed.size}`;
       $('levelBadge').textContent = item.level; $('backLevel').textContent = item.level; $('termBg').textContent = item.term_bg; $('ipa').textContent = item.ipa; $('frontPos').textContent = item.pos; $('termRu').textContent = item.term_ru; $('exampleBg').textContent = item.example_bg; $('exampleRu').textContent = item.example_ru; $('desc').textContent = item.desc; $('backContext').textContent = item.context; setCardPhoto(item); preloadNeighbours();
+      const favOn = favHas('bg', srsKey.word(item.id));
+      $('bgFav').textContent = favOn ? '★' : '☆'; $('bgFav').setAttribute('aria-pressed', favOn);
+      $('bgFav').classList.toggle('bg-amber-400', favOn); $('bgFav').classList.toggle('text-slate-950', favOn); $('bgFav').classList.toggle('text-white', !favOn);
       const srs = srsCard('bg', srsKey.word(item.id));
       $('srsStatus').textContent = srs ? `${srsWhen(srs)} · вспомнили ${srs.ok} из ${srs.seen}` : 'новая карточка';
       $('prev').disabled = index === 0; $('next').disabled = index === filtered.length - 1;
@@ -1052,7 +1143,7 @@ img, video { max-width: 100%; height: auto; }
     let warningTimer; function showWarning(message) { $('ttsWarning').textContent = message; $('ttsWarning').classList.remove('hidden'); clearTimeout(warningTimer); warningTimer = setTimeout(() => $('ttsWarning').classList.add('hidden'), 6000); }
     function move(step) { if (!filtered.length) return; index = Math.max(0, Math.min(filtered.length - 1, index + step)); flipped = false; $('card').classList.remove('is-flipped'); render(); }
     function applyFilters() {
-      const matched = cardsData.filter(item => (activeLevel === 'all' || item.level === activeLevel) && `${item.term_bg} ${item.term_ru}`.toLocaleLowerCase('ru').includes(query.toLocaleLowerCase('ru')));
+      const matched = cardsData.filter(item => (favMode ? favHas('bg', srsKey.word(item.id)) : activeLevel === 'all' || item.level === activeLevel) && `${item.term_bg} ${item.term_ru}`.toLocaleLowerCase('ru').includes(query.toLocaleLowerCase('ru')));
       // В режиме повторения показываем только то, что подошло по сроку, — просроченное первым.
       filtered = reviewMode ? srsQueue(matched, 'bg', item => srsKey.word(item.id)) : matched;
       index = 0; flipped = false; $('card').classList.remove('is-flipped'); render();
@@ -1060,6 +1151,7 @@ img, video { max-width: 100%; height: auto; }
     function renderReviewBadge() {
       const pool = cardsData.filter(item => activeLevel === 'all' || item.level === activeLevel);
       $('reviewDue').textContent = srsStats('bg', pool.map(item => srsKey.word(item.id))).due;
+      $('favCount').textContent = favSet('bg').size;
     }
     function gradeCurrent(known) {
       const item = filtered[index];
@@ -1170,6 +1262,21 @@ img, video { max-width: 100%; height: auto; }
     $('card').addEventListener('click', event => { if (!event.target.closest('button')) flip(); }); $('card').addEventListener('keydown', event => { if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); flip(); } }); $('speakFront').addEventListener('click', event => { event.stopPropagation(); speak(); }); $('listen').addEventListener('click', speak); $('prev').addEventListener('click', () => move(-1)); $('next').addEventListener('click', () => move(1));
     $('shuffle').addEventListener('click', () => { if (!filtered.length) return; index = Math.floor(Math.random() * filtered.length); flipped = false; $('card').classList.remove('is-flipped'); render(); });
     $('searchInput').addEventListener('input', event => { query = event.target.value.trim(); applyFilters(); });
+    $('bgFav').addEventListener('click', event => {
+      event.stopPropagation();
+      const item = filtered[index]; if (!item) return;
+      favToggle('bg', srsKey.word(item.id)); renderReviewBadge();
+      if (favMode) applyFilters(); else render();
+    });
+    $('bgLink').addEventListener('click', event => { event.stopPropagation(); const item = filtered[index]; if (item) copyLink(`bg/card/${item.id}`, null); });
+    $('favToggle').addEventListener('click', () => {
+      favMode = !favMode;
+      $('favToggle').setAttribute('aria-pressed', favMode);
+      $('favToggle').classList.toggle('bg-amber-400', favMode);
+      $('favToggle').classList.toggle('text-slate-950', favMode);
+      $('favToggle').classList.toggle('text-amber-300', !favMode);
+      applyFilters();
+    });
     $('srsKnow').addEventListener('click', event => { event.stopPropagation(); gradeCurrent(true); });
     $('srsDontKnow').addEventListener('click', event => { event.stopPropagation(); gradeCurrent(false); });
     $('reviewToggle').addEventListener('click', () => {
@@ -1181,7 +1288,14 @@ img, video { max-width: 100%; height: auto; }
       applyFilters();
     });
     $('levelFilters').addEventListener('click', event => { const button = event.target.closest('button[data-level]'); if (!button) return; activeLevel = button.dataset.level; document.querySelectorAll('#levelFilters button').forEach(item => item.className = item === button ? 'focus-ring rounded-xl bg-amber-400 px-4 py-2 text-sm font-bold text-slate-950' : 'focus-ring rounded-xl px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-800 hover:text-white'); applyFilters(); renderReviewBadge(); });
-    document.addEventListener('keydown', event => { if (event.target.matches('button, select, input') || document.body.dataset.lang === 'sl') return; if (event.key === 'ArrowLeft') move(-1); if (event.key === 'ArrowRight') move(1); });
+    document.addEventListener('keydown', event => {
+      if (isTypingTarget(event.target, 'button, select, input, textarea') || document.body.dataset.lang === 'sl') return;
+      if (event.key === 'ArrowLeft') move(-1);
+      if (event.key === 'ArrowRight') move(1);
+      if (event.key === '1') { event.preventDefault(); gradeCurrent(false); }
+      if (event.key === '2') { event.preventDefault(); gradeCurrent(true); }
+      if (event.key === 'f' || event.key === 'а') { const item = filtered[index]; if (item) { favToggle('bg', srsKey.word(item.id)); renderReviewBadge(); if (favMode) applyFilters(); else render(); } }
+    });
     render();
     renderReviewBadge();
     const slSeeds = {
@@ -1856,7 +1970,8 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
     const slLearnedIn = level => slLevelVerbs(level).filter(verb => slState.learned.has(verb.id)).length;
     function slFiltered() {
       const query = slState.query.toLocaleLowerCase('ru');
-      return slLevelVerbs(slState.level).filter(verb => (slState.aspect === 'all' || verb.aspect === slState.aspect) && (slState.topic === 'all' || verb.topic === slState.topic) && (!query || `${verb.inf} ${verb.translation}`.toLocaleLowerCase('ru').includes(query)));
+      const base = slState.onlyFav ? slVerbs : slLevelVerbs(slState.level); // избранное показываем со всех уровней
+      return base.filter(verb => (!slState.onlyFav || favHas('sl', verb.id)) && (slState.aspect === 'all' || verb.aspect === slState.aspect) && (slState.topic === 'all' || verb.topic === slState.topic) && (!query || `${verb.inf} ${verb.translation}`.toLocaleLowerCase('ru').includes(query)));
     }
     function slRenderProgress() {
       const total = slVerbs.length, learned = slState.learned.size, ratio = total ? learned / total : 0;
@@ -1880,13 +1995,13 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
         <div class="flex flex-wrap items-center gap-1.5"><span class="sl-tag sl-tag-level">${verb.level}</span>${slTagAspect(verb)}<span class="sl-tag sl-tag-group sl-tip" data-tip="${slEsc(`группа спряжения ${verb.group}`)}">${slEsc(verb.group)}</span>${verb.alternation ? `<span class="sl-tag sl-tag-alt sl-tip" data-tip="${slEsc(`чередование: ${verb.alternation}`)}">premena</span>` : ''}</div>
         <div class="sl-pic mt-3 ${verb.photo ? 'has-photo' : ''}" style="--pic-hue:${verb.hue}"><span class="sl-pic-main" aria-hidden="true">${verb.picture[0]}</span>${verb.picture[1] ? `<span class="sl-pic-side" aria-hidden="true">${verb.picture[1]}</span>` : ''}${verb.photo ? `<img class="sl-photo" src="${slEsc(slPhotoUrl(verb.photo.src, 'medium'))}" srcset="${slEsc(`${slPhotoUrl(verb.photo.src, 'medium')} 1x, ${slPhotoUrl(verb.photo.src, 'large')} 2x`)}" alt="" loading="${eager ? 'eager' : 'lazy'}" ${eager ? 'fetchpriority="high"' : ''} decoding="async" onerror="this.parentElement.classList.remove('has-photo'); this.remove()">` : ''}</div>
         <div class="flex flex-1 flex-col items-center justify-center text-center"><p class="sl-faint mb-1 text-xs font-semibold uppercase tracking-widest">${slEsc(verb.topic)}</p><h2 class="text-3xl font-black tracking-tight">${slEsc(verb.inf)}</h2><p class="sl-accent mt-2 font-mono text-sm" title="приблизительная транскрипция">${slEsc(verb.ipa)}</p><p class="sl-ink-2 mt-2 text-base font-semibold leading-5">${slEsc(verb.translation)}</p></div>
-        <div class="flex items-center justify-between gap-2"><button class="sl-btn focus-ring rounded-full px-4 py-2 text-xs font-bold" type="button" data-speak="${slEsc(verb.inf)}">◖)) Слушать</button><button class="focus-ring rounded-full px-4 py-2 text-xs font-bold ${learned ? 'sl-btn-accent' : 'sl-btn'}" type="button" data-learn="${slEsc(verb.id)}" aria-pressed="${learned}">${learned ? '✓ Выучено' : '○ Выучил'}</button></div>
+        <div class="flex items-center justify-between gap-2"><div class="flex gap-1.5"><button class="sl-btn focus-ring rounded-full px-3 py-2 text-xs font-bold" type="button" data-speak="${slEsc(verb.inf)}">◖))</button><button class="focus-ring rounded-full px-3 py-2 text-xs font-bold ${favHas('sl', verb.id) ? 'sl-btn-accent' : 'sl-btn'}" type="button" data-fav="${slEsc(verb.id)}" aria-pressed="${favHas('sl', verb.id)}" title="В избранное">${favHas('sl', verb.id) ? '★' : '☆'}</button></div><button class="focus-ring rounded-full px-4 py-2 text-xs font-bold ${learned ? 'sl-btn-accent' : 'sl-btn'}" type="button" data-learn="${slEsc(verb.id)}" aria-pressed="${learned}">${learned ? '✓ Выучено' : '○ Выучил'}</button></div>
         <p class="sl-faint mt-3 text-center text-[11px]">Нажмите, чтобы перевернуть</p>
       </article>`;
     }
     function slCardBack(verb) {
       return `<article class="card-face card-back sl-face absolute inset-0 p-4 sm:p-5">
-        <div class="flex items-start justify-between gap-2"><div><span class="sl-accent text-[11px] font-bold uppercase tracking-[.2em]">${slEsc(verb.level)} · ${slEsc(slAspectLabels[verb.aspect][0])}</span><h3 class="mt-1 text-xl font-black">${slEsc(verb.inf)} <span class="sl-muted text-sm font-semibold">— ${slEsc(verb.translation)}</span></h3></div><button class="sl-btn focus-ring shrink-0 rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-flip-back aria-label="Вернуться на лицевую сторону">↺</button></div>
+        <div class="flex items-start justify-between gap-2"><div><span class="sl-accent text-[11px] font-bold uppercase tracking-[.2em]">${slEsc(verb.level)} · ${slEsc(slAspectLabels[verb.aspect][0])}</span><h3 class="mt-1 text-xl font-black">${slEsc(verb.inf)} <span class="sl-muted text-sm font-semibold">— ${slEsc(verb.translation)}</span></h3></div><div class="flex shrink-0 gap-1.5"><button class="sl-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-link="sl/verb/${slEsc(verb.id)}" title="Ссылка на карточку">↗</button><button class="sl-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-flip-back aria-label="Вернуться на лицевую сторону">↺</button></div></div>
         <div class="mt-3 flex gap-4 text-xs font-bold uppercase tracking-widest" role="tablist"><button class="sl-inner-tab focus-ring pb-2 is-active" data-inner-tab="overview" role="tab">Обзор</button><button class="sl-inner-tab focus-ring pb-2" data-inner-tab="conjugation" role="tab">Спряжение</button><button class="sl-inner-tab focus-ring pb-2" data-inner-tab="examples" role="tab">Примеры</button></div>
         <div class="sl-back-body mt-3 pr-1" data-inner-body></div>
       </article>`;
@@ -1970,6 +2085,20 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       const flipped = typeof force === 'boolean' ? force : !card.classList.contains('is-flipped');
       card.classList.toggle('is-flipped', flipped);
       if (flipped && !card.querySelector('[data-inner-body]').innerHTML) slSetInnerTab(card, 'overview');
+    }
+    function slToggleFav(button, ns, id) {
+      const on = favToggle(ns, id);
+      document.querySelectorAll(`[data-fav="${CSS.escape(id)}"]`).forEach(item => {
+        item.className = `focus-ring rounded-full px-3 py-2 text-xs font-bold ${on ? 'sl-btn-accent' : 'sl-btn'}`;
+        item.textContent = on ? '★' : '☆';
+        item.setAttribute('aria-pressed', on);
+      });
+      slRenderFavCounts();
+      return on;
+    }
+    function slRenderFavCounts() {
+      const n = favSet('sl').size;
+      document.querySelectorAll('[data-fav-count]').forEach(el => { el.textContent = n; });
     }
     function slToggleLearned(id) {
       if (slState.learned.has(id)) slState.learned.delete(id); else slState.learned.add(id);
@@ -2132,7 +2261,9 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
     const slWordLevelWords = level => slWords.filter(word => word.level === level);
     function slWordFiltered() {
       const query = slWordState.query.toLocaleLowerCase('ru');
-      return slWordLevelWords(slWordState.level).filter(word =>
+      const base = slWordState.onlyFav ? slWords : slWordLevelWords(slWordState.level);
+      return base.filter(word =>
+        (!slWordState.onlyFav || favHas('sl', word.id)) &&
         (slWordState.kind === 'all' || word.kind === slWordState.kind) &&
         (slWordState.topic === 'all' || word.topic === slWordState.topic) &&
         (!query || `${word.lemma} ${word.translation}`.toLocaleLowerCase('ru').includes(query)));
@@ -2155,13 +2286,13 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
         <div class="flex flex-wrap items-center gap-1.5">${slWordTagRow(word)}</div>
         <div class="sl-pic mt-3 ${word.photo ? 'has-photo' : ''}" style="--pic-hue:${word.hue}"><span class="sl-pic-main" aria-hidden="true">${word.picture[0]}</span>${word.picture[1] ? `<span class="sl-pic-side" aria-hidden="true">${word.picture[1]}</span>` : ''}${word.photo ? `<img class="sl-photo" src="${slEsc(slPhotoUrl(word.photo.src, 'medium'))}" srcset="${slEsc(`${slPhotoUrl(word.photo.src, 'medium')} 1x, ${slPhotoUrl(word.photo.src, 'large')} 2x`)}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" onerror="this.parentElement.classList.remove('has-photo'); this.remove()">` : ''}</div>
         <div class="flex flex-1 flex-col items-center justify-center text-center"><p class="sl-faint mb-1 text-xs font-semibold uppercase tracking-widest">${slEsc(word.topic)}</p><h2 class="text-3xl font-black tracking-tight">${slEsc(word.lemma)}</h2><p class="sl-accent mt-2 font-mono text-sm" title="приблизительная транскрипция">${slEsc(word.ipa)}</p><p class="sl-ink-2 mt-2 text-base font-semibold leading-5">${slEsc(word.translation)}</p></div>
-        <div class="flex items-center justify-between gap-2"><button class="sl-btn focus-ring rounded-full px-4 py-2 text-xs font-bold" type="button" data-speak="${slEsc(word.lemma)}">◖)) Слушать</button><span class="sl-faint text-xs font-bold">${slEsc(srsWhen(srsCard('sl', word.id)))}</span></div>
+        <div class="flex items-center justify-between gap-2"><div class="flex gap-1.5"><button class="sl-btn focus-ring rounded-full px-3 py-2 text-xs font-bold" type="button" data-speak="${slEsc(word.lemma)}">◖))</button><button class="focus-ring rounded-full px-3 py-2 text-xs font-bold ${favHas('sl', word.id) ? 'sl-btn-accent' : 'sl-btn'}" type="button" data-fav="${slEsc(word.id)}" aria-pressed="${favHas('sl', word.id)}" title="В избранное">${favHas('sl', word.id) ? '★' : '☆'}</button></div><span class="sl-faint text-xs font-bold">${slEsc(srsWhen(srsCard('sl', word.id)))}</span></div>
         <p class="sl-faint mt-3 text-center text-[11px]">Нажмите, чтобы перевернуть</p>
       </article>`;
     }
     function slWordBack(word) {
       return `<article class="card-face card-back sl-face absolute inset-0 p-4 sm:p-5">
-        <div class="flex items-start justify-between gap-2"><div><span class="sl-accent text-[11px] font-bold uppercase tracking-[.2em]">${word.level} · ${word.kind === 'adj' ? 'pridevnik' : slGenderLabels[word.gender][0]}</span><h3 class="mt-1 text-xl font-black">${slEsc(word.lemma)} <span class="sl-muted text-sm font-semibold">— ${slEsc(word.translation)}</span></h3></div><button class="sl-btn focus-ring shrink-0 rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-flip-back aria-label="Вернуться на лицевую сторону">↺</button></div>
+        <div class="flex items-start justify-between gap-2"><div><span class="sl-accent text-[11px] font-bold uppercase tracking-[.2em]">${word.level} · ${word.kind === 'adj' ? 'pridevnik' : slGenderLabels[word.gender][0]}</span><h3 class="mt-1 text-xl font-black">${slEsc(word.lemma)} <span class="sl-muted text-sm font-semibold">— ${slEsc(word.translation)}</span></h3></div><div class="flex shrink-0 gap-1.5"><button class="sl-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-link="sl/word/${slEsc(word.id)}" title="Ссылка на карточку">↗</button><button class="sl-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-flip-back aria-label="Вернуться на лицевую сторону">↺</button></div></div>
         <div class="mt-3 flex gap-4 text-xs font-bold uppercase tracking-widest" role="tablist"><button class="sl-inner-tab focus-ring pb-2 is-active" data-word-tab="overview" role="tab">Обзор</button><button class="sl-inner-tab focus-ring pb-2" data-word-tab="cases" role="tab">Склонение</button><button class="sl-inner-tab focus-ring pb-2" data-word-tab="examples" role="tab">Примеры</button></div>
         <div class="sl-back-body mt-3 pr-1" data-word-body></div>
       </article>`;
@@ -2268,6 +2399,8 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       const card = event.target.closest('[data-word]'); if (!card) return;
       const speak = event.target.closest('[data-speak]'); if (speak) { event.stopPropagation(); slSpeak(speak.dataset.speak); return; }
       const tab = event.target.closest('[data-word-tab]'); if (tab) { slSetWordTab(card, tab.dataset.wordTab); return; }
+      const fav = event.target.closest('[data-fav]'); if (fav) { slToggleFav(fav, 'sl', fav.dataset.fav); return; }
+      const link = event.target.closest('[data-link]'); if (link) { copyLink(link.dataset.link, link); return; }
       const grade = event.target.closest('[data-grade-word]'); if (grade) { srsGrade('sl', grade.dataset.gradeWord, grade.dataset.known === '1'); slSetWordTab(card, 'overview'); slRenderWordTabs(); return; }
       if (event.target.closest('[data-flip-back]')) { slFlipWord(card, false); return; }
       const numberChip = event.target.closest('[data-word-number]'); if (numberChip) { card.dataset.wnum = numberChip.dataset.wordNumber; slSetWordTab(card, 'cases'); return; }
@@ -2304,6 +2437,291 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       clearTimeout(slWordSearchTimer);
       slWordSearchTimer = setTimeout(slRenderWordGrid, 140);
     });
+    // ===== Разговорник: русский, болгарский, словенский =====
+    const slPhrases = [
+      ['Приветствие и знакомство', [
+        ['Здравствуйте', 'Здравейте', 'Dober dan'],
+        ['Привет', 'Здравей', 'Živjo'],
+        ['Доброе утро', 'Добро утро', 'Dobro jutro'],
+        ['Добрый вечер', 'Добър вечер', 'Dober večer'],
+        ['До свидания', 'Довиждане', 'Nasvidenje'],
+        ['Спокойной ночи', 'Лека нощ', 'Lahko noč'],
+        ['Как дела?', 'Как си?', 'Kako si?'],
+        ['Хорошо, спасибо', 'Добре, благодаря', 'Dobro, hvala'],
+        ['Меня зовут…', 'Казвам се…', 'Ime mi je…'],
+        ['Очень приятно', 'Приятно ми е', 'Me veseli']
+      ]],
+      ['Вежливость и просьбы', [
+        ['Пожалуйста', 'Моля', 'Prosim'],
+        ['Спасибо', 'Благодаря', 'Hvala'],
+        ['Извините', 'Извинете', 'Oprostite'],
+        ['Ничего страшного', 'Няма нищо', 'Nič hudega'],
+        ['Вы говорите по-английски?', 'Говорите ли английски?', 'Ali govorite angleško?'],
+        ['Я не понимаю', 'Не разбирам', 'Ne razumem'],
+        ['Повторите, пожалуйста', 'Повторете, моля', 'Ponovite, prosim'],
+        ['Помогите, пожалуйста', 'Помогнете, моля', 'Prosim, pomagajte mi']
+      ]],
+      ['В кафе', [
+        ['Столик на двоих, пожалуйста', 'Маса за двама, моля', 'Mizo za dva, prosim'],
+        ['Меню, пожалуйста', 'Менюто, моля', 'Jedilni list, prosim'],
+        ['Я бы хотел кофе', 'Бих искал кафе', 'Rad bi kavo'],
+        ['Воду без газа', 'Вода без газ', 'Negazirano vodo'],
+        ['Что вы посоветуете?', 'Какво препоръчвате?', 'Kaj priporočate?'],
+        ['Очень вкусно', 'Много е вкусно', 'Zelo je okusno'],
+        ['Счёт, пожалуйста', 'Сметката, моля', 'Račun, prosim'],
+        ['Можно картой?', 'Може ли с карта?', 'Ali lahko plačam s kartico?'],
+        ['Приятного аппетита', 'Добър апетит', 'Dober tek'],
+        ['Без мяса, пожалуйста', 'Без месо, моля', 'Brez mesa, prosim']
+      ]],
+      ['В магазине', [
+        ['Сколько это стоит?', 'Колко струва?', 'Koliko stane?'],
+        ['Это слишком дорого', 'Много е скъпо', 'Predrago je'],
+        ['У вас есть…?', 'Имате ли…?', 'Ali imate…?'],
+        ['Я только смотрю', 'Само разглеждам', 'Samo gledam'],
+        ['Дайте мне это, пожалуйста', 'Дайте ми това, моля', 'Dajte mi to, prosim'],
+        ['Можно примерить?', 'Може ли да пробвам?', 'Ali lahko pomerim?'],
+        ['Где касса?', 'Къде е касата?', 'Kje je blagajna?'],
+        ['Мне нужен пакет', 'Трябва ми торбичка', 'Potrebujem vrečko']
+      ]],
+      ['В дороге', [
+        ['Где вокзал?', 'Къде е гарата?', 'Kje je železniška postaja?'],
+        ['Один билет до…', 'Един билет до…', 'Eno vozovnico do…'],
+        ['Когда отходит поезд?', 'Кога тръгва влакът?', 'Kdaj odpelje vlak?'],
+        ['Где автобусная остановка?', 'Къде е автобусната спирка?', 'Kje je avtobusna postaja?'],
+        ['Это далеко отсюда?', 'Далече ли е?', 'Je daleč od tu?'],
+        ['Как пройти к центру?', 'Как да стигна до центъра?', 'Kako pridem do centra?'],
+        ['Я заблудился', 'Изгубих се', 'Izgubil sem se']
+      ]],
+      ['Время', [
+        ['Который час?', 'Колко е часът?', 'Koliko je ura?'],
+        ['Сегодня', 'Днес', 'Danes'],
+        ['Завтра', 'Утре', 'Jutri'],
+        ['Вчера', 'Вчера', 'Včeraj'],
+        ['Сейчас', 'Сега', 'Zdaj']
+      ]]
+    ];
+    // ===== Грамматический справочник =====
+    const slGrammar = [
+      ['Шесть падежей', 'В словенском шесть падежей; в болгарском их нет вовсе — там работают предлоги и определённый артикль. Каждый падеж отвечает на свой вопрос и тянет за собой предлоги.',
+        ['imenovalnik — kdo/kaj: To je <b>hiša</b>.', 'rodilnik — koga/česa: Ni <b>hiše</b>. · brez <b>hiše</b>', 'dajalnik — komu/čemu: Bližam se <b>hiši</b>.', 'tožilnik — koga/kaj: Vidim <b>hišo</b>.', 'mestnik — o kom/o čem: Govorim o <b>hiši</b>. (всегда с предлогом)', 'orodnik — s kom/s čim: Za <b>hišo</b> je vrt. · z <b>avtom</b>']],
+      ['Двойственное число', 'Про двух людей или два предмета словенский говорит особой формой — dvojina. Ни в русском, ни в болгарском её нет, и это первое, что сбивает.',
+        ['ednina: jaz <b>delam</b> · midva <b>delava</b> (dvojina) · mi <b>delamo</b> (množina)', 'dve <b>mizi</b>, tri <b>mize</b> — при двух форма своя', 'Личные местоимения двойственного: midva, vidva, onadva']],
+      ['Пять типов склонения существительных', 'Тип задают род и конечный звук словарной формы.',
+        ['мужской на согласный: korak, korak<b>a</b>, korak<b>u</b>…', 'женский на -a: miza, miz<b>e</b>, miz<b>i</b>…', 'женский на согласный (i-основа): stvar, stvar<b>i</b>, orodnik stvar<b>jo</b>', 'средний на -o: mesto, mest<b>a</b>, mest<b>u</b>…', 'средний на -e: polje, polj<b>a</b>, orodnik polj<b>em</b>']],
+      ['Одушевлённость и мягкие основы', 'Две мелочи, которые меняют окончание.',
+        ['Живое существительное в tožilnik ед. ч. берёт форму rodilnika: vidim <b>psa</b>, но vidim <b>korak</b>.', 'После c, č, ž, š, j вместо o идёт e: konj → konj<b>em</b>, konj<b>ev</b>.', 'Основа может чередоваться: pes → <b>ps</b>a, čevelj → <b>čevlj</b>a.']],
+      ['Прилагательное', 'Согласуется с существительным в роде, числе и падеже. Плюс различает неопределённую и определённую форму.',
+        ['dober dan (неопр.) — <b>dobri</b> dan (опред., «тот самый»)', 'm dober · f dobr<b>a</b> · n dobr<b>o</b>', 'dobr<b>ega</b>, dobr<b>emu</b>, dobr<b>em</b>, dobr<b>im</b> — косвенные падежи мужского и среднего']],
+      ['Вид глагола', 'Как и в русском: dovršni (совершенный) и nedovršni (несовершенный). В болгарском вид тоже есть, а вот инфинитив утрачен — там да-конструкция.',
+        ['nedovršni: <b>pisati</b> — пишу, процесс', 'dovršni: <b>napisati</b> — напишу, результат', 'dvovidski (оба вида): rezervirati, parkirati — глаголы на -irati', 'болгарский вместо инфинитива: искам <b>да пиша</b>']],
+      ['Времена', 'Шесть форм, все строятся от двух основ — настоящего времени и причастия на -l.',
+        ['sedanjik: <b>delam</b>', 'preteklik: <b>sem delal</b> (быть + причастие)', 'predpreteklik: <b>sem bil delal</b>', 'prihodnjik: <b>bom delal</b>', 'pogojnik: <b>bi delal</b> — одна форма на все лица', 'velelnik: <b>delaj</b>, delajmo, delajte']],
+      ['Клитики и порядок слов', 'Короткие безударные словечки — se, je, sem, mi, ga — встают на второе место в предложении, а не рядом со своим глаголом.',
+        ['<b>Vrnil se je</b> pozno. — не «Vrnil je se»', 'Jutri <b>se bom</b> vrnil.', 'Порядок в целом свободный, но клитики держат вторую позицию жёстко.']],
+      ['Отрицание', 'Частица ne стоит перед глаголом; у трёх глаголов она срослась с формой.',
+        ['<b>ne</b> delam, <b>ne</b> vidim', 'biti → <b>nisem</b>, imeti → <b>nimam</b>, hoteti → <b>nočem</b>', 'После отрицания прямое дополнение уходит в rodilnik: nimam <b>časa</b>.']],
+      ['Чтение и ударение', 'Читается почти как пишется, но есть три ловушки.',
+        ['l и v в конце слога звучат как [w]: bil [biw], avto [awto]', 'Ударение не закреплено за слогом и различает слова; долгота гласного тоже смыслоразличительна.', 'č [ч], š [ш], ž [ж]; букв q, w, x, y в алфавите нет.']]
+    ];
+    // ===== Сравнение языков: болгарский и словенский рядом =====
+    // Мост «словенская лемма → болгарское слово» для того, чего нет в болгарских колодах.
+    // Болгарские глаголы даются в 1 л. ед. ч. настоящего времени — так они и подаются в болгарском блоке.
+    const slBgBridge = {
+      hiša: 'къща', miza: 'маса', okno: 'прозорец', knjiga: 'книга', šola: 'училище', voda: 'вода', kruh: 'хляб',
+      mleko: 'мляко', jabolko: 'ябълка', mesto: 'град', prijatelj: 'приятел', pes: 'куче', avto: 'кола', denar: 'пари',
+      zdravnik: 'лекар', morje: 'море', gora: 'планина', obleka: 'дреха', 'pomoč': 'помощ', znanje: 'знание',
+      podjetje: 'предприятие', skupina: 'група', razlika: 'разлика', pravilo: 'правило', raziskava: 'изследване',
+      razvoj: 'развитие', okolje: 'среда', 'natančnost': 'точност', postopek: 'процедура', 'poročilo': 'доклад',
+      gospodarstvo: 'икономика',
+      dober: 'добър', slab: 'лош', velik: 'голям', majhen: 'малък', nov: 'нов', star: 'стар', lep: 'красив',
+      topel: 'топъл', mrzel: 'студен', hiter: 'бърз', dolg: 'дълъг', kratek: 'къс', zanimiv: 'интересен',
+      pomemben: 'важен', potreben: 'необходим', 'možen': 'възможен', preprost: 'прост', 'težak': 'тежък',
+      'učinkovit': 'ефективен', 'zanesljiv': 'надежден', 'natančen': 'точен', primeren: 'подходящ',
+      trajen: 'траен', 'občutljiv': 'чувствителен',
+      biti: 'съм', imeti: 'имам', iti: 'отивам', jesti: 'ям', piti: 'пия', spati: 'спя', gledati: 'гледам',
+      'poslušati': 'слушам', kupiti: 'купувам', 'plačati': 'плащам', stanovati: 'живея', 'reči': 'казвам',
+      povedati: 'разказвам', 'vprašati': 'питам', odgovoriti: 'отговарям', priti: 'идвам', hoditi: 'ходя',
+      sedeti: 'седя', stati: 'стоя', 'ležati': 'лежа', vstati: 'ставам', kuhati: 'готвя', 'čakati': 'чакам',
+      iskati: 'търся', najti: 'намирам', dati: 'давам', vzeti: 'вземам', odpreti: 'отварям', zapreti: 'затварям',
+      igrati: 'играя', misliti: 'мисля', 'počivati': 'почивам', klicati: 'викам', 'začeti': 'започвам',
+      'končati': 'завършвам', videti: 'виждам', 'slišati': 'чувам', plavati: 'плувам', 'teči': 'тичам',
+      plesati: 'танцувам', peti: 'пея', pripeljati: 'довеждам', oditi: 'тръгвам си', ostati: 'оставам',
+      'vrniti se': 'връщам се', 'obleči se': 'обличам се', 'umiti se': 'измивам се', 'tuširati se': 'вземам душ',
+      'čistiti': 'чистя', prati: 'пера', likati: 'гладя', pomivati: 'мия', 'naročiti': 'поръчвам',
+      prinesti: 'донасям', 'peči': 'пека', rezati: 'режа', poskusiti: 'опитвам', 'srečati': 'срещам',
+      spoznati: 'запознавам се', 'pogovarjati se': 'разговарям', pozdraviti: 'поздравявам',
+      'zahvaliti se': 'благодаря', 'opravičiti se': 'извинявам се', povabiti: 'каня', obiskati: 'посещавам',
+      telefonirati: 'звъня', poslati: 'изпращам', dobiti: 'получавам', nakupovati: 'пазарувам',
+      prodati: 'продавам', 'zaslužiti': 'печеля', 'varčevati': 'спестявам', potrebovati: 'нуждая се',
+      vklopiti: 'включвам', izklopiti: 'изключвам', popraviti: 'поправям', leteti: 'летя',
+      odpotovati: 'заминавам', prispeti: 'пристигам', rezervirati: 'резервирам', parkirati: 'паркирам',
+      zamuditi: 'закъснявам', pohiteti: 'бързам', 'zbuditi se': 'събуждам се', zaspati: 'заспивам',
+      'utruditi se': 'уморявам се', zboleti: 'разболявам се', ozdraveti: 'оздравявам', telovaditi: 'спортувам',
+      jokati: 'плача', 'veseliti se': 'радвам се', 'pogrešati': 'липсва ми', risati: 'рисувам',
+      fotografirati: 'снимам', vaditi: 'упражнявам се', ponoviti: 'повтарям', pozabiti: 'забравям',
+      'spomniti se': 'спомням си'
+    };
+    // Заметки там, где сравнение особенно поучительно.
+    const slBgNotes = {
+      mesto: ['Ложный друг', 'Словенское mesto — это город. Болгарское място, похожее по звучанию, значит «место».'],
+      miza: ['Разные корни', 'Словенское miza и болгарское маса не связаны; русское «стол» ближе к словенскому stol — но stol значит «стул».'],
+      pes: ['Разные корни', 'В словенском pes — обычное слово для собаки, а болгарское куче вытеснило старое пес.'],
+      kruh: ['Разные корни', 'Словенское kruh и болгарское хляб — два разных славянских корня для хлеба.'],
+      'teči': ['Осторожно', 'Словенское teči — и «бежать», и «течь». Болгарское тичам — только «бежать».'],
+      peti: ['Общий корень', 'peti и пея восходят к одному корню, различается только оформление основы.'],
+      'spomniti se': ['Общий корень', 'spomniti se и спомням си — прямое соответствие, включая возвратную частицу.'],
+      iti: ['Разные основы', 'Словенское iti и болгарское отивам расходятся: у болгарского в основе -ид- (отида).'],
+      biti: ['Внимание', 'Словенское biti — это и «быть», и «бить». Болгарское съм — только связка.'],
+      stanovati: ['Разные корни', 'Словенское stanovati («проживать») и болгарское живея построены на разных корнях.'],
+      'pogrešati': ['Нет прямой пары', 'Болгарский выражает это безлично: липсва ми — «мне недостаёт».'],
+      dolg: ['Двойное значение', 'Словенское dolg — и «длинный», и «долг». Болгарское дълъг — только «длинный».']
+    };
+    function slBuildComparison() {
+      const variants = text => String(text).toLowerCase().replace(/ё/g, 'е').replace(/\(.*?\)/g, '').split(/[,;]/).map(x => x.trim()).filter(Boolean);
+      const index = (items, get) => { const map = new Map(); items.forEach(item => variants(get(item)).forEach(v => { if (!map.has(v)) map.set(v, item); })); return map; };
+      const bgVerbIndex = index(verbsData, v => v.translation_ru);
+      const bgNounIndex = index(cardsData, c => c.term_ru);
+      const lookup = (text, map) => { for (const v of variants(text)) if (map.has(v)) return map.get(v); return null; };
+      const rows = [];
+      const push = (kind, sl, slId, translation, topic, level, bg, bgId) => {
+        if (!bg) return;
+        const note = slBgNotes[sl];
+        rows.push({ kind, sl, slId, bg, bgId, translation, topic, level, note });
+      };
+      slVerbs.forEach(verb => {
+        const hit = lookup(verb.translation, bgVerbIndex);
+        push('verb', verb.inf, verb.id, verb.translation, verb.topic, verb.level,
+          hit ? hit.verb_bg : slBgBridge[verb.inf], hit ? `bgverb:${hit.id}` : null);
+      });
+      slWords.forEach(word => {
+        const hit = lookup(word.translation, bgNounIndex);
+        push(word.kind === 'adj' ? 'adj' : 'noun', word.lemma, word.id, word.translation, word.topic, word.level,
+          hit ? hit.term_bg : slBgBridge[word.lemma], hit ? `bgcard:${hit.id}` : null);
+      });
+      return rows;
+    }
+    const slComparison = slBuildComparison();
+    const slCompareState = { kind: 'all', level: 'all', query: '', onlyNotes: false };
+    function slCompareFiltered() {
+      const query = slCompareState.query.toLocaleLowerCase('ru');
+      return slComparison.filter(row =>
+        (slCompareState.kind === 'all' || row.kind === slCompareState.kind) &&
+        (slCompareState.level === 'all' || row.level === slCompareState.level) &&
+        (!slCompareState.onlyNotes || row.note) &&
+        (!query || `${row.sl} ${row.bg} ${row.translation}`.toLocaleLowerCase('ru').includes(query)));
+    }
+    function slRenderCompare() {
+      const rows = slCompareFiltered();
+      $('slCompareCount').textContent = `${rows.length} ${plural(rows.length, 'пара', 'пары', 'пар')}`;
+      $('slCompareBody').innerHTML = rows.length ? rows.map(row => `<div class="sl-compare-row">
+        <div class="sl-compare-ru"><p class="font-semibold">${slEsc(row.translation)}</p><p class="sl-faint mt-0.5 text-[11px] uppercase tracking-widest">${slEsc(row.topic)} · ${row.level}</p></div>
+        <div class="sl-compare-cell"><span class="sl-faint text-[11px] font-bold uppercase tracking-widest">BG</span><p class="mt-0.5 text-lg font-black">${slEsc(row.bg)}</p><button class="sl-btn focus-ring mt-1 rounded-full px-2.5 py-1 text-[11px] font-bold" type="button" data-speak-bg="${slEsc(row.bg)}">◖))</button></div>
+        <div class="sl-compare-cell"><span class="sl-accent text-[11px] font-bold uppercase tracking-widest">SL</span><p class="mt-0.5 text-lg font-black">${slEsc(row.sl)}</p><div class="mt-1 flex gap-1"><button class="sl-btn focus-ring rounded-full px-2.5 py-1 text-[11px] font-bold" type="button" data-speak="${slEsc(row.sl)}">◖))</button><button class="sl-btn focus-ring rounded-full px-2.5 py-1 text-[11px] font-bold" type="button" data-open-sl="${slEsc(row.slId)}" title="Открыть карточку">↗</button></div></div>
+        ${row.note ? `<div class="sl-compare-note"><span class="sl-tag sl-tag-alt">${slEsc(row.note[0])}</span><p class="sl-muted mt-1 text-xs leading-5">${slEsc(row.note[1])}</p></div>` : ''}
+      </div>`).join('') : '<div class="sl-panel rounded-2xl p-8 text-center sl-muted">Для этого фильтра пар нет.</div>';
+    }
+    function slSpeakBg(text) {
+      if (!('speechSynthesis' in window)) { slWarn('Озвучка недоступна: браузер не поддерживает Web Speech API.'); return; }
+      const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'bg-BG'; utterance.rate = 0.85;
+      speechSynthesis.cancel(); speechSynthesis.speak(utterance);
+    }
+    $('slCompareLevel').innerHTML = `<option value="all">Все уровни</option>${slLevels.map(level => `<option value="${level}">${level}</option>`).join('')}`;
+    $('slCompareKind').addEventListener('click', event => {
+      const button = event.target.closest('[data-compare-kind]'); if (!button) return;
+      slCompareState.kind = button.dataset.compareKind;
+      document.querySelectorAll('#slCompareKind [data-compare-kind]').forEach(item => item.classList.toggle('is-active', item === button));
+      slRenderCompare();
+    });
+    $('slCompareLevel').addEventListener('change', event => { slCompareState.level = event.target.value; slRenderCompare(); });
+    let slCompareTimer;
+    $('slCompareSearch').addEventListener('input', event => {
+      slCompareState.query = event.target.value.trim();
+      clearTimeout(slCompareTimer); slCompareTimer = setTimeout(slRenderCompare, 140);
+    });
+    $('slCompareNotes').addEventListener('click', () => {
+      slCompareState.onlyNotes = !slCompareState.onlyNotes;
+      $('slCompareNotes').classList.toggle('is-active', slCompareState.onlyNotes);
+      $('slCompareNotes').setAttribute('aria-pressed', slCompareState.onlyNotes);
+      slRenderCompare();
+    });
+    $('slCompareBody').addEventListener('click', event => {
+      const bg = event.target.closest('[data-speak-bg]'); if (bg) { slSpeakBg(bg.dataset.speakBg); return; }
+      const sl = event.target.closest('[data-speak]'); if (sl) { slSpeak(sl.dataset.speak); return; }
+      const open = event.target.closest('[data-open-sl]'); if (open) slOpenSlCard(open.dataset.openSl);
+    });
+    // Открыть карточку глагола или слова по id — общая точка для сравнения, избранного и ссылок.
+    function slOpenSlCard(id) {
+      const verb = slVerbs.find(item => item.id === id);
+      if (verb) {
+        slState.level = verb.level; slWrite(slStorage.level, slState.level);
+        slState.aspect = 'all'; slState.topic = 'all'; slState.query = ''; $('slSearch').value = '';
+        document.querySelectorAll('#slAspectFilters [data-aspect]').forEach(b => b.classList.toggle('is-active', b.dataset.aspect === 'all'));
+        $('slTopic').value = 'all';
+        slRenderLevelTabs(); slRenderProgress(); slGridSignature = null; slRenderGrid(); slSetView('verbs');
+        requestAnimationFrame(() => {
+          const card = $('slGrid').querySelector(`[data-verb="${CSS.escape(id)}"]`);
+          if (!card) return;
+          card.scrollIntoView({ block: 'center', behavior: slReducedMotion() ? 'auto' : 'smooth' });
+          slFlip(card, true); card.focus({ preventScroll: true });
+        });
+        return true;
+      }
+      const word = slWordById(id);
+      if (!word) return false;
+      slWordState.level = word.level; slWordState.kind = 'all'; slWordState.topic = 'all'; slWordState.query = '';
+      $('slWordSearch').value = ''; $('slWordTopic').value = 'all';
+      document.querySelectorAll('#slWordKind [data-kind]').forEach(b => b.classList.toggle('is-active', b.dataset.kind === 'all'));
+      slRenderWordTabs(); slWordSignature = null; slRenderWordGrid(); slSetView('words');
+      requestAnimationFrame(() => {
+        const card = $('slWordGrid').querySelector(`[data-word="${CSS.escape(id)}"]`);
+        if (!card) return;
+        card.scrollIntoView({ block: 'center', behavior: slReducedMotion() ? 'auto' : 'smooth' });
+        slFlipWord(card, true); card.focus({ preventScroll: true });
+      });
+      return true;
+    }
+    // --- Разговорник ---
+    const slPhraseState = { cat: 'all', query: '' };
+    function slRenderPhraseCats() {
+      const cats = ['all', ...slPhrases.map(([name]) => name)];
+      $('slPhraseCats').innerHTML = cats.map(cat => `<button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold ${cat === slPhraseState.cat ? 'is-active' : ''}" type="button" data-phrase-cat="${slEsc(cat)}">${cat === 'all' ? 'Все темы' : slEsc(cat)}</button>`).join('');
+    }
+    function slRenderPhrases() {
+      const query = slPhraseState.query.toLocaleLowerCase('ru');
+      const groups = slPhrases
+        .filter(([name]) => slPhraseState.cat === 'all' || name === slPhraseState.cat)
+        .map(([name, rows]) => [name, rows.filter(([ru, bg, sl]) => !query || `${ru} ${bg} ${sl}`.toLocaleLowerCase('ru').includes(query))])
+        .filter(([, rows]) => rows.length);
+      $('slPhraseBody').innerHTML = groups.length ? groups.map(([name, rows]) => `<section class="sl-panel rounded-2xl p-4">
+        <h3 class="sl-accent text-xs font-bold uppercase tracking-[.2em]">${slEsc(name)}</h3>
+        <div class="mt-3 grid gap-2">${rows.map(([ru, bg, sl]) => `<div class="sl-phrase">
+          <p class="sl-muted text-sm">${slEsc(ru)}</p>
+          <p class="mt-1 flex flex-wrap items-baseline gap-2"><span class="sl-faint text-[11px] font-bold uppercase tracking-widest">BG</span><b class="text-base">${slEsc(bg)}</b><button class="sl-btn focus-ring rounded-full px-2.5 py-0.5 text-[11px] font-bold" type="button" data-speak-bg="${slEsc(bg)}">◖))</button></p>
+          <p class="mt-1 flex flex-wrap items-baseline gap-2"><span class="sl-accent text-[11px] font-bold uppercase tracking-widest">SL</span><b class="text-base">${slEsc(sl)}</b><button class="sl-btn focus-ring rounded-full px-2.5 py-0.5 text-[11px] font-bold" type="button" data-speak="${slEsc(sl)}">◖))</button></p>
+        </div>`).join('')}</div>
+      </section>`).join('') : '<div class="sl-panel rounded-2xl p-8 text-center sl-muted">Ничего не нашлось.</div>';
+    }
+    $('slPhraseCats').addEventListener('click', event => {
+      const button = event.target.closest('[data-phrase-cat]'); if (!button) return;
+      slPhraseState.cat = button.dataset.phraseCat; slRenderPhraseCats(); slRenderPhrases();
+    });
+    let slPhraseTimer;
+    $('slPhraseSearch').addEventListener('input', event => {
+      slPhraseState.query = event.target.value.trim();
+      clearTimeout(slPhraseTimer); slPhraseTimer = setTimeout(slRenderPhrases, 140);
+    });
+    $('slPhraseBody').addEventListener('click', event => {
+      const bg = event.target.closest('[data-speak-bg]'); if (bg) { slSpeakBg(bg.dataset.speakBg); return; }
+      const sl = event.target.closest('[data-speak]'); if (sl) slSpeak(sl.dataset.speak);
+    });
+    // --- Грамматика ---
+    function slRenderGrammar() {
+      $('slGrammarBody').innerHTML = slGrammar.map(([title, text, points]) => `<article class="sl-panel rounded-2xl p-4 sm:p-5">
+        <h3 class="text-lg font-black">${slEsc(title)}</h3>
+        <p class="sl-muted mt-2 text-sm leading-6">${slEsc(text)}</p>
+        <ul class="mt-3 grid gap-1.5">${points.map(point => `<li class="sl-example text-sm leading-6">${point}</li>`).join('')}</ul>
+      </article>`).join('');
+    }
     // ===== Игровые режимы =====
     const SL_GAME_KEY = 'lexiconSlGameRecords';
     const slGameState = { level: 'all', mode: null, data: null, timer: null };
@@ -2576,6 +2994,17 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       slState.review.level = button.dataset.reviewLevel;
       slStartReview();
     });
+    document.addEventListener('keydown', event => {
+      if (document.body.dataset.lang !== 'sl' || slState.view !== 'review') return;
+      if (isTypingTarget(event.target, 'input, select, textarea')) return;
+      if (event.key === ' ' || event.key === 'Enter') {
+        if (!slState.review.shown && slState.review.queue[slState.review.i]) { event.preventDefault(); slState.review.shown = true; slRenderReview(); }
+        return;
+      }
+      if (!slState.review.shown) return;
+      if (event.key === '1') { event.preventDefault(); slGradeReview(false); }
+      if (event.key === '2') { event.preventDefault(); slGradeReview(true); }
+    });
     $('slReviewCard').addEventListener('click', event => {
       const speak = event.target.closest('[data-speak]'); if (speak) { slSpeak(speak.dataset.speak); return; }
       if (event.target.closest('[data-review-show]')) { slState.review.shown = true; slRenderReview(); return; }
@@ -2589,12 +3018,18 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       $('slReviewView').classList.toggle('module-hidden', view !== 'review');
       $('slWordsView').classList.toggle('module-hidden', view !== 'words');
       $('slGamesView').classList.toggle('module-hidden', view !== 'games');
+      $('slCompareView').classList.toggle('module-hidden', view !== 'compare');
+      $('slPhrasesView').classList.toggle('module-hidden', view !== 'phrases');
+      $('slGrammarView').classList.toggle('module-hidden', view !== 'grammar');
       if (view !== 'games') slStopGameTimer();
       document.querySelectorAll('#slViewSwitch [data-view]').forEach(button => button.classList.toggle('is-active', button.dataset.view === view));
       if (view === 'alphabet' && !$('slAlphaGrid').innerHTML) slRenderAlphabet();
       if (view === 'review') slStartReview();
       if (view === 'words' && !$('slWordGrid').innerHTML) { slRenderWordTabs(); slRenderWordGrid(); }
       if (view === 'games') { slRenderGameLevels(); slRenderGameMenu(); }
+      if (view === 'compare' && !$('slCompareBody').innerHTML) slRenderCompare();
+      if (view === 'phrases' && !$('slPhraseBody').innerHTML) { slRenderPhraseCats(); slRenderPhrases(); }
+      if (view === 'grammar' && !$('slGrammarBody').innerHTML) slRenderGrammar();
       if (view === 'verbs') slShowPlacementHint();
       $('slFootHint').classList.toggle('hidden', view !== 'verbs' && view !== 'words'); // в играх и алфавите подсказка не к месту
     }
@@ -2626,6 +3061,18 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       clearTimeout(slSearchTimer);
       slSearchTimer = setTimeout(slRenderGrid, 140); // Сетку перестраиваем один раз после паузы, а не на каждую букву.
     });
+    $('slFavFilter').addEventListener('click', () => {
+      slState.onlyFav = !slState.onlyFav;
+      $('slFavFilter').classList.toggle('is-active', slState.onlyFav);
+      $('slFavFilter').setAttribute('aria-pressed', slState.onlyFav);
+      slGridSignature = null; slRenderGrid();
+    });
+    $('slWordFavFilter').addEventListener('click', () => {
+      slWordState.onlyFav = !slWordState.onlyFav;
+      $('slWordFavFilter').classList.toggle('is-active', slWordState.onlyFav);
+      $('slWordFavFilter').setAttribute('aria-pressed', slWordState.onlyFav);
+      slWordSignature = null; slRenderWordGrid();
+    });
     $('slThemeToggle').addEventListener('click', () => { slState.theme = slState.theme === 'light' ? 'dark' : 'light'; slWrite(slStorage.theme, slState.theme); slApplyTheme(); });
     $('slQuizToggle').addEventListener('click', () => slState.quiz ? slCloseQuiz() : slStartQuiz());
     $('slGrid').addEventListener('click', event => {
@@ -2633,6 +3080,8 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       const speak = event.target.closest('[data-speak]'); if (speak) { event.stopPropagation(); slSpeak(speak.dataset.speak); return; }
       const speakAll = event.target.closest('[data-speak-all]'); if (speakAll) { const verb = slVerbs.find(item => item.id === speakAll.dataset.speakAll); if (!('speechSynthesis' in window)) { slSpeak(''); return; } speechSynthesis.cancel(); verb.tenses.sedanjik.forEach((form, i) => setTimeout(() => { const utterance = new SpeechSynthesisUtterance(form); utterance.lang = 'sl-SI'; utterance.rate = 0.85; speechSynthesis.speak(utterance); }, i * 1100)); return; }
       const learn = event.target.closest('[data-learn]'); if (learn) { slToggleLearned(learn.dataset.learn); return; }
+      const fav = event.target.closest('[data-fav]'); if (fav) { slToggleFav(fav, 'sl', fav.dataset.fav); return; }
+      const link = event.target.closest('[data-link]'); if (link) { copyLink(link.dataset.link, link); return; }
       const innerTab = event.target.closest('[data-inner-tab]'); if (innerTab) { slSetInnerTab(card, innerTab.dataset.innerTab); return; }
       const gradeBtn = event.target.closest('[data-grade-verb]');
       if (gradeBtn) { srsGrade('sl', gradeBtn.dataset.gradeVerb, gradeBtn.dataset.known === '1'); slSetInnerTab(card, 'overview'); return; }
@@ -2672,10 +3121,45 @@ občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|N
       langTimer = setTimeout(finish, 300);
     }
     document.querySelectorAll('.lang-switch [data-lang]').forEach(button => button.addEventListener('click', () => slSetLang(button.dataset.lang)));
+    // Ссылки вида #sl/verb/delati, #sl/word/n-hiša, #bg/card/12, #bg/verb/3 открывают конкретную карточку.
+    function slRouteHash(hash) {
+      const parts = String(hash || location.hash).replace(/^#/, '').split('/');
+      if (parts.length < 3) return false;
+      const [lang, kind, ...rest] = parts;
+      const id = decodeURIComponent(rest.join('/'));
+      if (lang === 'sl') {
+        slSetLang('sl', false);
+        return slOpenSlCard(kind === 'word' ? id : id);
+      }
+      if (lang === 'bg') {
+        slSetLang('bg', false);
+        if (kind === 'verb') {
+          const verb = verbsData.find(v => String(v.id) === id); if (!verb) return false;
+          setVerbMode(true); $('verbSelect').value = verb.id; selectedVerbId = verb.id; renderVerbPanel(); return true;
+        }
+        const pos = cardsData.findIndex(c => String(c.id) === id);
+        if (pos < 0) return false;
+        setVerbMode(false); favMode = false; reviewMode = false; activeLevel = 'all'; query = ''; $('searchInput').value = '';
+        applyFilters();
+        index = filtered.findIndex(c => String(c.id) === id);
+        if (index < 0) index = 0;
+        render();
+        $('card').scrollIntoView({ block: 'center', behavior: slReducedMotion() ? 'auto' : 'smooth' });
+        return true;
+      }
+      return false;
+    }
+    window.addEventListener('hashchange', () => slRouteHash());
     slRenderLevelTabs(); slRenderTopics(); slRenderProgress();
     $('slWordTopic').innerHTML = `<option value="all">Все темы</option>${slWordTopics.map(topic => `<option value="${slEsc(topic)}">${slEsc(topic)}</option>`).join('')}`;
     document.body.dataset.lang = 'bg';
     if (slRead(slStorage.lang, 'bg') === 'sl') slSetLang('sl', false);
+    slRenderFavCounts(); renderReviewBadge();
+    if (location.hash) setTimeout(() => slRouteHash(), 0);
+    // Офлайн-режим. Из file:// service worker не регистрируется — это нормально.
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => { /* офлайн просто не включится */ }); });
+    }
     if ('speechSynthesis' in window && typeof speechSynthesis.getVoices === 'function') speechSynthesis.getVoices();
   </script>
 </body>

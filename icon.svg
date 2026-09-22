@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Glagolica">
+  <rect width="512" height="512" rx="112" fill="#0f172a"/>
+  <rect x="96" y="96" width="320" height="320" rx="80" fill="#fbbf24"/>
+  <text x="256" y="336" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="216" font-weight="900" text-anchor="middle" fill="#0f172a">G</text>
+</svg>
