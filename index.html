@@ -92,9 +92,10 @@ img, video { max-width: 100%; height: auto; }
 .h-44 { height: 11rem; }
 .h-full { height: 100%; }
 .h-px { height: 1px; }
-.min-h-screen { min-height: 100vh; }
 .min-h-\[520px\] { min-height: 520px; }
+.min-h-screen { min-height: 100vh; }
 .min-h-6 { min-height: 1.5rem; }
+.min-h-5 { min-height: 1.25rem; }
 .w-1 { width: 0.25rem; }
 .w-10 { width: 2.5rem; }
 .w-2 { width: 0.5rem; }
@@ -117,6 +118,7 @@ img, video { max-width: 100%; height: auto; }
 .place-items-center { place-items: center; }
 .items-start { align-items: flex-start; }
 .items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between; }
 .gap-1 { gap: 0.25rem; }
@@ -217,15 +219,16 @@ img, video { max-width: 100%; height: auto; }
 .text-xs { font-size: 0.75rem; line-height: 1rem; }
 .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
 .text-\[11px\] { font-size: 11px; }
+.text-5xl { font-size: 3rem; line-height: 1; }
 .font-black { font-weight: 900; }
 .font-bold { font-weight: 700; }
 .font-semibold { font-weight: 600; }
 .font-normal { font-weight: 400; }
 .uppercase { text-transform: uppercase; }
+.leading-6 { line-height: 1.5rem; }
 .leading-7 { line-height: 1.75rem; }
 .leading-8 { line-height: 2rem; }
 .leading-4 { line-height: 1rem; }
-.leading-6 { line-height: 1.5rem; }
 .leading-5 { line-height: 1.25rem; }
 .leading-snug { line-height: 1.375; }
 .leading-none { line-height: 1; }
@@ -233,19 +236,19 @@ img, video { max-width: 100%; height: auto; }
 .tracking-\[\.2em\] { letter-spacing: 0.2em; }
 .tracking-tight { letter-spacing: -0.025em; }
 .tracking-widest { letter-spacing: 0.1em; }
-.text-slate-100 { --tw-text-opacity: 1; color: rgb(241 245 249 / var(--tw-text-opacity, 1)); }
 .text-amber-300 { --tw-text-opacity: 1; color: rgb(252 211 77 / var(--tw-text-opacity, 1)); }
 .text-amber-400 { --tw-text-opacity: 1; color: rgb(251 191 36 / var(--tw-text-opacity, 1)); }
 .text-rose-200 { --tw-text-opacity: 1; color: rgb(254 205 211 / var(--tw-text-opacity, 1)); }
-.text-rose-300 { --tw-text-opacity: 1; color: rgb(253 164 175 / var(--tw-text-opacity, 1)); }
 .text-sky-300 { --tw-text-opacity: 1; color: rgb(125 211 252 / var(--tw-text-opacity, 1)); }
+.text-slate-100 { --tw-text-opacity: 1; color: rgb(241 245 249 / var(--tw-text-opacity, 1)); }
 .text-slate-200 { --tw-text-opacity: 1; color: rgb(226 232 240 / var(--tw-text-opacity, 1)); }
 .text-slate-300 { --tw-text-opacity: 1; color: rgb(203 213 225 / var(--tw-text-opacity, 1)); }
 .text-slate-400 { --tw-text-opacity: 1; color: rgb(148 163 184 / var(--tw-text-opacity, 1)); }
 .text-slate-500 { --tw-text-opacity: 1; color: rgb(100 116 139 / var(--tw-text-opacity, 1)); }
 .text-slate-950 { --tw-text-opacity: 1; color: rgb(2 6 23 / var(--tw-text-opacity, 1)); }
 .text-white { --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity, 1)); }
-.text-emerald-400 { --tw-text-opacity: 1; color: rgb(52 211 153 / var(--tw-text-opacity, 1)); }
+.text-rose-300 { --tw-text-opacity: 1; color: rgb(253 164 175 / var(--tw-text-opacity, 1)); }
+.text-rose-400 { --tw-text-opacity: 1; color: rgb(251 113 133 / var(--tw-text-opacity, 1)); }
 .underline { text-decoration-line: underline; }
 .antialiased { -webkit-font-smoothing: antialiased; }
 .opacity-40 { opacity: 0.4; }
@@ -288,9 +291,9 @@ img, video { max-width: 100%; height: auto; }
 .sm\:w-auto { width: auto; }
 .sm\:max-w-sm { max-width: 24rem; }
 .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
+.sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
 .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0px, 1fr)); }
 .sm\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0px, 1fr)); }
-.sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
 .sm\:flex-row { flex-direction: row; }
 .sm\:items-start { align-items: flex-start; }
 .sm\:items-center { align-items: center; }
@@ -612,10 +615,17 @@ img, video { max-width: 100%; height: auto; }
     .sl-cell-hint { display: block; margin-top: .2rem; font-size: .72rem; line-height: 1.35; color: var(--sl-muted, #94a3b8); }
     .sl-cell-hint mark { background: var(--sl-mark, rgba(45,212,191,.22)); color: var(--sl-accent, #2dd4bf); border-radius: .25rem; padding: 0 .12rem; font-weight: 700; }
     .sl-conj.is-write td { padding-top: .45rem; padding-bottom: .45rem; }
+    /* Игровые режимы. */
+    .sl-tile { border: 1px solid var(--sl-line); background: var(--sl-card-2); color: var(--sl-ink); transition: border-color .18s, background-color .18s, transform .18s; }
+    .sl-tile.is-picked { border-color: var(--sl-accent); background: var(--sl-accent-soft); }
+    .sl-tile.is-solved { opacity: .38; border-style: dashed; }
+    .sl-tile.is-wrong { border-color: rgba(251,113,133,.7); background: rgba(244,63,94,.12); animation: slShake .35s ease; }
+    .sl-game-active { border-color: var(--sl-accent) !important; box-shadow: 0 0 0 1px var(--sl-accent) inset; }
+    @media (hover: hover) and (pointer: fine) { .sl-tile:hover:not(:disabled):not(.is-solved) { border-color: var(--sl-accent-line); transform: translateY(-1px); } }
     /* Раздел повторения. */
     .sl-review { max-width: 34rem; margin: 0 auto; }
     .sl-review .sl-pic { height: 11rem; }
-    .sl-review-badge { margin-left: .4rem; border-radius: .35rem; background: var(--sl-accent-soft); padding: 0 .3rem; font-size: .68rem; color: inherit; }
+    .sl-review-badge { margin-left: .4rem; border-radius: .35rem; background: var(--sl-accent-soft); padding: 0 .3rem; font-size: .72rem; color: inherit; }
     .sl-chip.is-active .sl-review-badge { background: rgb(0 0 0 / .18); }
     /* Пока кадр летит, блок не пустой: мягкое мерцание вместо чёрного прямоугольника. */
     .sl-media { background: linear-gradient(180deg, #1f2b44, #172033); }
@@ -749,7 +759,37 @@ img, video { max-width: 100%; height: auto; }
       </div>
     </section>
 
-    <div id="slViewSwitch" class="mb-5 flex flex-wrap gap-2" role="tablist" aria-label="Разделы словенского блока"><button class="sl-chip focus-ring is-active rounded-xl px-4 py-2 text-sm font-bold" data-view="verbs" role="tab">Глаголы</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="review" role="tab">Повторение</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="alphabet" role="tab">Алфавит и произношение</button></div>
+    <div id="slViewSwitch" class="mb-5 flex flex-wrap gap-2" role="tablist" aria-label="Разделы словенского блока"><button class="sl-chip focus-ring is-active rounded-xl px-4 py-2 text-sm font-bold" data-view="verbs" role="tab">Глаголы</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="words" role="tab">Существительные и прилагательные</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="review" role="tab">Повторение</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="games" role="tab">Игры</button><button class="sl-chip focus-ring rounded-xl px-4 py-2 text-sm font-bold" data-view="alphabet" role="tab">Алфавит и произношение</button></div>
+
+    <section id="slWordsView" class="module-hidden">
+      <div class="mb-5 max-w-3xl">
+        <p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Samostalniki in pridevniki</p>
+        <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Существительные и прилагательные</h2>
+        <p class="sl-muted mt-3 text-base leading-7">Склонение по шести падежам в единственном, двойственном и множественном числе. У прилагательного — все три рода. Карточка переворачивается так же, как у глагола: обзор, склонение с подсветкой окончаний и режим «напиши сам», примеры.</p>
+      </div>
+      <section class="mb-5 grid gap-2 sm:grid-cols-5" id="slWordLevelTabs" role="tablist" aria-label="Уровни"></section>
+      <section class="sl-panel mb-5 flex flex-col gap-3 rounded-2xl p-3 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="flex items-center gap-1" id="slWordKind" role="group" aria-label="Часть речи"><button class="sl-chip focus-ring is-active rounded-xl px-3 py-2 text-xs font-bold" data-kind="all">Всё</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-kind="noun">Существительные</button><button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold" data-kind="adj">Прилагательные</button></div>
+          <select id="slWordTopic" class="sl-input focus-ring rounded-xl px-3 py-2 text-sm" aria-label="Фильтр по теме"></select>
+          <label class="sl-input flex items-center gap-2 rounded-xl px-3 py-2"><span class="sl-faint">⌕</span><input id="slWordSearch" class="w-full bg-transparent text-sm outline-none sm:w-44" type="search" placeholder="Поиск SL или RU" aria-label="Поиск по словам"></label>
+        </div>
+        <span id="slWordCounter" class="sl-muted px-2 text-sm" role="status" aria-live="polite">0 слов</span>
+      </section>
+      <section id="slWordGrid" class="sl-grid"></section>
+      <div id="slWordEmpty" class="sl-panel mx-auto mt-8 hidden max-w-xl rounded-2xl p-8 text-center sl-muted">Для этого фильтра пока нет слов.</div>
+    </section>
+
+    <section id="slGamesView" class="module-hidden">
+      <div class="mb-5 max-w-3xl">
+        <p class="sl-accent mb-2 text-xs font-bold uppercase tracking-[.25em]">Igre</p>
+        <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Игровые режимы</h2>
+        <p class="sl-muted mt-3 text-base leading-7">Быстрые тренировки на всей словенской базе — глаголы, существительные и прилагательные вместе. Рекорды хранятся в браузере. На интервальные повторения игры не влияют: это разминка, а не проверка.</p>
+      </div>
+      <div class="sl-panel mb-4 flex flex-wrap items-center gap-2 rounded-2xl p-3" id="slGameLevels" role="group" aria-label="Уровень для игр"></div>
+      <div class="mb-5 grid gap-3 sm:grid-cols-3" id="slGameMenu"></div>
+      <div id="slGameArea" aria-live="polite"></div>
+    </section>
 
     <section id="slReviewView" class="module-hidden">
       <div class="mb-5 max-w-3xl">
@@ -770,6 +810,10 @@ img, video { max-width: 100%; height: auto; }
     </section>
 
     <div id="slVerbsView">
+    <div id="slPlacementHint" class="sl-panel mb-5 hidden flex-wrap items-center justify-between gap-3 rounded-2xl p-4">
+      <p class="sl-muted text-sm leading-6">Не знаете, с какого уровня начать? Пройдите короткий тест — десять вопросов, минута времени.</p>
+      <div class="flex gap-2"><button id="slPlacementGo" class="sl-btn-accent focus-ring rounded-xl px-4 py-2 text-xs font-black" type="button">Определить уровень</button><button id="slPlacementSkip" class="sl-btn focus-ring rounded-xl px-3 py-2 text-xs font-bold" type="button">Скрыть</button></div>
+    </div>
     <section class="mb-5 grid gap-2 sm:grid-cols-5" id="slLevelTabs" role="tablist" aria-label="Уровни CEFR"></section>
 
     <section class="sl-panel mb-5 flex flex-col gap-3 rounded-2xl p-3 lg:flex-row lg:items-center lg:justify-between">
@@ -790,7 +834,7 @@ img, video { max-width: 100%; height: auto; }
     <section id="slQuiz" class="sl-panel module-hidden rounded-2xl p-5"></section>
     <div id="slTtsWarning" class="mt-4 hidden rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-300" role="alert"></div>
     </div>
-    <p class="sl-faint mt-6 text-center text-xs">Клик по карточке — переворот · Вкладки внутри карточки: обзор, спряжение, примеры · Клик по форме — озвучка</p>
+    <p id="slFootHint" class="sl-faint mt-6 text-center text-xs">Клик по карточке — переворот · Вкладки внутри карточки: обзор, спряжение, примеры · Клик по форме — озвучка</p>
   </main>
 
   <script>
@@ -1489,6 +1533,7 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
     };
     // Фотографии с Pexels (лицензия Pexels; фотограф и ссылка на источник показываются на карточке).
     const slPhotos = {"bíti":{"src":"https://images.pexels.com/photos/11350641/pexels-photo-11350641.jpeg","page":"dark-wooden-front-doors-at-the-house-entrance-with-brick-walls-at-exterior-11350641","author":"William Larsen"},"iméti":{"src":"https://images.pexels.com/photos/4881124/pexels-photo-4881124.jpeg","page":"portrait-of-a-woman-with-a-backpack-4881124","author":"Ketut Subiyanto"},"délati":{"src":"https://images.pexels.com/photos/32357250/pexels-photo-32357250.jpeg","page":"carpenter-working-with-wood-on-industrial-saw-32357250","author":"HONG SON"},"íti":{"src":"https://images.pexels.com/photos/11798079/pexels-photo-11798079.jpeg","page":"people-walking-on-pathway-between-trees-11798079","author":"Chris F"},"jésti":{"src":"https://images.pexels.com/photos/4262174/pexels-photo-4262174.jpeg","page":"family-having-dinner-together-4262174","author":"August de Richelieu"},"píti":{"src":"https://images.pexels.com/photos/6838523/pexels-photo-6838523.jpeg","page":"hot-tea-on-outdoor-table-6838523","author":"Kampus Production"},"spáti":{"src":"https://images.pexels.com/photos/33855553/pexels-photo-33855553.jpeg","page":"close-up-of-a-sleeping-ginger-cat-indoors-33855553","author":"Camilo Ospina"},"govoríti":{"src":"https://images.pexels.com/photos/10339902/pexels-photo-10339902.jpeg","page":"two-old-men-sitting-on-bench-in-park-in-autumn-10339902","author":"Reem  Mansour"},"bráti":{"src":"https://images.pexels.com/photos/346735/pexels-photo-346735.jpeg","page":"man-reading-book-346735","author":"Porapak Apichodilok"},"pisáti":{"src":"https://images.pexels.com/photos/356372/pexels-photo-356372.jpeg","page":"brown-fountain-pen-356372","author":"Pixabay"},"glédati":{"src":"https://images.pexels.com/photos/22147572/pexels-photo-22147572.jpeg","page":"two-men-sitting-on-a-chair-and-on-the-floor-watching-tv-22147572","author":"Long Bà Mùi"},"poslúšati":{"src":"https://images.pexels.com/photos/6399/woman-girl-technology-music.jpg","page":"woman-with-headphones-listening-music-6399","author":"Karolina Grabowska www.kaboompics.com"},"živéti":{"src":"https://images.pexels.com/photos/38514319/pexels-photo-38514319.jpeg","page":"charming-cottage-in-latimer-england-38514319","author":"Phil Ledwith"},"védeti":{"src":"https://images.pexels.com/photos/19576877/pexels-photo-19576877.jpeg","page":"close-up-of-illuminated-light-bulbs-19576877","author":"GOWTHAM AGM"},"hotéti":{"src":"https://images.pexels.com/photos/9227955/pexels-photo-9227955.jpeg","page":"woman-hand-holding-ice-cream-9227955","author":"DS stories"},"móči":{"src":"https://images.pexels.com/photos/4720793/pexels-photo-4720793.jpeg","page":"man-in-blue-tank-top-and-shorts-lifting-a-barbell-4720793","author":"Ketut Subiyanto"},"mórati":{"src":"https://images.pexels.com/photos/33893298/pexels-photo-33893298.jpeg","page":"red-yield-traffic-sign-with-white-brick-wall-33893298","author":"Jan van der Wolf"},"kúpiti":{"src":"https://images.pexels.com/photos/9120377/pexels-photo-9120377.jpeg","page":"brown-breads-in-clear-glass-display-cabinet-9120377","author":"hissetmehurriyeti"},"kupováti":{"src":"https://images.pexels.com/photos/17160607/pexels-photo-17160607.jpeg","page":"man-in-shirt-buying-fruits-at-market-17160607","author":"Pramod  Tiwari"},"plačáti":{"src":"https://images.pexels.com/photos/33813215/pexels-photo-33813215.jpeg","page":"indian-rupees-in-hands-symbolizing-wealth-33813215","author":"Shantanu Kumar"},"stanováti":{"src":"https://images.pexels.com/photos/36789222/pexels-photo-36789222.jpeg","page":"urban-street-view-with-apartment-buildings-in-tampere-36789222","author":"Raihanul Amin"},"učíti se":{"src":"https://images.pexels.com/photos/8617988/pexels-photo-8617988.jpeg","page":"a-desk-globe-on-a-wooden-desk-in-a-classroom-8617988","author":"Yan Krukau"},"razuméti":{"src":"https://images.pexels.com/photos/9227507/pexels-photo-9227507.jpeg","page":"puzzle-on-white-background-9227507","author":"DS stories"},"poznáti":{"src":"https://images.pexels.com/photos/7578895/pexels-photo-7578895.jpeg","page":"men-in-dress-shirt-in-front-of-a-house-7578895","author":"Kindel Media"},"réči":{"src":"https://images.pexels.com/photos/6950158/pexels-photo-6950158.jpeg","page":"a-woman-near-the-podium-having-a-speech-6950158","author":"Werner Pfennig"},"povédati":{"src":"https://images.pexels.com/photos/8763195/pexels-photo-8763195.jpeg","page":"man-and-his-children-on-the-bed-8763195","author":"Pavel Danilyuk"},"vprášati":{"src":"https://images.pexels.com/photos/32094079/pexels-photo-32094079.jpeg","page":"classroom-learning-with-engaged-students-studying-32094079","author":"Nasirun Khan"},"odgovoríti":{"src":"https://images.pexels.com/photos/5212340/pexels-photo-5212340.jpeg","page":"teacher-talking-to-the-class-5212340","author":"Max Fischer"},"príti":{"src":"https://images.pexels.com/photos/7594124/pexels-photo-7594124.jpeg","page":"a-couple-going-in-the-building-7594124","author":"Pavel Danilyuk"},"hodíti":{"src":"https://images.pexels.com/photos/10121600/pexels-photo-10121600.jpeg","page":"people-walking-on-a-pedestrian-lane-10121600","author":"Otto Rascon"},"potováti":{"src":"https://images.pexels.com/photos/14400667/pexels-photo-14400667.jpeg","page":"flying-airplane-wing-behind-window-in-sky-14400667","author":"Amar  Preciado"},"sedéti":{"src":"https://images.pexels.com/photos/8234084/pexels-photo-8234084.jpeg","page":"empty-wooden-benches-in-the-park-8234084","author":"Julia Filirovska"},"státi":{"src":"https://images.pexels.com/photos/5462149/pexels-photo-5462149.jpeg","page":"group-of-people-standing-in-line-for-relief-goods-5462149","author":"Aa Dil"},"ležáti":{"src":"https://images.pexels.com/photos/3811145/pexels-photo-3811145.jpeg","page":"woman-in-white-bikini-lying-on-pink-textile-on-beach-3811145","author":"Andrea Piacquadio"},"vstáti":{"src":"https://images.pexels.com/photos/9615255/pexels-photo-9615255.jpeg","page":"books-bed-stack-standing-9615255","author":"Ron Lach"},"kúhati":{"src":"https://images.pexels.com/photos/8629103/pexels-photo-8629103.jpeg","page":"a-person-cooking-over-the-stove-using-a-frying-pan-8629103","author":"Kampus Production"},"čákati":{"src":"https://images.pexels.com/photos/28377781/pexels-photo-28377781.jpeg","page":"waiting-28377781","author":"Selim Karadayı"},"iskáti":{"src":"https://images.pexels.com/photos/4962789/pexels-photo-4962789.jpeg","page":"businesswoman-with-bag-sitting-on-park-bench-4962789","author":"Ketut Subiyanto"},"nájti":{"src":"https://images.pexels.com/photos/18884567/pexels-photo-18884567.jpeg","page":"yellow-direction-sign-in-an-autumn-forest-18884567","author":"Furkan Idrizi"},"dáti":{"src":"https://images.pexels.com/photos/6334690/pexels-photo-6334690.jpeg","page":"a-person-holding-a-gift-with-green-ribbon-6334690","author":"ROMAN ODINTSOV"},"vzéti":{"src":"https://images.pexels.com/photos/8963949/pexels-photo-8963949.jpeg","page":"man-in-plaid-coat-and-black-pants-holding-an-umbrella-8963949","author":"Ivan S"},"odpréti":{"src":"https://images.pexels.com/photos/13600511/pexels-photo-13600511.jpeg","page":"green-and-white-curtains-on-doorway-13600511","author":"Pew Nguyen"},"zapréti":{"src":"https://images.pexels.com/photos/4006805/pexels-photo-4006805.jpeg","page":"red-metal-gate-with-padlock-4006805","author":"Kevin Bidwell"},"igráti":{"src":"https://images.pexels.com/photos/32285228/pexels-photo-32285228.jpeg","page":"intense-soccer-match-in-action-on-sunny-day-32285228","author":"Franco Monsalvo"},"pomágati":{"src":"https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg","page":"three-people-donating-goods-6646918","author":"RDNE Stock project"},"mísliti":{"src":"https://images.pexels.com/photos/14592853/pexels-photo-14592853.jpeg","page":"statue-of-a-thinking-man-14592853","author":"Efrem  Efre"},"počívati":{"src":"https://images.pexels.com/photos/1229753/pexels-photo-1229753.jpeg","page":"person-lying-on-hammock-between-trees-at-daytime-1229753","author":"Max Andrey"},"klícati":{"src":"https://images.pexels.com/photos/1552636/pexels-photo-1552636.jpeg","page":"selective-focus-photography-of-woman-holding-smartphone-on-her-left-ear-1552636","author":"Engin Akyurt"},"začéti":{"src":"https://images.pexels.com/photos/7327336/pexels-photo-7327336.jpeg","page":"a-rocket-launching-in-the-sky-7327336","author":"Forest Katsch"},"končáti":{"src":"https://images.pexels.com/photos/10313865/pexels-photo-10313865.jpeg","page":"a-marathoner-finishing-a-race-10313865","author":"RUN 4 FFWPU"},"vídeti":{"src":"https://images.pexels.com/photos/1720080/pexels-photo-1720080.jpeg","page":"woman-in-purple-cardigan-using-binoculars-1720080","author":"Ricky Esquivel"},"slíšati":{"src":"https://images.pexels.com/photos/29527897/pexels-photo-29527897.jpeg","page":"elderly-man-enjoying-outdoor-concert-at-twilight-29527897","author":"William Gevorg Urban"},"plávati":{"src":"https://images.pexels.com/photos/8028682/pexels-photo-8028682.jpeg","page":"people-swimming-in-the-pool-8028682","author":"SHVETS production"},"téči":{"src":"https://images.pexels.com/photos/37046063/pexels-photo-37046063.jpeg","page":"jogger-running-through-tree-lined-path-on-sunny-day-37046063","author":"🇻🇳🇻🇳Nguyễn Tiến Thịnh 🇻🇳🇻🇳"},"plésati":{"src":"https://images.pexels.com/photos/28285813/pexels-photo-28285813.jpeg","page":"a-man-and-woman-in-formal-attire-dancing-28285813","author":"korso 0007"},"péti":{"src":"https://images.pexels.com/photos/16108227/pexels-photo-16108227.jpeg","page":"blonde-woman-singing-on-stage-16108227","author":"Franco Monsalvo"},"vozíti":{"src":"https://images.pexels.com/photos/30697915/pexels-photo-30697915.jpeg","page":"close-up-of-a-vehicle-steering-wheel-30697915","author":"James Collington"},"vozíti se":{"src":"https://images.pexels.com/photos/13385524/pexels-photo-13385524.jpeg","page":"seats-inside-the-train-13385524","author":"KENSEI ISHIDA"},"pripeljáti":{"src":"https://images.pexels.com/photos/1117647/pexels-photo-1117647.jpeg","page":"woman-and-child-inside-car-1117647","author":"Tim Mossholder"},"odíti":{"src":"https://images.pexels.com/photos/7446973/pexels-photo-7446973.jpeg","page":"man-in-red-coat-and-woman-in-red-poncho-holding-hands-and-suitcases-7446973","author":"Gustavo Fring"},"ostáti":{"src":"https://images.pexels.com/photos/3830747/pexels-photo-3830747.jpeg","page":"woman-in-red-long-sleeved-shirt-and-blue-denim-jeans-sitting-on-couch-3830747","author":"Andrea Piacquadio"},"vrníti se":{"src":"https://images.pexels.com/photos/10499024/pexels-photo-10499024.jpeg","page":"a-person-in-a-town-at-sunset-10499024","author":"Micah Eleazar"},"vráčati se":{"src":"https://images.pexels.com/photos/17955862/pexels-photo-17955862.jpeg","page":"man-walking-in-city-at-night-17955862","author":"Kerem Kaplan"},"obléči se":{"src":"https://images.pexels.com/photos/15026533/pexels-photo-15026533.jpeg","page":"woman-in-jacket-posing-on-stairs-15026533","author":"Olga Solo"},"umíti se":{"src":"https://images.pexels.com/photos/9563750/pexels-photo-9563750.jpeg","page":"grayscale-photo-of-person-washing-his-face-on-the-sink-9563750","author":"Алексей Вечерин"},"tušírati se":{"src":"https://images.pexels.com/photos/8688576/pexels-photo-8688576.jpeg","page":"close-up-shot-of-a-man-taking-bath-8688576","author":"Kindel Media"},"čístiti":{"src":"https://images.pexels.com/photos/5591855/pexels-photo-5591855.jpeg","page":"a-person-sweeping-the-floor-5591855","author":"RDNE Stock project"},"práti":{"src":"https://images.pexels.com/photos/10163778/pexels-photo-10163778.jpeg","page":"assorted-clothes-hanged-near-the-concrete-walls-10163778","author":"Ali Camacho Adarve"},"líkati":{"src":"https://images.pexels.com/photos/5901631/pexels-photo-5901631.jpeg","page":"man-in-white-crew-neck-shirt-ironing-brown-shirt-5901631","author":"cottonbro studio"},"pomívati":{"src":"https://images.pexels.com/photos/5591636/pexels-photo-5591636.jpeg","page":"a-person-cleaning-a-yellow-bowl-using-a-sponge-5591636","author":"RDNE Stock project"},"naročíti":{"src":"https://images.pexels.com/photos/36799163/pexels-photo-36799163.jpeg","page":"waiter-taking-order-in-a-cozy-restaurant-setting-36799163","author":"khezez  | خزاز"},"prinésti":{"src":"https://images.pexels.com/photos/3769740/pexels-photo-3769740.jpeg","page":"waiter-with-tray-working-in-stylish-restaurant-3769740","author":"Andrea Piacquadio"},"péči":{"src":"https://images.pexels.com/photos/10481790/pexels-photo-10481790.jpeg","page":"brown-breads-in-the-oven-10481790","author":"Chris F"},"rézati":{"src":"https://images.pexels.com/photos/11646501/pexels-photo-11646501.jpeg","page":"a-top-view-of-a-bread-knife-and-a-sliced-loaf-11646501","author":"adrian vieriu"},"poskúsiti":{"src":"https://images.pexels.com/photos/6856815/pexels-photo-6856815.jpeg","page":"a-person-eating-pumpkin-soup-6856815","author":"cottonbro studio"},"srečáti":{"src":"https://images.pexels.com/photos/9789297/pexels-photo-9789297.jpeg","page":"women-hugging-in-the-street-9789297","author":"Marcus Aurelius"},"spoznáti":{"src":"https://images.pexels.com/photos/3768884/pexels-photo-3768884.jpeg","page":"photo-of-women-laughing-while-sitting-near-water-fountain-3768884","author":"Andrea Piacquadio"},"pogovárjati se":{"src":"https://images.pexels.com/photos/5239523/pexels-photo-5239523.jpeg","page":"male-friends-drinking-beer-at-table-in-backyard-5239523","author":"Anete Lusina"},"pozdráviti":{"src":"https://images.pexels.com/photos/5537579/pexels-photo-5537579.jpeg","page":"smiling-woman-waving-5537579","author":"Zen Chung"},"zahváliti se":{"src":"https://images.pexels.com/photos/7430718/pexels-photo-7430718.jpeg","page":"dried-flowers-and-a-mobile-phone-7430718","author":"alleksana"},"opravíčiti se":{"src":"https://images.pexels.com/photos/6633006/pexels-photo-6633006.jpeg","page":"printer-paper-with-text-on-wooden-board-6633006","author":"Cup of  Couple"},"povábiti":{"src":"https://images.pexels.com/photos/7599526/pexels-photo-7599526.jpeg","page":"happy-birthday-banner-and-balloons-7599526","author":"Thirdman"},"obískati":{"src":"https://images.pexels.com/photos/5637565/pexels-photo-5637565.jpeg","page":"elderly-man-giving-red-flowers-to-his-wife-5637565","author":"RDNE Stock project"},"telefonírati":{"src":"https://images.pexels.com/photos/7580859/pexels-photo-7580859.jpeg","page":"woman-in-black-blazer-sitting-on-chair-in-front-of-computer-7580859","author":"RDNE Stock project"},"pošíljati":{"src":"https://images.pexels.com/photos/33839270/pexels-photo-33839270.jpeg","page":"classic-u-s-mailbox-in-a-green-garden-setting-33839270","author":"Wolfgang Vrede"},"posláti":{"src":"https://images.pexels.com/photos/8989470/pexels-photo-8989470.jpeg","page":"a-person-signing-a-proof-of-delivery-8989470","author":"Artem Podrez"},"dobíti":{"src":"https://images.pexels.com/photos/7318933/pexels-photo-7318933.jpeg","page":"close-up-of-woman-taking-out-a-blank-piece-of-paper-form-an-envelope-7318933","author":"Angela Roma"},"nakupováti":{"src":"https://images.pexels.com/photos/6969947/pexels-photo-6969947.jpeg","page":"person-holding-brown-paper-bag-6969947","author":"Mikhail Nilov"},"prodáti":{"src":"https://images.pexels.com/photos/31935904/pexels-photo-31935904.jpeg","page":"vibrant-bicycle-shopfront-with-colorful-window-display-31935904","author":"Jan van der Wolf"},"prodájati":{"src":"https://images.pexels.com/photos/26108654/pexels-photo-26108654.jpeg","page":"street-fruit-seller-26108654","author":"Vika Glitter"},"zaslúžiti":{"src":"https://images.pexels.com/photos/5536077/pexels-photo-5536077.jpeg","page":"a-close-up-shot-of-philippines-peso-coins-5536077","author":"Angie Reyes"},"varčeváti":{"src":"https://images.pexels.com/photos/12955822/pexels-photo-12955822.jpeg","page":"gold-and-silver-coins-scattered-near-gold-coin-bank-12955822","author":"Atlantic Ambience"},"potrebováti":{"src":"https://images.pexels.com/photos/6370362/pexels-photo-6370362.jpeg","page":"a-white-smartphone-box-on-the-table-6370362","author":"Luis Quintero"},"uporábljati":{"src":"https://images.pexels.com/photos/1181644/pexels-photo-1181644.jpeg","page":"grayscale-photography-of-a-woman-working-in-front-of-laptop-1181644","author":"Christina Morillo"},"vklópiti":{"src":"https://images.pexels.com/photos/6000686/pexels-photo-6000686.jpeg","page":"close-up-of-light-switches-6000686","author":"Dương Nhân"},"izklópiti":{"src":"https://images.pexels.com/photos/21792101/pexels-photo-21792101.jpeg","page":"changing-tv-channels-with-the-remote-control-21792101","author":"Image Hunter"},"popráviti":{"src":"https://images.pexels.com/photos/34185192/pexels-photo-34185192.jpeg","page":"female-mechanics-repairing-a-bicycle-indoors-34185192","author":"Speak Media Uganda"},"letéti":{"src":"https://images.pexels.com/photos/9129698/pexels-photo-9129698.jpeg","page":"blue-and-white-airplane-flying-over-the-grass-field-9129698","author":"Wayne Jackson"},"odpotováti":{"src":"https://images.pexels.com/photos/18845577/pexels-photo-18845577.jpeg","page":"driver-in-car-18845577","author":"abdo alshreef"},"prispéti":{"src":"https://images.pexels.com/photos/9993828/pexels-photo-9993828.jpeg","page":"train-arriving-at-a-station-9993828","author":"Marcus Ireland"},"rezervírati":{"src":"https://images.pexels.com/photos/15792555/pexels-photo-15792555.jpeg","page":"interior-design-of-bedroom-15792555","author":"Yelena from Pexels"},"parkírati":{"src":"https://images.pexels.com/photos/16896042/pexels-photo-16896042.jpeg","page":"cars-standing-on-parking-lot-at-night-16896042","author":"Matheus Bertelli"},"zamúditi":{"src":"https://images.pexels.com/photos/3888018/pexels-photo-3888018.jpeg","page":"man-in-a-purple-suit-running-beside-blue-and-white-train-3888018","author":"Andrea Piacquadio"},"pohitéti":{"src":"https://images.pexels.com/photos/7880086/pexels-photo-7880086.jpeg","page":"woman-running-on-the-stairs-7880086","author":"MART  PRODUCTION"},"zbudíti se":{"src":"https://images.pexels.com/photos/7556598/pexels-photo-7556598.jpeg","page":"woman-in-gray-shirt-raising-her-hands-while-sitting-on-the-bed-7556598","author":"Kampus Production"},"zaspáti":{"src":"https://images.pexels.com/photos/12932406/pexels-photo-12932406.jpeg","page":"a-boy-sleeping-on-bed-12932406","author":"Atlantic Ambience"},"utrúditi se":{"src":"https://images.pexels.com/photos/8961615/pexels-photo-8961615.jpeg","page":"a-woman-in-a-plaid-shirt-sitting-8961615","author":"Mikael Blomkvist"},"zbolêti":{"src":"https://images.pexels.com/photos/5858740/pexels-photo-5858740.jpeg","page":"a-person-holding-a-thermometer-5858740","author":"cottonbro studio"},"ozdravéti":{"src":"https://images.pexels.com/photos/8460414/pexels-photo-8460414.jpeg","page":"women-smiling-at-the-camera-8460414","author":"Los Muertos Crew"},"jemáti":{"src":"https://images.pexels.com/photos/11363786/pexels-photo-11363786.jpeg","page":"man-taking-pills-11363786","author":"Towfiqu barbhuiya"},"telováditi":{"src":"https://images.pexels.com/photos/6388452/pexels-photo-6388452.jpeg","page":"a-man-in-black-tank-top-exercising-in-the-gym-6388452","author":"Tima Miroshnichenko"},"smejáti se":{"src":"https://images.pexels.com/photos/8445576/pexels-photo-8445576.jpeg","page":"female-friends-having-fun-together-8445576","author":"Jeff Vinluan"},"jókati":{"src":"https://images.pexels.com/photos/4471312/pexels-photo-4471312.jpeg","page":"middle-aged-woman-crying-with-tears-4471312","author":"https://kaboompics.com/"},"veselíti se":{"src":"https://images.pexels.com/photos/14199790/pexels-photo-14199790.jpeg","page":"portrait-of-people-mid-jump-on-a-beach-14199790","author":"Roderick Salatan"},"báti se":{"src":"https://images.pexels.com/photos/15100466/pexels-photo-15100466.jpeg","page":"road-in-snow-in-forest-at-night-15100466","author":"That_dude_with_camera"},"upáti":{"src":"https://images.pexels.com/photos/12637742/pexels-photo-12637742.jpeg","page":"beautiful-rainbow-in-the-sky-12637742","author":"Kristina Kutleša"},"ljúbiti":{"src":"https://images.pexels.com/photos/3889822/pexels-photo-3889822.jpeg","page":"photo-of-woman-carrying-toddler-3889822","author":"Taryn Elliott"},"pogrešáti":{"src":"https://images.pexels.com/photos/29652624/pexels-photo-29652624.jpeg","page":"thoughtful-child-looking-out-rainy-window-29652624","author":"Heidi Daniëls"},"rísati":{"src":"https://images.pexels.com/photos/8467276/pexels-photo-8467276.jpeg","page":"man-in-black-blazer-standing-in-a-room-of-wooden-easels-8467276","author":"Anastasia  Shuraeva"},"fotografírati":{"src":"https://images.pexels.com/photos/17837927/pexels-photo-17837927.jpeg","page":"man-taking-a-photo-of-a-city-17837927","author":"Israel Torres"},"váditi":{"src":"https://images.pexels.com/photos/8935889/pexels-photo-8935889.jpeg","page":"woman-sitting-in-front-of-a-mirror-applying-makeup-8935889","author":"Anastasia  Shuraeva"},"ponovíti":{"src":"https://images.pexels.com/photos/6958523/pexels-photo-6958523.jpeg","page":"close-up-of-a-person-putting-a-sticky-note-on-a-textbook-page-6958523","author":"https://kaboompics.com/"},"pozábiti":{"src":"https://images.pexels.com/photos/5599449/pexels-photo-5599449.jpeg","page":"silver-keys-in-close-up-photography-5599449","author":"Lucas Seebacher"},"spómniti se":{"src":"https://images.pexels.com/photos/8848784/pexels-photo-8848784.jpeg","page":"person-holding-baby-pictures-8848784","author":"cottonbro studio"},"odločíti se":{"src":"https://images.pexels.com/photos/37674954/pexels-photo-37674954.jpeg","page":"aerial-view-of-intersection-in-forest-landscape-37674954","author":"Nathanael Schmer"},"odlóčati se":{"src":"https://images.pexels.com/photos/36157328/pexels-photo-36157328.jpeg","page":"colonial-architecture-in-yucatan-street-scene-36157328","author":"Jesus  Alfonso"},"pripráviti":{"src":"https://images.pexels.com/photos/16149475/pexels-photo-16149475.jpeg","page":"eggs-and-milk-breakfast-preparation-16149475","author":"Natali Yakovleva"},"priprávljati":{"src":"https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg","page":"document-on-top-of-stationery-669619","author":"Lukas Blazek"},"pripráviti se":{"src":"https://images.pexels.com/photos/4778660/pexels-photo-4778660.jpeg","page":"girl-in-red-long-sleeve-shirt-writing-on-white-paper-4778660","author":"cottonbro studio"},"napisáti":{"src":"https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg","page":"person-holding-blue-ballpoint-pen-on-white-notebook-669610","author":"Lukas Blazek"},"prebráti":{"src":"https://images.pexels.com/photos/4578774/pexels-photo-4578774.jpeg","page":"faceless-person-reading-newspaper-on-grass-lawn-4578774","author":"Rabia Hanım"},"naučíti se":{"src":"https://images.pexels.com/photos/17925153/pexels-photo-17925153.jpeg","page":"close-up-of-a-child-pointing-at-a-card-lying-on-a-table-with-toys-17925153","author":"purrfect meowtastic"},"pojésti":{"src":"https://images.pexels.com/photos/3987096/pexels-photo-3987096.jpeg","page":"person-holding-stainless-steel-fork-and-knife-slicing-pizza-3987096","author":"Andrea Piacquadio"},"popíti":{"src":"https://images.pexels.com/photos/13531450/pexels-photo-13531450.jpeg","page":"woman-drinking-hot-beverage-by-window-13531450","author":"Melanie Brumble"},"skúhati":{"src":"https://images.pexels.com/photos/34640219/pexels-photo-34640219.jpeg","page":"enamel-pot-on-gas-stove-with-steaming-soup-34640219","author":"betül nur akyürek"},"spéči":{"src":"https://images.pexels.com/photos/36445141/pexels-photo-36445141.jpeg","page":"artisanal-bread-and-pastries-baking-in-oven-36445141","author":"Yasin Onuş"},"poklícati":{"src":"https://images.pexels.com/photos/5207089/pexels-photo-5207089.jpeg","page":"doctor-talking-on-the-cellphone-5207089","author":"https://kaboompics.com/"},"pogovoríti se":{"src":"https://images.pexels.com/photos/7581050/pexels-photo-7581050.jpeg","page":"man-in-black-long-sleeve-shirt-standing-beside-a-woman-7581050","author":"RDNE Stock project"},"dogovoríti se":{"src":"https://images.pexels.com/photos/6289046/pexels-photo-6289046.jpeg","page":"illustration-of-business-partners-shaking-hands-at-negotiation-6289046","author":"Monstera Production"},"strínjati se":{"src":"https://images.pexels.com/photos/12798522/pexels-photo-12798522.jpeg","page":"hands-indicating-ok-symbol-12798522","author":"srini"},"prepírati se":{"src":"https://images.pexels.com/photos/6532738/pexels-photo-6532738.jpeg","page":"ethnic-couple-arguing-on-street-in-daytime-6532738","author":"Budgeron Bach"},"zaljúbiti se":{"src":"https://images.pexels.com/photos/12829876/pexels-photo-12829876.jpeg","page":"standing-close-couple-looking-at-sunset-12829876","author":"Edgar Santana"},"poročíti se":{"src":"https://images.pexels.com/photos/10074704/pexels-photo-10074704.jpeg","page":"hands-of-groom-and-bride-with-wedding-rings-10074704","author":"Melike  B"},"razíti se":{"src":"https://images.pexels.com/photos/6414910/pexels-photo-6414910.jpeg","page":"man-couple-love-people-6414910","author":"RDNE Stock project"},"rodíti se":{"src":"https://images.pexels.com/photos/4005590/pexels-photo-4005590.jpeg","page":"baby-lying-on-white-bed-4005590","author":"Vidal Balielo Jr."},"odrásti":{"src":"https://images.pexels.com/photos/11286060/pexels-photo-11286060.jpeg","page":"a-child-putting-soil-in-a-pot-using-a-garden-trowel-11286060","author":"Anna Shvets"},"umréti":{"src":"https://images.pexels.com/photos/29190193/pexels-photo-29190193.jpeg","page":"all-saints-day-cemetery-lanterns-at-night-29190193","author":"SHOX ART"},"preselíti se":{"src":"https://images.pexels.com/photos/6169013/pexels-photo-6169013.jpeg","page":"a-man-delivering-parcels-6169013","author":"Tima Miroshnichenko"},"najéti":{"src":"https://images.pexels.com/photos/7489107/pexels-photo-7489107.jpeg","page":"person-giving-keys-from-new-home-to-family-7489107","author":"Gustavo Fring"},"plačeváti":{"src":"https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg","page":"person-holding-debit-card-50987","author":"Pixabay"},"zapravíti":{"src":"https://images.pexels.com/photos/1174750/pexels-photo-1174750.jpeg","page":"photograph-of-person-holding-black-leather-wallet-with-money-1174750","author":"EVG Kowalievska"},"porábiti":{"src":"https://images.pexels.com/photos/11924298/pexels-photo-11924298.jpeg","page":"row-of-electricity-meters-11924298","author":"Connor Scott McManus"},"izgubíti":{"src":"https://images.pexels.com/photos/36450830/pexels-photo-36450830.jpeg","page":"urban-interaction-with-umbrella-and-tattooed-hand-36450830","author":"atelierbyvineeth . . ."},"poiskáti":{"src":"https://images.pexels.com/photos/3811807/pexels-photo-3811807.jpeg","page":"man-in-brown-leather-jacket-using-binoculars-3811807","author":"Andrea Piacquadio"},"rešíti":{"src":"https://images.pexels.com/photos/6325967/pexels-photo-6325967.jpeg","page":"focused-worker-writing-equations-on-whiteboard-in-office-in-daytime-6325967","author":"Vanessa Garcia"},"reševáti":{"src":"https://images.pexels.com/photos/6238068/pexels-photo-6238068.jpeg","page":"chalkboard-with-written-equation-for-math-lesson-6238068","author":"Monstera Production"},"razložíti":{"src":"https://images.pexels.com/photos/5212338/pexels-photo-5212338.jpeg","page":"teacher-talking-to-the-class-5212338","author":"Max Fischer"},"razlágati":{"src":"https://images.pexels.com/photos/6502822/pexels-photo-6502822.jpeg","page":"a-female-teacher-tutoring-her-male-student-6502822","author":"Thirdman"},"prevésti":{"src":"https://images.pexels.com/photos/135129/pexels-photo-135129.jpeg","page":"opened-book-135129","author":"freestocks.org"},"prevájati":{"src":"https://images.pexels.com/photos/6326287/pexels-photo-6326287.jpeg","page":"person-working-outside-blur-6326287","author":"Vanessa Garcia"},"vprašáti se":{"src":"https://images.pexels.com/photos/16117754/pexels-photo-16117754.jpeg","page":"wondering-little-girl-16117754","author":"Dany Castrejon"},"zanímati se":{"src":"https://images.pexels.com/photos/2570068/pexels-photo-2570068.jpeg","page":"man-and-woman-across-mummies-2570068","author":"Shvets Anna"},"ukvárjati se":{"src":"https://images.pexels.com/photos/3763875/pexels-photo-3763875.jpeg","page":"athletes-doing-push-ups-during-daytime-3763875","author":"Andrea Piacquadio"},"trudíti se":{"src":"https://images.pexels.com/photos/4720800/pexels-photo-4720800.jpeg","page":"man-doing-battle-rope-workout-4720800","author":"Ketut Subiyanto"},"naváditi se":{"src":"https://images.pexels.com/photos/32272882/pexels-photo-32272882.jpeg","page":"busy-bangkok-street-scene-at-dusk-32272882","author":"Michal Vaško"},"spremeníti":{"src":"https://images.pexels.com/photos/7693103/pexels-photo-7693103.jpeg","page":"men-and-women-having-a-office-meeting-7693103","author":"Yan Krukau"},"spremínjati":{"src":"https://images.pexels.com/photos/8279277/pexels-photo-8279277.jpeg","page":"sticky-notes-on-the-mirror-8279277","author":"ANTONI SHKRABA production"},"izbráti":{"src":"https://images.pexels.com/photos/5710150/pexels-photo-5710150.jpeg","page":"smiling-young-ethnic-female-selecting-notebooks-in-souvenir-store-5710150","author":"Sam Lion"},"izbírati":{"src":"https://images.pexels.com/photos/8293676/pexels-photo-8293676.jpeg","page":"two-people-choosing-color-of-paint-in-a-brochure-8293676","author":"RDNE Stock project"},"pokazáti":{"src":"https://images.pexels.com/photos/5499556/pexels-photo-5499556.jpeg","page":"arrow-sign-on-stony-wall-directing-to-right-5499556","author":"Diana ✨"},"kázati":{"src":"https://images.pexels.com/photos/10302064/pexels-photo-10302064.jpeg","page":"family-watching-old-photos-10302064","author":"Ron Lach"},"opísati":{"src":"https://images.pexels.com/photos/5756667/pexels-photo-5756667.jpeg","page":"back-view-of-blonde-woman-in-a-class-holding-a-notebook-5756667","author":"RDNE Stock project"},"opisováti":{"src":"https://images.pexels.com/photos/4638267/pexels-photo-4638267.jpeg","page":"woman-writing-on-a-notebook-4638267","author":"ArtHouse Studio"},"obljúbiti":{"src":"https://images.pexels.com/photos/36338343/pexels-photo-36338343.jpeg","page":"close-up-of-couple-holding-hands-with-rings-36338343","author":"mehmetography"},"lagáti":{"src":"https://images.pexels.com/photos/6172029/pexels-photo-6172029.jpeg","page":"wooden-pinocchio-toy-6172029","author":"Florencio Rojas"},"verjéti":{"src":"https://images.pexels.com/photos/5418299/pexels-photo-5418299.jpeg","page":"a-person-in-orange-shirt-with-hands-together-5418299","author":"Arina Krasnikova"},"zaupáti":{"src":"https://images.pexels.com/photos/6774452/pexels-photo-6774452.jpeg","page":"smiling-multiracial-coworkers-with-hands-together-in-office-6774452","author":"Kindel Media"},"skrbéti":{"src":"https://images.pexels.com/photos/4894562/pexels-photo-4894562.jpeg","page":"close-up-view-of-people-holding-potted-plants-4894562","author":"Gustavo Fring"},"poskrbéti":{"src":"https://images.pexels.com/photos/34298819/pexels-photo-34298819.jpeg","page":"elegant-dining-room-setup-with-woven-chairs-34298819","author":"Jonathan Borba"},"čutíti":{"src":"https://images.pexels.com/photos/5990143/pexels-photo-5990143.jpeg","page":"a-woman-in-blue-blazer-yawning-5990143","author":"cottonbro studio"},"počútiti se":{"src":"https://images.pexels.com/photos/10912806/pexels-photo-10912806.jpeg","page":"woman-stretching-her-arms-while-sitting-on-the-bed-10912806","author":"ธันยกร ไกรสร"},"zdráviti":{"src":"https://images.pexels.com/photos/8460125/pexels-photo-8460125.jpeg","page":"a-man-sitting-on-blue-bed-8460125","author":"Los Muertos Crew"},"sprehájati se":{"src":"https://images.pexels.com/photos/5746241/pexels-photo-5746241.jpeg","page":"anonymous-woman-walking-on-embankment-near-river-in-green-park-in-sunlight-5746241","author":"Ryutaro Tsukata"},"povzpéti se":{"src":"https://images.pexels.com/photos/37532972/pexels-photo-37532972.jpeg","page":"group-of-hikers-celebrating-in-himalayas-37532972","author":"Jungsik Kwak"},"spustíti se":{"src":"https://images.pexels.com/photos/33712394/pexels-photo-33712394.jpeg","page":"hikers-descending-gaustatoppen-in-norway-33712394","author":"Barnabas Davoti"},"kolesáriti":{"src":"https://images.pexels.com/photos/5807685/pexels-photo-5807685.jpeg","page":"a-man-riding-black-bicycle-on-roadside-5807685","author":"Pavel Danilyuk"},"smúčati":{"src":"https://images.pexels.com/photos/31348697/pexels-photo-31348697.jpeg","page":"solo-skier-on-scenic-snow-covered-mountain-slope-31348697","author":"maria maria"},"sadíti":{"src":"https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg","page":"person-digging-on-soil-using-garden-shovel-1301856","author":"Lisa Fotios"},"zalívati":{"src":"https://images.pexels.com/photos/38936333/pexels-photo-38936333.jpeg","page":"close-up-of-hand-watering-plants-with-garden-hose-38936333","author":"Magda Ehlers"},"pospráviti":{"src":"https://images.pexels.com/photos/3872927/pexels-photo-3872927.jpeg","page":"pillows-on-the-bed-3872927","author":"Castorly Stock"},"zgradíti":{"src":"https://images.pexels.com/photos/35106289/pexels-photo-35106289.jpeg","page":"teamwork-in-action-on-a-construction-site-35106289","author":"Đậu Photograph"},"premákniti":{"src":"https://images.pexels.com/photos/7218120/pexels-photo-7218120.jpeg","page":"couple-packing-up-things-in-the-house-7218120","author":"Blue Bird"},"dvígniti":{"src":"https://images.pexels.com/photos/15516830/pexels-photo-15516830.jpeg","page":"a-person-holding-a-hand-painted-pink-15516830","author":"Ludovic Delot"},"spustíti":{"src":"https://images.pexels.com/photos/13005099/pexels-photo-13005099.jpeg","page":"person-holding-a-blind-13005099","author":"Srattha Nualsate"},"nasmehníti se":{"src":"https://images.pexels.com/photos/9582995/pexels-photo-9582995.jpeg","page":"black-and-white-picture-of-a-smiling-baby-9582995","author":"Pragyan Bezbaruah"},"sméti":{"src":"https://images.pexels.com/photos/19736895/pexels-photo-19736895.jpeg","page":"parking-road-signs-on-the-background-of-a-wall-19736895","author":"Jan van der Wolf"},"znáti":{"src":"https://images.pexels.com/photos/32898641/pexels-photo-32898641.jpeg","page":"young-child-enjoying-a-day-at-the-pool-32898641","author":"jason hu"},"želéti":{"src":"https://images.pexels.com/photos/1937687/pexels-photo-1937687.jpeg","page":"photo-of-sky-during-sunset-1937687","author":"Felipe Helfstein"},"namerávati":{"src":"https://images.pexels.com/photos/9301903/pexels-photo-9301903.jpeg","page":"a-man-carrying-white-box-with-green-plant-and-things-in-it-9301903","author":"Mikhail Nilov"},"upáti si":{"src":"https://images.pexels.com/photos/4116515/pexels-photo-4116515.jpeg","page":"brave-text-4116515","author":"Magda Ehlers"},"tvégati":{"src":"https://images.pexels.com/photos/269630/pexels-photo-269630.jpeg","page":"playing-card-and-poker-chips-and-dices-269630","author":"Pixabay"},"zmóči":{"src":"https://images.pexels.com/photos/8850706/pexels-photo-8850706.jpeg","page":"red-check-mark-over-black-box-8850706","author":"Tara Winstead"},"uspéti":{"src":"https://images.pexels.com/photos/1010513/pexels-photo-1010513.jpeg","page":"white-pocket-watch-with-gold-colored-frame-on-brown-wooden-board-1010513","author":"Shawn Stutzman"},"uprávljati":{"src":"https://images.pexels.com/photos/7433853/pexels-photo-7433853.jpeg","page":"elderly-man-and-woman-discussing-business-in-a-meeting-7433853","author":"Vlada Karpovich"},"odpustíti":{"src":"https://images.pexels.com/photos/6072511/pexels-photo-6072511.jpeg","page":"close-up-shot-of-scrabble-tiles-on-a-white-surface-6072511","author":"Brett Jordan"},"odjáviti se":{"src":"https://images.pexels.com/photos/8473763/pexels-photo-8473763.jpeg","page":"person-opening-a-laptop-8473763","author":"Cup of  Couple"},"svetováti":{"src":"https://images.pexels.com/photos/9065264/pexels-photo-9065264.jpeg","page":"man-talking-to-a-therapist-in-an-office-9065264","author":"RDNE Stock project"},"odločáti":{"src":"https://images.pexels.com/photos/6949417/pexels-photo-6949417.jpeg","page":"business-person-looking-at-documents-6949417","author":"Werner Pfennig"},"sodelováti":{"src":"https://images.pexels.com/photos/6804068/pexels-photo-6804068.jpeg","page":"men-sitting-at-the-desks-in-an-office-and-using-computers-6804068","author":"cottonbro studio"},"zmágati":{"src":"https://images.pexels.com/photos/10435675/pexels-photo-10435675.jpeg","page":"a-gold-trophy-and-medals-on-a-table-with-a-checkered-cloth-10435675","author":"Josiah Matthew"},"dosêči":{"src":"https://images.pexels.com/photos/37687949/pexels-photo-37687949.jpeg","page":"man-celebrating-victory-on-mountain-peak-37687949","author":"Muhammad Usman"},"razvíti":{"src":"https://images.pexels.com/photos/11092207/pexels-photo-11092207.jpeg","page":"lone-tiny-sprout-11092207","author":"Nguyễn Trường"},"izboljšáti":{"src":"https://images.pexels.com/photos/8618019/pexels-photo-8618019.jpeg","page":"man-in-suit-teaching-in-elementary-school-8618019","author":"Yan Krukau"},"povečáti":{"src":"https://images.pexels.com/photos/7948055/pexels-photo-7948055.jpeg","page":"colored-pencils-and-a-magnifying-glass-over-documents-with-graphs-7948055","author":"RDNE Stock project"},"océniti":{"src":"https://images.pexels.com/photos/7821675/pexels-photo-7821675.jpeg","page":"close-up-shot-of-white-paper-7821675","author":"RDNE Stock project"},"preveríti":{"src":"https://images.pexels.com/photos/33440144/pexels-photo-33440144.jpeg","page":"smartphone-screen-showing-account-verification-alert-33440144","author":"Zulfugar Karimov"},"razískati":{"src":"https://images.pexels.com/photos/8533045/pexels-photo-8533045.jpeg","page":"a-person-looking-through-the-microscope-8533045","author":"Artem Podrez"},"ugotovíti":{"src":"https://images.pexels.com/photos/7319080/pexels-photo-7319080.jpeg","page":"photo-of-detective-decoding-characters-7319080","author":"cottonbro studio"},"domnévati":{"src":"https://images.pexels.com/photos/13504295/pexels-photo-13504295.jpeg","page":"trees-under-cloudy-sky-13504295","author":"Paul G"},"opazíti":{"src":"https://images.pexels.com/photos/5868739/pexels-photo-5868739.jpeg","page":"woman-holding-brown-cardboard-with-red-background-5868739","author":"Max Fischer"},"prepričeváti":{"src":"https://images.pexels.com/photos/9301745/pexels-photo-9301745.jpeg","page":"co-workers-talking-in-the-office-9301745","author":"Mikhail Nilov"},"spréjeti":{"src":"https://images.pexels.com/photos/8850721/pexels-photo-8850721.jpeg","page":"red-check-mark-in-a-box-8850721","author":"Tara Winstead"},"zahtévati":{"src":"https://images.pexels.com/photos/4570701/pexels-photo-4570701.jpeg","page":"unrecognizable-man-with-fist-up-during-demonstration-in-evening-4570701","author":"K"},"prepovédati":{"src":"https://images.pexels.com/photos/30834708/pexels-photo-30834708.jpeg","page":"no-smoking-sign-on-lush-green-lawn-outdoors-30834708","author":"Ulad R"},"obvestíti":{"src":"https://images.pexels.com/photos/7439124/pexels-photo-7439124.jpeg","page":"woman-using-a-laptop-7439124","author":"cottonbro studio"},"poročáti":{"src":"https://images.pexels.com/photos/7580652/pexels-photo-7580652.jpeg","page":"person-holding-white-printer-paper-7580652","author":"RDNE Stock project"},"ugovárjati":{"src":"https://images.pexels.com/photos/6382665/pexels-photo-6382665.jpeg","page":"women-having-conflict-in-room-6382665","author":"Liza Summer"},"priznáti":{"src":"https://images.pexels.com/photos/4173335/pexels-photo-4173335.jpeg","page":"upset-little-girl-sitting-near-crop-woman-in-classroom-4173335","author":"Gustavo Fring"},"skríti":{"src":"https://images.pexels.com/photos/37338192/pexels-photo-37338192.jpeg","page":"vintage-door-hidden-by-lush-green-ivy-37338192","author":"Michaela St"},"namestíti":{"src":"https://images.pexels.com/photos/33041303/pexels-photo-33041303.jpeg","page":"person-holding-smartphone-with-app-updates-screen-33041303","author":"Andrey Matveev"},"izbrísati":{"src":"https://images.pexels.com/photos/6192335/pexels-photo-6192335.jpeg","page":"notebook-and-eraser-6192335","author":"KATRIN  BOLOVTSOVA"},"povezáti":{"src":"https://images.pexels.com/photos/8071904/pexels-photo-8071904.jpeg","page":"close-up-of-cables-8071904","author":"TStudio"},"varováti":{"src":"https://images.pexels.com/photos/4167576/pexels-photo-4167576.jpeg","page":"a-person-holding-a-globe-4167576","author":"Anna Shvets"},"zavédati se":{"src":"https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg","page":"silhouette-of-man-at-daytime-1051838","author":"Prasanth Inturi"},"slutíti":{"src":"https://images.pexels.com/photos/7179426/pexels-photo-7179426.jpeg","page":"a-woman-fortune-telling-7179426","author":"cottonbro studio"},"užáliti":{"src":"https://images.pexels.com/photos/6382609/pexels-photo-6382609.jpeg","page":"crying-ethnic-female-wiping-tears-with-napkin-6382609","author":"Liza Summer"},"pomíriti se":{"src":"https://images.pexels.com/photos/11326620/pexels-photo-11326620.jpeg","page":"the-calm-sea-under-the-cloudy-sky-11326620","author":"Engin Akyurt"},"pretehtáti":{"src":"https://images.pexels.com/photos/11771299/pexels-photo-11771299.jpeg","page":"photo-of-a-weight-scale-11771299","author":"Lorena Martínez"},"premísliti si":{"src":"https://images.pexels.com/photos/33705551/pexels-photo-33705551.jpeg","page":"wooden-blocks-showing-new-and-old-concept-33705551","author":"Sami  Abdullah"},"uresničíti":{"src":"https://images.pexels.com/photos/15153677/pexels-photo-15153677.jpeg","page":"view-of-the-night-sky-15153677","author":"Elkhan  Ganiyev"},"zanemáriti":{"src":"https://images.pexels.com/photos/2945571/pexels-photo-2945571.jpeg","page":"sunflowers-on-focus-photography-2945571","author":"Jenna Hamra"},"popustíti":{"src":"https://images.pexels.com/photos/33008585/pexels-photo-33008585.jpeg","page":"yellow-torn-paper-with-discount-price-text-33008585","author":"Adriana Beckova"},"posredováti":{"src":"https://images.pexels.com/photos/7876047/pexels-photo-7876047.jpeg","page":"an-emotional-woman-during-her-divorce-7876047","author":"https://kaboompics.com/"},"izogíbati se":{"src":"https://images.pexels.com/photos/9826960/pexels-photo-9826960.jpeg","page":"barriers-on-asphalt-road-9826960","author":"Tom Fisk"},"prikríti":{"src":"https://images.pexels.com/photos/33308/mask-poppies-field-red.jpg","page":"two-white-masks-on-red-poppy-flowers-33308","author":"Pixabay"},"zatajíti":{"src":"https://images.pexels.com/photos/7680556/pexels-photo-7680556.jpeg","page":"close-up-shot-of-a-person-holding-paper-money-on-white-surface-7680556","author":"https://kaboompics.com/"},"podkupíti":{"src":"https://images.pexels.com/photos/4968548/pexels-photo-4968548.jpeg","page":"person-giving-money-to-another-person-4968548","author":"https://kaboompics.com/"},"oprostíti":{"src":"https://images.pexels.com/photos/6925118/pexels-photo-6925118.jpeg","page":"turtledove-birds-sitting-on-a-branch-and-hugging-6925118","author":"Klub Boks"},"príčati":{"src":"https://images.pexels.com/photos/6065138/pexels-photo-6065138.jpeg","page":"man-in-black-suit-jacket-standing-beside-man-in-orange-jacket-6065138","author":"RDNE Stock project"},"ukíniti":{"src":"https://images.pexels.com/photos/7567551/pexels-photo-7567551.jpeg","page":"a-hand-holding-a-pen-7567551","author":"Tima Miroshnichenko"},"odpráviti se":{"src":"https://images.pexels.com/photos/27694029/pexels-photo-27694029.jpeg","page":"exploring-the-wild-beauty-of-iceland-s-laugavegur-trail-27694029","author":"Jędrzej Koralewski"},"ubežáti":{"src":"https://images.pexels.com/photos/38606554/pexels-photo-38606554.jpeg","page":"couple-running-through-dramatic-narrow-canyon-38606554","author":"Uday Ahir"},"zasledováti":{"src":"https://images.pexels.com/photos/37968051/pexels-photo-37968051.jpeg","page":"geodesic-radar-tower-against-clear-blue-sky-37968051","author":"Giant Asparagus"},"prevládati":{"src":"https://images.pexels.com/photos/6565255/pexels-photo-6565255.jpeg","page":"a-person-holding-a-trophy-6565255","author":"cottonbro studio"},"izstópati":{"src":"https://images.pexels.com/photos/37484480/pexels-photo-37484480.png","page":"urban-scene-with-pedestrians-and-umbrellas-37484480","author":"khaled damlakhi"},"dohitéti":{"src":"https://images.pexels.com/photos/8456138/pexels-photo-8456138.jpeg","page":"children-running-in-the-hallway-8456138","author":"Norma Mortenson"},"izčŕpati":{"src":"https://images.pexels.com/photos/36429313/pexels-photo-36429313.jpeg","page":"abandoned-ships-in-the-aral-sea-desert-36429313","author":"Khusen Rustamov"},"poglobíti":{"src":"https://images.pexels.com/photos/38240258/pexels-photo-38240258.jpeg","page":"worker-digging-a-trench-with-multiple-shovels-38240258","author":"Plato Terentev"},"povzéti":{"src":"https://images.pexels.com/photos/8374275/pexels-photo-8374275.jpeg","page":"close-up-of-person-sitting-on-table-taking-notes-on-paper-8374275","author":"ANTONI SHKRABA production"},"ovréči":{"src":"https://images.pexels.com/photos/7723529/pexels-photo-7723529.jpeg","page":"various-laboratory-glasswares-on-a-sheet-of-patient-diagnosis-form-7723529","author":"Tara Winstead"},"namigníti":{"src":"https://images.pexels.com/photos/3779420/pexels-photo-3779420.jpeg","page":"man-in-red-polo-shirt-3779420","author":"Andrea Piacquadio"},"pretirávati":{"src":"https://images.pexels.com/photos/33790652/pexels-photo-33790652.jpeg","page":"elephant-trunk-reaching-out-in-monochrome-33790652","author":"Chris F"},"občudováti":{"src":"https://images.pexels.com/photos/13608167/pexels-photo-13608167.jpeg","page":"man-looking-at-a-scenic-view-of-mountains-and-a-lake-13608167","author":"Geovana Fiascaro"},"osupníti":{"src":"https://images.pexels.com/photos/18238117/pexels-photo-18238117.jpeg","page":"an-audience-of-the-concert-18238117","author":"Hoàng Tiến Việt"},"vodíti":{"src":"https://images.pexels.com/photos/9034230/pexels-photo-9034230.jpeg","page":"a-group-of-people-having-a-meeting-in-the-office-9034230","author":"RDNE Stock project"},"zaposlíti":{"src":"https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg","page":"person-in-black-suit-hired-an-employee-3760069","author":"Andrea Piacquadio"},"prijáviti se":{"src":"https://images.pexels.com/photos/9064715/pexels-photo-9064715.jpeg","page":"woman-signing-documents-9064715","author":"RDNE Stock project"},"predlágati":{"src":"https://images.pexels.com/photos/6931353/pexels-photo-6931353.jpeg","page":"two-people-doing-handshake-6931353","author":"Mikhail Nilov"},"pogájati se":{"src":"https://images.pexels.com/photos/30893239/pexels-photo-30893239.jpeg","page":"farmers-market-fresh-produce-exchange-30893239","author":"Matheus Bertelli"},"načrtováti":{"src":"https://images.pexels.com/photos/7368308/pexels-photo-7368308.jpeg","page":"a-person-holding-a-pen-7368308","author":"Vlada Karpovich"},"organizírati":{"src":"https://images.pexels.com/photos/16859956/pexels-photo-16859956.jpeg","page":"empty-conference-room-16859956","author":"Skills Media"},"tekmováti":{"src":"https://images.pexels.com/photos/8072926/pexels-photo-8072926.jpeg","page":"cyclists-during-a-race-8072926","author":"Bono Tsang"},"izgúbljati":{"src":"https://images.pexels.com/photos/11069123/pexels-photo-11069123.jpeg","page":"macro-shot-of-an-hourglass-11069123","author":"Towfiqu barbhuiya"},"dosegáti":{"src":"https://images.pexels.com/photos/669614/pexels-photo-669614.jpeg","page":"person-pointing-on-paper-669614","author":"Lukas Blazek"},"razvíjati":{"src":"https://images.pexels.com/photos/20694602/pexels-photo-20694602.png","page":"close-up-of-a-smartphone-screen-displaying-a-python-code-20694602","author":"_Karub_ ‎"},"poslábšati se":{"src":"https://images.pexels.com/photos/5995227/pexels-photo-5995227.jpeg","page":"white-and-yellow-thermometers-5995227","author":"Maksim Goncharenok"},"zmanjšáti":{"src":"https://images.pexels.com/photos/10821156/pexels-photo-10821156.jpeg","page":"gray-and-green-scissors-on-gray-surface-10821156","author":"Ann H"},"primérjati":{"src":"https://images.pexels.com/photos/5418926/pexels-photo-5418926.jpeg","page":"woman-in-dress-choosing-clothes-5418926","author":"Arina Krasnikova"},"ocenjeváti":{"src":"https://images.pexels.com/photos/9821386/pexels-photo-9821386.jpeg","page":"five-yellow-stars-on-blue-and-pink-background-9821386","author":"Towfiqu barbhuiya"},"preverjáti":{"src":"https://images.pexels.com/photos/32845671/pexels-photo-32845671.jpeg","page":"female-engineer-in-industrial-plant-holding-documents-32845671","author":"Sergey Sergeev"},"raziskováti":{"src":"https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg","page":"high-angle-view-of-a-man-256381","author":"Pixabay"},"dokazáti":{"src":"https://images.pexels.com/photos/8382609/pexels-photo-8382609.jpeg","page":"person-in-black-long-sleeve-putting-fingerprint-on-paper-8382609","author":"cottonbro studio"},"sklépati":{"src":"https://images.pexels.com/photos/7580854/pexels-photo-7580854.jpeg","page":"calculator-on-top-of-the-paper-7580854","author":"RDNE Stock project"},"opazováti":{"src":"https://images.pexels.com/photos/8975226/pexels-photo-8975226.jpeg","page":"close-up-shot-of-a-man-using-binoculars-8975226","author":"Daly Selva Lira"},"prepričáti":{"src":"https://images.pexels.com/photos/7144262/pexels-photo-7144262.jpeg","page":"man-in-a-suit-talking-with-a-couple-in-an-office-7144262","author":"Antoni Shkraba"},"zavrníti":{"src":"https://images.pexels.com/photos/4271935/pexels-photo-4271935.jpeg","page":"no-text-in-pieces-of-white-paper-4271935","author":"alleksana"},"sprejémati":{"src":"https://images.pexels.com/photos/5737835/pexels-photo-5737835.jpeg","page":"a-person-hugging-a-man-at-the-doorway-5737835","author":"RDNE Stock project"},"dovolíti":{"src":"https://images.pexels.com/photos/18687845/pexels-photo-18687845.jpeg","page":"desk-with-documents-and-stamps-18687845","author":"Ylanite Koppens"},"opozoríti":{"src":"https://images.pexels.com/photos/14844017/pexels-photo-14844017.jpeg","page":"a-rusty-iron-gate-and-a-plate-warning-against-high-voltage-14844017","author":"David McElwee"},"objáviti":{"src":"https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg","page":"folded-newspapers-158651","author":"Pixabay"},"razpravljáti":{"src":"https://images.pexels.com/photos/35013248/pexels-photo-35013248.jpeg","page":"canadian-parliament-house-of-commons-interior-35013248","author":"Daniel Miller"},"trdíti":{"src":"https://images.pexels.com/photos/3851255/pexels-photo-3851255.jpeg","page":"man-with-megaphone-pointing-3851255","author":"Pressmaster"},"zanikáti":{"src":"https://images.pexels.com/photos/5853491/pexels-photo-5853491.jpeg","page":"close-up-view-of-female-hand-5853491","author":"Anna Baranova"},"odkríti":{"src":"https://images.pexels.com/photos/37108832/pexels-photo-37108832.jpeg","page":"common-garden-skink-on-rocky-terrain-in-australia-37108832","author":"Stuart  Robinson"},"izumíti":{"src":"https://images.pexels.com/photos/7868830/pexels-photo-7868830.jpeg","page":"a-girl-looking-at-a-wheeled-toy-with-wires-7868830","author":"Vanessa Loring"},"shraníti":{"src":"https://images.pexels.com/photos/12093423/pexels-photo-12093423.jpeg","page":"assorted-floppy-disks-12093423","author":"S J"},"prenésti":{"src":"https://images.pexels.com/photos/3803517/pexels-photo-3803517.jpeg","page":"web-banner-with-online-information-on-computer-3803517","author":"Brett Sayles"},"onesnažévati":{"src":"https://images.pexels.com/photos/35298887/pexels-photo-35298887.jpeg","page":"industrial-pollution-in-kon-tum-vietnam-35298887","author":"Thái Trường Giang"},"reciklírati":{"src":"https://images.pexels.com/photos/5269922/pexels-photo-5269922.jpeg","page":"a-woman-collecting-plastic-bottles-5269922","author":"Mumtahina Tanni"},"douméti":{"src":"https://images.pexels.com/photos/6962945/pexels-photo-6962945.jpeg","page":"curly-haired-man-looking-up-while-holding-a-pencil-6962945","author":"Cup of  Couple"},"hrepenéti":{"src":"https://images.pexels.com/photos/2266692/pexels-photo-2266692.jpeg","page":"woman-in-black-jacket-standing-on-wooden-dock-during-sunset-2266692","author":"Lisa Fotios"},"prizadéti":{"src":"https://images.pexels.com/photos/6135041/pexels-photo-6135041.jpeg","page":"two-women-sitting-on-white-sofa-crying-together-6135041","author":"https://kaboompics.com/"},"zamériti":{"src":"https://images.pexels.com/photos/6382684/pexels-photo-6382684.jpeg","page":"unsatisfied-diverse-women-having-argument-at-home-6382684","author":"Liza Summer"},"razvnéti":{"src":"https://images.pexels.com/photos/35160053/pexels-photo-35160053.jpeg","page":"vibrant-flames-in-a-rustic-wood-fired-oven-35160053","author":"Emrehan  Çolak"},"razmíšljati":{"src":"https://images.pexels.com/photos/7105550/pexels-photo-7105550.jpeg","page":"close-up-of-a-girl-with-hand-on-chin-looking-afar-7105550","author":"Kindel Media"},"snováti":{"src":"https://images.pexels.com/photos/7967584/pexels-photo-7967584.jpeg","page":"script-on-desk-of-screenwriter-7967584","author":"Ron Lach"},"izpolníti":{"src":"https://images.pexels.com/photos/11412596/pexels-photo-11412596.jpeg","page":"a-marker-near-checked-circles-on-white-paper-11412596","author":"Towfiqu barbhuiya"},"opustíti":{"src":"https://images.pexels.com/photos/8048552/pexels-photo-8048552.jpeg","page":"grayscale-photo-of-cigarette-butt-8048552","author":"Βασίλης Ταραμανλής"},"vztrájati":{"src":"https://images.pexels.com/photos/1797406/pexels-photo-1797406.jpeg","page":"black-and-brown-wooden-table-1797406","author":"Alexander Isreb"},"odnéhati":{"src":"https://images.pexels.com/photos/9049891/pexels-photo-9049891.jpeg","page":"white-flags-on-body-of-water-9049891","author":"Ron Lach"},"vmešávati se":{"src":"https://images.pexels.com/photos/6957154/pexels-photo-6957154.jpeg","page":"mother-and-daughter-arguing-6957154","author":"https://kaboompics.com/"},"izogníti se":{"src":"https://images.pexels.com/photos/12002262/pexels-photo-12002262.jpeg","page":"motorcycle-lying-on-the-road-12002262","author":"Valentin Sarte"},"razkríti":{"src":"https://images.pexels.com/photos/5934213/pexels-photo-5934213.jpeg","page":"man-holding-a-sheet-of-paper-on-the-laptop-5934213","author":"Gustavo Fring"},"ponevériti":{"src":"https://images.pexels.com/photos/9566285/pexels-photo-9566285.jpeg","page":"a-man-in-black-suit-standing-near-the-bar-counter-9566285","author":"MART  PRODUCTION"},"obsodíti":{"src":"https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg","page":"judge-signing-on-the-papers-6077447","author":"KATRIN  BOLOVTSOVA"},"pomilostíti":{"src":"https://images.pexels.com/photos/10557791/pexels-photo-10557791.jpeg","page":"words-spelled-on-scrabble-tiles-10557791","author":"Brett Jordan"},"zaslíšati":{"src":"https://images.pexels.com/photos/6069525/pexels-photo-6069525.jpeg","page":"an-investigator-talking-to-the-tattooed-man-6069525","author":"RDNE Stock project"},"uveljáviti":{"src":"https://images.pexels.com/photos/618158/pexels-photo-618158.jpeg","page":"person-signing-document-paper-618158","author":"Matthias Zomer"},"odpráviti":{"src":"https://images.pexels.com/photos/6789021/pexels-photo-6789021.jpeg","page":"close-up-shot-of-assorted-wrenches-6789021","author":"Dmitry Demidov"},"zatéči se":{"src":"https://images.pexels.com/photos/6114179/pexels-photo-6114179.jpeg","page":"photo-of-people-hugging-each-other-in-front-door-6114179","author":"RDNE Stock project"},"preganjáti":{"src":"https://images.pexels.com/photos/12360331/pexels-photo-12360331.jpeg","page":"police-car-on-the-road-12360331","author":"Stephane Hurbe"},"spremljáti":{"src":"https://images.pexels.com/photos/5835414/pexels-photo-5835414.jpeg","page":"crop-ethnic-male-taxi-driver-reading-newspaper-in-town-5835414","author":"Tim  Samuel"},"razlikováti":{"src":"https://images.pexels.com/photos/9421350/pexels-photo-9421350.jpeg","page":"pantone-color-chart-9421350","author":"Леся Терехова"},"prevladováti":{"src":"https://images.pexels.com/photos/27878416/pexels-photo-27878416.jpeg","page":"a-crowded-market-with-many-people-walking-around-27878416","author":"BabijaPhoto JB"},"zaostájati":{"src":"https://images.pexels.com/photos/32486966/pexels-photo-32486966.jpeg","page":"turtle-resting-on-a-log-in-a-pond-32486966","author":"patrice schoefolt"},"prehitéti":{"src":"https://images.pexels.com/photos/39000646/pexels-photo-39000646.jpeg","page":"scenic-highway-view-with-truck-under-blue-sky-39000646","author":"Onur"},"obnovíti":{"src":"https://images.pexels.com/photos/16690918/pexels-photo-16690918.jpeg","page":"wooden-house-renovated-only-in-half-16690918","author":"Neriman Özaydın"},"razčleníti":{"src":"https://images.pexels.com/photos/8730994/pexels-photo-8730994.jpeg","page":"a-person-holding-a-document-and-a-pen-8730994","author":"Mikhail Nilov"},"utemeljíti":{"src":"https://images.pexels.com/photos/29821256/pexels-photo-29821256.jpeg","page":"majestic-ancient-roman-column-in-tunisia-29821256","author":"Mahmoud Yahyaoui"},"izpodbíjati":{"src":"https://images.pexels.com/photos/7688193/pexels-photo-7688193.jpeg","page":"a-person-pointing-at-a-document-7688193","author":"Kindel Media"},"pojasníti":{"src":"https://images.pexels.com/photos/6383193/pexels-photo-6383193.jpeg","page":"multiethnic-women-having-conflict-in-kitchen-6383193","author":"Liza Summer"},"zamólčati":{"src":"https://images.pexels.com/photos/4149070/pexels-photo-4149070.jpeg","page":"flirty-young-lady-asking-to-keep-secret-sitting-in-office-4149070","author":"Gustavo Fring"},"omalovažévati":{"src":"https://images.pexels.com/photos/7267582/pexels-photo-7267582.jpeg","page":"close-up-of-many-medals-7267582","author":"DS stories"},"uživáti":{"src":"https://images.pexels.com/photos/28201924/pexels-photo-28201924.jpeg","page":"ruhig-liegt-es-da-28201924","author":"Timos Blickfang"},"prebolêti":{"src":"https://images.pexels.com/photos/103127/pexels-photo-103127.jpeg","page":"woman-in-white-long-sleeve-shirt-standing-near-white-and-gray-house-during-daytime-103127","author":"Julian Jagtenberg"}};
+    const slWordPhotos = {"híša":{"src":"https://images.pexels.com/photos/30992623/pexels-photo-30992623.jpeg","page":"charming-cottage-in-lush-garden-setting-30992623","author":"Marcel Condurachi"},"míza":{"src":"https://images.pexels.com/photos/7402619/pexels-photo-7402619.jpeg","page":"a-glass-of-water-on-the-table-7402619","author":"cottonbro studio"},"ôkno":{"src":"https://images.pexels.com/photos/921294/pexels-photo-921294.png","page":"clear-glass-window-with-brown-and-white-wooden-frame-921294","author":"João  Jesus"},"knjíga":{"src":"https://images.pexels.com/photos/176103/pexels-photo-176103.jpeg","page":"opened-book-near-ceramic-mug-176103","author":"freestocks.org"},"šóla":{"src":"https://images.pexels.com/photos/8500353/pexels-photo-8500353.jpeg","page":"back-view-shot-of-students-running-to-their-classroom-8500353","author":"RDNE Stock project"},"vôda":{"src":"https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg","page":"fluid-pouring-in-pint-glass-416528","author":"Pixabay"},"krùh":{"src":"https://images.pexels.com/photos/8599723/pexels-photo-8599723.jpeg","page":"a-loaf-of-bread-8599723","author":"Polina Tankilevitch"},"mléko":{"src":"https://images.pexels.com/photos/37377280/pexels-photo-37377280.jpeg","page":"rustic-dairy-still-life-with-milk-and-cottage-cheese-37377280","author":"Matvei"},"jábolko":{"src":"https://images.pexels.com/photos/4117425/pexels-photo-4117425.jpeg","page":"close-up-photo-of-apple-4117425","author":"AS Photography"},"mésto":{"src":"https://images.pexels.com/photos/16922421/pexels-photo-16922421.jpeg","page":"a-view-of-prague-16922421","author":"Diego F. Parra"},"prijátelj":{"src":"https://images.pexels.com/photos/5047002/pexels-photo-5047002.jpeg","page":"women-holding-disposable-cups-laughing-5047002","author":"Ketut Subiyanto"},"pès":{"src":"https://images.pexels.com/photos/12518085/pexels-photo-12518085.jpeg","page":"a-dog-lying-on-a-wooden-flooring-12518085","author":"A. T. Sankari"},"césta":{"src":"https://images.pexels.com/photos/30729231/pexels-photo-30729231.jpeg","page":"quiet-mountain-village-street-scene-with-cars-30729231","author":"Dhanraj Priyadarshi"},"vlák":{"src":"https://images.pexels.com/photos/33968153/pexels-photo-33968153.jpeg","page":"bustling-scene-at-york-train-station-platform-33968153","author":"Mike Norris"},"ávto":{"src":"https://images.pexels.com/photos/10971731/pexels-photo-10971731.jpeg","page":"cars-parked-on-the-street-10971731","author":"Mario Amé"},"trgovína":{"src":"https://images.pexels.com/photos/4437148/pexels-photo-4437148.jpeg","page":"various-products-on-half-empty-store-shelves-4437148","author":"Roy Broo"},"denár":{"src":"https://images.pexels.com/photos/10356910/pexels-photo-10356910.png","page":"money-euro-corporate-money-background-10356910","author":"Tim Heckmann"},"slúžba":{"src":"https://images.pexels.com/photos/6803551/pexels-photo-6803551.jpeg","page":"men-sitting-at-the-desks-in-an-office-and-using-computers-6803551","author":"cottonbro studio"},"zdravník":{"src":"https://images.pexels.com/photos/20100299/pexels-photo-20100299.jpeg","page":"stethoscope-in-doctor-hands-20100299","author":"Felipe Queiroz"},"sônce":{"src":"https://images.pexels.com/photos/38409470/pexels-photo-38409470.jpeg","page":"vibrant-sunset-over-majestic-mountains-38409470","author":"Mysara Hassan"},"mórje":{"src":"https://images.pexels.com/photos/39074651/pexels-photo-39074651.jpeg","page":"sailboats-on-a-clear-ocean-horizon-39074651","author":"Caden Garcia"},"gôra":{"src":"https://images.pexels.com/photos/4735519/pexels-photo-4735519.jpeg","page":"beautiful-snow-covered-mountain-under-the-blue-sky-4735519","author":"ArtHouse Studio"},"obléka":{"src":"https://images.pexels.com/photos/8619007/pexels-photo-8619007.jpeg","page":"pink-dress-on-a-mannequin-8619007","author":"Chris F"},"telefón":{"src":"https://images.pexels.com/photos/7821755/pexels-photo-7821755.jpeg","page":"cellphone-on-a-wooden-surface-7821755","author":"RDNE Stock project"},"vprašánje":{"src":"https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg","page":"question-mark-on-chalk-board-356079","author":"Pixabay"},"odgovôr":{"src":"https://images.pexels.com/photos/5756576/pexels-photo-5756576.jpeg","page":"man-in-brown-button-up-shirt-sitting-on-brown-wooden-chair-raising-his-hand-5756576","author":"RDNE Stock project"},"srečánje":{"src":"https://images.pexels.com/photos/3182784/pexels-photo-3182784.jpeg","page":"top-view-photo-of-people-handshaking-3182784","author":"fauxels"},"pomôč":{"src":"https://images.pexels.com/photos/10638724/pexels-photo-10638724.jpeg","page":"close-up-shot-of-two-people-holding-hands-10638724","author":"Nathan Marcam"},"znánje":{"src":"https://images.pexels.com/photos/39556773/pexels-photo-39556773.jpeg","page":"graduation-celebration-with-smiling-graduate-39556773","author":"Ifeyinka Adeyemo"},"podjétje":{"src":"https://images.pexels.com/photos/164572/pexels-photo-164572.jpeg","page":"blue-and-black-glass-building-exterior-164572","author":"Pixabay"},"cílj":{"src":"https://images.pexels.com/photos/6669396/pexels-photo-6669396.jpeg","page":"steel-cans-on-top-of-archery-target-6669396","author":"RDNE Stock project"},"načŕt":{"src":"https://images.pexels.com/photos/4458205/pexels-photo-4458205.jpeg","page":"a-photo-of-a-floor-plan-4458205","author":"Ivan S"},"pogôvor":{"src":"https://images.pexels.com/photos/7659464/pexels-photo-7659464.jpeg","page":"women-having-a-conversation-7659464","author":"Thirdman"},"skupína":{"src":"https://images.pexels.com/photos/17010855/pexels-photo-17010855.jpeg","page":"people-holding-hands-in-black-and-white-17010855","author":"Kanishka  Madushan"},"razlíka":{"src":"https://images.pexels.com/photos/6550793/pexels-photo-6550793.jpeg","page":"crop-faceless-woman-demonstrating-ripe-green-apple-and-sweet-doughnut-6550793","author":"Andres  Ayrton"},"pravílo":{"src":"https://images.pexels.com/photos/35242187/pexels-photo-35242187.jpeg","page":"minimalist-office-desk-with-stationery-items-35242187","author":"Jess Bailey Designs"},"raziskáva":{"src":"https://images.pexels.com/photos/15831822/pexels-photo-15831822.jpeg","page":"laboratory-worker-doing-tests-15831822","author":"Jonathan Borba"},"razvòj":{"src":"https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg","page":"person-holding-a-green-plant-1072824","author":"Akil  Mazumder"},"okólje":{"src":"https://images.pexels.com/photos/33164661/pexels-photo-33164661.jpeg","page":"tranquil-natural-forest-with-tall-trees-33164661","author":"Lana Kravchenko"},"varnóst":{"src":"https://images.pexels.com/photos/38070/pexels-photo-38070.jpeg","page":"collection-of-construction-safety-helmet-38070","author":"ClickerHappy"},"natánčnost":{"src":"https://images.pexels.com/photos/30351214/pexels-photo-30351214.jpeg","page":"black-and-white-close-up-of-caliper-tool-30351214","author":"Michel AVRIL"},"postôpek":{"src":"https://images.pexels.com/photos/8580716/pexels-photo-8580716.jpeg","page":"black-pen-on-white-pad-paper-8580716","author":"RDNE Stock project"},"zahtéva":{"src":"https://images.pexels.com/photos/7876037/pexels-photo-7876037.jpeg","page":"a-person-signing-divorce-documents-7876037","author":"https://kaboompics.com/"},"poročílo":{"src":"https://images.pexels.com/photos/9034223/pexels-photo-9034223.jpeg","page":"a-person-wearing-white-long-sleeves-holding-a-piece-of-paper-on-a-wooden-table-9034223","author":"RDNE Stock project"},"omréžje":{"src":"https://images.pexels.com/photos/4682189/pexels-photo-4682189.jpeg","page":"patch-cables-plugged-in-patch-panel-4682189","author":"Brett Sayles"},"napráva":{"src":"https://images.pexels.com/photos/10987574/pexels-photo-10987574.jpeg","page":"numbers-on-device-10987574","author":"Кайрат Сатдиков"},"spremémba":{"src":"https://images.pexels.com/photos/34031796/pexels-photo-34031796.jpeg","page":"vibrant-red-fall-leaves-on-tree-branch-outdoors-34031796","author":"Murat Halıcı"},"gospodárstvo":{"src":"https://images.pexels.com/photos/7947742/pexels-photo-7947742.jpeg","page":"close-up-shot-of-a-graph-7947742","author":"RDNE Stock project"},"dóber":{"src":"https://images.pexels.com/photos/7893741/pexels-photo-7893741.jpeg","page":"smiling-content-man-7893741","author":"Kampus Production"},"slàb":{"src":"https://images.pexels.com/photos/8749856/pexels-photo-8749856.jpeg","page":"photo-of-a-wet-windshield-8749856","author":"Дмитрий Белов"},"vélik":{"src":"https://images.pexels.com/photos/13129167/pexels-photo-13129167.jpeg","page":"close-up-shot-of-an-elephant-13129167","author":"G N"},"májhen":{"src":"https://images.pexels.com/photos/37749140/pexels-photo-37749140.jpeg","page":"close-up-portrait-of-a-natal-multimammate-mouse-37749140","author":"Nikolett Emmert"},"nòv":{"src":"https://images.pexels.com/photos/7937331/pexels-photo-7937331.jpeg","page":"black-and-silver-key-on-white-paper-7937331","author":"Pavel Danilyuk"},"stàr":{"src":"https://images.pexels.com/photos/18385265/pexels-photo-18385265.jpeg","page":"weathered-paint-on-wooden-door-18385265","author":"Jan van der Wolf"},"lép":{"src":"https://images.pexels.com/photos/16678944/pexels-photo-16678944.jpeg","page":"close-up-of-pink-tulips-16678944","author":"Nika Benedictova"},"tópel":{"src":"https://images.pexels.com/photos/3181436/pexels-photo-3181436.jpeg","page":"photo-of-woman-wearing-knitted-sweater-3181436","author":"Anastasiya Gepp"},"mŕzel":{"src":"https://images.pexels.com/photos/6608601/pexels-photo-6608601.jpeg","page":"texture-of-snow-and-frost-on-a-frozen-lake-6608601","author":"https://kaboompics.com/"},"híter":{"src":"https://images.pexels.com/photos/19787364/pexels-photo-19787364.jpeg","page":"sprinters-on-a-running-track-19787364","author":"zheng liang"},"dólg":{"src":"https://images.pexels.com/photos/30715927/pexels-photo-30715927.jpeg","page":"lonely-stretch-of-road-in-forested-wilderness-30715927","author":"mysurrogateband"},"krátek":{"src":"https://images.pexels.com/photos/8386693/pexels-photo-8386693.jpeg","page":"yellow-wooden-pencils-on-white-surface-8386693","author":"Tara Winstead"},"zanímiv":{"src":"https://images.pexels.com/photos/9566081/pexels-photo-9566081.jpeg","page":"close-up-shot-of-a-person-reading-a-newspaper-9566081","author":"MART  PRODUCTION"},"pomémben":{"src":"https://images.pexels.com/photos/6358840/pexels-photo-6358840.jpeg","page":"a-person-s-hand-using-a-stamp-6358840","author":"Anna Tarazevich"},"potrében":{"src":"https://images.pexels.com/photos/7640990/pexels-photo-7640990.jpeg","page":"a-light-box-in-a-tool-box-7640990","author":"MART  PRODUCTION"},"môžen":{"src":"https://images.pexels.com/photos/1038260/pexels-photo-1038260.jpeg","page":"opened-brown-wooden-gate-1038260","author":"Caio"},"preprôst":{"src":"https://images.pexels.com/photos/8092466/pexels-photo-8092466.jpeg","page":"pen-and-notebook-on-wooden-table-with-glass-vase-8092466","author":"https://kaboompics.com/"},"težák":{"src":"https://images.pexels.com/photos/15364337/pexels-photo-15364337.jpeg","page":"man-collecting-stones-on-a-desert-15364337","author":"Kash Bhatia"},"učinkovít":{"src":"https://images.pexels.com/photos/7568428/pexels-photo-7568428.jpeg","page":"close-up-view-of-auto-mechanical-gears-7568428","author":"cottonbro studio"},"zanesljív":{"src":"https://images.pexels.com/photos/36740854/pexels-photo-36740854.jpeg","page":"close-up-of-hand-holding-a-secure-padlock-36740854","author":"Nathan Thomas"},"natánčen":{"src":"https://images.pexels.com/photos/19585984/pexels-photo-19585984.jpeg","page":"measuring-tapes-on-a-desk-19585984","author":"William Warby"},"priméren":{"src":"https://images.pexels.com/photos/6147357/pexels-photo-6147357.jpeg","page":"close-up-photo-of-people-holding-puzzle-pieces-6147357","author":"Diva Plavalaguna"},"trájen":{"src":"https://images.pexels.com/photos/13246806/pexels-photo-13246806.jpeg","page":"photo-of-a-stone-wall-13246806","author":"Magda Ehlers"},"občútljiv":{"src":"https://images.pexels.com/photos/32141249/pexels-photo-32141249.jpeg","page":"vibrant-soap-bubbles-floating-outdoors-32141249","author":"Christina & Peter"}};
     // ===== Словенский блок: данные и генератор =====
     // Формат сида: инфинитив (с ударением)|картинка (emoji-сцена: главный + второстепенный)|перевод|вид (d/n/dv)|1 л. ед. наст. (или 9 форм через запятую)|деležnik -l м.р. [/основа]|velelnik 2 л. ед. (или -)|объект SL|объект RU|тема|RU наст. 1 л.|RU наст. 3 л. мн.|RU прош. м.р.|RU прош. мн.|RU буд. 1 л.|RU повел.|заметка (необязательно)
     const slLevels = ['A1', 'A2', 'B1', 'B2', 'C1'];
@@ -1600,6 +1645,188 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
     }
     const slVerbs = slLevels.flatMap(level => slSeeds[level].trim().split('\n').map((line, i) => slBuildVerb(line.split('|'), level, i)));
     const slTopics = [...new Set(slVerbs.map(verb => verb.topic))].sort((a, b) => a.localeCompare(b, 'ru'));
+
+    // ===== Словенские существительные и прилагательные: склонение по шести падежам =====
+    const SL_CASES = [['I', 'imenovalnik', 'именительный', 'kdo/kaj'], ['R', 'rodilnik', 'родительный', 'koga/česa'], ['D', 'dajalnik', 'дательный', 'komu/čemu'], ['T', 'tožilnik', 'винительный', 'koga/kaj'], ['M', 'mestnik', 'местный', 'o kom/o čem'], ['O', 'orodnik', 'творительный', 's kom/s čim']];
+    const SL_NUMBERS = [['ed', 'ednina', 'ед. ч.'], ['dv', 'dvojina', 'дв. ч.'], ['mn', 'množina', 'мн. ч.']];
+    const slSoft = stem => 'cčžšj'.includes(stem.slice(-1)); // после мягких согласных o в окончании переходит в e
+    const slGenderLabels = { m: ['moški spol', 'мужской род'], f: ['ženski spol', 'женский род'], n: ['srednji spol', 'средний род'] };
+    const slDeclTypes = {
+      m: ['1. moška sklanjatev', 'мужское склонение на согласный'],
+      f: ['1. ženska sklanjatev', 'женское склонение на -a'],
+      fi: ['3. ženska sklanjatev', 'женское склонение на согласный (i-основа)'],
+      n: ['srednja sklanjatev -o', 'средний род на -o'],
+      ne: ['srednja sklanjatev -e', 'средний род на -e']
+    };
+    // Возвращает { ed: {I..O}, dv: {...}, mn: {...} }. base — основа косвенных форм, lemma — словарная форма.
+    function slDecline(lemma, base, type, animate) {
+      const e = slSoft(base);
+      const ov = e ? 'ev' : 'ov', om = e ? 'em' : 'om', oma = e ? 'ema' : 'oma';
+      if (type === 'm') return {
+        ed: { I: lemma, R: base + 'a', D: base + 'u', T: animate ? base + 'a' : lemma, M: base + 'u', O: base + om },
+        dv: { I: base + 'a', R: base + ov, D: base + oma, T: base + 'a', M: base + 'ih', O: base + oma },
+        mn: { I: base + 'i', R: base + ov, D: base + om, T: base + 'e', M: base + 'ih', O: base + 'i' }
+      };
+      if (type === 'f') return {
+        ed: { I: lemma, R: base + 'e', D: base + 'i', T: base + 'o', M: base + 'i', O: base + 'o' },
+        dv: { I: base + 'i', R: base, D: base + 'ama', T: base + 'i', M: base + 'ah', O: base + 'ama' },
+        mn: { I: base + 'e', R: base, D: base + 'am', T: base + 'e', M: base + 'ah', O: base + 'ami' }
+      };
+      if (type === 'fi') return {
+        ed: { I: lemma, R: base + 'i', D: base + 'i', T: lemma, M: base + 'i', O: base + 'jo' },
+        dv: { I: base + 'i', R: base + 'i', D: base + 'ema', T: base + 'i', M: base + 'eh', O: base + 'ema' },
+        mn: { I: base + 'i', R: base + 'i', D: base + 'em', T: base + 'i', M: base + 'eh', O: base + 'mi' }
+      };
+      const end = type === 'ne' ? 'e' : 'o';
+      return {
+        ed: { I: base + end, R: base + 'a', D: base + 'u', T: base + end, M: base + 'u', O: base + om },
+        dv: { I: base + 'i', R: base, D: base + oma, T: base + 'i', M: base + 'ih', O: base + oma },
+        mn: { I: base + 'a', R: base, D: base + om, T: base + 'a', M: base + 'ih', O: base + 'i' }
+      };
+    }
+    // Прилагательное: три рода × три числа × шесть падежей. base — основа (dober → dobr).
+    function slDeclineAdj(lemma, base) {
+      const e = slSoft(base), nSg = base + (e ? 'e' : 'o');
+      const obl = { R: base + 'ega', D: base + 'emu', M: base + 'em', O: base + 'im' };
+      return {
+        m: {
+          ed: { I: lemma, R: obl.R, D: obl.D, T: lemma, M: obl.M, O: obl.O },
+          dv: { I: base + 'a', R: base + 'ih', D: base + 'ima', T: base + 'a', M: base + 'ih', O: base + 'ima' },
+          mn: { I: base + 'i', R: base + 'ih', D: base + 'im', T: base + 'e', M: base + 'ih', O: base + 'imi' }
+        },
+        f: {
+          ed: { I: base + 'a', R: base + 'e', D: base + 'i', T: base + 'o', M: base + 'i', O: base + 'o' },
+          dv: { I: base + 'i', R: base + 'ih', D: base + 'ima', T: base + 'i', M: base + 'ih', O: base + 'ima' },
+          mn: { I: base + 'e', R: base + 'ih', D: base + 'im', T: base + 'e', M: base + 'ih', O: base + 'imi' }
+        },
+        n: {
+          ed: { I: nSg, R: obl.R, D: obl.D, T: nSg, M: obl.M, O: obl.O },
+          dv: { I: base + 'i', R: base + 'ih', D: base + 'ima', T: base + 'i', M: base + 'ih', O: base + 'ima' },
+          mn: { I: base + 'a', R: base + 'ih', D: base + 'im', T: base + 'a', M: base + 'ih', O: base + 'imi' }
+        }
+      };
+    }
+    // Сид существительного: лемма|основа косвенных форм|тип|одуш.|картинка|перевод|тема|пример SL|пример RU|[переопределения]
+    // Тип: m — мужской на согласный, f — женский на -a, fi — женский на согласный (i-основа),
+    //      n — средний на -o, ne — средний на -e. Переопределения: «R.mn=sester» через запятую.
+    const slNounSeeds = {
+      A1: `
+híša|hiš|f|0|🏠 🪟|дом|Дом|Naša hiša ima velik vrt.|У нашего дома большой сад.
+míza|miz|f|0|🪑 🍽️|стол|Дом|Na mizi stoji kozarec vode.|На столе стоит стакан воды.
+ôkno|okn|n|0|🪟 ☀️|окно|Дом|Odpri okno, tukaj je vroče.|Открой окно, здесь жарко.
+knjíga|knjig|f|0|📖 👓|книга|Учёба|To knjigo berem že cel teden.|Эту книгу я читаю уже целую неделю.
+šóla|šol|f|0|🏫 🎒|школа|Учёба|Otroci gredo v šolo ob osmih.|Дети идут в школу в восемь.
+vôda|vod|f|0|💧 🥛|вода|Еда|Prosim kozarec hladne vode.|Пожалуйста, стакан холодной воды.
+krùh|kruh|m|0|🍞 🥖|хлеб|Еда|Kruh kupujemo v pekarni na vogalu.|Хлеб мы покупаем в пекарне на углу.
+mléko|mlek|n|0|🥛 🐄|молоко|Еда|V kavo dam malo mleka.|В кофе я добавляю немного молока.
+jábolko|jabolk|n|0|🍎 🌳|яблоко|Еда|Vsak dan pojem eno jabolko.|Каждый день я съедаю одно яблоко.
+mésto|mest|n|0|🏙️ 🌉|город|Город|Ljubljana je majhno, a živahno mesto.|Любляна — небольшой, но живой город.
+prijátelj|prijatelj|m|1|🤝 😀|друг|Общение|S prijateljem se dobiva ob petih.|С другом мы встречаемся в пять.
+pès|ps|m|1|🐕 🦴|собака|Природа|Pes spi pod mizo.|Собака спит под столом.`,
+      A2: `
+césta|cest|f|0|🛣️ 🚗|дорога, улица|Город|Cesta do vasi je ozka in strma.|Дорога до деревни узкая и крутая.
+vlák|vlak|m|0|🚆 🎫|поезд|Путешествия|Vlak za Maribor odpelje čez deset minut.|Поезд на Марибор отходит через десять минут.
+ávto|avt|m|0|🚗 🔑|автомобиль|Путешествия|Avto sem pustil na parkirišču.|Машину я оставил на парковке.
+trgovína|trgovin|f|0|🛒 🏬|магазин|Город|V trgovini nimajo svežega kruha.|В магазине нет свежего хлеба.
+denár|denar|m|0|💶 💳|деньги|Деньги|Za to pot bomo potrebovali veliko denarja.|На эту поездку нам понадобится много денег.
+slúžba|služb|f|0|💼 🏢|работа, служба|Работа|Iz službe se vračam ob šestih.|С работы я возвращаюсь в шесть.
+zdravník|zdravnik|m|1|🩺 💊|врач|Здоровье|Zdravnika bom poklical jutri zjutraj.|Врачу я позвоню завтра утром.
+sônce|sonc|ne|0|☀️ 🌅|солнце|Природа|Sonce zahaja za goro.|Солнце садится за гору.
+mórje|morj|ne|0|🌊 ⛵|море|Природа|Poleti gremo vsako leto na morje.|Летом мы каждый год ездим на море.
+gôra|gor|f|0|⛰️ 🥾|гора|Природа|Na goro se povzpnemo v treh urah.|На гору мы поднимаемся за три часа.
+obléka|oblek|f|0|👗 🧥|одежда, платье|Одежда|Za poroko si je kupila novo obleko.|На свадьбу она купила новое платье.
+telefón|telefon|m|0|📱 🔋|телефон|Техника|Telefona nisem slišal, bil je v torbi.|Телефон я не услышал, он был в сумке.`,
+      B1: `
+vprašánje|vprašanj|ne|0|❓ 🙋|вопрос|Общение|Na to vprašanje ni preprostega odgovora.|На этот вопрос нет простого ответа.
+odgovôr|odgovor|m|0|💬 ✅|ответ|Общение|Odgovora čakam že tri dni.|Ответа я жду уже три дня.
+srečánje|srečanj|ne|0|🤝 📅|встреча|Общение|Srečanje so prestavili na petek.|Встречу перенесли на пятницу.
+pomôč|pomoč|fi|0|🆘 🤲|помощь|Общение|Brez njegove pomoči ne bi uspeli.|Без его помощи мы бы не справились.
+znánje|znanj|ne|0|🎓 🧠|знание|Учёба|Znanje jezika mu je pri delu zelo koristilo.|Знание языка очень пригодилось ему в работе.
+podjétje|podjetj|ne|0|🏭 📊|предприятие, компания|Работа|Podjetje zaposluje petdeset ljudi.|Компания нанимает пятьдесят человек.
+cílj|cilj|m|0|🎯 🏁|цель|Работа|Cilja letos nismo dosegli.|Цели в этом году мы не достигли.
+načŕt|načrt|m|0|🗺️ 📐|план|Работа|Načrt smo morali spremeniti.|План нам пришлось изменить.
+pogôvor|pogovor|m|0|🗣️ ☕|разговор|Общение|Po dolgem pogovoru sva se razumela.|После долгого разговора мы поняли друг друга.
+skupína|skupin|f|0|👥 🧑‍🤝‍🧑|группа|Общение|V skupini je dvanajst tečajnikov.|В группе двенадцать слушателей курса.
+razlíka|razlik|f|0|⚖️ 🔍|разница|Учёба|Razlika med obema oblikama je majhna.|Разница между обеими формами невелика.
+pravílo|pravil|n|0|📏 📘|правило|Учёба|To pravilo ima veliko izjem.|У этого правила много исключений.`,
+      B2: `
+raziskáva|raziskav|f|0|🔬 📈|исследование|Учёба|Raziskava je trajala dve leti.|Исследование длилось два года.
+razvòj|razvoj|m|0|📈 🌱|развитие|Работа|Za razvoj mesta je pomembna železnica.|Для развития города важна железная дорога.
+okólje|okolj|ne|0|🌍 ♻️|среда, окружение|Природа|Nova tovarna manj obremenjuje okolje.|Новый завод меньше нагружает окружающую среду.
+varnóst|varnost|fi|0|🦺 🚧|безопасность|Работа|Za varnost na gradbišču odgovarja vodja.|За безопасность на стройке отвечает руководитель.
+natánčnost|natančnost|fi|0|🎯 📐|точность|Работа|Meritev zahteva veliko natančnost.|Измерение требует большой точности.
+postôpek|postopk|m|0|🧾 ⚙️|процедура|Работа|Postopek je opisan v navodilih.|Процедура описана в инструкции.
+zahtéva|zahtev|f|0|📋 ✔️|требование|Работа|Zahteva je zapisana v pogodbi.|Требование записано в договоре.
+poročílo|poročil|n|0|📄 🖊️|отчёт|Работа|Poročilo moramo oddati do petka.|Отчёт мы должны сдать до пятницы.
+omréžje|omrežj|ne|0|🌐 🔌|сеть|Техника|Omrežje je bilo ponoči nedosegljivo.|Сеть ночью была недоступна.
+napráva|naprav|f|0|🔌 🛠️|устройство|Техника|Napravo je treba enkrat letno umeriti.|Устройство нужно раз в год калибровать.
+spremémba|sprememb|f|0|🔄 📝|изменение|Работа|Sprememba začne veljati prvega januarja.|Изменение вступает в силу первого января.
+gospodárstvo|gospodarstv|n|0|🏦 📊|экономика|Деньги|Gospodarstvo je lani zraslo za dva odstotka.|Экономика в прошлом году выросла на два процента.`
+    };
+    // Сид прилагательного: лемма (м. р. ед. ч.)|основа|картинка|перевод|тема|пример SL|пример RU
+    const slAdjSeeds = {
+      A1: `
+dóber|dobr|👍 🙂|хороший|Быт|To je dober načrt.|Это хороший план.
+slàb|slab|👎 🌧️|плохой|Быт|Vreme je danes slabo.|Погода сегодня плохая.
+vélik|velik|🐘 📏|большой|Быт|Živimo v veliki hiši.|Мы живём в большом доме.
+májhen|majhn|🐁 🔎|маленький|Быт|Kupila je majhno mizo.|Она купила маленький стол.
+nòv|nov|✨ 🆕|новый|Быт|Novi sosedje so prijazni.|Новые соседи приветливые.
+stàr|star|🧓 🏚️|старый|Быт|V starem mestu je veliko turistov.|В старом городе много туристов.`,
+      A2: `
+lép|lep|🌸 🖼️|красивый|Быт|Bil je lep dan za sprehod.|Был красивый день для прогулки.
+tópel|topl|🔥 🧣|тёплый|Природа|Obleci si toplo jakno.|Надень тёплую куртку.
+mŕzel|mrzl|❄️ 🥶|холодный|Природа|Voda v reki je mrzla.|Вода в реке холодная.
+híter|hitr|⚡ 🏃|быстрый|Движение|Vlak je hitrejši od avtobusa.|Поезд быстрее автобуса.
+dólg|dolg|📏 🛣️|длинный, долгий|Время|Pred nami je dolga pot.|Впереди у нас долгая дорога.
+krátek|kratk|✂️ ⏱️|короткий|Время|Naredimo kratek premor.|Сделаем короткий перерыв.`,
+      B1: `
+zanímiv|zanimiv|🤔 📚|интересный|Учёба|Prebral sem zanimiv članek.|Я прочитал интересную статью.
+pomémben|pomembn|❗ 📌|важный|Работа|To je pomembna odločitev.|Это важное решение.
+potrében|potrebn|🧰 ✅|нужный, необходимый|Работа|Za popravilo je potrebno orodje.|Для ремонта нужен инструмент.
+môžen|možn|🚪 💡|возможный|Работа|Druga možna rešitev je cenejša.|Другое возможное решение дешевле.
+preprôst|preprost|🧩 🙂|простой|Учёба|Razlaga je bila preprosta in jasna.|Объяснение было простым и понятным.
+težák|težk|🪨 🏋️|тяжёлый, трудный|Учёба|To je bila težka naloga.|Это было трудное задание.`,
+      B2: `
+učinkovít|učinkovit|⚙️ 📈|эффективный|Работа|Poiskali smo učinkovitejši postopek.|Мы нашли более эффективную процедуру.
+zanesljív|zanesljiv|🔒 🤝|надёжный|Техника|Potrebujemo zanesljiv vir podatkov.|Нам нужен надёжный источник данных.
+natánčen|natančn|🎯 📐|точный|Техника|Meritev mora biti natančna.|Измерение должно быть точным.
+priméren|primern|👌 🧭|подходящий|Работа|To ni primeren trenutek za pogovor.|Это неподходящий момент для разговора.
+trájen|trajn|⏳ 🪨|длительный, стойкий|Природа|Iščemo trajno rešitev.|Мы ищем долговременное решение.
+občútljiv|občutljiv|🫧 ⚠️|чувствительный|Техника|Naprava je občutljiva na vlago.|Прибор чувствителен к влаге.`
+    };
+    const slPlain = word => word.replace(/[áàâ]/g, 'a').replace(/[éèêë]/g, 'e').replace(/[íì]/g, 'i').replace(/[óòô]/g, 'o').replace(/[úù]/g, 'u').replace(/ŕ/g, 'r');
+    function slApplyOverrides(forms, spec) {
+      if (!spec) return forms;
+      spec.split(',').forEach(pair => {
+        const [key, value] = pair.split('=');
+        if (!key || value === undefined) return;
+        const [caseKey, numberKey] = key.trim().split('.');
+        if (forms[numberKey] && caseKey in forms[numberKey]) forms[numberKey][caseKey] = value.trim();
+      });
+      return forms;
+    }
+    const slHue = word => [...word].reduce((sum, ch) => (sum * 31 + ch.charCodeAt(0)) % 360, 11);
+    function slBuildNoun(parts, level, order) {
+      const [lemmaAcc, base, type, anim, picture, translation, topic, exSl, exRu, overrides] = parts;
+      const lemma = slPlain(lemmaAcc);
+      const forms = slApplyOverrides(slDecline(lemma, base, type, anim === '1'), overrides);
+      const gender = type === 'm' ? 'm' : type === 'f' || type === 'fi' ? 'f' : 'n';
+      return { id: `n-${lemma}`, kind: 'noun', level, order, lemma, lemmaAcc, picture: picture.split(' '), translation, topic,
+        ipa: slIpa(lemmaAcc), gender, type, animate: anim === '1', base, forms, example: { sl: exSl, ru: exRu },
+        photo: slWordPhotos[lemmaAcc] || null, hue: slHue(lemma) };
+    }
+    function slBuildAdj(parts, level, order) {
+      const [lemmaAcc, base, picture, translation, topic, exSl, exRu] = parts;
+      const lemma = slPlain(lemmaAcc);
+      return { id: `a-${lemma}`, kind: 'adj', level, order, lemma, lemmaAcc, picture: picture.split(' '), translation, topic,
+        ipa: slIpa(lemmaAcc), base, forms: slDeclineAdj(lemma, base), example: { sl: exSl, ru: exRu },
+        photo: slWordPhotos[lemmaAcc] || null, hue: slHue(lemma) };
+    }
+    const slWordLevels = ['A1', 'A2', 'B1', 'B2'];
+    const slNouns = slWordLevels.flatMap(level => slNounSeeds[level].trim().split('\n').map((line, i) => slBuildNoun(line.split('|'), level, i)));
+    const slAdjectives = slWordLevels.flatMap(level => slAdjSeeds[level].trim().split('\n').map((line, i) => slBuildAdj(line.split('|'), level, i)));
+    const slWords = [...slNouns, ...slAdjectives];
+    const slWordTopics = [...new Set(slWords.map(word => word.topic))].sort((a, b) => a.localeCompare(b, 'ru'));
     // Общий префикс форм — «основа» для подсветки окончаний в таблице спряжения.
     function slSplitEnding(forms) {
       const valid = forms.filter(Boolean);
@@ -1899,6 +2126,378 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
       $('slAlphaGrid').innerHTML = items.map(slAlphaCard).join('');
       $('slAlphaRules').innerHTML = slAlphaRules.map(([title, text]) => `<div class="sl-example"><p class="sl-accent text-[11px] font-bold uppercase tracking-widest">${slEsc(title)}</p><p class="mt-1 text-sm leading-6">${slEsc(text)}</p></div>`).join('');
     }
+    // ===== Существительные и прилагательные: сетка карточек со склонением =====
+    const slWordState = { level: 'A1', kind: 'all', topic: 'all', query: '' };
+    const slCaseLabel = key => SL_CASES.find(c => c[0] === key);
+    const slWordLevelWords = level => slWords.filter(word => word.level === level);
+    function slWordFiltered() {
+      const query = slWordState.query.toLocaleLowerCase('ru');
+      return slWordLevelWords(slWordState.level).filter(word =>
+        (slWordState.kind === 'all' || word.kind === slWordState.kind) &&
+        (slWordState.topic === 'all' || word.topic === slWordState.topic) &&
+        (!query || `${word.lemma} ${word.translation}`.toLocaleLowerCase('ru').includes(query)));
+    }
+    function slRenderWordTabs() {
+      $('slWordLevelTabs').innerHTML = slWordLevels.map(level => {
+        const words = slWordLevelWords(level);
+        const done = srsStats('sl', words.map(w => w.id)).strong;
+        return `<button class="sl-level focus-ring rounded-2xl px-4 py-3 text-left ${level === slWordState.level ? 'is-active' : ''}" data-word-level="${level}" role="tab" aria-selected="${level === slWordState.level}"><span class="flex items-center justify-between"><strong class="text-lg font-black">${level}</strong><span class="sl-faint text-xs font-bold">${done} / ${words.length}</span></span><span class="sl-faint mt-1 block text-xs leading-4">${words.filter(w => w.kind === 'noun').length} сущ. · ${words.filter(w => w.kind === 'adj').length} прил.</span><span class="sl-level-bar" style="width:${words.length ? (done / words.length) * 100 : 0}%"></span></button>`;
+      }).join('');
+    }
+    function slWordTagRow(word) {
+      if (word.kind === 'adj') return `<span class="sl-tag sl-tag-level">${word.level}</span><span class="sl-tag sl-tag-dv">pridevnik</span><span class="sl-tag sl-tag-group">3 rodovi</span>`;
+      const [genderSl, genderRu] = slGenderLabels[word.gender];
+      const [typeSl, typeRu] = slDeclTypes[word.type];
+      return `<span class="sl-tag sl-tag-level">${word.level}</span><span class="sl-tag sl-tag-${word.gender === 'm' ? 'n' : word.gender === 'f' ? 'd' : 'alt'} sl-tip" data-tip="${slEsc(genderRu)}">${genderSl}</span><span class="sl-tag sl-tag-group sl-tip" data-tip="${slEsc(typeRu)}">${slEsc(typeSl)}</span>`;
+    }
+    function slWordFront(word, eager) {
+      return `<article class="card-face sl-face sl-front absolute inset-0 flex flex-col p-5">
+        <div class="flex flex-wrap items-center gap-1.5">${slWordTagRow(word)}</div>
+        <div class="sl-pic mt-3 ${word.photo ? 'has-photo' : ''}" style="--pic-hue:${word.hue}"><span class="sl-pic-main" aria-hidden="true">${word.picture[0]}</span>${word.picture[1] ? `<span class="sl-pic-side" aria-hidden="true">${word.picture[1]}</span>` : ''}${word.photo ? `<img class="sl-photo" src="${slEsc(slPhotoUrl(word.photo.src, 'medium'))}" srcset="${slEsc(`${slPhotoUrl(word.photo.src, 'medium')} 1x, ${slPhotoUrl(word.photo.src, 'large')} 2x`)}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" onerror="this.parentElement.classList.remove('has-photo'); this.remove()">` : ''}</div>
+        <div class="flex flex-1 flex-col items-center justify-center text-center"><p class="sl-faint mb-1 text-xs font-semibold uppercase tracking-widest">${slEsc(word.topic)}</p><h2 class="text-3xl font-black tracking-tight">${slEsc(word.lemma)}</h2><p class="sl-accent mt-2 font-mono text-sm" title="приблизительная транскрипция">${slEsc(word.ipa)}</p><p class="sl-ink-2 mt-2 text-base font-semibold leading-5">${slEsc(word.translation)}</p></div>
+        <div class="flex items-center justify-between gap-2"><button class="sl-btn focus-ring rounded-full px-4 py-2 text-xs font-bold" type="button" data-speak="${slEsc(word.lemma)}">◖)) Слушать</button><span class="sl-faint text-xs font-bold">${slEsc(srsWhen(srsCard('sl', word.id)))}</span></div>
+        <p class="sl-faint mt-3 text-center text-[11px]">Нажмите, чтобы перевернуть</p>
+      </article>`;
+    }
+    function slWordBack(word) {
+      return `<article class="card-face card-back sl-face absolute inset-0 p-4 sm:p-5">
+        <div class="flex items-start justify-between gap-2"><div><span class="sl-accent text-[11px] font-bold uppercase tracking-[.2em]">${word.level} · ${word.kind === 'adj' ? 'pridevnik' : slGenderLabels[word.gender][0]}</span><h3 class="mt-1 text-xl font-black">${slEsc(word.lemma)} <span class="sl-muted text-sm font-semibold">— ${slEsc(word.translation)}</span></h3></div><button class="sl-btn focus-ring shrink-0 rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-flip-back aria-label="Вернуться на лицевую сторону">↺</button></div>
+        <div class="mt-3 flex gap-4 text-xs font-bold uppercase tracking-widest" role="tablist"><button class="sl-inner-tab focus-ring pb-2 is-active" data-word-tab="overview" role="tab">Обзор</button><button class="sl-inner-tab focus-ring pb-2" data-word-tab="cases" role="tab">Склонение</button><button class="sl-inner-tab focus-ring pb-2" data-word-tab="examples" role="tab">Примеры</button></div>
+        <div class="sl-back-body mt-3 pr-1" data-word-body></div>
+      </article>`;
+    }
+    function slWordOverview(word) {
+      const card = srsCard('sl', word.id);
+      const head = word.kind === 'adj'
+        ? `<div class="sl-example"><p class="sl-faint text-[11px] font-bold uppercase tracking-widest">Три рода, им. п. ед. ч.</p><p class="mt-1 font-semibold">m <b>${slEsc(word.forms.m.ed.I)}</b> · f <b>${slEsc(word.forms.f.ed.I)}</b> · n <b>${slEsc(word.forms.n.ed.I)}</b></p></div>`
+        : `<div class="sl-example"><p class="sl-faint text-[11px] font-bold uppercase tracking-widest">Род и склонение</p><p class="mt-1 font-semibold">${slGenderLabels[word.gender][0]} <span class="sl-muted font-normal">— ${slGenderLabels[word.gender][1]}</span></p><p class="sl-muted mt-1 text-xs">${slEsc(slDeclTypes[word.type][1])}${word.animate ? ' · живое: T. ed. = R. ed.' : ''}</p></div>
+           <div class="sl-example"><p class="sl-faint text-[11px] font-bold uppercase tracking-widest">Опорные формы</p><p class="mt-1 font-semibold">im. ed. <b>${slEsc(word.forms.ed.I)}</b> · rod. ed. <b>${slEsc(word.forms.ed.R)}</b> · im. mn. <b>${slEsc(word.forms.mn.I)}</b></p></div>`;
+      return `<div class="grid gap-2 text-sm">
+        ${head}
+        <div class="sl-example"><p class="sl-faint text-[11px] font-bold uppercase tracking-widest">Тема · перевод</p><p class="mt-1">${slEsc(word.topic)} · <span class="sl-muted">${slEsc(word.translation)}</span></p></div>
+        <div class="sl-example"><p class="sl-faint text-[11px] font-bold uppercase tracking-widest">Повторение</p><p class="mt-1 text-sm">Статус: <b>${slEsc(srsWhen(card))}</b>${card ? ` <span class="sl-muted">· вспомнили ${card.ok} из ${card.seen}</span>` : ''}</p><div class="mt-2 flex flex-wrap gap-2"><button class="sl-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-grade-word="${slEsc(word.id)}" data-known="0">Не знаю</button><button class="sl-btn-accent focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-grade-word="${slEsc(word.id)}" data-known="1">Знаю</button></div></div>
+        <div class="flex flex-wrap gap-2 pt-1"><button class="sl-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold" type="button" data-speak="${slEsc(word.lemma)}">◖)) ${slEsc(word.lemma)}</button></div>
+      </div>`;
+    }
+    const slWordColumns = word => word.kind === 'adj' ? [['m', 'moški'], ['f', 'ženski'], ['n', 'srednji']] : SL_NUMBERS.map(([key, sl]) => [key, sl]);
+    const slWordFormAt = (word, group, caseKey, number) => word.kind === 'adj' ? word.forms[group][number][caseKey] : word.forms[group][caseKey];
+    function slWordCases(word, write, number) {
+      const columns = slWordColumns(word);
+      const cells = (caseKey, i) => columns.map(([group]) => {
+        const form = slWordFormAt(word, group, caseKey, number);
+        return `<td>${write
+          ? `<input class="sl-cell focus-ring" type="text" data-word-cell="${group}.${caseKey}" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" aria-label="${slEsc(`${slCaseLabel(caseKey)[1]}, ${group}`)}"><span class="sl-cell-hint" data-word-hint="${group}.${caseKey}"></span>`
+          : `<span class="sl-form sl-tip" data-speak="${slEsc(form)}" data-tip="${slEsc(`${slCaseLabel(caseKey)[2]} — ${slCaseLabel(caseKey)[3]}`)}" tabindex="0">${slWordMarkEnding(word, form)}</span>`}</td>`;
+      }).join('');
+      const rows = SL_CASES.map(([key, sl], i) => `<tr><td>${sl}</td>${cells(key, i)}</tr>`).join('');
+      const numberChips = word.kind === 'adj'
+        ? SL_NUMBERS.map(([key, sl]) => `<button class="sl-chip focus-ring rounded-lg px-2.5 py-1 text-[11px] font-bold ${key === number ? 'is-active' : ''}" type="button" data-word-number="${key}">${sl}</button>`).join('')
+        : '';
+      return `${numberChips ? `<div class="flex flex-wrap gap-1.5">${numberChips}</div>` : ''}
+        <div class="mt-2 flex flex-wrap items-center gap-2"><button class="sl-chip focus-ring rounded-lg px-2.5 py-1 text-[11px] font-bold ${write ? 'is-active' : ''}" type="button" data-word-write aria-pressed="${write}">✎ Напиши сам</button>${write ? '<button class="sl-btn-accent focus-ring rounded-lg px-3 py-1 text-[11px] font-black" type="button" data-word-check>Проверить</button><button class="sl-btn focus-ring rounded-lg px-3 py-1 text-[11px] font-bold" type="button" data-word-clear>Очистить</button>' : ''}</div>
+        <p class="sl-muted mt-2 text-xs">${write ? 'Впишите формы по памяти и нажмите «Проверить».' : word.kind === 'adj' ? `Прилагательное, ${SL_NUMBERS.find(n => n[0] === number)[1]} — по родам и падежам.` : 'Шесть падежей в трёх числах; окончание подсвечено.'}</p>
+        <div class="mt-2 overflow-x-auto"><table class="sl-conj ${write ? 'is-write' : ''}"><thead><tr><th></th>${columns.map(([, label]) => `<th>${label}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>
+        <div class="mt-2" data-word-result></div>`;
+    }
+    function slWordMarkEnding(word, form) {
+      // Окончание = то, что осталось от формы после основы. Если основа чередуется (pes → psa), не выделяем ничего.
+      if (!form.startsWith(word.base)) return slEsc(form);
+      const tail = form.slice(word.base.length);
+      return tail ? `${slEsc(word.base)}<mark>${slEsc(tail)}</mark>` : slEsc(form);
+    }
+    function slWordExamples(word) {
+      const nom = word.kind === 'adj' ? word.forms.m.ed.I : word.forms.ed.I;
+      const mest = word.kind === 'adj' ? word.forms.m.ed.M : word.forms.ed.M;
+      const rod = word.kind === 'adj' ? word.forms.m.ed.R : word.forms.ed.R;
+      const orod = word.kind === 'adj' ? word.forms.m.ed.O : word.forms.ed.O;
+      const zPrep = /^[szšžfhkptc]/i.test(orod) ? 's' : 'z';
+      const frames = [[`o ${mest}`, 'о чём — mestnik'], [`brez ${rod}`, 'без чего — rodilnik'], [`${zPrep} ${orod}`, 'с чем — orodnik']];
+      return `<div class="grid gap-2">
+        <div class="sl-example"><p class="sl-accent text-[11px] font-bold uppercase tracking-widest">Пример</p><p class="mt-1 text-sm font-semibold leading-6">${slReplaceForm(slEsc(word.example.sl), slEsc(nom), found => `<mark>${found}</mark>`)}</p><p class="sl-muted mt-1 text-xs leading-5">${slEsc(word.example.ru)}</p><button class="sl-btn focus-ring mt-2 rounded-full px-3 py-1 text-[11px] font-bold" type="button" data-speak="${slEsc(word.example.sl)}">◖)) Слушать</button></div>
+        <div class="sl-example"><p class="sl-faint text-[11px] font-bold uppercase tracking-widest">Падежи в связке с предлогом</p><div class="mt-2 grid gap-1.5">${frames.map(([phrase, note]) => `<p class="flex flex-wrap items-baseline gap-2"><button class="sl-btn focus-ring rounded-full px-2.5 py-1 text-xs font-bold" type="button" data-speak="${slEsc(phrase)}">◖))</button><b>${slEsc(phrase)}</b> <span class="sl-muted text-xs">${slEsc(note)}</span></p>`).join('')}</div></div>
+      </div>`;
+    }
+    let slWordSignature = null;
+    function slRenderWordGrid() {
+      const items = slWordFiltered();
+      $('slWordEmpty').classList.toggle('hidden', Boolean(items.length));
+      $('slWordCounter').textContent = `${items.length} ${plural(items.length, 'слово', 'слова', 'слов')}`;
+      const signature = items.map(word => word.id).join('|');
+      if (signature === slWordSignature) return;
+      slWordSignature = signature;
+      const reduced = slReducedMotion();
+      $('slWordGrid').innerHTML = items.map((word, i) => `<div class="sl-scene ${reduced ? '' : 'sl-enter'}" style="animation-delay:${Math.min(i, 10) * 32}ms"><div class="card-inner relative h-full cursor-pointer" data-word="${slEsc(word.id)}" tabindex="0" role="button" aria-label="Карточка ${slEsc(word.lemma)}. Нажмите, чтобы перевернуть">${slWordFront(word, i < 4)}${slWordBack(word)}</div></div>`).join('');
+    }
+    const slWordById = id => slWords.find(word => word.id === id);
+    function slSetWordTab(card, tab) {
+      const word = slWordById(card.dataset.word), body = card.querySelector('[data-word-body]');
+      card.querySelectorAll('[data-word-tab]').forEach(button => button.classList.toggle('is-active', button.dataset.wordTab === tab));
+      card.dataset.wtab = tab;
+      body.innerHTML = tab === 'overview' ? slWordOverview(word) : tab === 'cases' ? slWordCases(word, card.dataset.wmode === '1', card.dataset.wnum || 'ed') : slWordExamples(word);
+      body.classList.remove('sl-tab-anim'); void body.offsetWidth; body.classList.add('sl-tab-anim');
+      body.scrollTop = 0;
+    }
+    function slCheckWordForms(card) {
+      const word = slWordById(card.dataset.word), number = card.dataset.wnum || 'ed';
+      let total = 0, right = 0, exact = 0;
+      card.querySelectorAll('[data-word-cell]').forEach(input => {
+        const [group, caseKey] = input.dataset.wordCell.split('.');
+        const correct = slWordFormAt(word, group, caseKey, number);
+        if (!correct) return;
+        total += 1;
+        const verdict = compareForm(input.value, correct, slEsc);
+        input.classList.remove('is-right', 'is-near', 'is-wrong');
+        input.classList.add(`is-${verdict.state}`);
+        const hint = card.querySelector(`[data-word-hint="${group}.${caseKey}"]`);
+        if (hint) hint.innerHTML = verdict.hint;
+        if (verdict.state !== 'wrong') right += 1;
+        if (verdict.state === 'right') exact += 1;
+      });
+      if (!total) return;
+      const known = right / total >= 0.8;
+      srsGrade('sl', word.id, known);
+      const box = card.querySelector('[data-word-result]');
+      if (box) box.innerHTML = `<p class="text-sm font-bold ${known ? 'sl-accent' : 'sl-ink-2'}">Верно ${right} из ${total}${right > exact ? ` (${right - exact} без диакритики)` : ''} · засчитано как «${known ? 'знаю' : 'не знаю'}»</p>`;
+    }
+    function slFlipWord(card, force) {
+      const flipped = typeof force === 'boolean' ? force : !card.classList.contains('is-flipped');
+      card.classList.toggle('is-flipped', flipped);
+      if (flipped && !card.querySelector('[data-word-body]').innerHTML) slSetWordTab(card, 'overview');
+    }
+    $('slWordGrid').addEventListener('click', event => {
+      const card = event.target.closest('[data-word]'); if (!card) return;
+      const speak = event.target.closest('[data-speak]'); if (speak) { event.stopPropagation(); slSpeak(speak.dataset.speak); return; }
+      const tab = event.target.closest('[data-word-tab]'); if (tab) { slSetWordTab(card, tab.dataset.wordTab); return; }
+      const grade = event.target.closest('[data-grade-word]'); if (grade) { srsGrade('sl', grade.dataset.gradeWord, grade.dataset.known === '1'); slSetWordTab(card, 'overview'); slRenderWordTabs(); return; }
+      if (event.target.closest('[data-flip-back]')) { slFlipWord(card, false); return; }
+      const numberChip = event.target.closest('[data-word-number]'); if (numberChip) { card.dataset.wnum = numberChip.dataset.wordNumber; slSetWordTab(card, 'cases'); return; }
+      if (event.target.closest('[data-word-write]')) { card.dataset.wmode = card.dataset.wmode === '1' ? '' : '1'; slSetWordTab(card, 'cases'); return; }
+      if (event.target.closest('[data-word-check]')) { slCheckWordForms(card); return; }
+      if (event.target.closest('[data-word-clear]')) {
+        card.querySelectorAll('[data-word-cell]').forEach(input => { input.value = ''; input.classList.remove('is-right', 'is-near', 'is-wrong'); });
+        card.querySelectorAll('[data-word-hint]').forEach(hint => { hint.innerHTML = ''; });
+        const box = card.querySelector('[data-word-result]'); if (box) box.innerHTML = '';
+        return;
+      }
+      if (event.target.closest('.card-back')) return;
+      slFlipWord(card);
+    });
+    $('slWordGrid').addEventListener('keydown', event => {
+      const card = event.target.closest('[data-word]'); if (!card) return;
+      if ((event.key === ' ' || event.key === 'Enter') && event.target === card) { event.preventDefault(); slFlipWord(card); }
+      if (event.key === 'Enter' && event.target.matches('.sl-cell')) { event.preventDefault(); slCheckWordForms(card); }
+    });
+    $('slWordLevelTabs').addEventListener('click', event => {
+      const tab = event.target.closest('[data-word-level]'); if (!tab) return;
+      slWordState.level = tab.dataset.wordLevel; slRenderWordTabs(); slRenderWordGrid();
+    });
+    $('slWordKind').addEventListener('click', event => {
+      const button = event.target.closest('[data-kind]'); if (!button) return;
+      slWordState.kind = button.dataset.kind;
+      document.querySelectorAll('#slWordKind [data-kind]').forEach(item => item.classList.toggle('is-active', item === button));
+      slRenderWordGrid();
+    });
+    $('slWordTopic').addEventListener('change', event => { slWordState.topic = event.target.value; slRenderWordGrid(); });
+    let slWordSearchTimer;
+    $('slWordSearch').addEventListener('input', event => {
+      slWordState.query = event.target.value.trim();
+      clearTimeout(slWordSearchTimer);
+      slWordSearchTimer = setTimeout(slRenderWordGrid, 140);
+    });
+    // ===== Игровые режимы =====
+    const SL_GAME_KEY = 'lexiconSlGameRecords';
+    const slGameState = { level: 'all', mode: null, data: null, timer: null };
+    const slGameRecords = slRead(SL_GAME_KEY, {});
+    const slGameSaveRecord = (key, value, lower) => {
+      const old = slGameRecords[key];
+      if (old === undefined || (lower ? value < old : value > old)) { slGameRecords[key] = value; slWrite(SL_GAME_KEY, slGameRecords); return true; }
+      return false;
+    };
+    // В играх участвуют и глаголы, и существительные с прилагательными.
+    function slGamePool(level) {
+      const verbs = slVerbs.map(v => ({ id: v.id, sl: v.inf, ru: v.translation, level: v.level }));
+      const words = slWords.map(w => ({ id: w.id, sl: w.lemma, ru: w.translation, level: w.level }));
+      const all = [...verbs, ...words];
+      return level === 'all' ? all : all.filter(item => item.level === level);
+    }
+    const slGameLevelList = ['all', ...slLevels];
+    function slRenderGameLevels() {
+      $('slGameLevels').innerHTML = slGameLevelList.map(level => `<button class="sl-chip focus-ring rounded-xl px-3 py-2 text-xs font-bold ${level === slGameState.level ? 'is-active' : ''}" type="button" data-game-level="${level}">${level === 'all' ? 'Все уровни' : level}<span class="sl-review-badge">${slGamePool(level).length}</span></button>`).join('');
+    }
+    function slRenderGameMenu() {
+      const lv = slGameState.level;
+      const cards = [
+        ['match', 'Match', 'Найдите шесть пар «слово — перевод» на время.', slGameRecords[`match:${lv}`] !== undefined ? `Лучшее время: ${(slGameRecords[`match:${lv}`] / 1000).toFixed(1)} с` : 'Рекорда пока нет'],
+        ['sprint', 'Спринт', 'Минута на максимум правильных ответов.', slGameRecords[`sprint:${lv}`] !== undefined ? `Рекорд: ${slGameRecords[`sprint:${lv}`]}` : 'Рекорда пока нет'],
+        ['placement', 'Определение уровня', 'Десять вопросов от A1 до C1 — подскажем, с чего начать.', slGameRecords.placement ? `Рекомендован уровень ${slGameRecords.placement}` : 'Ещё не проходили']
+      ];
+      $('slGameMenu').innerHTML = cards.map(([mode, title, text, note]) => `<button class="sl-example focus-ring text-left ${slGameState.mode === mode ? 'sl-game-active' : ''}" type="button" data-game-start="${mode}"><p class="text-lg font-black">${title}</p><p class="sl-muted mt-1 text-sm leading-5">${text}</p><p class="sl-accent mt-2 text-xs font-bold">${note}</p></button>`).join('');
+    }
+    function slStopGameTimer() { clearInterval(slGameState.timer); slGameState.timer = null; }
+    function slStartGame(mode) {
+      slStopGameTimer();
+      slGameState.mode = mode;
+      if (mode === 'match') slStartMatch();
+      else if (mode === 'sprint') slStartSprint();
+      else slStartPlacement();
+      slRenderGameMenu();
+    }
+    // --- Match ---
+    function slStartMatch() {
+      const pool = slGamePool(slGameState.level);
+      if (pool.length < 6) { $('slGameArea').innerHTML = '<div class="sl-panel rounded-2xl p-6 text-center sl-muted">Для этого уровня слишком мало слов.</div>'; return; }
+      const picked = shuffleItems(pool).slice(0, 6);
+      const tiles = shuffleItems([...picked.map(p => ({ key: p.id, text: p.sl, side: 'sl' })), ...picked.map(p => ({ key: p.id, text: p.ru, side: 'ru' }))]);
+      slGameState.data = { tiles, picked, selected: null, solved: 0, started: 0, elapsed: 0, done: false };
+      slRenderMatch();
+    }
+    function slRenderMatch() {
+      const g = slGameState.data;
+      const best = slGameRecords[`match:${slGameState.level}`];
+      $('slGameArea').innerHTML = `<div class="sl-panel rounded-2xl p-4 sm:p-5">
+        <div class="flex flex-wrap items-center justify-between gap-2"><p class="font-black">Найдено пар: ${g.solved} / 6</p><p class="sl-muted text-sm" data-match-clock>${(g.elapsed / 1000).toFixed(1)} с${best !== undefined ? ` · рекорд ${(best / 1000).toFixed(1)} с` : ''}</p></div>
+        <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">${g.tiles.map((tile, i) => `<button class="sl-tile focus-ring rounded-xl px-3 py-4 text-sm font-bold ${tile.solved ? 'is-solved' : ''} ${g.selected === i ? 'is-picked' : ''} ${tile.wrong ? 'is-wrong' : ''}" type="button" data-tile="${i}" ${tile.solved ? 'disabled' : ''}>${slEsc(tile.text)}</button>`).join('')}</div>
+        ${g.done ? `<p class="sl-accent mt-4 text-center text-lg font-black">Готово за ${(g.elapsed / 1000).toFixed(1)} с${g.record ? ' — новый рекорд!' : ''}</p><div class="mt-3 text-center"><button class="sl-btn-accent focus-ring rounded-xl px-4 py-2 text-xs font-black" type="button" data-game-start="match">Ещё раз</button></div>` : ''}
+      </div>`;
+    }
+    function slMatchTick() {
+      const g = slGameState.data; if (!g || g.done) return;
+      g.elapsed = Date.now() - g.started;
+      const clock = $('slGameArea').querySelector('[data-match-clock]');
+      const best = slGameRecords[`match:${slGameState.level}`];
+      if (clock) clock.textContent = `${(g.elapsed / 1000).toFixed(1)} с${best !== undefined ? ` · рекорд ${(best / 1000).toFixed(1)} с` : ''}`;
+    }
+    function slMatchPick(index) {
+      const g = slGameState.data; if (!g || g.done) return;
+      const tile = g.tiles[index];
+      if (tile.solved || g.selected === index) return;
+      if (!g.started) { g.started = Date.now(); slStopGameTimer(); slGameState.timer = setInterval(slMatchTick, 100); }
+      if (g.selected === null) { g.selected = index; slRenderMatch(); return; }
+      const first = g.tiles[g.selected];
+      if (first.key === tile.key && first.side !== tile.side) {
+        first.solved = tile.solved = true; g.solved += 1; g.selected = null;
+        if (g.solved === 6) {
+          g.done = true; g.elapsed = Date.now() - g.started; slStopGameTimer();
+          g.record = slGameSaveRecord(`match:${slGameState.level}`, g.elapsed, true);
+          slRenderGameMenu();
+        }
+        slRenderMatch();
+        return;
+      }
+      tile.wrong = first.wrong = true; g.selected = null; slRenderMatch();
+      setTimeout(() => { tile.wrong = first.wrong = false; if (slGameState.mode === 'match') slRenderMatch(); }, 450);
+    }
+    // --- Спринт ---
+    const SL_SPRINT_SECONDS = 60;
+    function slSprintQuestion() {
+      const pool = slGamePool(slGameState.level);
+      const item = slRandom(pool);
+      const others = shuffleItems(pool.filter(p => p.ru !== item.ru)).slice(0, 3).map(p => p.ru);
+      return { sl: item.sl, correct: item.ru, options: shuffleItems([item.ru, ...others]) };
+    }
+    function slStartSprint() {
+      const pool = slGamePool(slGameState.level);
+      if (pool.length < 4) { $('slGameArea').innerHTML = '<div class="sl-panel rounded-2xl p-6 text-center sl-muted">Для этого уровня слишком мало слов.</div>'; return; }
+      slGameState.data = { score: 0, asked: 0, left: SL_SPRINT_SECONDS, question: slSprintQuestion(), done: false, feedback: '' };
+      slStopGameTimer();
+      slGameState.timer = setInterval(() => {
+        const g = slGameState.data; if (!g || g.done) return;
+        g.left -= 1;
+        if (g.left <= 0) { g.done = true; g.left = 0; slStopGameTimer(); g.record = slGameSaveRecord(`sprint:${slGameState.level}`, g.score, false); slRenderGameMenu(); }
+        slRenderSprint();
+      }, 1000);
+      slRenderSprint();
+    }
+    function slRenderSprint() {
+      const g = slGameState.data, best = slGameRecords[`sprint:${slGameState.level}`];
+      if (g.done) {
+        $('slGameArea').innerHTML = `<div class="sl-panel rounded-2xl p-8 text-center">
+          <p class="text-2xl font-black">Время вышло</p>
+          <p class="sl-accent mt-2 text-4xl font-black">${g.score}</p>
+          <p class="sl-muted mt-1 text-sm">правильных из ${g.asked}${g.record ? ' · новый рекорд!' : best !== undefined ? ` · рекорд ${best}` : ''}</p>
+          <button class="sl-btn-accent focus-ring mt-4 rounded-xl px-4 py-2 text-xs font-black" type="button" data-game-start="sprint">Ещё раз</button>
+        </div>`;
+        return;
+      }
+      $('slGameArea').innerHTML = `<div class="sl-panel rounded-2xl p-4 sm:p-5">
+        <div class="flex flex-wrap items-center justify-between gap-2"><p class="font-black">Счёт: ${g.score} / ${g.asked}</p><p class="sl-accent font-mono text-lg font-black">${g.left} с</p></div>
+        <div class="sl-progress mt-3 rounded-full"><div style="width:${(g.left / SL_SPRINT_SECONDS) * 100}%"></div></div>
+        <p class="mt-5 text-center text-3xl font-black">${slEsc(g.question.sl)}</p>
+        <div class="mt-4 grid gap-2 sm:grid-cols-2">${g.question.options.map((option, i) => `<button class="sl-quiz-option focus-ring rounded-xl px-4 py-3 text-left text-sm font-semibold" type="button" data-sprint="${i}">${slEsc(option)}</button>`).join('')}</div>
+        <p class="sl-muted mt-3 min-h-5 text-center text-sm">${g.feedback}</p>
+      </div>`;
+    }
+    function slSprintAnswer(index) {
+      const g = slGameState.data; if (!g || g.done) return;
+      const chosen = g.question.options[index];
+      g.asked += 1;
+      if (chosen === g.question.correct) { g.score += 1; g.feedback = 'Верно'; }
+      else g.feedback = `Правильно: ${g.question.correct}`;
+      g.question = slSprintQuestion();
+      slRenderSprint();
+    }
+    // --- Определение уровня ---
+    function slStartPlacement() {
+      const questions = slLevels.flatMap(level => {
+        const pool = slGamePool(level);
+        return shuffleItems(pool).slice(0, 2).map(item => {
+          const others = shuffleItems(pool.filter(p => p.ru !== item.ru)).slice(0, 3).map(p => p.ru);
+          return { level, sl: item.sl, correct: item.ru, options: shuffleItems([item.ru, ...others]) };
+        });
+      });
+      slGameState.data = { questions, i: 0, right: {}, done: false };
+      slRenderPlacement();
+    }
+    function slRenderPlacement() {
+      const g = slGameState.data;
+      if (g.done) {
+        // Рекомендуем самый высокий уровень, где обе попытки верны, иначе следующий за ним.
+        let suggested = slLevels[0];
+        slLevels.forEach(level => { if ((g.right[level] || 0) === 2) suggested = level; });
+        const index = slLevels.indexOf(suggested);
+        const start = (g.right[suggested] || 0) === 2 && index < slLevels.length - 1 ? slLevels[index + 1] : suggested;
+        slGameRecords.placement = start; slWrite(SL_GAME_KEY, slGameRecords);
+        $('slGameArea').innerHTML = `<div class="sl-panel rounded-2xl p-8 text-center">
+          <p class="text-2xl font-black">Рекомендуем начать с уровня</p>
+          <p class="sl-accent mt-2 text-5xl font-black">${start}</p>
+          <p class="sl-muted mt-3 text-sm">${slLevels.map(level => `${level}: ${g.right[level] || 0}/2`).join(' · ')}</p>
+          <div class="mt-4 flex flex-wrap justify-center gap-2"><button class="sl-btn-accent focus-ring rounded-xl px-4 py-2 text-xs font-black" type="button" data-placement-go="${start}">Открыть глаголы ${start}</button><button class="sl-btn focus-ring rounded-xl px-4 py-2 text-xs font-bold" type="button" data-game-start="placement">Пройти заново</button></div>
+        </div>`;
+        slRenderGameMenu();
+        return;
+      }
+      const q = g.questions[g.i];
+      $('slGameArea').innerHTML = `<div class="sl-panel rounded-2xl p-4 sm:p-5">
+        <div class="flex items-center justify-between gap-2"><p class="sl-faint text-xs font-bold uppercase tracking-widest">Вопрос ${g.i + 1} из ${g.questions.length}</p><span class="sl-tag sl-tag-level">${q.level}</span></div>
+        <div class="sl-progress mt-3 rounded-full"><div style="width:${(g.i / g.questions.length) * 100}%"></div></div>
+        <p class="mt-5 text-center text-3xl font-black">${slEsc(q.sl)}</p>
+        <div class="mt-4 grid gap-2 sm:grid-cols-2">${q.options.map((option, i) => `<button class="sl-quiz-option focus-ring rounded-xl px-4 py-3 text-left text-sm font-semibold" type="button" data-placement="${i}">${slEsc(option)}</button>`).join('')}</div>
+      </div>`;
+    }
+    function slPlacementAnswer(index) {
+      const g = slGameState.data; if (!g || g.done) return;
+      const q = g.questions[g.i];
+      if (q.options[index] === q.correct) g.right[q.level] = (g.right[q.level] || 0) + 1;
+      g.i += 1;
+      if (g.i >= g.questions.length) g.done = true;
+      slRenderPlacement();
+    }
+    $('slGameLevels').addEventListener('click', event => {
+      const button = event.target.closest('[data-game-level]'); if (!button) return;
+      slGameState.level = button.dataset.gameLevel; slStopGameTimer(); slGameState.mode = null;
+      $('slGameArea').innerHTML = ''; slRenderGameLevels(); slRenderGameMenu();
+    });
+    $('slGameMenu').addEventListener('click', event => {
+      const button = event.target.closest('[data-game-start]'); if (button) slStartGame(button.dataset.gameStart);
+    });
+    $('slGameArea').addEventListener('click', event => {
+      const again = event.target.closest('[data-game-start]'); if (again) { slStartGame(again.dataset.gameStart); return; }
+      const tile = event.target.closest('[data-tile]'); if (tile) { slMatchPick(Number(tile.dataset.tile)); return; }
+      const sprint = event.target.closest('[data-sprint]'); if (sprint) { slSprintAnswer(Number(sprint.dataset.sprint)); return; }
+      const placement = event.target.closest('[data-placement]'); if (placement) { slPlacementAnswer(Number(placement.dataset.placement)); return; }
+      const go = event.target.closest('[data-placement-go]');
+      if (go) { slState.level = go.dataset.placementGo; slWrite(slStorage.level, slState.level); slRenderLevelTabs(); slRenderProgress(); slGridSignature = null; slRenderGrid(); slSetView('verbs'); }
+    });
     // ===== Повторение: одна карточка за раз, две оценки =====
     const SL_REVIEW_SESSION = 20; // столько карточек берём в один заход
     const slReviewPool = () => slState.review.level === 'all' ? slVerbs : slLevelVerbs(slState.review.level);
@@ -1988,11 +2587,26 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
       $('slVerbsView').classList.toggle('module-hidden', view !== 'verbs');
       $('slAlphaView').classList.toggle('module-hidden', view !== 'alphabet');
       $('slReviewView').classList.toggle('module-hidden', view !== 'review');
+      $('slWordsView').classList.toggle('module-hidden', view !== 'words');
+      $('slGamesView').classList.toggle('module-hidden', view !== 'games');
+      if (view !== 'games') slStopGameTimer();
       document.querySelectorAll('#slViewSwitch [data-view]').forEach(button => button.classList.toggle('is-active', button.dataset.view === view));
       if (view === 'alphabet' && !$('slAlphaGrid').innerHTML) slRenderAlphabet();
       if (view === 'review') slStartReview();
+      if (view === 'words' && !$('slWordGrid').innerHTML) { slRenderWordTabs(); slRenderWordGrid(); }
+      if (view === 'games') { slRenderGameLevels(); slRenderGameMenu(); }
+      if (view === 'verbs') slShowPlacementHint();
+      $('slFootHint').classList.toggle('hidden', view !== 'verbs' && view !== 'words'); // в играх и алфавите подсказка не к месту
     }
     $('slViewSwitch').addEventListener('click', event => { const button = event.target.closest('[data-view]'); if (button) slSetView(button.dataset.view); });
+    const SL_HINT_KEY = 'lexiconSlPlacementHint';
+    function slShowPlacementHint() {
+      const hide = slRead(SL_HINT_KEY, false) || Boolean(slGameRecords.placement) || slState.learned.size > 0;
+      $('slPlacementHint').classList.toggle('hidden', hide);
+      $('slPlacementHint').classList.toggle('flex', !hide);
+    }
+    $('slPlacementSkip').addEventListener('click', () => { slWrite(SL_HINT_KEY, true); slShowPlacementHint(); });
+    $('slPlacementGo').addEventListener('click', () => { slWrite(SL_HINT_KEY, true); slShowPlacementHint(); slSetView('games'); slStartGame('placement'); });
     $('slAlphaFilters').addEventListener('click', event => { const button = event.target.closest('[data-alpha]'); if (!button) return; slAlphaFilter = button.dataset.alpha; document.querySelectorAll('#slAlphaFilters button').forEach(item => item.classList.toggle('is-active', item === button)); slRenderAlphabet(); });
     $('slAlphaGrid').addEventListener('click', event => {
       const card = event.target.closest('[data-letter]'); if (!card) return;
@@ -2043,7 +2657,7 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
       if (current === lang) return;
       const finish = () => {
         document.body.dataset.lang = lang;
-        if (lang === 'sl') { bgMains.forEach(id => $(id).classList.add('module-hidden')); $('slMode').classList.remove('module-hidden'); $('bgHeaderTools').classList.add('hidden'); slRenderProgress(); if (!$('slGrid').innerHTML) slRenderGrid(); }
+        if (lang === 'sl') { bgMains.forEach(id => $(id).classList.add('module-hidden')); $('slMode').classList.remove('module-hidden'); $('bgHeaderTools').classList.add('hidden'); slRenderProgress(); if (!$('slGrid').innerHTML) slRenderGrid(); slShowPlacementHint(); }
         else { $('slMode').classList.add('module-hidden'); $('bgHeaderTools').classList.remove('hidden'); setVerbMode(false); }
         document.querySelectorAll('.lang-switch [data-lang]').forEach(button => button.classList.toggle('is-active', button.dataset.lang === lang));
         document.documentElement.style.setProperty('--lang-accent', lang === 'sl' ? '#2dd4bf' : '#fbbf24');
@@ -2059,6 +2673,7 @@ prebolêti|💪 💔|переболеть; пережить (горе)|d|preboli
     }
     document.querySelectorAll('.lang-switch [data-lang]').forEach(button => button.addEventListener('click', () => slSetLang(button.dataset.lang)));
     slRenderLevelTabs(); slRenderTopics(); slRenderProgress();
+    $('slWordTopic').innerHTML = `<option value="all">Все темы</option>${slWordTopics.map(topic => `<option value="${slEsc(topic)}">${slEsc(topic)}</option>`).join('')}`;
     document.body.dataset.lang = 'bg';
     if (slRead(slStorage.lang, 'bg') === 'sl') slSetLang('sl', false);
     if ('speechSynthesis' in window && typeof speechSynthesis.getVoices === 'function') speechSynthesis.getVoices();
