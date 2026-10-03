@@ -1,7 +1,7 @@
 {
-  "name": "Glagolica — болгарский и словенский",
+  "name": "Glagolica — словенский и английский",
   "short_name": "Glagolica",
-  "description": "Карточки болгарской и словенской лексики: глаголы, склонения, спряжения, интервальные повторения.",
+  "description": "Словенский интенсив A1 и английский A1 с активными упражнениями и повторением.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,7 +10,17 @@
   "theme_color": "#0f172a",
   "lang": "ru",
   "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
   ]
 }
