@@ -168,7 +168,7 @@ def main():
                 assert execute("return GLAGOLICA_EN_CARDS.reduce((n,c)=>n+c.examples.length,0)") == 675
                 assert execute("return document.querySelectorAll('#enWordList img.sl-photo').length") == en_photo_count
                 assert execute("return new Set(GLAGOLICA_EN_CARDS.flatMap(c=>c.examples)).size") == 675
-                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='I').photo===null && GLAGOLICA_EN_CARDS.find(c=>c.en==='bus').photo===null")
+                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='I').photo===null && GLAGOLICA_EN_CARDS.find(c=>c.en==='bus').photo.src.includes('/19736818/')")
                 assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='hour').forms.some(([name,value])=>name==='usage'&&value==='an hour')")
                 assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='tea').forms.some(([name,value])=>name==='usage'&&value.includes('two teas'))")
                 assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='be').forms.some(([name,value])=>name==='past'&&value.includes('was'))")
@@ -234,6 +234,24 @@ def main():
                 time.sleep(.8)
                 assert execute("return document.body.dataset.lang === 'sl' && !document.getElementById('slWordsView').classList.contains('module-hidden')")
                 assert execute("return document.getElementById('slProgressText').textContent.startsWith('1 /')"), execute("return [document.getElementById('slProgressText').textContent, localStorage.getItem('lexiconSlLearned')]")
+                # Full English UI/TTS/SRS quality pass through all applicable modes.
+                execute("document.querySelector('[data-lang=en]').click()")
+                request('POST', api + '/window/rect', {'width': 360, 'height': 844})
+                execute((ROOT / 'tests/english-browser-quality.js').read_text())
+                quality_totals = {'cards': 0, 'modes': {}, 'wordAudio': 0, 'formAudio': 0, 'exampleAudio': 0, 'feedbackAudio': 0, 'listeningAudio': 0}
+                for start in range(0, 225, 25):
+                    result = execute(f'return runEnglishQualityBatch({start}, {start + 25})')
+                    for key, value in result.items():
+                        if key == 'modes':
+                            for mode, count in value.items():
+                                quality_totals['modes'][mode] = quality_totals['modes'].get(mode, 0) + count
+                        else:
+                            quality_totals[key] += value
+                assert quality_totals['cards'] == 225 and quality_totals['exampleAudio'] == 675
+                assert set(quality_totals['modes']) == {'ru-en', 'en-ru', 'listening', 'form', 'photo', 'context', 'form-choice', 'grammar'}
+                print('English UI/TTS quality:', json.dumps(quality_totals))
+                print(execute('return runEnglishSessionQuality()'))
+                execute("document.querySelector('[data-lang=sl]').click()")
                 # Mobile layout, theme, audio control, PWA shell files.
                 for width in (360, 390, 412, 768, 1280):
                     request('POST', api + '/window/rect', {'width': width, 'height': 844})
@@ -256,11 +274,11 @@ def main():
                 request('POST', api + '/goog/cdp/execute', {'cmd':'Network.enable','params':{}})
                 request('POST', api + '/goog/cdp/execute', {'cmd':'Network.emulateNetworkConditions','params':{'offline':True,'latency':0,'downloadThroughput':0,'uploadThroughput':0}})
                 request('POST', api + '/refresh', {})
-                assert execute("return document.getElementById('slCourseHeadline').textContent.length > 0")
+                assert execute("return document.getElementById('slCourseHeadline').textContent.length > 0 && GLAGOLICA_EN_CARDS.length===225 && GLAGOLICA_EN_QUALITY.availableModes(GLAGOLICA_EN_CARDS[0]).includes('context')")
                 request('POST', api + '/goog/cdp/execute', {'cmd':'Network.emulateNetworkConditions','params':{'offline':False,'latency':0,'downloadThroughput':-1,'uploadThroughput':-1}})
                 errors = request('POST', api + '/se/log', {'type':'browser'})['value']
                 assert not [e for e in errors if e['level'] == 'SEVERE'], errors
-                print(f'OK: Slovene forms, English Cards (225 cards, {en_photo_count} suitable photos, {unique_en_photos} distinct photos, 675 bilingual examples, five practice modes), both courses, persistence, mobile layout, PWA offline, console')
+                print(f'OK: Slovene forms, English Cards (225 cards, {en_photo_count} suitable photos, {unique_en_photos} distinct photos, 675 bilingual examples, eight practice modes, all word/form/example/feedback TTS payloads), both courses, persistence, mobile layout, PWA offline, console')
             finally:
                 request('DELETE', api)
         finally:
