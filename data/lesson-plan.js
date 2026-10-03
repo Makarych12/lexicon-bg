@@ -1,0 +1,26 @@
+// One communicative goal and two controlled production steps per existing course day.
+// Controlled rows: prompt, expected answer, brief explanation.
+window.GLAGOLICA_LESSONS = [
+  {goal:'Представиться и спросить имя',pattern:'Jaz sem ... / Ime mi je ...',model:'Ime mi je Ana. Kako ti je ime?',dialogue:0,controlled:[['Я ... Ана. → Напишите недостающее слово.','sem','После jaz глагол biti: sem.'],['Меня ... Ана. → Напишите недостающее слово.','je','Ime mi je Ana — естественный способ назвать имя.']]},
+  {goal:'Рассказать о семье',pattern:'Imam ... / To je moja ...',model:'Imam brata. To je moja mama.',dialogue:10,controlled:[['У меня есть брат: ... brata.','Imam','Первое лицо imeti: imam.'],['Это моя мама: To je ... mama.','moja','Mama — женский род: moja.']]},
+  {goal:'Описать дом и местонахождение',pattern:'Živim v ... / Grem v ...',model:'Živim v hiši. Grem v trgovino.',dialogue:5,controlled:[['Я живу в доме: Živim v ...','hiši','Место: v + mestnik, hiša → hiši.'],['Я иду в магазин: Grem v ...','trgovino','Направление: v + tožilnik, trgovina → trgovino.']]},
+  {goal:'Заказать напиток в кафе',pattern:'Rad bi ... / Rada bi ...',model:'Rad bi kavo. Račun, prosim.',dialogue:1,controlled:[['Я бы хотел кофе: Rad bi ...','kavo','Прямой объект: kava → kavo.'],['Счёт, пожалуйста: Račun, ...','prosim','Вежливая просьба: prosim.']]},
+  {goal:'Спросить цену и купить вещь',pattern:'Koliko to stane? / Potrebujem ...',model:'Koliko to stane? Potrebujem vodo.',dialogue:2,controlled:[['Мне нужна вода: Potrebujem ...','vodo','Прямой объект: voda → vodo.'],['Сколько это стоит: Koliko to ...?','stane','Вопрос о цене: Koliko to stane?']]},
+  {goal:'Назвать день и договориться о времени',pattern:'Danes je ... / Kdaj se dobimo?',model:'Danes je ponedeljek. Kdaj se dobimo?',dialogue:7,controlled:[['Сегодня понедельник: Danes je ...','ponedeljek','После danes je назовите день недели.'],['Когда встретимся: ... se dobimo?','Kdaj','Kdaj — когда.']]},
+  {goal:'Рассказать о работе и расписании',pattern:'Delam ... / Ne delam ...',model:'Danes delam doma. Jutri ne delam.',dialogue:6,controlled:[['Я работаю дома: ... doma.','Delam','Первое лицо delati: delam.'],['Завтра я не работаю: Jutri ne ...','delam','Отрицание ne стоит перед глаголом.']]},
+  {goal:'Найти дорогу в городе',pattern:'Kje je ...? / Grem v ...',model:'Kje je postaja? Grem v center.',dialogue:9,controlled:[['Где магазин: Kje je ...?','trgovina','Вопрос о месте: Kje je ...?'],['Я иду в центр: Grem v ...','center','Направление с v + tožilnik.']]},
+  {goal:'Купить билет и поехать',pattern:'Potrebujem vozovnico. / Grem z ...',model:'Potrebujem vozovnico. Grem z avtobusom.',dialogue:3,controlled:[['Мне нужен билет: Potrebujem ...','vozovnico','Прямой объект: vozovnica → vozovnico.'],['Я еду автобусом: Grem z ...','avtobusom','Средство передвижения: z + orodnik.']]},
+  {goal:'Говорить о двух людях',pattern:'Midva delava. / Midve greva.',model:'Midva delava. Midve greva domov.',dialogue:12,controlled:[['Мы вдвоём работаем: Midva ...','delava','Двое: глагол delava.'],['Мы вдвоём (женщины) идём: Midve ...','greva','Две женщины: midve; глагол greva.']]},
+  {goal:'Попросить еду и напиток',pattern:'Jem ... / Pijem ...',model:'Jem kruh. Pijem vodo.',dialogue:1,controlled:[['Я ем хлеб: ... kruh.','Jem','Первое лицо jesti: jem.'],['Я пью воду: Pijem ...','vodo','Прямой объект: voda → vodo.']]},
+  {goal:'Объяснить самочувствие и попросить помощь',pattern:'Boli me ... / Potrebujem ...',model:'Boli me glava. Potrebujem zdravnika.',dialogue:11,controlled:[['У меня болит голова: Boli me ...','glava','В конструкции Boli me glava слово glava — подлежащее.'],['Мне нужен врач: Potrebujem ...','zdravnika','Одушевлённый прямой объект: zdravnik → zdravnika.']]},
+  {goal:'Рассказать о вчера и завтра',pattern:'Včeraj sem ... / Jutri bom ...',model:'Včeraj sem delal doma. Jutri bom delal.',dialogue:8,controlled:[['Вчера я работал: Včeraj sem ...','delal / delala','Прошедшее время согласуется с родом говорящего.'],['Завтра я буду работать: Jutri ... delal.','bom','Будущее первого лица: bom.']]},
+  {goal:'Попросить повторить и уточнить',pattern:'Ne razumem. / Ponovite, prosim.',model:'Ne razumem. Ponovite, prosim.',dialogue:12,controlled:[['Я не понимаю: Ne ...','razumem','Первое лицо razumeti: razumem.'],['Повторите, пожалуйста: ..., prosim.','Ponovite','Вежливая форма обращения: ponovite.']]},
+  {goal:'Самостоятельно решить бытовые задачи A1',pattern:'Имя · дом · работа · дорога · помощь',model:'Ime mi je Ana. Živim v Ljubljani. Potrebujem pomoč.',dialogue:3,controlled:[['Мне нужна помощь: Potrebujem ...','pomoč','Прямой объект: pomoč сохраняет форму.'],['Мы вдвоём идём домой: ... domov.','Greva','Двое: greva, а не gremo.']]}
+];
+window.GLAGOLICA_BRIDGE_HINTS = {
+  2:'В болгарском существительное после «в» обычно не меняет падеж. В словенском сравните место v hiši и направление v hišo.',
+  6:'Словенское delati похоже на русское «делать», но в рассказе о работе часто значит «работать».',
+  9:'Русское «мы» не различает двоих и группу. В словенском сравните midva delava и mi delamo.',
+  10:'Словенское juha — суп; не путайте его с русским «уха».',
+  13:'prosim помогает и как «пожалуйста», и как вежливое «прошу».'
+};

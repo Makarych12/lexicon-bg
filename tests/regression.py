@@ -105,23 +105,55 @@ def main():
                 assert execute("return document.querySelectorAll('#slSurvivalList [data-survival-speak]').length") == 20
                 execute("document.querySelector('#slDialogueMenu [data-dialogue=\"0\"]').click()")
                 assert execute("return document.querySelector('#slLearning').textContent.includes('Kako ti je ime')")
+                execute("document.querySelector('#slDialogueMenu [data-dialogue=\"1\"]').click()")
+                execute("document.querySelector('#slLearning #learningAnswer').value='Rad bi čaj.';document.querySelector('#learningForm').requestSubmit();document.querySelector('#slLearning [data-next-task]').click()")
+                assert execute("return document.querySelector('#slLearning').textContent.includes('Tukaj je čaj')")
                 execute("document.querySelector('[data-trainer=survival]').click()")
                 assert execute("return document.querySelector('#slLearning').textContent.includes('Slovenia Survival')")
                 execute("document.querySelector('[data-course-start=sl]').click()")
+                assert execute("return !!document.querySelector('#slLearning [data-next-task]')")
+                assert execute("return document.querySelector('#slLearning').textContent.includes('Представиться и спросить имя')")
+                execute("document.querySelector('#slLearning [data-next-task]').click()")
                 assert execute("return !!document.querySelector('#slLearning #learningAnswer')")
-                execute("document.querySelector('#slLearning #learningAnswer').value='Jaz sem Ana.';document.querySelector('#learningForm').requestSubmit()")
+                execute("document.querySelector('#slLearning #learningAnswer').value=GLAGOLICA_VOCAB[0][0].sl;document.querySelector('#learningForm').requestSubmit()")
                 assert execute("return document.querySelector('#learningFeedback').textContent.includes('Верно')")
                 request('POST', api + '/refresh', {})
-                assert execute("return !!JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.scores['0-0::sentence']")
+                assert execute("return !!JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.scores['0-v0::vocabulary']")
                 execute("document.querySelector('[data-trainer=listening]').click()")
                 assert execute("return !document.querySelector('#slLearning').textContent.includes('Я Анна.')")
                 execute("document.querySelector('#slLearning #learningAnswer').value='Jaz sem Ana.';document.querySelector('#learningForm').requestSubmit()")
                 assert execute("return !!JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.scores['0-0::listening']")
                 execute("""document.querySelector('[data-course-start=sl]').click();
-                  const answers=[...GLAGOLICA_COURSE.sl[0][2].map(row=>row[1]),...GLAGOLICA_VOCAB[0].map(word=>word.sl)];
-                  for(const answer of answers){const input=document.querySelector('#slLearning #learningAnswer');input.value=answer.split(' / ')[0];document.querySelector('#learningForm').requestSubmit();document.querySelector('#slLearning [data-next-task]').click();}
+                  for(let i=0;i<250&&document.querySelector('#slLearning [data-next-task],#slLearning #learningAnswer');i++){
+                    const next=document.querySelector('#slLearning [data-next-task]');if(next){next.click();continue;}
+                    const input=document.querySelector('#slLearning #learningAnswer');if(!input)break;
+                    input.value='x';document.querySelector('#learningForm').requestSubmit();
+                  }
                 """)
                 assert execute("return JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.day") == 1
+                execute("document.querySelector('[data-quick=\"5\"]').click()")
+                assert execute(r"return Number(document.querySelector('#slLearning').textContent.match(/1\/(\d+)/)[1]) <= 5")
+                execute("document.querySelector('[data-quick=\"15\"]').click()")
+                assert execute(r"return Number(document.querySelector('#slLearning').textContent.match(/1\/(\d+)/)[1]) <= 12")
+                execute("document.querySelector('[data-quick=\"30\"]').click()")
+                assert execute(r"return Number(document.querySelector('#slLearning').textContent.match(/1\/(\d+)/)[1]) > 30")
+                assert execute("return !!JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.mastery.jaz.active")
+                assert execute("return Object.values(JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.clusters).some(x=>x>=3)")
+                assert execute("return document.querySelector('#slStats').textContent.includes('Мои слабые места')")
+                execute("const p=JSON.parse(localStorage.getItem('glagolicaLearningV1'));delete p.sl.mastery;delete p.sl.clusters;localStorage.setItem('glagolicaLearningV1',JSON.stringify(p))")
+                request('POST', api + '/refresh', {})
+                assert execute("return document.getElementById('slCourseHeadline').textContent.includes('День 2')")
+                assert execute("return !!JSON.parse(localStorage.getItem('glagolicaLearningV1')).sl.scores['0-v0::vocabulary']")
+                execute("document.querySelector('[data-trainer=cases]').click()")
+                assert execute("return document.querySelector('#slLearning').textContent.includes('Падежный тренажёр')")
+                execute("document.querySelector('[data-trainer=dual]').click()")
+                assert execute("return document.querySelector('#slLearning').textContent.includes('Dvojina')")
+                execute("GLAGOLICA_START_VERB_DRILL('iti')")
+                assert execute("return document.querySelector('#slLearning').textContent.includes('Форма → фраза')")
+                execute("document.querySelector('[data-trainer=builder]').click()")
+                assert execute("return !!document.querySelector('#slLearning [data-builder-toggle]')")
+                assert execute("return GLAGOLICA_LESSONS.length===15 && GLAGOLICA_LESSONS.every(d=>d.controlled.length===2)")
+                assert execute("return [0,3,6,9,12].map(d=>Math.min(5,1+Math.floor(d/3))).join(',')==='1,2,3,4,5'")
                 request('POST', api + '/refresh', {})
                 assert execute("return document.getElementById('slCourseHeadline').textContent.includes('День 2')")
                 execute("document.querySelector('[data-lang=en]').click()")
@@ -129,12 +161,63 @@ def main():
                 assert execute("return document.body.dataset.lang") == 'en'
                 assert execute("return document.querySelectorAll('#enGrammar article').length") == 10
                 assert execute("return document.querySelectorAll('#enWordList article').length") == 225
+                assert execute("return GLAGOLICA_EN_CARDS.length===225 && GLAGOLICA_EN_CARDS.every(c=>(!c.photo||c.photo.src.startsWith('https://images.pexels.com/')) && c.examples.length===3 && c.exampleRu.length===3 && c.exampleRu.every(Boolean) && (c.photo||c.pictogram))")
+                en_photo_count = execute("return GLAGOLICA_EN_CARDS.filter(c=>c.photo).length")
+                unique_en_photos = execute("return new Set(GLAGOLICA_EN_CARDS.filter(c=>c.photo).map(c=>c.photo.src)).size")
+                assert en_photo_count >= 75 and unique_en_photos >= 60, (en_photo_count, unique_en_photos)
+                assert execute("return GLAGOLICA_EN_CARDS.reduce((n,c)=>n+c.examples.length,0)") == 675
+                assert execute("return document.querySelectorAll('#enWordList img.sl-photo').length") == en_photo_count
+                assert execute("return new Set(GLAGOLICA_EN_CARDS.flatMap(c=>c.examples)).size") == 675
+                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='I').photo===null && GLAGOLICA_EN_CARDS.find(c=>c.en==='bus').photo===null")
+                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='hour').forms.some(([name,value])=>name==='usage'&&value==='an hour')")
+                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='tea').forms.some(([name,value])=>name==='usage'&&value.includes('two teas'))")
+                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='be').forms.some(([name,value])=>name==='past'&&value.includes('was'))")
+                assert execute("return GLAGOLICA_EN_CARDS.find(c=>c.en==='child').forms.some(([name,value])=>name==='plural'&&value==='children')")
+                assert execute("""const expected={go:['went','gone'],have:['had','had'],eat:['ate','eaten'],write:['wrote','written'],read:['read','read'],see:['saw','seen'],buy:['bought','bought'],speak:['spoke','spoken'],sleep:['slept','slept'],drink:['drank','drunk']};return Object.entries(expected).every(([word,forms])=>{const row=GLAGOLICA_EN_CARDS.find(c=>c.en===word);return forms.every((form,i)=>row.forms.find(([name])=>name===(i?'past participle':'past'))?.[1]===form)})""")
+                assert execute("""const expected={person:'people',wife:'wives',family:'families',city:'cities',bus:'buses',fish:'fish'};return Object.entries(expected).every(([word,plural])=>GLAGOLICA_EN_CARDS.find(c=>c.en===word).forms.find(([name])=>name==='plural')?.[1]===plural)""")
+                execute("document.querySelector('#enWordList [data-en-card]').click()")
+                assert execute("return document.querySelector('#enWordList [data-en-card]').classList.contains('is-flipped')")
+                execute("document.querySelector('#enWordList [data-en-tab=\"forms\"]').click()")
+                assert execute("return document.querySelector('#enWordList [data-en-body]').textContent.includes('object')")
+                execute("document.querySelector('#enWordList [data-en-tab=\"examples\"]').click()")
+                assert execute("return document.querySelectorAll('#enWordList [data-en-card]:first-child [data-en-body] .sl-example').length") == 3
+                assert execute("return document.querySelector('#enWordList [data-en-body]').textContent.includes('Я живу здесь.')")
+                assert execute("return document.querySelector('#enWordList [data-en-body] [data-en-speak]').dataset.enSpeak==='I live here.'")
+                execute("document.querySelector('#enWordList [data-en-tab=\"practice\"]').click();document.querySelector('#enWordList [data-en-practice=\"ru-en\"]').click()")
+                assert execute("return !document.querySelector('#enWordList [data-en-practice=photo]')")
+                assert execute("return document.querySelector('#enCardPractice').textContent.includes('RU → EN')")
+                execute("document.getElementById('enCardAnswer').value='I';document.getElementById('enCardPracticeForm').requestSubmit()")
+                assert execute("return document.getElementById('enCardFeedback').textContent.includes('Верно')")
+                time.sleep(.4)
+                assert execute("return !!JSON.parse(localStorage.getItem('lexiconSrsEn'))['en-0-0']")
+                execute("document.querySelector('[data-en-close]').click();document.getElementById('enCardPos').value='verb';document.getElementById('enCardPos').dispatchEvent(new Event('change'))")
+                assert execute("return document.querySelectorAll('#enWordList article').length > 20")
+                execute("document.getElementById('enCardPos').value='all';document.getElementById('enCardPos').dispatchEvent(new Event('change'))")
+                assert execute("return document.querySelectorAll('#enWordList article').length") == 225
+                execute("document.querySelector('#enWordList [data-en-fav]').click();document.getElementById('enCardFavFilter').click()")
+                assert execute("return document.querySelectorAll('#enWordList article').length") == 1
+                assert execute("return JSON.parse(localStorage.getItem('lexiconEnFavorites')).includes('en-0-0')")
+                execute("document.getElementById('enCardFavFilter').click();document.getElementById('enWordSearch').value='house';document.getElementById('enWordSearch').dispatchEvent(new Event('input'))")
+                assert execute("return document.querySelectorAll('#enWordList article').length") == 1
+                execute("document.querySelector('#enWordList [data-en-card]').click();document.querySelector('#enWordList [data-en-tab=\"practice\"]').click();document.querySelector('#enWordList [data-en-practice=\"listening\"]').click()")
+                assert execute("return !document.getElementById('enCardPractice').textContent.includes('house') && !!document.querySelector('#enCardPractice [data-en-listen]')")
+                execute("document.getElementById('enCardAnswer').value='house';document.getElementById('enCardPracticeForm').requestSubmit();document.querySelector('[data-en-close]').click()")
+                execute("document.querySelector('#enWordList [data-en-practice=\"form\"]').click()")
+                assert execute("return document.getElementById('enCardPractice').textContent.includes('plural')")
+                execute("document.getElementById('enCardAnswer').value='houses';document.getElementById('enCardPracticeForm').requestSubmit();document.querySelector('[data-en-close]').click()")
+                execute("document.querySelector('#enWordList [data-en-practice=\"photo\"]').click()")
+                assert execute("return !!document.querySelector('#enCardPractice img.sl-photo') && !document.getElementById('enCardPractice').textContent.includes('house')")
+                execute("document.getElementById('enCardAnswer').value='house';document.getElementById('enCardPracticeForm').requestSubmit();document.querySelector('[data-en-close]').click();document.getElementById('enWordSearch').value='';document.getElementById('enWordSearch').dispatchEvent(new Event('input'))")
+                assert execute("return document.querySelectorAll('#enWordList article').length") == 225
                 execute("""document.querySelector('[data-course-start=en]').click();
                   const answers=[...GLAGOLICA_COURSE.en[0][2].map(row=>row[1]),...GLAGOLICA_VOCAB[0].map(word=>word.en)];
                   for(const answer of answers){document.querySelector('#enLearning #learningAnswer').value=answer.split(' / ')[0];document.querySelector('#enLearning #learningForm').requestSubmit();document.querySelector('#enLearning [data-next-task]').click();}
                 """)
                 assert execute("return JSON.parse(localStorage.getItem('glagolicaLearningV1')).en.day") == 1
                 assert execute("return document.getElementById('enMode').classList.contains('module-hidden')") is False
+                request('POST', api + '/url', {'url': f'http://127.0.0.1:{http_port}/#en/card/en-2-0'})
+                time.sleep(.55)
+                assert execute("return document.body.dataset.lang==='en' && !!document.querySelector('#enWordList [data-en-card=\"en-2-0\"].is-flipped')")
                 execute("document.querySelector('[data-en-game=match]').click()")
                 assert execute("return document.querySelectorAll('#enGame [data-match-index]').length") == 12
                 execute("document.querySelector('[data-en-game=sprint]').click()")
@@ -148,18 +231,26 @@ def main():
                 execute("localStorage.setItem('lexiconSlLearned', JSON.stringify(['delati']))")
                 request('POST', api + '/refresh', {})
                 request('POST', api + '/url', {'url': f'http://127.0.0.1:{http_port}/#sl/word/n-hiša'})
-                time.sleep(.3)
+                time.sleep(.8)
                 assert execute("return document.body.dataset.lang === 'sl' && !document.getElementById('slWordsView').classList.contains('module-hidden')")
                 assert execute("return document.getElementById('slProgressText').textContent.startsWith('1 /')"), execute("return [document.getElementById('slProgressText').textContent, localStorage.getItem('lexiconSlLearned')]")
                 # Mobile layout, theme, audio control, PWA shell files.
-                request('POST', api + '/window/rect', {'width': 390, 'height': 844})
-                assert execute("return document.documentElement.scrollWidth <= window.innerWidth + 1")
+                for width in (360, 390, 412, 768, 1280):
+                    request('POST', api + '/window/rect', {'width': width, 'height': 844})
+                    assert execute("return document.documentElement.scrollWidth <= window.innerWidth + 1"), width
+                execute("document.querySelector('[data-lang=en]').click()")
+                time.sleep(.4)
+                for width in (360, 390, 412, 768, 1280):
+                    request('POST', api + '/window/rect', {'width': width, 'height': 844})
+                    assert execute("return document.documentElement.scrollWidth <= window.innerWidth + 1"), ('en', width)
+                execute("document.querySelector('[data-lang=sl]').click()")
+                time.sleep(.4)
                 execute("document.getElementById('slThemeToggle').click()")
                 assert execute("return document.body.classList.contains('sl-light')")
                 assert execute("return 'speechSynthesis' in window")
                 cached = execute("return caches.keys().then(async keys => ({keys,files:await (await caches.open(keys.find(k=>k.startsWith('glagolica-shell')))).keys().then(rows=>rows.map(r=>new URL(r.url).pathname))}))")
                 assert any(k.startswith('glagolica-shell') for k in cached['keys'])
-                assert '/data/course.js' in cached['files'] and '/js/learning.js' in cached['files']
+                assert '/data/course.js' in cached['files'] and '/data/deep-practice.js' in cached['files'] and '/data/lesson-plan.js' in cached['files'] and '/data/english-card-examples.js' in cached['files'] and '/data/english-card-translations.js' in cached['files'] and '/data/english-cards.js' in cached['files'] and '/js/learning.js' in cached['files'] and '/js/english-cards.js' in cached['files']
                 # After install, the application shell and course remain available offline.
                 execute("return navigator.serviceWorker.ready.then(()=>true)")
                 request('POST', api + '/goog/cdp/execute', {'cmd':'Network.enable','params':{}})
@@ -169,7 +260,7 @@ def main():
                 request('POST', api + '/goog/cdp/execute', {'cmd':'Network.emulateNetworkConditions','params':{'offline':False,'latency':0,'downloadThroughput':-1,'uploadThroughput':-1}})
                 errors = request('POST', api + '/se/log', {'type':'browser'})['value']
                 assert not [e for e in errors if e['level'] == 'SEVERE'], errors
-                print('OK: Slovene forms, both courses, dialogues, persistence, mobile layout, PWA offline, console')
+                print(f'OK: Slovene forms, English Cards (225 cards, {en_photo_count} suitable photos, {unique_en_photos} distinct photos, 675 bilingual examples, five practice modes), both courses, persistence, mobile layout, PWA offline, console')
             finally:
                 request('DELETE', api)
         finally:

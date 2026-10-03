@@ -1,8 +1,8 @@
 // Офлайн-режим: оболочка кэшируется при установке, фотографии — по мере просмотра.
-const SHELL = 'glagolica-shell-v6';
+const SHELL = 'glagolica-shell-v10';
 const PHOTOS = 'glagolica-photos-v1';
 const PHOTO_LIMIT = 400;
-const SHELL_FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './data/course.js', './data/vocabulary.js', './data/vocabulary-extra.js', './data/dialogues.js', './data/practice.js', './js/learning.js'];
+const SHELL_FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './data/course.js', './data/vocabulary.js', './data/vocabulary-extra.js', './data/dialogues.js', './data/practice.js', './data/deep-practice.js', './data/lesson-plan.js', './data/english-card-examples.js', './data/english-card-translations.js', './data/english-cards.js', './js/learning.js', './js/english-cards.js'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(SHELL).then(cache => cache.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
